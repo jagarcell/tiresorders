@@ -24,7 +24,7 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 
 MAIL_DRIVER=smtp
-MAIL_HOST=a2plcpnl0450.prod.iad2.secureserver.net
+MAIL_HOST=a2plcpnl0339.prod.iad2.secureserver.net
 MAIL_PORT=587
 MAIL_USERNAME=info@patmelsystems.com
 MAIL_PASSWORD=Requeson$1
