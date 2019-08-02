@@ -1,0 +1,265 @@
+.mainDiv{
+	width: 100%;
+}
+
+.orderLabelDiv{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-style: double;
+}
+
+.orderDiv{
+	width: 80%;
+	margin-left: 10%;
+}
+
+.orderTotalDiv{
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+}
+
+.userDiv{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  text-align: center;
+  border-style: double;
+}
+
+.deleteSelectedButtonDiv{
+  width: 80%;
+  margin-left: 10%;
+  text-align: right;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.deleteSelectedButton{
+  min-width: 200px;
+  width: 20%;
+  margin-top: 10px;
+}
+
+.tableDiv{
+	width: 100%;
+}
+
+.orderTotalTable{
+  width: 100%;
+  margin-top: 5px;
+}
+
+.orderTotalTable thead{
+  border-style: double;
+  border-color: black;
+}
+
+.orderTotalHeader{
+  margin-left: 165px;
+}
+
+.additionalInstructionsLabel{
+  margin-top: 10px;
+}
+
+.additionalInstructionsDiv{
+  border-style: double !important;
+  border-color: black;
+}
+
+.additionalInstructions{
+  width: 100%;
+  height: 100%;
+  border:none;
+}
+
+.order{
+  margin-top: 10px;
+}
+
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+/*  max-height: 130px;
+*/  border-style: double;
+  border-color: black;
+}
+
+.fixed_header thead tr {
+   display: block;
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+}
+
+.firstCol{
+	width: 45%;
+  min-width: 80px;
+  word-break: break-all;
+}
+
+.secondCol{
+	width: 45%;
+  min-width: 100px;
+  text-align: right !important;
+}
+
+.thirdCol{
+  width: 45%;
+  min-width: 100px;
+  text-align: right !important;
+  font-weight: bold;
+}
+
+.fourthCol{
+  width: 45%;
+  min-width: 100px;
+  text-align: right !important;
+}
+
+.fifthCol{
+  width: 45%;
+  min-width: 100px;
+}
+
+.borderBottom{
+
+}
+
+.productImage{
+  width: 80px; 
+  height: 80px;
+}
+
+.deleteSelected{
+  text-decoration: underline;
+}
+
+.checkCol{
+  text-align: right !important;
+}
+
+.orderTotal{
+  font-weight: bold;
+}
+
+.textCentered{
+  text-align: center !important;
+  align-items: center;
+}
+
+.submitMessage{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10px;
+  text-align: center;
+  color: green;
+}
+
+#myProgress {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  margin: auto;
+  background-color: #4CAF50;
+}
+
+.submitButtonDiv{
+  text-align: -webkit-center;
+  margin-top: 10px;
+}
+
+.submitButton{
+  min-width: 210px;
+  margin-bottom: 20px;
+}
+
+.middleButton{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.noOrderInProgressDiv{
+  text-align: center; 
+  margin-top: 150px; 
+  font-size: 36px; 
+  font-style: bold;
+}
+
+th{
+  padding-right: 20px !important;
+}
+
+@media
+only screen and (max-width: 700px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+    
+    thead.orderHeader tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    .borderBottom{
+      border-bottom: solid gray 1px;      
+    }
+    
+    tr {
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      border-bottom: solid 2px black;
+      width: 100%;
+      margin-left: 0px;
+   }
+
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 200px;
+      margin-left: 150px;
+    }
+
+    td:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 130px;
+      padding-right: 40px;
+      white-space: nowrap;
+      margin-left: -150px;
+      height: 100%;
+    }
+    td:nth-of-type(1):before { content: "Item"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(2):before { content: "Qty";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(3):before { content: "Price";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(4):before { content: "SubTotal";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(5):before { content: "";  text-align: right; background-color: black; color: white;}
+}

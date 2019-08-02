@@ -1,0 +1,249 @@
+@media screen{
+
+	.inventoryMainDiv{
+		width: 80%;
+		margin-left: 10%;
+		position: relative;
+	}
+
+	.labelDiv{
+		width: 100%;
+		border-style: double;
+		margin-top: 20px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.tableDiv{
+		width: 100%;
+	}
+
+	.inventoryTable{
+		width: 100%;
+	}
+
+	.addPriceLevel{
+		width: 30%;
+		min-width: 200px;
+		margin-left: 40%;
+		margin-top: 55px;
+		position: absolute;
+
+	}
+
+	.fixed_header{
+	    width: 100%;
+	    table-layout: fixed;
+	    border-collapse: collapse;
+	}
+
+	.fixed_header tbody{
+	  display:block;
+	  width: 100%;
+	  overflow: auto;
+/*	  max-height: 350px;
+*/	  max-height: none;
+	  border-style: double;
+	  border-color: black;
+	}
+
+	.fixed_header thead tr {
+	   display: block;
+	}
+
+	.fixed_header thead {
+	  background: black;
+	  color:#fff;
+	  display:block;
+	  width: 100%;
+	}
+
+	.fixed_header th, .fixed_header td {
+	  padding: 5px;
+	  text-align: left;
+	}
+
+	thead tr{
+		border-bottom: none;
+	}
+
+	tr {
+		border-bottom: 1px solid gray;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+
+	.firstCol{
+		width: 690px;
+		word-break: break-all;
+	}
+
+	.secondCol{
+		width: 115px;
+		min-width: 63px;
+		vertical-align: bottom;
+	}
+
+	.thirdCol{
+		width: 115px;
+		min-width: 55px;
+		vertical-align: bottom;
+	}
+
+	.fourthCol{
+		width: 230px;
+		min-width: 70px;
+		vertical-align: bottom;
+	}
+
+	.alignRight{
+		text-align: right !important;
+		padding-right: 5px !important;
+	}
+
+	.alignCenter{
+		text-align: center !important;
+	}
+
+	.updateInventory{
+		margin-top: 10px;
+		margin-bottom: 40px;
+		min-width: 200px;
+		text-align: center;
+	}
+
+	.updateInventoryButton{
+		width: 25%;
+		min-width: 200px;
+	}
+
+	.updateMessage{
+		margin-top: 17px;
+		text-align: center;
+		color: #0f0;
+	}
+
+	.verticalMiddle{
+		vertical-align: middle;
+	}
+
+	.imgDiv{
+		width: 40%;
+		margin-left: 30%;
+	}
+
+	.prodImg{
+		width: 150px;
+		height: 150px;
+	}
+
+	#myProgress {
+	  width: 80%;
+	  margin-left: 10%;
+	}
+
+	#myBar {
+	  width: 0%;
+	  height: 30px;
+	  margin: auto;
+	  background-color: #4CAF50;
+	}
+
+	input, select{
+		width: 100%;
+		border-style: outset !important;
+	}
+
+	img{
+	    cursor: pointer;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+    
+    thead.InventoryHeader tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+	.imgDiv{
+		width: 100%;
+		min-width: 150px;
+		margin-left: 0px;
+	}
+
+	.firstCol{
+		width: 45%;
+		word-break: break-all;
+	}
+
+	.fixed_header tbody{
+	  max-height: none;
+	}
+
+	.secondCol{
+		width: 45%;
+		min-width: 63px;
+		vertical-align: bottom;
+	}
+
+	.thirdCol{
+		width: 45%;
+		min-width: 55px;
+		vertical-align: bottom;
+	}
+
+	.fourthCol{
+		width: 45%;
+		min-width: 70px;
+		vertical-align: bottom;
+	}
+
+    .borderBottom{
+      border-bottom: solid gray 1px;      
+    }
+
+    tr { 
+	  border-left: none;
+	  border-top: none;
+	  border-right: none;
+	  border-bottom: solid 2px black;
+	  width: 100%;
+	  margin-left: 0px;
+	}
+
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 200px;
+      margin-left: 150px;
+    }
+
+    td:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 130px;
+      padding-right: 40px;
+      white-space: nowrap;
+      margin-left: -150px;
+      height: 100%;
+    }
+
+	input, select{
+		width: 100%;
+		border-style: outset !important;
+		margin-left: 7px;
+	}
+
+    td:nth-of-type(1):before { content: "Item"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(2):before { content: "In PO";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(3):before { content: "In Stock";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(4):before { content: "In SO";  text-align: right; background-color: black; color: white;}
+    td:nth-of-type(5):before { content: "Base Cost";  text-align: right; background-color: black; color: white;}
+}

@@ -1,0 +1,416 @@
+/*  Styles For Normal Screen */
+
+@media screen {
+
+  .mainDiv{
+  	width: 100%;
+  }
+
+  .searchDiv{
+  	width: 80%;
+  	margin-left: 10%;
+  	margin-top: 60px;
+    cursor:url('Tire.cur');
+
+  }
+
+  .searchBar{
+    width: 100%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+  }
+
+  .searchButton{
+  	width: 15%;
+    min-width: 85px;
+    display: none;
+  }
+
+  .imgFrame{
+    width: 48px;
+    height: 48px;
+    display: none;
+  }
+
+  .tireAnim{
+    width: 60px;
+    height: 60px;
+    display: inline;
+    -webkit-animation-name: tireAnimation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: tireAnimation;
+    animation-duration: 1s;
+    animation-iteration-count:9000;
+  }
+  
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes tireAnimation {
+    from {margin-left: 0%;}
+    to {margin-left: 100%;}
+  }
+
+  /* Standard syntax */
+  @keyframes tireAnimation {
+    from {margin-left: 0%;}
+    to {margin-left: 100%;}
+  }
+
+  .noItemFound{
+    font-size: 36px;
+    text-align: center;
+    margin-top: 140px;
+  }
+  .addToOrderButton{
+    min-width: 250px;
+    width: 20%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .addToOrderButtonDiv{
+    width: 100%;
+    text-align: right;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1;
+    top: 20px;
+  }
+
+  .tableDiv{
+  	width: 80%;
+  	margin-left: 10%;
+  	margin-top: 20px;
+  }
+
+  .orderTotalDiv{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 80px;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .fixed_header{
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+  }
+
+  .fixed_header tbody{
+    display:block;
+    width: 100%;
+    overflow: auto;
+    border-style: double;
+    border-color: black;
+  }
+
+  .fixed_header thead tr {
+     display: block;
+  }
+
+  .fixed_header thead {
+    background: black;
+    color:#fff;
+  }
+
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+  }
+
+  .firstCol{
+  	min-width: 80px;
+    width: 45%;
+    word-break: break-all !important;
+    vertical-align: bottom;
+  }
+
+  .secondCol{
+  	min-width: 100px;
+    width: 25%;
+    padding-right: 5px;
+    vertical-align: bottom;
+  }
+
+  .thirdCol{
+    width: 15%;
+    min-width: 20px;
+    vertical-align: bottom;
+  }
+
+  .fourthCol{
+    width: 45%;
+    min-width: 80px;
+    vertical-align: bottom;
+  }
+
+  .fifthCol{
+    min-width: 100px;
+    vertical-align: bottom;
+    width: 45%;
+  }
+
+  .sixCol{
+    width: 60%;
+    min-width: 100px;
+    vertical-align: bottom;
+  }
+
+  .alignRight{
+    text-align: right !important;
+  }
+
+  .addSelected{
+    text-decoration: underline;
+  }
+
+  .textCentered{
+    text-align: right !important;
+    align-items: center;
+
+  }
+
+  .editSelectedBox{
+    width: 40%;
+    margin-left: 40%;
+  }
+
+  .itemDescription{
+      width: 40%; 
+      margin-left: 0px;
+   }
+
+  .productImage{
+    width: 80px; 
+    height: 80px;
+  }
+
+  .instock{
+    text-align: right !important;
+  }
+
+  .price{
+    text-align: right !important;
+  }
+
+  .itemsTable{
+  	width: 100%;
+  }
+
+  .orderTable thead{
+    width: 100%;
+    background-color: #fff !important;
+    border-style: double;
+    border-color: black;
+    color: black;
+  }
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-style: italic;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-style: italic;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-style: italic;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+  }
+
+  .orderDiv{
+      width: 60%;
+      margin-left: 20%;
+      display: none;
+  }
+
+  .orderTable{
+      width: 100%;
+  }
+
+  .orderTotalHeader{
+    margin-left: 165px;
+  }
+
+  .orderLabel{
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .addItemDialog{
+    width: 80%;
+    margin-left: 10%;
+    display: none;
+  }
+
+  .addItemTable{
+    width: 100%;
+    border-collapse: separate; 
+  }
+
+  .itemQty{
+    width: 100%;
+  }
+
+  #itemsTable tbody tr:hover{
+  	background-color: #00f;	
+  }
+
+  .qtyInput{
+    width: 100% !important;
+  }
+
+  .CallToConfirm{
+    font-size: 16px;
+    color: red;
+    text-align: right;
+  }
+
+  .borderBottom{
+    border-bottom: solid 1px;
+  }
+
+  th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  tr{
+    width: 100%;
+    border-bottom: 1px solid;
+  }
+
+  textarea:focus, input:focus{
+      outline: none;
+  }
+}
+
+/* Styles For Mobile Screen */
+
+@media only screen and (max-width: 700px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead.orderHeader tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    thead.orderTotalHeader tr {
+      width: -1% !important;
+    }
+
+    .searchBar{
+      width: 70%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
+
+    .firstCol{
+      min-width: 80px;
+      width: 45%;
+      word-break: break-all !important;
+      vertical-align: bottom;
+    }
+
+    .secondCol{
+      min-width: 80px;
+      width: 45%;
+      padding-right: 5px;
+      vertical-align: bottom;
+    }
+
+    .thirdCol{
+      width: 45%;
+      min-width: 80px;
+      vertical-align: bottom;
+    }
+
+    .fourthCol{
+      width: 45%;
+      min-width: 80px;
+      vertical-align: bottom;
+    }
+
+    .fifthCol{
+      min-width: 80px;
+      vertical-align: bottom;
+      width: 45%;
+    }
+
+    .sixCol{
+      width: 45%;
+      min-width: 80px;
+      vertical-align: bottom;
+      text-align: right;
+    }
+
+    .editSelectedBox{
+      width: 40%;
+      margin-left: 80%;
+    }
+
+    .borderBottom{
+      border-bottom: solid gray 1px;
+    }
+
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 200px;
+      margin-left: 150px;
+    }
+
+    td:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 130px;
+      padding-right: 40px;
+      white-space: nowrap;
+      margin-left: -150px;
+      height: 100%;
+    }
+
+    td:nth-of-type(1):before { content: "Inventory Item"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(2):before { content: "In Stock"; text-align: right; background-color: black; color: white; }
+    td:nth-of-type(3):before { content: "Qty"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(4):before { content: "Price"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(5):before { content: "SubTotal"; text-align: right; background-color: black; color: white;}
+    td:nth-of-type(6):before { content: ""; text-align: right; background-color: black; color: white;}
+}
+
+/* Styles For Mobile Tablet Screen */
+
+@media only screen and (max-width: 900px) and (min-width: 701px){
+    .searchBar{
+      width: 83%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
+}

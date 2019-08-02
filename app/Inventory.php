@@ -1,0 +1,342 @@
+<?php
+
+namespace App;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+
+use App\QuickBooks;
+use App\QbToken;
+use App\PriceLevels;
+use App\Orders;
+use App\OrderLines;
+use App\ItemsInOrders;
+use App\PriceListHeader;
+use App\PriceListLines;
+use App\QbItemsIds;
+
+class Inventory extends Model
+{
+    //
+    public function searchInventory(Request $request)
+    {
+    	# code...
+        $Description = $request['description'];
+        $Keywords = explode(" ", $Description);
+
+        $query = " where ((description like '%";
+        $first = true;
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            if($first){
+                $first = false;
+                $query = $query . $Keyword . "%')";
+            }
+            else{
+                $query = $query . "or (description like '%" . $Keyword . "%')";
+            }
+        }
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            $query = $query . "or (name like '%" . $Keyword . "%')";
+        }
+
+        $query = $query . ")";
+
+        $queryorder = " order by price";
+
+        $user = Auth::user();
+        $Items = array();
+
+        // IF THE USER IS WORKING WITH PRICE LEVELS ...
+        if($user->pricelevels_id != -1){
+            // ... WE SEARCH THE LOCAL INVENTORY
+            $basequery = "select * from inventories";
+            $Items = DB::select($basequery . $query . $queryorder);
+
+            $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
+
+            if(count($priceLevels)){
+                $priceLevel = $priceLevels[0];
+                $factor = 1;
+                if($priceLevel->type == 'increment'){
+                    $factor = 1 + $priceLevel->percentage/100;
+                }
+                else{
+                    $factor = 1 - $priceLevel->percentage/100;
+                }
+                foreach ($Items as $key => $Item) {
+                    $Item->price *= $factor;
+                }
+            }
+        }
+
+        // IF THE USER IS WORKING WITH PRICE LISTS ...
+        if($user->pricelist_id != -1){
+            // ... WE SEARCH THE PRICE LIST
+            $basequery = "select * from price_list_lines";
+
+            $Items = DB::select($basequery . $query . " and pricelistheaderid=" . $user->pricelist_id . $queryorder);
+
+            foreach ($Items as $key => $Item) {
+                # code...
+                $LocalItems = $this->FindItemByLocalItemId($Item->localitemid);
+                if(count($LocalItems) > 0){
+                    $LocalItem = $LocalItems[0];
+                    $Item->qbitemid = $LocalItem->qbitemid;
+                    $Item->instock = $LocalItem->instock;
+                    $Item->inorders = $LocalItem->inorders;
+                    $Item->modified = $LocalItem->pricemodified;
+                    $Item->imgpath = $LocalItem->imgpath;
+                    $Item->inpurchaseorders = $LocalItem->inpurchaseorders;
+                }
+            }
+        }   
+
+    	return $Items;
+    }
+
+    public function findItemByQbItemId($qbItemId)
+    {
+    	# code...
+    	return $this->where('qbitemid', $qbItemId)->get();
+    }
+
+    public function FindItemByLocalItemId($localitemid)
+    {
+        # code...
+        return $this->where('id', $localitemid)->get();
+    }
+
+    public function SyncronizeInventories(Request $request)
+    {
+        $result = (new QbToken())->GetDataService();
+
+        $dataService = $result['dataService'];
+        $dataService->throwExceptionOnError(true);
+
+        if(is_null($dataService))
+        {
+            $authUrl = $result['authUrl'];
+            session(['qbapi' => 'InventorySummary']);
+            return ['authUrl' => $authUrl];
+        }
+
+        try {
+            $Count = $dataService->query("SELECT COUNT(*) FROM Item");
+        } catch (\SdkException $e) {
+            return ['status' => 'fail', 'message' => $e];
+        }
+
+        $Count1 = $Count/100;
+
+        $Fcount = floor($Count1);
+
+        $Rest = ($Count1 - $Fcount);
+        if($Rest > 0){
+            $Fcount += 1;
+        }
+
+        DB::beginTransaction();
+
+        $update = 0;
+        (new Inventory())->where('id', '>', -1)->update(['update' => $update]);
+
+        // ADD OR UPDATE QUICKBOOKS ITEMS TO LOCAL INVENTORY
+        for($i = 0; $i < $Fcount; $i++){
+            try {
+                $QbInventory = $dataService->query("SELECT * FROM Item STARTPOSITION " . $i*100 . "  MAXRESULTS 100");
+            } catch (\SdkException $e) {
+                DB::rollback();
+                return ['status' => 'fail', 'message' => $e];                
+            }
+            try {
+                $this->Sync($QbInventory, $update);
+            } catch (\QueryException $e) {
+                return ['status' => 'fail', 'message' => $e];                
+            }
+        }
+
+        // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
+        $LocalInventory = $this->where('update', '<', $update + 1)->update(['archive' => true]);
+
+        // ADD TO THE STOCK THE PRODUCTS IN PURCHASE ORDERS
+        try {
+            $QbPurchaseOrders = $dataService->query("SELECT * FROM PurchaseOrder");
+        } catch (\SdkException $e) {
+            DB::rollback();
+            return ['status' => 'fail', 'message' => $e];                
+        }
+        foreach ($QbPurchaseOrders as $key => $QbPurchaseOrder) {
+            # IF THE ORDER IS OPEN ...
+            if($QbPurchaseOrder->POStatus == 'Open'){
+                # ... LET'S PROCCESS THE ORDER LINES
+                $QbPurchaseOrderLines = $QbPurchaseOrder->Line;
+                if(gettype($QbPurchaseOrderLines) == "array"){
+                    foreach ($QbPurchaseOrderLines as $key1 => $QbPurchaseOrderLine) {
+                        $this->ProccessQbPoLine($QbPurchaseOrderLine);                        
+                    }
+                }
+                else{
+                    $QbPurchaseOrderLine = $QbPurchaseOrder->Line;
+                    $this->ProccessQbPoLine($QbPurchaseOrderLine);                        
+                }
+            }
+        }
+
+        $PriceListHeaders = (new PriceListHeader())->where('id', '>', -1)->get();
+        
+        $LocalInventory = $this->where('id', '>', -1)->where('archive', 0)->get();
+
+        // LET'S UPDATE THE PRICE LISTS
+        $update = 0;
+
+        (new PriceListLines())->where('id', '>', -1)->update(['update' => 0]);
+
+        foreach ($LocalInventory as $key => $Item) {
+            # code...
+            // CHECK IF THIS INVENTORY ITEM IS ALREADY IN THE PRICE LIST
+            $PriceListLines = new PriceListLines();
+            $ItemsInLists = $PriceListLines->GetItemPriceByItemId($Item->id);
+
+            if(count($ItemsInLists) > 0){
+                // THE ITEM IS IN THIS LISTS, LET'S UPDATE DESCRIPTIONS
+                $PriceListLines->where('localitemid', $Item->id)->update(['description' => $Item->description, 'name' => $Item->name, 'update' => 1]);
+            }
+            else{
+                // THIS ITEM ISN'T IN THE LIST, LET'S ADD IT
+                foreach ($PriceListHeaders as $key => $PriceListHeader) {
+                    # code...
+                    $PriceListLines->pricelistheaderid = $PriceListHeader->id;
+                    $PriceListLines->localitemid = $Item->id;
+                    $PriceListLines->qbitemid = $Item->qbitemid;
+                    $PriceListLines->price = $Item->price;
+                    $PriceListLines->description = $Item->description;
+                    $PriceListLines->name = $Item->name;
+                    $PriceListLines->update = 1;
+                    $PriceListLines->save();
+                }
+            }
+        }
+
+        // LET'S REMOVE FROM THE LIST THE PRODUCTS NOT PRESENT IN QUICKBOOKS
+        (new PriceListLines())->where('update', 0)->delete();
+
+        DB::commit();
+        // RETURN THE UPDATED LOCAL INVENTORY  
+        return ['status' => 'ok', 'LocalInventory' => $LocalInventory];
+    }
+
+    public function ProccessQbPoLine($QbPurchaseOrderLine)
+    {
+        # LET'S SEE IF THE ITEM HAS BEEN SEEN BEFORE
+        try {
+            $QbItemId = $QbPurchaseOrderLine->ItemBasedExpenseLineDetail->ItemRef;
+            $Qty = $QbPurchaseOrderLine->ItemBasedExpenseLineDetail->Qty;
+        } catch (\Exception $e) {
+        }
+        $QbItems = $this->where('qbitemid', $QbItemId)->get();
+        if(count($QbItems) > 0){
+            // IF IT IS IN THE LOCAL INVENTORY ADD THE QTY IN ORDERS
+            $QbItem = $QbItems[0];
+            $QtyInOrders = $QbItem->inpurchaseorders + $Qty;
+            $this->where('id', $QbItem->id)->update(['inpurchaseorders' => $QtyInOrders]);
+        }
+    }
+
+    public function Sync($QbInventory, $update)
+    {
+        foreach ($QbInventory as $key => $qbItem) {
+
+            // SEARCH THE QB INVENTORY
+            if($qbItem->Type == 'Inventory'){
+
+                $localItems = $this->where('qbitemid', $qbItem->Id)->get();
+                if(count($localItems) == 0){
+                    // IF THE QBITEM IS NOT IN THE LOCAL
+                    // INVENTORY THEN  WHE WILL CREATE IT
+                    $Inventory = new Inventory();
+                    $Inventory->qbitemid = $qbItem->Id;
+                    $Inventory->description = $qbItem->Description;
+                    $Inventory->name = $qbItem->Name;
+                    $Inventory->instock = $qbItem->QtyOnHand;
+                    $Inventory->inorders = 0;
+                    $Inventory->price = $qbItem->UnitPrice;
+                    $Inventory->pricemodified = false;
+                    $Inventory->inpurchaseorders = 0;
+                    $Inventory->update = $update + 1;
+                    $Inventory->archive = false;
+                    $Inventory->save();
+                }
+                else{
+                    // IF IT IS ALREADY IN THE LOCAL INVENTORY
+                    // THEN LET'S UPDATE SOME NEEDED FIELDS
+                    $localItem = $localItems[0];
+                    $localItem->description = $qbItem->Description;
+                    $localItem->name = $qbItem->Name;
+                    $localItem->instock = $qbItem->QtyOnHand;
+                    $localItem->inpurchaseorders = 0;
+                    $localItem->update = $update + 1;
+                    $localItem->archive = false;
+                    $localItem->update();
+                }
+            }
+        }
+    }
+
+    public function GetInventory(Request $request)
+    {
+        return $this->where('id', '>', -1)->orderBy('name')->get();
+    }
+
+    public function Inventory(Request $request)
+    {
+        $Inventory = $this->GetInventory($request);
+        foreach ($Inventory as $key => $item) {
+            $ItemsInOrder = 0;
+            $OrderLines = (new OrderLines())->where('item_qbid', $item->qbitemid)->get();
+            foreach($OrderLines as $key => $OrderLine){
+                $ItemsInOrder += $OrderLine->qty;
+            }
+            $item->inorders = $ItemsInOrder;
+        }
+        return view('inventory', ['Inventory' => $Inventory]);
+    }
+
+    /**
+    *
+    * @param    id, price
+    *
+    **/
+
+    public function UpdateItem(Request $request)
+    {
+        $id = $request['id'];
+        $price = $request['price'];
+        $message = "THE ITEM COULDN'T BE UPDATED";
+        if($this->where('id', $id)->update(['price' => $price, 'pricemodified' => true]) > 0){
+            $message = "THE ITEM WAS SUCCESSFULLY UPDATED";
+        }
+        return ['message' => $message];
+    }
+
+    public function PriceLists(Request $request)
+    {
+        # code...
+        $PriceListHeader = (new PriceListHeader);
+        $PriceListLines = (new PriceListLines);
+
+        $PriceListsArray = array();
+        $PriceListHeaders = $PriceListHeader->where('id', '>', -1)->get();
+        foreach ($PriceListHeaders as $key => $Header) {
+            # code...
+            $ThisPriceListLines = $PriceListLines->where('pricelistheaderid', $Header->id);
+            $PriceList->Header = $Header;
+            $PriceList->Lines = $ThisPriceListLines;
+            array_push($PriceListsArray, $PriceList);
+        }
+        return view('pricelists', $PriceList);
+    }
+}

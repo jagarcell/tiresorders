@@ -1,0 +1,95 @@
+.pricelevelsMainDiv{
+	width: 90%;
+	margin-left: 5%;
+	position: relative;
+}
+
+.labelDiv{
+	width: 100%;
+	margin-left: 0%;
+	margin-top: 20px;
+	border-style: double;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tableDiv{
+	width: 100%;
+	margin-left: 0%;
+	text-align: center;
+}
+
+.pricelevelsTable{
+	width: 100%;
+}
+
+.addPriceLevel{
+	width: 20%;
+	min-width: 200px;
+	margin-top: 55px;
+
+}
+
+.searchQb{
+	float: right; 
+	width: 80px;	
+}
+
+.updateMessage{
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 17px;
+	position: absolute;
+	text-align: center;
+	color: rgb(0, 255, 0);
+}
+
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+/*  height: 200px;
+*/  border-style: double;
+  border-color: black;
+}
+
+.fixed_header thead tr {
+   display: block;
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+}
+
+.firstCol{
+	width: 600px;
+}
+
+.secondCol{
+	width: 250px;
+}
+
+.thirdCol{
+	width: 300px;
+}
+
+th {
+	text-align: center;
+}
+
+input, select {
+	width: 100%;
+	border-style: outset;
+}
