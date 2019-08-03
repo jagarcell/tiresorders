@@ -50,25 +50,28 @@ class PriceListHeader extends Model
     public function CreateNewList($request)
     {
     	# code...
-        DB::transaction(function($request){
-            $listDescription = $request['listDescription'];
+    	$listDescription = $request['listDescription'];
 
-            $this->description = $listDescription;
+        DB::beginTransaction();
+
+    	$this->description = $listDescription;
+    	try {
+    		$this->save();
+    	} catch (\Exception $e) {
+            DB::rollback();
+    		return['status' => 'fail', 'message' => 'FAILED TO CREATE THIS LIST HEADER', 'System message' => $e];
+    	}
+
+    	$items = (new Inventory())->where('id', '>', -1)->get();
+
+    	foreach ($items as $key => $item) {
+    		# code...
             try {
-                $this->save();
-            } catch (\Exception $e) {
-                return['status' => 'fail', 'message' => 'FAILED TO CREATE THIS LIST HEADER', 'System message' => $e];
-            }
-
-            $items = (new Inventory())->where('id', '>', -1)->get();
-
-            foreach ($items as $key => $item) {
-                # code...
-                $priceListLines = (new PriceListLines());
-                $priceListLines->pricelistheaderid = $this->id;
-                $priceListLines->localitemid = $item->id;
-                $priceListLines->qbitemid = $item->qbitemid;
-                $priceListLines->price = $item->price;
+        		$priceListLines = (new PriceListLines());
+        		$priceListLines->pricelistheaderid = $this->id;
+        		$priceListLines->localitemid = $item->id;
+        		$priceListLines->qbitemid = $item->qbitemid;
+        		$priceListLines->price = $item->price;
     /*
                 if($item->description === null){
                     $priceListLines->description = "";
@@ -83,28 +86,28 @@ class PriceListHeader extends Model
                     $priceListLines->name = $item->name;
                 }
     */
-                    $priceListLines->description = $item->description;
-                    $priceListLines->name = $item->name;
-                try {
-                    $priceListLines->save();
-                } catch (\Exception $e) {
-                    return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
-                }
-            }
-            $priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
-            foreach ($priceListLines as $key => $priceListLine) {
-                # code...
-                $items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
-                if(count($items)){
-                    $priceListLine->description = $items[0]->name;
-                }
-                else{
-                    $priceListLine->description = 'ITEM NOT FOUND';
-                }
-            }
+                $priceListLines->description = $item->description;
+                $priceListLines->name = $item->name;
+	    		$priceListLines->save();
+    		} catch (\Exception $e) {
+                DB::rollback();
+	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
+    		}
+    	}
+    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
+    	foreach ($priceListLines as $key => $priceListLine) {
+    		# code...
+    		$items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
+    		if(count($items)){
+    			$priceListLine->description = $items[0]->name;
+    		}
+    		else{
+    			$priceListLine->description = 'ITEM NOT FOUND';
+    		}
+    	}
 
-            return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
-        }, 5);
+        DB::commit();
+    	return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
     }
 
     public function PriceListById($request)
