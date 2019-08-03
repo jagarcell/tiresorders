@@ -88,7 +88,7 @@ class PriceListHeader extends Model
 	    		$priceListLines->save();
     		} catch (\Exception $e) {
                 (new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
-                (new (PriceListHeader()))->where('id', $this->id)->delete();
+                (new PriceListHeader())->where('id', $this->id)->delete();
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
