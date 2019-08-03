@@ -67,6 +67,8 @@ class PriceListHeader extends Model
     		$priceListLines->localitemid = $item->id;
     		$priceListLines->qbitemid = $item->qbitemid;
     		$priceListLines->price = $item->price;
+            $priceListLines->description = $item->description;
+            $priceListLines->name = $item->name;
     		try {
 	    		$priceListLines->save();
     		} catch (\Exception $e) {
