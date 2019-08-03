@@ -69,7 +69,7 @@ class PriceListHeader extends Model
         		$priceListLines->localitemid = $item->id;
         		$priceListLines->qbitemid = $item->qbitemid;
         		$priceListLines->price = $item->price;
-    /*
+
                 if($item->description === null){
                     $priceListLines->description = "";
                 }
@@ -82,9 +82,7 @@ class PriceListHeader extends Model
                 else{
                     $priceListLines->name = $item->name;
                 }
-    */
-                $priceListLines->description = $item->description;
-                $priceListLines->name = $item->name;
+
 	    		$priceListLines->save();
     		} catch (\Exception $e) {
                 (new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
