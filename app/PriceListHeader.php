@@ -50,7 +50,7 @@ class PriceListHeader extends Model
     public function CreateNewList($request)
     {
     	# code...
-        DB::transaction(function(){
+        DB::transaction(function($request){
             $listDescription = $request['listDescription'];
 
             DB::beginTransaction();
