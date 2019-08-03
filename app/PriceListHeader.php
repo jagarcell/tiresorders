@@ -52,13 +52,10 @@ class PriceListHeader extends Model
     	# code...
     	$listDescription = $request['listDescription'];
 
-        DB::beginTransaction();
-
     	$this->description = $listDescription;
     	try {
     		$this->save();
     	} catch (\Exception $e) {
-            DB::rollback();
     		return['status' => 'fail', 'message' => 'FAILED TO CREATE THIS LIST HEADER', 'System message' => $e];
     	}
 
@@ -90,7 +87,8 @@ class PriceListHeader extends Model
                 $priceListLines->name = $item->name;
 	    		$priceListLines->save();
     		} catch (\Exception $e) {
-                DB::rollback();
+                (new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
+                (new (PriceListHeader()))->where('id', $this->id)->delete();
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
@@ -106,7 +104,6 @@ class PriceListHeader extends Model
     		}
     	}
 
-        DB::commit();
     	return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
     }
 
