@@ -76,7 +76,7 @@ class PriceListHeader extends Model
                 else{
                     $priceListLines->description = $item->description;
                 }
-                if($priceListLines->name === null){
+                if($item->name === null){
                     $priceListLines->name = "";   
                 }
                 else{
