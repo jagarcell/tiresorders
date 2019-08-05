@@ -70,8 +70,8 @@
 	.listDiv{
 		border-style: double;
 		min-height: 40px;
-		max-height: 350px;
-		overflow: auto;
+/*		max-height: 350px;
+*/		overflow: auto;
 		margin-top: 20px;
 	}
 

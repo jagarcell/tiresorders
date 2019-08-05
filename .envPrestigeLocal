@@ -2,7 +2,7 @@ APP_NAME='Prestige Tires Orders System'
 APP_ENV=local
 APP_KEY=base64:+290rBJmYNVo+sfJ1cSEvJ7h2ISkoJ0gCf8ON4Ev7K0=
 APP_DEBUG=true
-APP_URL=http://www.tiresorders.com
+APP_URL=https://www.tiresorders.com
 
 LOG_CHANNEL=stack
 
@@ -24,7 +24,7 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 
 MAIL_DRIVER=smtp
-MAIL_HOST=a2plcpnl0450.prod.iad2.secureserver.net
+MAIL_HOST=a2plcpnl0339.prod.iad2.secureserver.net
 MAIL_PORT=587
 MAIL_USERNAME=info@patmelsystems.com
 MAIL_PASSWORD=Requeson$1
@@ -44,6 +44,6 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 QB_AUTH_MODE=oauth2
 QB_CLIENT_ID=Q0mkU6HII1wZbA9siRT0PG7RDzpzYbqdLJ9GSW6hSWj01goYgQ
 QB_CLIENT_SECRET=llwlOPrvzJp2tlYoaOzSUyF55Jr5Z95sVAZYfSEy
-QB_OAUTH_REDIRECT_URI=http://www.tiresorders.com/qbcallback
+QB_OAUTH_REDIRECT_URI=https://www.tiresorders.com/qbcallback
 QB_OAUTH_SCOPE='com.intuit.quickbooks.accounting openid profile email phone address'
 QB_BASE_URL="https://quickbooks.api.intuit.com/"

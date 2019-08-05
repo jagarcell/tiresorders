@@ -213,8 +213,17 @@ class Inventory extends Model
                     $PriceListLines->localitemid = $Item->id;
                     $PriceListLines->qbitemid = $Item->qbitemid;
                     $PriceListLines->price = $Item->price;
-                    $PriceListLines->description = $Item->description;
-                    $PriceListLines->name = $Item->name;
+                    if($Item->description === null) {
+                        $PriceListLines->description = "";
+                    } else {
+                        $PriceListLines->description = $Item->description;
+                    }
+                    if($Item->name === null){
+                        $PriceListLines->name = "";
+                    }
+                    else{
+                        $PriceListLines->name = $Item->name;
+                    }
                     $PriceListLines->update = 1;
                     $PriceListLines->save();
                 }
@@ -259,8 +268,18 @@ class Inventory extends Model
                     // INVENTORY THEN  WHE WILL CREATE IT
                     $Inventory = new Inventory();
                     $Inventory->qbitemid = $qbItem->Id;
-                    $Inventory->description = $qbItem->Description;
-                    $Inventory->name = $qbItem->Name;
+                    if($qbItem->Description === null){
+                        $Inventory->description = "";
+                    }
+                    else{
+                        $Inventory->description = $qbItem->Description;
+                    }
+                    if($qbItem->Name === null){
+                       $Inventory->name = "";
+                    }
+                    else{
+                       $Inventory->name = $qbItem->Name;
+                    }
                     $Inventory->instock = $qbItem->QtyOnHand;
                     $Inventory->inorders = 0;
                     $Inventory->price = $qbItem->UnitPrice;
@@ -274,8 +293,18 @@ class Inventory extends Model
                     // IF IT IS ALREADY IN THE LOCAL INVENTORY
                     // THEN LET'S UPDATE SOME NEEDED FIELDS
                     $localItem = $localItems[0];
-                    $localItem->description = $qbItem->Description;
-                    $localItem->name = $qbItem->Name;
+                    if($qbItem->Description === null){
+                        $localItem->description = "";
+                    }
+                    else{
+                        $localItem->description = $qbItem->Description;
+                    }
+                    if($qbItem->Name === null){
+                        $localItem->name = "";
+                    }
+                    else{
+                        $localItem->name = $qbItem->Name;
+                    }
                     $localItem->instock = $qbItem->QtyOnHand;
                     $localItem->inpurchaseorders = 0;
                     $localItem->update = $update + 1;
