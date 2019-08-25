@@ -1,0 +1,187 @@
+@media screen{
+
+	.mainDiv{
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.deleteSelectedButton{
+		width: 20%;
+		min-width: 250px;
+	}
+
+	.deleteSelectedButtonDiv{
+		width: 100%;
+		text-align: right;
+		position: -webkit-sticky;
+		position: sticky;
+		z-index: 1;
+		top: 20px;
+	}
+
+	.frameWidth{
+		width: 80%;
+		margin-left: 10%;
+	}
+
+	.labelDiv{
+		margin-top: 20px;
+	/*	width: 70%;
+		margin-left: 15%;
+	*/	border-style: double;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	#searchTextDiv{
+	/*	width: 70%;
+		margin-left: 15%;
+	*/	border-style: double;
+		text-align: left;
+		font-weight: bold;
+		padding-left: 1em;
+	}
+
+	.tableDiv{
+	}
+
+	.fixed_header{
+	    width: 100%;
+	    table-layout: fixed;
+	    border-collapse: collapse;
+	}
+
+	.fixed_header tbody{
+	  display:block;
+	  width: 100%;
+	  overflow: auto;
+	  border-style: double;
+	  border-color: black;
+	/*  height: 250px;
+	*/
+	}
+
+	.listsearchesTable{
+		width: 100%;
+/*		border-collapse: separate;
+*/	}
+
+	#listsearchesTable tbody tr:hover{
+		background-color: #00f;	
+	}
+
+	.fixed_header thead tr {
+/*	   display: block;
+*/	}
+
+	.fixed_header thead {
+	  background: black;
+	  color:#fff;
+	}
+
+	.fixed_header th, .fixed_header td {
+	  padding: 5px;
+	  text-align: left;
+	}
+
+	.searchTextColumn{
+		width: 65%;
+	}
+
+	.matchesColumn{
+		text-align: right !important;
+		width: 15%;
+		padding-right: 1em !important;
+	}
+
+	.nomatchesColumn{
+		text-align: right !important;
+		width: 15%;
+		padding-right: 1em !important;
+	}
+
+	.checkForDeleteColumn{
+		width: 5%;
+	}
+
+	.searchDatesDiv{
+		width: 100%;
+	}
+
+	.searchDatesTable{
+		width: 100%;
+		border-collapse: separate;
+	}
+
+	.userColumn{
+		width: 70%;
+	    word-break: break-all;
+	}
+
+	.dateColumn{
+		width: 30%;
+		text-align: right !important;
+		min-width: 60px;
+	}
+
+	.buttonsDiv{
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	tr {
+		width: 100%;
+		display: table;
+	}
+
+}
+
+/* This Section Is For The Mobile Styles */
+
+@media
+only screen and (max-width: 700px) {
+	.mainDiv{
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.frameWidth{
+		width: 80%;
+		margin-left: 10%;
+	}
+
+	.labelDiv{
+		margin-top: 20px;
+	/*	width: 70%;
+		margin-left: 15%;
+	*/	border-style: double;
+		text-align: center;
+		font-weight: bold;
+		display: none;
+	}
+
+	.tableDiv{
+	}
+
+	.listsearchesTable{
+		width: 100%;
+		border-collapse: separate;
+	}
+
+	#listsearchesTable tbody tr:hover{
+		background-color: #00f;	
+	}
+
+	.userColumn{
+      min-width: 80px;
+      width: 45%;
+      word-break: break-all !important;
+      vertical-align: bottom;
+	}
+	.dateColumn{
+		width: 45%;
+		min-width: 80px;
+		text-align: right !important;
+	}
+
+}

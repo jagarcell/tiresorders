@@ -6,11 +6,13 @@ $(document).ready(function pricelistsReady() {
 	$('#newListButton').click(newListButtonClick)
 	$('#deleteListButton').click(deleteListButtonClick)
 	$('#goButtonId').click(goButtonClick)
+	$('#searchButton').click(searchButtonClick)
 
 	$('#descriptionSelect').change(descriptionSelectChange)
 
 	$('#newListDescription').hide()
 	$('#deletedMessage').hide()
+	$('#noItemsFoundDiv').hide()
 
 	var newListDescription = document.getElementById('newListDescription')
 
@@ -49,7 +51,123 @@ $(document).ready(function pricelistsReady() {
 
 	set_layout()
 
+	window.onresize = resizeWindow
+
+	var searchText = document.getElementById('searchText')
+	if($(window).width() > 736){
+		searchText.placeholder = 'Enter Your Search Here And/Or Hit Enter'
+	}
+	else{
+		searchText.placeholder = 'Enter Your Search Here'
+	}
+
+	// For all the Browsers
+	if(searchText.addEventListener){
+		searchText.addEventListener('keyup', function() {
+			if(event.key === 'Enter'){
+				searchButtonClick()
+				event.preventDefault()
+			}
+		})
+	}
+	// For IE 11 and below
+	else{
+		if(searchText.attachEvent){
+			searchText.attachEvent('keyup', function() {
+				if(event.key === 'Enter'){
+					searchButtonClick()
+					event.preventDefault()
+				}
+			})
+		}
+	}	
+
 })
+
+function searchButtonClick() {
+	document.getElementById('tireAnimImg').classList.add('tireAnim')
+	/*
+	** When Search Button is Clicked we look in the Inventory
+	** for the records matching the searchText criteria
+	**
+	*/
+
+	/*
+	** Get Items table to be able to show or hide it
+	*/	
+	var priceListTable = $('#priceListTable')
+	/* Get the items table body in order to be able
+	** to add rows only to the table body
+	*/
+	var priceListTableBody = $('#priceListTable tbody')[0]
+
+	/* Get just the table body rows in order
+	** to be able to delete just these rows
+	*/
+	var priceListTableRows = $('#priceListTable tbody tr')
+	
+	var searchText = $('#searchText').val()
+
+	/* Let's hide the order to show the items
+	** matching the search criteria
+	*/
+	$( "#orderDialog" ).hide()
+
+	var pricelistheaderid = $('#descriptionSelect').val()
+
+	/*
+	** Search the inventory
+	*/
+	$.get('/searchinlist', 
+		{
+			pricelistheaderid:pricelistheaderid,
+			searchtext:searchText,
+		},
+		function SeacrhInListCallBack(data, status) {
+			if(data.status == 'ok'){
+				var priceListTableBody = $('#priceListTable tbody')[0]
+				var priceListTableBodyRows = $('#priceListTable tbody tr')
+				priceListTableBodyRows.remove()
+
+				$('#noItemsFoundDiv').hide()
+				$('#listDiv').show()
+
+				if(data.items.length > 0){
+					$.each(data.items, function inventoryRow(index, invRow) {
+						var row = priceListTableBody.insertRow(-1)
+						row.id = invRow.id
+						invRow.instock = invRow.instock == null ? 0 : invRow.instock
+						invRow.inorders = invRow.inorders == null ? 0 : invRow.inorders
+						invRow.price = invRow.price == null ? 0 : invRow.price
+						invRow.name = invRow.name == null ? '' : invRow.name
+
+						if(!Number.parseFloat){
+							Number.parseFloat = window.parseFloat
+						}
+
+						row.innerHTML = 
+							'<td class="itemColumn">' + invRow.name + '</td>' +
+							'<td class="priceColumnValue"><input type="number" value="' + Number.parseFloat(invRow.price).toFixed(2) + '" class="priceInput"  onchange="priceValueChange(this)"></td>'
+
+						row.style.color = invRow.modified ? 'black' : 'red'				
+					})
+				}
+				else{
+					// No items found, hide the items table
+
+					// Show No Items Found
+					$('#listDiv').hide()
+					$('#noItemsFoundDiv').show()
+				}
+			}
+			else{
+				alert("SOMETHING WENT WRONG")
+			}
+			document.getElementById('tireAnimImg').classList.remove('tireAnim')
+		}
+	)
+
+}
 
 function set_layout() {
 	// body...
@@ -108,6 +226,7 @@ function newListDescriptionKeyUp() {
 	// body...0
 	console.log(this)
 }
+
 function priceValueChange(price) {
 	// body...
 	if(!Number.parseFloat){
@@ -227,7 +346,7 @@ function saveChangedPrices(argument) {
 	if(changedPrices.length > 0){
 		$.each(changedPrices, function (index, changedPrice) {
 			// body...
-			$(changedPrice).removeClass('changed')
+//			$(changedPrice).removeClass('changed')
 			$(changedPrice).removeClass('notmodified')
 			var priceInput = $($(changedPrice).children('.priceColumnValue')[0]).children('.priceInput')[0]
 			var price = priceInput.value
@@ -372,4 +491,15 @@ function chunkArray(myArray, chunk_size){
     }
 
     return tempArray;
+}
+
+function resizeWindow(){
+
+	var searchText = document.getElementById('searchText')
+	if($(window).width() > 736){
+		searchText.placeholder = 'Enter Your Search Here And/Or Hit Enter'
+	}
+	else{
+		searchText.placeholder = 'Enter Your Search Here'
+	}
 }

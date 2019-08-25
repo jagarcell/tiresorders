@@ -29,6 +29,12 @@ class InventoryController extends Controller
     	return (new Inventory())->searchInventory($request);
     }
 
+    public function SearchFor(Request $request)
+    {
+        # code...
+        return (new Inventory())->SearchFor($request);
+    }
+
     public function SyncronizeInventories(Request $request)
     {
         return (new Inventory())->SyncronizeInventories($request);

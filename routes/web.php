@@ -79,6 +79,8 @@ Route::get('/getpricelistsheaders', 'PriceListsController@GetPriceListsHeaders')
 
 Route::get('/listqty', 'PriceListsController@ListQty');
 
+Route::get('/searchinlist', 'PriceListsController@SearchInList');
+
 /****************************
 *   QuickBooksController	*
 ****************************/
@@ -139,6 +141,8 @@ Route::get('/getqbinventory', 'InventoryController@getQbInventory');
 
 Route::get('/searchinventory', 'InventoryController@searchInventory');
 
+Route::get('/searchfor', 'InventoryController@SearchFor');
+
 Route::get('/syncronizeinventories', 'InventoryController@SyncronizeInventories');
 
 Route::get('/getinventory', 'InventoryController@GetInventory');
@@ -146,6 +150,20 @@ Route::get('/getinventory', 'InventoryController@GetInventory');
 Route::get('/inventory', 'InventoryController@Inventory');
 
 Route::get('/updateitem', 'InventoryController@UpdateItem');
+
+/****************************
+*     SearchesController  	*
+****************************/
+
+Route::get('/showsearches', 'SearchesController@ShowSearches');
+
+Route::get('/deletesearches', 'SearchesController@DeleteSearches');
+
+/****************************
+*   SearchesDateController  *
+****************************/
+
+Route::get('/searchdetails', 'SearchesDatesController@SearchDetails');
 
 /****************************
 *     uploadController  	*
