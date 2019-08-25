@@ -204,6 +204,7 @@
                 <div class="menuOption33"><a href="/pricelists">PRICE LISTS</a></div>
                 <div class="menuOption33"><a href="/listopenorders">ORDERS</a></div>
                 <div class="menuOption33"><a href="/inventory">INVENTORY</a></div>
+                <div class="menuOption33"><a href="/inventory">SEARCHES</a></div>
                 @endcan
                 @auth
                 @if(Auth::user()->type != 'admin')
