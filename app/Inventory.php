@@ -16,6 +16,8 @@ use App\ItemsInOrders;
 use App\PriceListHeader;
 use App\PriceListLines;
 use App\QbItemsIds;
+use App\Searches;
+use App\SearchesDates;
 
 class Inventory extends Model
 {
@@ -55,7 +57,6 @@ class Inventory extends Model
             // ... WE SEARCH THE LOCAL INVENTORY
             $basequery = "select * from inventories";
             $Items = DB::select($basequery . $query . $queryorder);
-
             $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
 
             if(count($priceLevels)){
@@ -93,9 +94,63 @@ class Inventory extends Model
                     $Item->inpurchaseorders = $LocalItem->inpurchaseorders;
                 }
             }
-        }   
+        }
+
+        try {
+            DB::beginTransaction();
+            $searchId = -1;
+            // WE CHECK IF THERE WERE MATCHES
+            if(count($Items) > 0){
+                // IF WE FOUND SOMETHING THEN MATCH=TRUE
+                $searchId = (new Searches())->AddNewSearch($Description, true);
+            }
+            else{
+                $searchId = (new Searches())->AddNewSearch($Description, false);
+            }
+
+            $searchDate = date("Y-m-d H:i:s");
+
+            (new SearchesDates())->AddNewDate($user->id, $searchId, $searchDate);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
 
     	return $Items;
+    }
+
+    public function SearchFor($request)
+    {
+        # code...
+        $Description = $request['description'];
+        $Keywords = explode(" ", $Description);
+        $status = "ok";
+
+        $query = " where ((description like '%";
+        $first = true;
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            if($first){
+                $first = false;
+                $query = $query . $Keyword . "%')";
+            }
+            else{
+                $query = $query . "or (description like '%" . $Keyword . "%')";
+            }
+        }
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            $query = $query . "or (name like '%" . $Keyword . "%')";
+        }
+
+        $query = $query . ")";
+
+        $queryorder = " order by name";
+
+        $basequery = "select * from inventories";
+        $Items = DB::select($basequery . $query . $queryorder);
+        $q = $basequery . $query . $queryorder;
+        return ['status' => $status, 'items' => $Items, 'query' => $q];
     }
 
     public function findItemByQbItemId($qbItemId)

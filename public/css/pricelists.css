@@ -15,10 +15,64 @@
 		border: none;
 	}
 
+	.searchDiv{
+		width: 100%;
+		margin-top: 20px;
+		cursor:url('Tire.cur');
+	}
+
+	.searchBar{
+		width: 100%;
+		border-radius: 20px;
+		border: solid dimgray 2px;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.searchButton{
+		width: 15%;
+		min-width: 85px;
+		display: none;
+	}
+
+	.imgFrame{
+		width: 48px;
+		height: 48px;
+		display: none;
+	}
+
+	.tireAnim{
+		width: 60px;
+		height: 60px;
+		display: inline;
+		-webkit-animation-name: tireAnimation; /* Safari 4.0 - 8.0 */
+		-webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+		animation-name: tireAnimation;
+		animation-duration: 1s;
+		animation-iteration-count:9000;
+	}
+
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes tireAnimation {
+	from {margin-left: 0%;}
+	to {margin-left: 100%;}
+	}
+
+	/* Standard syntax */
+	@keyframes tireAnimation {
+	from {margin-left: 0%;}
+	to {margin-left: 100%;}
+	}
+
+	.noItemFound{
+		font-size: 36px;
+		text-align: center;
+		margin-top: 40px;
+	}
+
 	.descriptionDiv{
 		width: 100%;
 		margin-left: 0%;
-		margin-top: 20px;
 		border-style: double;
 		text-align: center;
 		font-weight: bold;
@@ -77,6 +131,10 @@
 
 	.notmodified{
 		color: red;
+	}
+
+	.changed{
+		color: black !important;
 	}
 
 	.listTable{
@@ -211,7 +269,7 @@
 	}	
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 900px) and (min-width: 701px){
 
 	.listDiv{
 		border-style: double;
@@ -224,7 +282,6 @@
 	.descriptionDiv{
 		width: 100%;
 		margin-left: 0%;
-		margin-top: 20px;
 		border-style: none;
 		text-align: center;
 		font-weight: bold;
@@ -247,4 +304,40 @@
 		font-weight: bold;
 		font-size: 26px;
 	}
+
+    .searchBar{
+      width: 83%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
+}
+
+@media only screen and (max-width: 701px){
+    .searchBar{
+      width: 70%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+	.descriptionSelect{
+		display: inline;
+		width: 85%;
+		margin-left: 0px;
+	}
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
 }	

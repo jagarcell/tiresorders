@@ -3,7 +3,7 @@
 <html>
 <head>
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta  name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>Inventory</title>
 	<!-- STYLES -->
@@ -25,6 +25,11 @@
 @section('content')
 {{ csrf_field() }}
 <div class="inventoryMainDiv">
+	<div class="searchDiv">
+		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="" class="searchBar">
+		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">
+		<img src="public/img/logos/Tire1.jpeg" id="tireAnimImg" class="imgFrame">
+	</div>
 	<div class="labelDiv">PRODUCTS IN STOCK</div>
 	<div class="tableDiv">
 		<table id="InventoryTable" class="inventoryTable fixed_header">
@@ -51,7 +56,7 @@
 									<img src="public/{{$item->imgpath}}" class="prodImg" onclick="imgClick(this)" title="CLICK TO CHANGE THE PHOTO">
 								</div>
 							@else
-							<form action="/fileupload" method="post" enctype="multipart/form-data"class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id='dropzone{{$item->id}}'>
+							<form action="/fileupload" method="post" enctype="multipart/form-data"class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id="dropzone{{$item->id}}">
 								{{ csrf_field() }}
 								<input type="text" name="itemid" hidden="" value="{{$item->id}}">
 							</form>
@@ -71,6 +76,7 @@
 				@endforeach
 			</tbody>
 		</table>
+		<div id="noItemsFoundDiv" class="noItemFound">NO ITEMS MATCHED YOUR SEARCH</div>
 	</div>
 	<div id="updateMessage" class="updateMessage"></div>
 	<div id="myProgress">

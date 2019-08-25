@@ -21,6 +21,12 @@
 <body>
 @section('content')	
 <div id="pricelistsMainDiv" class="pricelistsMainDiv">
+	<div class="searchDiv">
+		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="" class="searchBar">
+		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">
+		<img src="public/img/logos/Tire1.jpeg" id="tireAnimImg" class="imgFrame">
+	</div>
+
 	<div class="labelDiv">PRICE LISTS</div>
 	<div class="descriptionDiv">
 		<select id="descriptionSelect" class="descriptionSelect">
@@ -33,6 +39,7 @@
 		<input type="text" id="newListDescription" class="descriptionSelect" placeholder="ENTER HERE A DESCRIPTION" onchange="newListDescriptionChange(this)">
 		<input type="button" value="+" id="newListButton" class="newList" title="ADD A NEW LIST">
 	</div>
+
 	<div id="thereAreLists">
 		<div id="priceChangeFactor">
 			<label for="percentage">Apply This Percentage:</label><input type="number" id="percentage" value="0" class="percentageClass"><label>%</label><select id="priceChangeType"><option value="up">Up</option><option value="down">Down</option></select><label>To All Prices</label><input id="goButtonId" type="button" class="actionButton goButton" value="GO">
@@ -64,6 +71,9 @@
 				</tbody>
 			</table>
 		</div>
+
+		<div id="noItemsFoundDiv" class="noItemFound">NO ITEMS MATCHED YOUR SEARCH</div>
+
 		<div id="deletedMessage" class="deleteMessageClass">
 			THE LIST WAS DELETED
 		</div>

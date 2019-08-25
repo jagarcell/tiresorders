@@ -81,7 +81,9 @@ function searchButtonClick() {
 	** Search the inventory
 	*/
 	$.get('/searchinventory', 
-		{description:searchText}, 
+		{
+			description:searchText, 
+		}, 
 		function seacrhInventoryCallBack(data, status) {
 		// body...
 			// Clear the Items table body rows

@@ -52,4 +52,10 @@ class PriceListsController extends Controller
         # code...
         return (new PriceListHeader())->ListQty($request);
     }
+
+    public function SearchInList(Request $request)
+    {
+        # code...
+        return (new PriceListLines())->SearchInList($request);
+    }
 }
