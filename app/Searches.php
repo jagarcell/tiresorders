@@ -48,7 +48,7 @@ class Searches extends Model
     public function ShowSearches($request)
     {
     	# code...
-        $searches = $this->where('id', '>', -1)->orderBy('nomatchqty', 'DESC')->get();
+        $searches = $this->where('id', '>', -1)->orderBy('nomatchqty', 'DESC')->orderBy('matchqty', 'DESC')->get();
     	return view('searches', ['searches' => $searches]);
     }
 
