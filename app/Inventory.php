@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use \Datetime;
+use \DateInterval;
+use \DateTimeZone;
 
+/*
 use App\QuickBooks;
 use App\QbToken;
 use App\PriceLevels;
@@ -18,6 +22,7 @@ use App\PriceListLines;
 use App\QbItemsIds;
 use App\Searches;
 use App\SearchesDates;
+*/
 
 class Inventory extends Model
 {
@@ -422,5 +427,35 @@ class Inventory extends Model
             array_push($PriceListsArray, $PriceList);
         }
         return view('pricelists', $PriceList);
+    }
+
+    public function DateTimeOffset(DateTime $serverdate)
+    {
+        # code...
+        // SET A VARIABLE FOR CLIENT DATE
+
+        $clientdate = new DateTime;
+
+        // GET THE OFFSET IN SECONDS BETWEEN THE SERVER
+        // DATE AND THE CLIENT TIME ZONE DATE
+        $dateTimeZone = new DateTimeZone(env("ADMIN_TIMEZONE"));
+        $offset = $dateTimeZone->getOffset($serverdate);
+        // MAKE THE OFFSET VALUE ALWAYS POSITIVE FOR DateInterval 
+        $absoffset = abs($offset);
+
+        // CALCULATE THE INTERVAL
+        $interval = new DateInterval("PT{$absoffset}S");
+
+        // CHECK IF THE INTERVAL MUST BE ADDED
+        // OR SUBSTRACTED FROM THE SERVER DATE
+        if($offset < 0){
+            $clientdate = date_sub($serverdate, $interval);
+        }
+        else{
+            $clientdate = date_sub($serverdate, $interval);
+        }
+
+        // RETURN CLIENT DATE
+        return ['serverdate' => $serverdate, 'clientdate' => $clientdate];
     }
 }
