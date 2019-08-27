@@ -44,7 +44,7 @@ class SearchesDates extends Model
                 $date = new DateTime($searchDetail->searchdate);
 
                 $clientdate = (new Inventory())->DateTimeOffset($date)['clientdate'];
-                $searchDetail->searchdate = $clientdate->format("m-d-Y H:i:s");
+                $searchDetail->searchdate = $clientdate->format("m/d/Y H:i:s");
             }
 
 	    	return ['status' => 'ok', 'searches' => $searchDetails, 'searchtext' => $searchText];
