@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Inventory;
 use App\QuickBooks;
+use Carbon\Carbon;
 
 class InventoryController extends Controller
 {
@@ -65,5 +66,13 @@ class InventoryController extends Controller
     {
         # code...
         return (new Inventory())->PriceLists($request);
+    }
+
+    public function DateTimeOffset(Request $request)
+    {
+        # code...
+        printf("Now: %s", Carbon::now());
+        return;    
+        return (new Inventory())->DateTimeOffset($request);
     }
 }

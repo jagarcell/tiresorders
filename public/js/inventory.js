@@ -1,6 +1,10 @@
 $(document).ready(function InventoryReady() {
 
 	/* Events Handlers */
+	var d = new Date()
+	var n = d.getTimezoneOffset()
+	console.log(n)
+
 	$('#updateInventory').click(updateInventory)
 	$('#searchButton').click(searchButtonClick)
 
