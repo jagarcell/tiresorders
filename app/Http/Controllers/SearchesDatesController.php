@@ -13,4 +13,10 @@ class SearchesDatesController extends Controller
     	# code...
     	return (new SearchesDates())->SearchDetails($request);
     }
+
+    public function SearchesByDates(Request $request)
+    {
+    	# code...
+    	return (new SearchesDates())->SearchesByDates($request);
+    }
 }

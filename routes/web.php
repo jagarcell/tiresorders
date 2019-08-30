@@ -167,6 +167,8 @@ Route::get('/deletesearches', 'SearchesController@DeleteSearches');
 
 Route::get('/searchdetails', 'SearchesDatesController@SearchDetails');
 
+Route::get('/searchesbydates', 'SearchesDatesController@SearchesByDates');
+
 /****************************
 *     uploadController  	*
 ****************************/

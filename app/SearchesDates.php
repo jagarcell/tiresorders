@@ -52,4 +52,13 @@ class SearchesDates extends Model
     		return ['status' => 'fail', 'message' => $e->getMessage()];
     	}	
     }
+
+    public function SearchesByDates($request)
+    {
+        # code...
+        $query = "select searches_dates.searchdate, searches_dates.id, searches.searchtext, users.name from searches_dates INNER JOIN users ON searches_dates.clientid=users.id INNER JOIN searches ON searches_dates.searchid=searches.id";
+        $searchesByDates = DB::select($query);
+        echo json_encode($searchesByDates);
+        return;
+    }
 }
