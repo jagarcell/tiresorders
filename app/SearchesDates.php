@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 use App\Users;
 use App\Searches;
 use \DateTime;
@@ -56,9 +58,9 @@ class SearchesDates extends Model
     public function SearchesByDates($request)
     {
         # code...
-        $query = "select searches_dates.searchdate, searches_dates.id, searches.searchtext, users.name from searches_dates INNER JOIN users ON searches_dates.clientid=users.id INNER JOIN searches ON searches_dates.searchid=searches.id";
+        $query = "select searches_dates.searchdate, searches_dates.id, searches.searchtext, users.name from searches_dates INNER JOIN users ON searches_dates.clientid=users.id INNER JOIN searches ON searches_dates.searchid=searches.id order by searches_dates.searchdate desc";
         $searchesByDates = DB::select($query);
-        echo json_encode($searchesByDates);
-        return;
+
+        return view('searchesbydates', ['searchesbydates' => $searchesByDates]);
     }
 }

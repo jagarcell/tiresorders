@@ -1,0 +1,41 @@
+.searchesByDatesMainDiv{
+	width: 80%;
+	margin-left: 10%;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  width: 100%;
+  overflow: auto;
+  border-style: double;
+  border-color: black;
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+}
+
+
+.searchesbydatesTable{
+	width: 100%;
+}
+
+.tableColumn{
+	width: 33%;
+}
+
+
