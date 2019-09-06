@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\PriceListLines;
 use App\Inventory;
@@ -26,6 +28,13 @@ class PriceListHeader extends Model
     public function PriceLists($request)
     {
     	# code...
+
+        $date = getdate();
+        $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
+        $authUser = Auth::user();
+        Storage::disk('local')->append('pricelists.txt', 'User ' . $authUser->name . ' logged in /pricelists on ' . $stamp);
+
+
     	$priceListsHeaders = $this->where('id', '>', -1)->get();
     	if(count($priceListsHeaders) > 0){
     		$priceListsHeader = $priceListsHeaders[0];

@@ -383,6 +383,12 @@ class Orders extends Model
     public function ListOpenOrders(Request $request)
     {
         # code...
+
+        $date = getdate();
+        $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
+        $authUser = Auth::user();
+        Storage::disk('local')->append('listopenorders.txt', 'User ' . $authUser->name . ' logged in /listopenorders on ' . $stamp);
+
         $orders = $this->where('id', '>', -1)->where('status', 'open')->orderBY('orderdate', 'desc')->get();
         if(is_null($orders)){
             return view('welcome');

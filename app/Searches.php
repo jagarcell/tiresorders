@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Searches extends Model
 {
@@ -48,6 +50,12 @@ class Searches extends Model
     public function ShowSearches($request)
     {
     	# code...
+
+        $date = getdate();
+        $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
+        $authUser = Auth::user();
+        Storage::disk('local')->append('showsearches.txt', 'User ' . $authUser->name . ' logged in /showsearches on ' . $stamp);
+
         $searches = $this->where('id', '>', -1)->orderBy('nomatchqty', 'DESC')->orderBy('matchqty', 'DESC')->get();
     	return view('searches', ['searches' => $searches]);
     }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 use \Datetime;
 use \DateInterval;
 use \DateTimeZone;
@@ -382,6 +384,11 @@ class Inventory extends Model
 
     public function Inventory(Request $request)
     {
+        $date = getdate();
+        $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
+        $authUser = Auth::user();
+        Storage::disk('local')->append('inventory.txt', 'User ' . $authUser->name . ' logged in /inventory on ' . $stamp);
+
         $Inventory = $this->GetInventory($request);
         foreach ($Inventory as $key => $item) {
             $ItemsInOrder = 0;

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate/Support/Auth;
+use Illuminate/Support/Storage;
 
 class PriceLevels extends Model
 {
@@ -11,6 +13,12 @@ class PriceLevels extends Model
     public function listPriceLevels(Request $request)
     {
         # code...
+
+        $date = getdate();
+        $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
+        $authUser = Auth::user();
+        Storage::disk('local')->append('listpricelevels.txt', 'User ' . $authUser->name . ' logged in /listpricelevels on ' . $stamp);
+     
         $priceLevels = $this->where('id', '>', -1)->get();
         return view('pricelevels', ['pricelevels' => $priceLevels]);
     }
