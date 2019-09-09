@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -111,6 +112,9 @@ class RegisterController extends Controller
                     }
                 }
             }
+
+            $authUser = Auth::user();
+            Storage::disk('local')->append('usercreatedby.txt', 'The user ' . $user->name . ' was created by the Admin ' . $authUser->name . ' on ' . $stamp);
 
             $adminUsers = (new Users())->where('type', 'admin')->get();
 
