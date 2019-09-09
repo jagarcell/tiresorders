@@ -114,7 +114,7 @@ class RegisterController extends Controller
             }
 
             $authUser = Auth::user();
-            Storage::disk('local')->append('usercreatedby.txt', 'User Created by Admin ' . $authUser->name . ' on ' . $stamp);
+            Storage::disk('local')->append('usercreatedby.txt', 'User ' . $user->name . ' Created by Admin ' . $authUser->name . ' on ' . $stamp);
 
             $adminUsers = (new Users())->where('type', 'admin')->get();
 
