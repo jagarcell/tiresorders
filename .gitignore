@@ -12,3 +12,4 @@ yarn-error.log
 .htaccess
 /tools
 /public/img
+.ftpquota
