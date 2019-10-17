@@ -21,13 +21,12 @@ class Users extends Model
     public function listUsers(Request $request)
     {
     	# code...
+        $users = $this->where('id', '>', '-1')->orderBy('type')->get();
 
+        $authUser = Auth::user();
         $date = getdate();
         $stamp = $date['mon'] . '/' . $date['mday'] . '/' . $date['year'] . ' - ' . $date['hours'] . ':' . $date['seconds'];
-        $authUser = Auth::user();
         Storage::disk('local')->append('listusers.txt', 'User ' . $authUser->name . ' logged in /listusers on ' . $stamp);
-
-        $authUser = Auth::user();
 
         $data = array('users' => $users, 'user' => $authUser);
 
