@@ -294,6 +294,7 @@ class Inventory extends Model
 
         // LET'S REMOVE FROM THE LIST THE PRODUCTS NOT PRESENT IN QUICKBOOKS
         (new PriceListLines())->where('update', 0)->delete();
+        (new PriceListLines())->where('archive', 1)->delete();
 
         DB::commit();
         // RETURN THE UPDATED LOCAL INVENTORY  
@@ -379,7 +380,7 @@ class Inventory extends Model
 
     public function GetInventory(Request $request)
     {
-        return $this->where('id', '>', -1)->orderBy('name')->get();
+        return $this->where('id', '>', -1)->where('archive', 0)->orderBy('name')->get();
     }
 
     public function Inventory(Request $request)
