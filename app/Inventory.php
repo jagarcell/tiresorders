@@ -282,7 +282,7 @@ class Inventory extends Model
             return ['status' => 'fail', 'message' => $e];
         }
         
-        return ['status' => $dataService];
+        return ['dataService' => $dataService, 'count' => $Count];
 
         $Count1 = $Count/100;
 
