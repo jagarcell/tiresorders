@@ -267,7 +267,6 @@ class Inventory extends Model
 
         $dataService = $result['dataService'];
         $dataService->throwExceptionOnError(true);
-        return ['status' => $dataService];
 
 
         if(is_null($dataService))
@@ -282,6 +281,8 @@ class Inventory extends Model
         } catch (\SdkException $e) {
             return ['status' => 'fail', 'message' => $e];
         }
+        
+        return ['status' => $dataService];
 
         $Count1 = $Count/100;
 
