@@ -343,12 +343,12 @@ class Inventory extends Model
         $PriceListHeaders = (new PriceListHeader())->where('id', '>', -1)->get();
         
         $LocalInventory = $this->where('id', '>', -1)->where('archive', 0)->get();
-        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         // LET'S UPDATE THE PRICE LISTS
         $update = 0;
 
         (new PriceListLines())->where('id', '>', -1)->update(['update' => 0]);
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         foreach ($LocalInventory as $key => $Item) {
             # code...
