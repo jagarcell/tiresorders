@@ -322,7 +322,6 @@ class Inventory extends Model
             DB::rollback();
             return ['status' => 'fail', 'message' => $e];                
         }
-        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         foreach ($QbPurchaseOrders as $key => $QbPurchaseOrder) {
             # IF THE ORDER IS OPEN ...
@@ -340,6 +339,7 @@ class Inventory extends Model
                 }
             }
         }
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         $PriceListHeaders = (new PriceListHeader())->where('id', '>', -1)->get();
         
