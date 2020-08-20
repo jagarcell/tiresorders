@@ -264,9 +264,9 @@ class Inventory extends Model
     public function SyncronizeInventories(Request $request)
     {
         $result = (new QbToken())->GetDataService();
+        return ['status' => $result];
 
         $dataService = $result['dataService'];
-        return ['status' => $dataService];
         $dataService->throwExceptionOnError(true);
 
         if(is_null($dataService))
