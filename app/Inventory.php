@@ -348,7 +348,6 @@ class Inventory extends Model
         $update = 0;
 
         (new PriceListLines())->where('id', '>', -1)->update(['update' => 0]);
-        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         foreach ($LocalInventory as $key => $Item) {
             # code...
@@ -384,6 +383,7 @@ class Inventory extends Model
                 }
             }
         }
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         // LET'S REMOVE FROM THE LIST THE PRODUCTS NOT PRESENT IN QUICKBOOKS
         (new PriceListLines())->where('update', 0)->delete();
