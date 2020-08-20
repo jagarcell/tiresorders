@@ -339,11 +339,11 @@ class Inventory extends Model
                 }
             }
         }
-        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         $PriceListHeaders = (new PriceListHeader())->where('id', '>', -1)->get();
         
         $LocalInventory = $this->where('id', '>', -1)->where('archive', 0)->get();
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         // LET'S UPDATE THE PRICE LISTS
         $update = 0;
