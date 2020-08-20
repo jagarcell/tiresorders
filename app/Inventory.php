@@ -312,10 +312,10 @@ class Inventory extends Model
         }
         
 
-        return ['dataService' => $dataService, 'count' => $Count];
-
         // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
         $LocalInventory = $this->where('update', '<', $update + 1)->update(['archive' => true]);
+
+        return ['dataService' => $dataService, 'LocalInventory' => $LocalInventory];
 
         // ADD TO THE STOCK THE PRODUCTS IN PURCHASE ORDERS
         try {
