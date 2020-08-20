@@ -281,8 +281,6 @@ class Inventory extends Model
         } catch (\SdkException $e) {
             return ['status' => 'fail', 'message' => $e];
         }
-        
-        return ['dataService' => $dataService, 'count' => $Count];
 
         $Count1 = $Count/100;
 
@@ -312,6 +310,9 @@ class Inventory extends Model
                 return ['status' => 'fail', 'message' => $e];                
             }
         }
+        
+
+        return ['dataService' => $dataService, 'count' => $Count];
 
         // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
         $LocalInventory = $this->where('update', '<', $update + 1)->update(['archive' => true]);
