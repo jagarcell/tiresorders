@@ -254,7 +254,7 @@ function updateInventory() {
 		}
 	}
 	$.get('/syncronizeinventories', function syncronizeinventoriesCallBack(data, status) {
-		console.log(data.status)
+		console.log(data)
 		return;
 		if(data.status == 'ok'){
 			var InventoryTableBody = $('#InventoryTable tbody')[0]
