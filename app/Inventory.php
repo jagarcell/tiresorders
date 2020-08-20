@@ -315,8 +315,6 @@ class Inventory extends Model
         // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
         $LocalInventory = $this->where('update', '<', $update + 1)->update(['archive' => true]);
 
-        return ['dataService' => $dataService, 'LocalInventory' => $LocalInventory];
-
         // ADD TO THE STOCK THE PRODUCTS IN PURCHASE ORDERS
         try {
             $QbPurchaseOrders = $dataService->query("SELECT * FROM PurchaseOrder");
@@ -324,6 +322,8 @@ class Inventory extends Model
             DB::rollback();
             return ['status' => 'fail', 'message' => $e];                
         }
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
+
         foreach ($QbPurchaseOrders as $key => $QbPurchaseOrder) {
             # IF THE ORDER IS OPEN ...
             if($QbPurchaseOrder->POStatus == 'Open'){
