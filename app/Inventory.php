@@ -267,6 +267,8 @@ class Inventory extends Model
 
         $dataService = $result['dataService'];
         $dataService->throwExceptionOnError(true);
+        return ['status' => $dataService];
+
 
         if(is_null($dataService))
         {
