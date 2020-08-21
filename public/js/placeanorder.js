@@ -115,7 +115,7 @@ function searchButtonClick() {
 						var CallToConfirm = ''
 						if(totalstock < 2)
 						{
-							CallToConfirm = 'Call To Confrim'
+							CallToConfirm = 'Call To Confirm'
 						}
 						if(price === null){
 							price = 0
@@ -133,7 +133,8 @@ function searchButtonClick() {
 								'<div>' + data[i].name + '</div>' +
 							'</td>' +
 							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
-								Number.parseFloat(totalstock).toFixed(2) + '<div class="CallToConfirm">' + 
+								(totalstock > 24 ? "+24.00" : Number.parseFloat(totalstock).toFixed(2)) + 
+								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
 							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" class="alignRight qtyInput" onchange="qtyChange(this)"></td>' +

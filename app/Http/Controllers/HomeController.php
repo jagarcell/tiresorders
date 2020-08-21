@@ -38,8 +38,12 @@ class HomeController extends Controller
             // Initialize CURL:
             return ['authUrl' => $companyInfo['authUrl']];
         }
-        
-        $CompanyName = json_decode($companyInfo)->CompanyName;
+
+        try {
+            $CompanyName = json_decode($companyInfo)->CompanyName;
+        } catch (\Exception $e) {
+            return['companyName' => 'No Company Retrieved'];
+        }
 
         if(strlen($CompanyName) > 0){
             return ['companyName' => $CompanyName];
