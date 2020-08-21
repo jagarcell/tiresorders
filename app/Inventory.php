@@ -383,11 +383,11 @@ class Inventory extends Model
                 }
             }
         }
-        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         // LET'S REMOVE FROM THE LIST THE PRODUCTS NOT PRESENT IN QUICKBOOKS
         (new PriceListLines())->where('update', 0)->delete();
         (new PriceListLines())->where('archive', 1)->delete();
+        return ['dataService' => $dataService, 'QbPurchaseOrders' => $QbPurchaseOrders];
 
         DB::commit();
         // RETURN THE UPDATED LOCAL INVENTORY  
