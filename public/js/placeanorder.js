@@ -299,10 +299,10 @@ function selectChanged(checkB) {
 		}
 		var row = checkbox.parentNode.parentNode
 
-		var instock = row.children['instock_' + row.id].innerHTML
+		var instock = $('#instock_' + row.id)
 		console.log(instock)
 
-		var price = $('#price_' + row.id)
+		var price = row.children['price_' + row.id].innerHTML
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 		var subtotal = qty * price
