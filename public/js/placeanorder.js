@@ -302,7 +302,7 @@ function selectChanged(checkB) {
 		var instock = row.children['instock_' + row.id].innerHTML
 		console.log(instock)
 
-		var price = row.children['price_' + row.id].innerHTML
+		var price = row.children['price_' + row.id]
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 		var subtotal = qty * price
