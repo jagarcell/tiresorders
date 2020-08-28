@@ -305,6 +305,10 @@ function selectChanged(checkB) {
 		var price = row.children['price_' + row.id].innerHTML
 
 		var qty = row.children['qty1_' + row.id].children[0].value
+		if(qty > instock){
+			qty = instock
+			row.children['qty1_' + row.id].children[0].value = qty
+		}
 		var subtotal = qty * price
 		row.children['subtotal_' + row.id].innerHTML = Number.parseFloat(subtotal).toFixed(2)
 		total += qty*price
