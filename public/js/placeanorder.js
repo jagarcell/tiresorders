@@ -298,6 +298,7 @@ function selectChanged(checkB) {
 			addToOrderButtonHide = false;
 		}
 		var row = checkbox.parentNode.parentNode
+		console.log(row)
 		var price = row.children['price_' + row.id].innerHTML
 		var qty = row.children['qty1_' + row.id].children[0].value
 		var subtotal = qty * price
