@@ -132,7 +132,7 @@
   .secondCol{
   	min-width: 100px;
     width: 25%;
-    padding-right: 20px;
+    padding-right: 20px !important;
     vertical-align: bottom;
   }
 
