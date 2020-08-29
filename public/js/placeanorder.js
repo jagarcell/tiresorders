@@ -134,7 +134,6 @@ function searchButtonClick() {
 							'</td>' +
 							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
 								(totalstock > 24 ? "24+" : Number.parseFloat(totalstock).toFixed(0)) + 
-								'<div id="instock1_' + row.id + '>' + totalstock + '</div>' +
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
