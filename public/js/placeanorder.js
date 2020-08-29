@@ -41,7 +41,9 @@ $(document).ready(function placeAnOrderReady() {
 				}
 			})
 		}
-	}	
+	}
+
+	$('#searchText').focus();
 })
 
 function searchButtonClick() {
