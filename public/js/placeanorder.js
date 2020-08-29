@@ -305,7 +305,7 @@ function selectChanged(checkB) {
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 
-		var qty1 = parseFloat(qty)
+		var qty1 = Number.parseFloat(qty).toFixed(2)
 
 			console.log(qty1)
 			console.log(instock)
