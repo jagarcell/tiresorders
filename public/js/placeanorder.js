@@ -305,7 +305,7 @@ function selectChanged(checkB) {
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 
-		var qty1 = Number.parseFloat(qty1) * 1
+		var qty1 = Number.parseFloat(qty) * 1
 		instock = instock * 1
 
 			console.log(qty1)
