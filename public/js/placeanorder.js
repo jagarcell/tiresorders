@@ -299,7 +299,7 @@ function selectChanged(checkB) {
 		}
 		var row = checkbox.parentNode.parentNode
 
-		var instock = $('#instock_' + row.id).textContent
+		var instock = $('#instock_' + row.id)[0].textContent
 		console.log(instock)
 
 		var price = row.children['price_' + row.id].innerHTML
