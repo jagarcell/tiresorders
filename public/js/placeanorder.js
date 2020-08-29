@@ -307,6 +307,9 @@ function selectChanged(checkB) {
 
 		var qty1 = qty1 * 1
 		instock = instock * 1
+
+			console.log(qty1)
+			console.log(instock)
 		if(qty1 > instock){
 
 			console.log(qty1)
