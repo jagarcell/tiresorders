@@ -305,17 +305,12 @@ function selectChanged(checkB) {
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 
-		var qty1 = Number.parseFloat(qty) * 1
+		qty = Number.parseFloat(qty) * 1
 		instock = instock * 1
+		if(qty > instock){
 
-			console.log(qty1)
-			console.log(instock)
-		if(qty1 > instock){
-
-			console.log(qty1)
-			console.log(instock)
 			qty = instock
-			row.children['qty1_' + row.id].children[0].value = qty - 0
+			row.children['qty1_' + row.id].children[0].value = qty
 		}
 
 		var subtotal = qty * price
