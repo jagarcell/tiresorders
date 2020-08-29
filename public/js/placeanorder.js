@@ -306,6 +306,7 @@ function selectChanged(checkB) {
 		var qty = row.children['qty1_' + row.id].children[0].value
 
 		var qty1 = Number.parseFloat(qty).toFixed(2)
+		instock = Number.parseFloat(instock).toFixed(2)
 		if(qty1 > instock){
 
 			console.log(qty1)
