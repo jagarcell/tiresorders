@@ -134,7 +134,7 @@ function searchButtonClick() {
 							'</td>' +
 							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
 								(totalstock > 24 ? "24+" : Number.parseFloat(totalstock).toFixed(0)) + 
-								'<div id="instock1_' + row.id + '">' + Number.parseFloat(totalstock).toFixed(0) + '</div>' + 
+								'<div hidden="true" id="instock1_' + row.id + '">' + Number.parseFloat(totalstock).toFixed(0) + '</div>' + 
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
@@ -301,7 +301,6 @@ function selectChanged(checkB) {
 		var row = checkbox.parentNode.parentNode
 
 		var instock = $('#instock1_' + row.id)[0].textContent
-		console.log(instock)
 
 		var price = row.children['price_' + row.id].innerHTML
 
