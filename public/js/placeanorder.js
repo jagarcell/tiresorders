@@ -133,11 +133,11 @@ function searchButtonClick() {
 								'<div>' + data[i].name + '</div>' +
 							'</td>' +
 							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
-								(totalstock > 24 ? "+24.00" : Number.parseFloat(totalstock).toFixed(2)) + 
+								(totalstock > 24 ? "24+" : Number.parseFloat(totalstock).toFixed(2)) + 
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
-							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" class="alignRight qtyInput" oninput="qtyChange(this)" onleave="qtyLeave(this)"></td>' +
+							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" class="alignRight qtyInput" oninput="qtyChange(this)"></td>' +
 							'<td id="price_' + row.id + '" class="fourthCol borderBottom price">' +
 								Number.parseFloat(price).toFixed(2) +
 							'</td>' +
