@@ -303,8 +303,9 @@ function selectChanged(checkB) {
 
 		var price = row.children['price_' + row.id].innerHTML
 
-		var qty = row.children['qty1_' + row.id].children[0].value
-		qty = Number.parseFloat(qty).toFixed(2)
+//		var qty = row.children['qty1_' + row.id].children[0].value
+		var qty = $('#price_' + row.id)[0].textContent
+
 			console.log(qty)
 			console.log(instock)
 		if(qty > instock){
