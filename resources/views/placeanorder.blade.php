@@ -26,7 +26,7 @@
 @section('content')
 <div class="mainDiv">
 	<div class="searchDiv">
-		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="" class="searchBar">
+		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
 		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">
 		<img src="public/img/logos/Tire1.jpeg" id="tireAnimImg" class="imgFrame">
 	</div>
