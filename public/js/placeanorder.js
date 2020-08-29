@@ -137,7 +137,7 @@ function searchButtonClick() {
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
-							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput" onchange="qtyChange"></td>' +
+							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput" onchange="qtyChange(this)"></td>' +
 							'<td id="price_' + row.id + '" class="fourthCol borderBottom price">' +
 								Number.parseFloat(price).toFixed(2) +
 							'</td>' +
