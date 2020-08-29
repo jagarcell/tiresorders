@@ -43,7 +43,7 @@ $(document).ready(function placeAnOrderReady() {
 		}
 	}
 
-	$('#searchText').focus();
+	document.getElementById("searchText").focus()
 })
 
 function searchButtonClick() {
