@@ -137,7 +137,7 @@ function searchButtonClick() {
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
-							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput" oninput="qtyChange(this)"></td>' +
+							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput"></td>' +
 							'<td id="price_' + row.id + '" class="fourthCol borderBottom price">' +
 								Number.parseFloat(price).toFixed(2) +
 							'</td>' +
@@ -300,12 +300,13 @@ function selectChanged(checkB) {
 		var row = checkbox.parentNode.parentNode
 
 		var instock = $('#instock_' + row.id)[0].textContent
-		console.log(instock)
 
 		var price = row.children['price_' + row.id].innerHTML
 
 		var qty = row.children['qty1_' + row.id].children[0].value
 		if(qty > instock){
+			console.log(qty)
+			console.log(instock)
 			qty = instock
 			row.children['qty1_' + row.id].children[0].value = qty - 0
 		}
@@ -333,8 +334,4 @@ function resizeWindow(){
 	else{
 		searchText.placeholder = 'Enter Your Search Here'
 	}
-}
-
-function qtyLeave(element){
-	console.log(element)
 }
