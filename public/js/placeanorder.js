@@ -133,11 +133,12 @@ function searchButtonClick() {
 								'<div>' + data[i].name + '</div>' +
 							'</td>' +
 							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
-								(totalstock > 24 ? "+24.00" : Number.parseFloat(totalstock).toFixed(2)) + 
+								(totalstock > 24 ? "24+" : Number.parseFloat(totalstock).toFixed(0)) + 
+								'<div hidden="true" id="instock1_' + row.id + '">' + Number.parseFloat(totalstock).toFixed(0) + '</div>' + 
 								'<div class="CallToConfirm">' + 
 								CallToConfirm + '</div>' +
 							'</td>' +
-							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" class="alignRight qtyInput" onchange="qtyChange(this)"></td>' +
+							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput" onchange="qtyChange(this)" onkeyup="qtyChange(this)"></td>' +
 							'<td id="price_' + row.id + '" class="fourthCol borderBottom price">' +
 								Number.parseFloat(price).toFixed(2) +
 							'</td>' +
@@ -298,8 +299,22 @@ function selectChanged(checkB) {
 			addToOrderButtonHide = false;
 		}
 		var row = checkbox.parentNode.parentNode
+
+		var instock = $('#instock1_' + row.id)[0].textContent
+
 		var price = row.children['price_' + row.id].innerHTML
+
 		var qty = row.children['qty1_' + row.id].children[0].value
+
+		qty = Number.parseFloat(qty)
+		instock = Number.parseFloat(instock)
+
+		if(qty > instock){
+
+			qty = instock
+			row.children['qty1_' + row.id].children[0].value = qty
+		}
+
 		var subtotal = qty * price
 		row.children['subtotal_' + row.id].innerHTML = Number.parseFloat(subtotal).toFixed(2)
 		total += qty*price
