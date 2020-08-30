@@ -36,9 +36,9 @@
 			<thead class="InventoryHeader">
 				<tr>
 					<th class="firstCol">Description</th>
-					<th class="secondCol alignRight">In PO</th>
-					<th class="secondCol alignRight">In Stock</th>
-					<th class="thirdCol alignRight">In SO</th>
+					<th class="secondCol alignRight" title="QUANTITY PURCHASE ORDERS">In PO</th>
+					<th class="secondCol alignRight" title="QUANTITY IN STOCK">In Stock</th>
+					<th class="thirdCol alignRight" title="QUANTITY IN CUSTOMERS SALES ORDERS">In SO</th>
 					<th class="fourthCol alignRight">Base Cost</th>
 				</tr>
 			</thead>
