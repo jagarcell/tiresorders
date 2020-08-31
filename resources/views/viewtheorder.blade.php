@@ -87,7 +87,7 @@
 		@isset($order->delivery)
 		<div id="deliveryDiv">
 			<label>Please Deliver To:</label>
-			<div  id="deliveryAddressDiv" class="additionalInstructions">
+			<div  id="deliveryAddressDiv" class="deliveryAddressDivClass">
 				{{$order->address}}
 			</div>
 		</div>
