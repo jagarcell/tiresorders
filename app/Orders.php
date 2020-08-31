@@ -510,7 +510,7 @@ class Orders extends Model
                         $orderLine->name = "ITEM NOT FOUND";
                     }
                     $orderLine->subtotal = $orderLine->qty * $orderLine->price;
-                    $orderTotal += $orderLine->subTotal;
+                    $orderTotal += $orderLine->subtotal;
                 }
                 $order->ordertotal = $orderTotal;
                 $order->lines = $orderLines;
