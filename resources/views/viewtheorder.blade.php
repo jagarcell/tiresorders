@@ -79,7 +79,7 @@
 		<label class="additionalInstructionsLabel">Special Instructions:</label>
 		<div class="additionalInstructionsDiv">
 			@isset($order->specialinstructionsreadonly)
-			<div id="additionalInstructionsText" class="additionalInstructions" readonly="">{{$order->specialinstructions}}</div>
+			<textarea id="additionalInstructionsText" class="additionalInstructions" readonly="">{{$order->specialinstructions}}</textarea>
 			@else
 			<textarea id="additionalInstructionsText" class="additionalInstructions">{{$order->specialinstructions}}</textarea>
 			@endisset
