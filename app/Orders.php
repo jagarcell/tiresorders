@@ -467,7 +467,7 @@ class Orders extends Model
         $result = $this->OrderById($request);
         if($result['status'] == 'ok'){
             $order = $result['order'];
-            $order->specialinstructionsreadonly = "";
+//            $order->specialinstructionsreadonly = "";
             return view('viewtheorder', ['order' => $order]);
         }
         else
