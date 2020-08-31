@@ -76,10 +76,10 @@
 				</thead>
 			</table>
 		</div>
-		<label class="additionalInstructionsLabel">Add Additional Instructions:</label>
+		<label class="additionalInstructionsLabel">Special Instructions:</label>
 		<div class="additionalInstructionsDiv">
 			@isset($order->specialinstructionsreadonly)
-			<textarea id="additionalInstructionsText" class="additionalInstructions" readonly="">{{$order->specialinstructions}}</textarea>
+			<div id="additionalInstructionsText" class="additionalInstructions" readonly="">{{$order->specialinstructions}}</div>
 			@else
 			<textarea id="additionalInstructionsText" class="additionalInstructions">{{$order->specialinstructions}}</textarea>
 			@endisset
