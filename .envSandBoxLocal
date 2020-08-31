@@ -2,7 +2,7 @@ APP_NAME='Prestige Tires Orders System'
 APP_ENV=local
 APP_KEY=base64:+290rBJmYNVo+sfJ1cSEvJ7h2ISkoJ0gCf8ON4Ev7K0=
 APP_DEBUG=true
-APP_URL=http://www.tiresorders.com
+APP_URL=https://b3d8c0598908.ngrok.io
 
 LOG_CHANNEL=stack
 
@@ -46,6 +46,6 @@ ADMIN_TIMEZONE=America/New_York
 QB_AUTH_MODE=oauth2
 QB_CLIENT_ID=Q0eLu4dZ375SM0SUaEaOfC42Tw5Hxy9Sl8gthejDFVjB81wjPe
 QB_CLIENT_SECRET=3lCxQO4L2ckfPIuhnRMBudhUp63xINNr8syreraS
-QB_OAUTH_REDIRECT_URI=http://www.tiresorders.com/qbcallback
+QB_OAUTH_REDIRECT_URI=https://b3d8c0598908.ngrok.io/qbcallback
 QB_OAUTH_SCOPE='com.intuit.quickbooks.accounting openid profile email phone address'
 QB_BASE_URL="development"
