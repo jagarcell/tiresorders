@@ -468,6 +468,9 @@ class Orders extends Model
         if($result['status'] == 'ok'){
             $order = $result['order'];
             $order->specialinstructionsreadonly = "";
+            if($order->status == 'delivery'){
+                $order->delivery = "";
+            }
             return view('viewtheorder', ['order' => $order]);
         }
         else

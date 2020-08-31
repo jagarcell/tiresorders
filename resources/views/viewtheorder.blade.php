@@ -55,7 +55,7 @@
 					<td class="firstCol borderBottom">{{$orderLine->name}}</td>
 					<td class="secondCol borderBottom">{{$orderLine->qty}}</td>
 					<td class="thirdCol borderBottom">{{sprintf('%.02f', $orderLine->price)}}</td>
-					<td class="fourthCol borderBottom">{{sprintf('%.02f', $orderLine->subtotal)}}</td>
+					<td class="fourthCol borderBottom">{{sprintf('%.02f', $orderLine->subTotal)}}</td>
 					</td>
 					<td class="fifthCol deleteSelected checkCol"><input id="checkbox_{{$orderLine->item_qbid}}"  type="checkbox" class="checkBoxInput" onchange="checkForDeleteChange()">
 				</tr>
@@ -70,13 +70,13 @@
 						<th class="firstCol"></th>
 						<th class="secondCol"></th>
 						<th class="thirdCol" style="padding-right: 0px !important;">Order Total</th>
-						<th id="orderTotal" class="fourthCol orderTotal orderTotalHeader" style="padding-right: 20px !important;">{{sprintf('%.02f', $order->total)}}</th>
+						<th id="orderTotal" class="fourthCol orderTotal orderTotalHeader" style="padding-right: 20px !important;">{{sprintf('%.02f', $order->orderTotal)}}</th>
 						<th class="fifthCol"></th>
 					</tr>
 				</thead>
 			</table>
 		</div>
-		<label class="additionalInstructionsLabel">Add Additional Instructions:</label>
+		<label class="additionalInstructionsLabel">Special Instructions:</label>
 		<div class="additionalInstructionsDiv">
 			@isset($order->specialinstructionsreadonly)
 			<textarea id="additionalInstructionsText" class="additionalInstructions" readonly="">{{$order->specialinstructions}}</textarea>
@@ -84,6 +84,12 @@
 			<textarea id="additionalInstructionsText" class="additionalInstructions">{{$order->specialinstructions}}</textarea>
 			@endisset
 		</div>
+		@isset($order->delivery)
+			<label>Please Deliver To:</label>
+			<div  id="deliveryAddressDiv" class="deliveryAddressDivClass">
+				{{$order->address}}
+			</div>
+		@endisset
 	</div>
 	<div id="submitMessage" class="submitMessage"></div>
 	@isset($order->submit)
