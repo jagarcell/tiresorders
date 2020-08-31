@@ -467,7 +467,7 @@ class Orders extends Model
         $result = $this->OrderById($request);
         if($result['status'] == 'ok'){
             $order = $result['order'];
-//            $order->specialinstructionsreadonly = "";
+            $order->specialinstructionsreadonly = "";
             return view('viewtheorder', ['order' => $order]);
         }
         else
@@ -509,10 +509,10 @@ class Orders extends Model
                     else{
                         $orderLine->name = "ITEM NOT FOUND";
                     }
-                    $orderLine->subtotal = $orderLine->qty * $orderLine->price;
-                    $orderTotal += $orderLine->subtotal;
+                    $orderLine->subTotal = $orderLine->qty * $orderLine->price;
+                    $orderTotal += $orderLine->subTotal;
                 }
-                $order->total = $orderTotal;
+                $order->orderTotal = $orderTotal;
                 $order->lines = $orderLines;
                 $order->address = $user->address;
                 return ['status' => 'ok', 'order' => $order];
