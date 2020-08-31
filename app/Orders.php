@@ -512,7 +512,7 @@ class Orders extends Model
                     $orderLine->subtotal = $orderLine->qty * $orderLine->price;
                     $orderTotal += $orderLine->subtotal;
                 }
-                $order->ordertotal = $orderTotal;
+                $order->total = $orderTotal;
                 $order->lines = $orderLines;
                 $order->address = $user->address;
                 return ['status' => 'ok', 'order' => $order];
