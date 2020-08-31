@@ -509,10 +509,10 @@ class Orders extends Model
                     else{
                         $orderLine->name = "ITEM NOT FOUND";
                     }
-                    $orderLine->subTotal = $orderLine->qty * $orderLine->price;
+                    $orderLine->subtotal = $orderLine->qty * $orderLine->price;
                     $orderTotal += $orderLine->subTotal;
                 }
-                $order->orderTotal = $orderTotal;
+                $order->ordertotal = $orderTotal;
                 $order->lines = $orderLines;
                 $order->address = $user->address;
                 return ['status' => 'ok', 'order' => $order];
