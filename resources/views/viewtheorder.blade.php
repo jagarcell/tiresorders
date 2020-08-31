@@ -84,6 +84,14 @@
 			<textarea id="additionalInstructionsText" class="additionalInstructions">{{$order->specialinstructions}}</textarea>
 			@endisset
 		</div>
+		@isset($order->delivery)
+		<div id="deliveryDiv">
+			<label>Please Deliver To:</label>
+			<div  id="deliveryAddressDiv">
+				{{$order->address}}
+			</div>
+		</div>
+		@endisset
 	</div>
 	<div id="submitMessage" class="submitMessage"></div>
 	@isset($order->submit)
