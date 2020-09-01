@@ -18,8 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            var_dump($request);
-            return redirect('/');
+            return redirect('/listopenorders');
         }
 
         return $next($request);
