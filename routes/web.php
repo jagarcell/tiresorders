@@ -107,7 +107,7 @@ Route::get('/placeanorder', 'OrdersController@placeAnOrder');
 
 Route::get('/additemtoorder', 'OrdersController@addItemToOrder');
 
-Route::get('/viewtheorder', 'OrdersController@viewTheOrder');
+Route::get('/viewtheorder', 'OrdersController@viewTheOrder')->middleware('auth');
 
 Route::get('/deletelinebyqbitemid', 'OrdersController@deleteLineByQbItemId');
 
