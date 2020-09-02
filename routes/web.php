@@ -19,7 +19,7 @@ Route::get('/test', function(){
 	return view('/test');
 });
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 /****************************
 * 		HomeController		*
