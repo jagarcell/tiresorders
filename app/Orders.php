@@ -469,8 +469,7 @@ class Orders extends Model
         if($result['status'] == 'ok'){
             $order = $result['order'];
             $userType = $user->type;
-            dd($userType);
-            if($user->type != "user"){
+            if($userType != "user"){
                 $order->specialinstructionsreadonly = "";
                 // IF THE ORDER IS FOR DELIVERY ...
             dd($order);
