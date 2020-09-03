@@ -471,11 +471,11 @@ class Orders extends Model
             if($authUser->id == $order->user_id || $authUser->type == 'admin'){
                 $order->specialinstructionsreadonly = "";
                 // IF THE ORDER IS FOR DELIVERY ...
+            dd($order);
                 if($order->status == 'delivery'){
                     // ... SET A DELIVERY INDICATOR FOR THE VIEW
                     $order->delivery = "";
                 }
-            dd($order);
                 return view('viewtheorder', ['order' => $order]);
             }
         }
