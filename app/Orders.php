@@ -466,7 +466,6 @@ class Orders extends Model
         # FIND DE ORDER BY ORDER ID
         $result = $this->OrderById($request);
         $authUser = Auth::user();
-        dd($authUser);
         if($result['status'] == 'ok'){
             $order = $result['order'];
             if($authUser->id == $order->user_id || $authUser->type == 'admin'){
