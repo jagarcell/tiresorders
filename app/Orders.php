@@ -469,15 +469,18 @@ class Orders extends Model
         if($result['status'] == 'ok'){
             $order = $result['order'];
             $userType = $user->type;
-            if($userType == 'admin'){
-                $order->specialinstructionsreadonly = "";
-                // IF THE ORDER IS FOR DELIVERY ...
-            dd($order);
-                if($order->status == 'delivery'){
-                    // ... SET A DELIVERY INDICATOR FOR THE VIEW
-                    $order->delivery = "";
+            try {
+                if($userType == 'admin'){
+                    $order->specialinstructionsreadonly = "";
+                    // IF THE ORDER IS FOR DELIVERY ...
+                    if($order->status == 'delivery'){
+                        // ... SET A DELIVERY INDICATOR FOR THE VIEW
+                        $order->delivery = "";
+                    }
+                    return view('viewtheorder', ['order' => $order]);
                 }
-                return view('viewtheorder', ['order' => $order]);
+            } catch (\Exception $e) {
+                dd($e);
             }
         }
 
