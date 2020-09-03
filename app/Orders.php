@@ -464,8 +464,6 @@ class Orders extends Model
     public function ViewTheOrderByOrderId(Request $request)
     {
         # FIND DE ORDER BY ORDER ID
-
-        return view('/');
         $result = $this->OrderById($request);
         $user = Auth::user();
         if($result['status'] == 'ok'){
