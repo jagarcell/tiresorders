@@ -463,20 +463,23 @@ class Orders extends Model
 
     public function ViewTheOrderByOrderId(Request $request)
     {
-        # code...
+        # FIND DE ORDER BY ORDER ID
         $result = $this->OrderById($request);
+        $authUser = Auth::user();
         if($result['status'] == 'ok'){
             $order = $result['order'];
-            $order->specialinstructionsreadonly = "";
-            if($order->status == 'delivery'){
-                $order->delivery = "";
+            if($authUser->id == $order->user_id || $authUser->type == 'admin'){
+                $order->specialinstructionsreadonly = "";
+                // IF THE ORDER IS FOR DELIVERY ...
+                if($order->status == 'delivery'){
+                    // ... SET A DELIVERY INDICATOR FOR THE VIEW
+                    $order->delivery = "";
+                }
+                return view('viewtheorder', ['order' => $order]);
             }
-            return view('viewtheorder', ['order' => $order]);
         }
-        else
-        {
-            return view('/');
-        }
+
+        return view('/');
     }
 
     /**
