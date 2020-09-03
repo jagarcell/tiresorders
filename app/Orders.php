@@ -468,6 +468,7 @@ class Orders extends Model
         $user = Auth::user();
         if($result['status'] == 'ok'){
             $order = $result['order'];
+            dd($user->type);
             if($user->type != "user"){
                 $order->specialinstructionsreadonly = "";
                 // IF THE ORDER IS FOR DELIVERY ...
