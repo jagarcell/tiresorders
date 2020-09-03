@@ -468,15 +468,14 @@ class Orders extends Model
         $authUser = Auth::user();
         if($result['status'] == 'ok'){
             $order = $result['order'];
-            dd($authUser->id);
             if($authUser->id == $order->user_id || $authUser->type == 'admin'){
-            dd($order);
                 $order->specialinstructionsreadonly = "";
                 // IF THE ORDER IS FOR DELIVERY ...
                 if($order->status == 'delivery'){
                     // ... SET A DELIVERY INDICATOR FOR THE VIEW
                     $order->delivery = "";
                 }
+            dd($order);
                 return view('viewtheorder', ['order' => $order]);
             }
         }
