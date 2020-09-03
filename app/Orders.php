@@ -477,6 +477,9 @@ class Orders extends Model
                 }
                 return view('viewtheorder', ['order' => $order]);
             }
+            else{
+                return redirect('/placeanorder');
+            }
         }
 
         return view('/');
