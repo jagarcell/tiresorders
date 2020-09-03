@@ -465,10 +465,10 @@ class Orders extends Model
     {
         # FIND DE ORDER BY ORDER ID
         $result = $this->OrderById($request);
-        $authUser = Auth::user();
+        $user = Auth::user();
         if($result['status'] == 'ok'){
             $order = $result['order'];
-            if($authUser->type != "user"){
+            if($user->type != "user"){
                 $order->specialinstructionsreadonly = "";
                 // IF THE ORDER IS FOR DELIVERY ...
             dd($order);
