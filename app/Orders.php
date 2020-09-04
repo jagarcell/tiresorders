@@ -476,8 +476,7 @@ class Orders extends Model
                     $order->delivery = "";
                 }
                 $userInOrder = (new Users())->where('id', $order->user_id)->get();
-                dd($userInOrder);
-                $order->user = $userInOrder->name;
+                $order->user = ($userInOrder[0])->name;
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
