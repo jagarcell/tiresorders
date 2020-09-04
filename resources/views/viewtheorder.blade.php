@@ -30,7 +30,7 @@
 	@isset($order->user)
 	<div class="userDiv">Order For: {{$order->user}}</div>
 	@else
-	<div class="orderLabelDiv">ORDER IN PROGRESS</div>
+	<div class="orderLabelDiv">ORDER IN PROGRESS FOR</div>
 	@endisset
 	<div class="orderDiv">
 		<table id="orderTable" class="tableDiv fixed_header">
