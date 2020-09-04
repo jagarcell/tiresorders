@@ -475,8 +475,8 @@ class Orders extends Model
                     // ... SET A DELIVERY INDICATOR FOR THE VIEW
                     $order->delivery = "";
                 }
-                dd($order);
-                $userInOrder = (new Users())->findUserById($order->user_id);
+                $userInOrder = (new Users())->where('id', $order->userId)->get();
+                dd($userInOrder);
                 $order->user = $userInOrder->name;
                 return view('viewtheorder', ['order' => $order]);
             }
