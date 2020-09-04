@@ -465,16 +465,19 @@ class Orders extends Model
     {
         # FIND DE ORDER BY ORDER ID
         $result = $this->OrderById($request);
-        $user = Auth::user();
+        $authUser = Auth::user();
         if($result['status'] == 'ok'){
             $order = $result['order'];
             $order->specialinstructionsreadonly = "";
-            if($user->type == 'admin'){
+            if($authUser->type == 'admin'){
                 // IF THE ORDER IS FOR DELIVERY ...
                 if($order->status == 'delivery'){
                     // ... SET A DELIVERY INDICATOR FOR THE VIEW
                     $order->delivery = "";
                 }
+
+                $user = (new Users())->findUserById($order->user_id);
+                $order->userName = $user->name;
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
