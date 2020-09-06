@@ -22,6 +22,17 @@
 		<div>
 			Please Visit: {{env('APP_URL') . '/login'}}
 		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div>
+			Powered By: <a href="https://www.allwebdone.com">www.allwebdone.com</a>
+			
+		</div>
+
 	</div>
 </body>
 </html>
