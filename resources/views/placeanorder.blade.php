@@ -68,9 +68,6 @@
 	</div>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
 	<div class="tableDiv">
 		Powered By: <a href="https://www.allwebdone.com">www.allwebdone.com</a>
 	</div>
