@@ -68,7 +68,7 @@
 	</div>
 	<br>
 	<br>
-	<div class="tableDiv">
+	<div class="poweredBy">
 		Powered By: <a href="https://www.allwebdone.com">www.allwebdone.com</a>
 	</div>
 </div>
