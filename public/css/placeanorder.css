@@ -80,9 +80,16 @@
   }
 
   .tableDiv{
-  	width: 80%;
-  	margin-left: 10%;
-  	margin-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+  }
+
+  .poweredBy{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    text-align: right;
   }
 
   .orderTotalDiv{
