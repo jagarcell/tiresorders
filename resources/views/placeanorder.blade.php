@@ -71,7 +71,7 @@
 	<br>
 	<br>
 	<br>
-	<div>
+	<div class="tableDiv">
 		Powered By: <a href="https://www.allwebdone.com">www.allwebdone.com</a>
 	</div>
 </div>
