@@ -69,7 +69,7 @@
 	<br>
 	<br>
 	<div class="poweredBy">
-		Powered By: <a href="https://www.allwebdone.com">www.allwebdone.com</a>
+		Powered By: <a target="_blank" href="https://www.allwebdone.com">www.allwebdone.com</a>
 	</div>
 </div>
 
