@@ -89,6 +89,7 @@
     margin-left: 10%;
     margin-top: 20px;
     text-align: right;
+    padding-bottom: 40px;
   }
 
   .orderTotalDiv{
@@ -383,6 +384,7 @@
       margin-top: 20px;
       font-size: 14px;
       text-align: right;
+      padding-bottom: 40px;
     }
 
     td {
