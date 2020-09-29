@@ -53,6 +53,7 @@ $(document).ready(function InventoryReady() {
 	//				forceFallback : true,
 			init : function dropzoneInit() {
 				// body...
+				console.log('added')
 				this.on('addedfile', function (file) {
 					// body...
 					filesAccepted = this.getAcceptedFiles()
