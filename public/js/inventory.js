@@ -113,6 +113,9 @@ function searchButtonClick() {
 					$('#noItemsFoundDiv').hide()
 					$('#InventoryTable').show()
 
+					var formCSRF = document.getElementsByName('csrf-token')
+					var csrf = formCSRF[0].content
+
 					var InventoryTableBody = $('#InventoryTable tbody')[0]
 					var InventoryTableBodyRows = $('#InventoryTable tbody tr')
 					InventoryTableBodyRows.remove()
@@ -133,6 +136,7 @@ function searchButtonClick() {
 							imgDiv =
 								'<div>' +
 									'<form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id="dropzone' + invRow.id + '">' +
+										'<input type="hidden" name="_token" value="' + csrf + '">' +
 										'<input type="text" name="itemid" hidden="" value="' + invRow.id  + '">' +
 									'</form>' +
 								'</div>'

@@ -56,8 +56,8 @@
 									<img src="public/{{$item->imgpath}}" class="prodImg" onclick="imgClick(this)" title="CLICK TO CHANGE THE PHOTO">
 								</div>
 							@else
-							<form action="/fileupload" method="post" enctype="multipart/form-data"class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id="dropzone{{$item->id}}">
-								{{ csrf_field() }}
+							<form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 60px; border-style: none !important;"  id="dropzone{{$item->id}}">
+								@csrf
 								<input type="text" name="itemid" hidden="" value="{{$item->id}}">
 							</form>
 							@endif
