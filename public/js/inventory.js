@@ -47,18 +47,15 @@ $(document).ready(function InventoryReady() {
 	var dropZones = $('.dropzone')
 
 	$.each(dropZones, function(index, dropzone){
-		console.log(index)
 		Dropzone.options[dropzone.id] = {
 			uploadMultiple : false,
 			dictDefaultMessage : 'Drop An Image Or Click To Search One',
 	//				forceFallback : true,
 			init : function dropzoneInit() {
 				// body...
-				console.log('added')
 				this.on('addedfile', function (file) {
 					// body...
 					filesAccepted = this.getAcceptedFiles()
-					console.log(filesAccepted)
 					if(filesAccepted.length > 0){
 						this.removeFile(filesAccepted[0])
 					}
@@ -66,6 +63,8 @@ $(document).ready(function InventoryReady() {
 			},
 		}
 	})
+
+	var forms = $('.formCSRF')
 })
 
 function searchButtonClick() {
