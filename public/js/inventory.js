@@ -65,6 +65,7 @@ $(document).ready(function InventoryReady() {
 	})
 
 	var forms = $('.formCSRF')
+	console.log(forms)
 })
 
 function searchButtonClick() {
