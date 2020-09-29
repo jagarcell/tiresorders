@@ -63,16 +63,6 @@ $(document).ready(function InventoryReady() {
 			},
 		}
 	})
-
-	var forms = $('.formCSRF')
-	var formCSRF = document.getElementsByName('csrf-token')
-
-	$.each(forms, function(index, form){
-		var innerHTML = form.innerHTML
-		var csrf = '<input type="hidden" name="_token" value="' + formCSRF[0].content + '">'
-		innerHTML = innerHTML + csrf
-		form.innerHTML = innerHTML
- 	})
 })
 
 function searchButtonClick() {
@@ -123,6 +113,9 @@ function searchButtonClick() {
 					$('#noItemsFoundDiv').hide()
 					$('#InventoryTable').show()
 
+					var formCSRF = document.getElementsByName('csrf-token')
+					var csrf = formCSRF[0].content
+
 					var InventoryTableBody = $('#InventoryTable tbody')[0]
 					var InventoryTableBodyRows = $('#InventoryTable tbody tr')
 					InventoryTableBodyRows.remove()
@@ -143,6 +136,7 @@ function searchButtonClick() {
 							imgDiv =
 								'<div>' +
 									'<form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id="dropzone' + invRow.id + '">' +
+										'<input type="hidden" name="_token" value="' + csrf + '">'
 										'<input type="text" name="itemid" hidden="" value="' + invRow.id  + '">' +
 									'</form>' +
 								'</div>'
@@ -181,20 +175,7 @@ function searchButtonClick() {
 						row.style.color = invRow.pricemodified ? 'black' : 'red'				
 					})
 
-					console.log('discover')
 					Dropzone.discover()
-
-					var forms = $('.formCSRF')
-					var formCSRF = document.getElementsByName('csrf-token')
-
-					$.each(forms, function(index, form){
-						var innerHTML = form.innerHTML
-						var csrf = '<input type="hidden" name="_token" value="' + formCSRF[0].content + '">'
-						innerHTML = innerHTML + csrf
-						console.log(innerHTML)
-						form.innerHTML = innerHTML
-						console.log(innerHTML)
-				 	})
 				}
 				else{
 					// No items found, hide the items table
