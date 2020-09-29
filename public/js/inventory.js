@@ -47,6 +47,7 @@ $(document).ready(function InventoryReady() {
 	var dropZones = $('.dropzone')
 
 	$.each(dropZones, function(index, dropzone){
+		console.log(index)
 		Dropzone.options[dropzone.id] = {
 			uploadMultiple : false,
 			dictDefaultMessage : 'Drop An Image Or Click To Search One',
