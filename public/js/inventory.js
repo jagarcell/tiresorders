@@ -190,7 +190,9 @@ function searchButtonClick() {
 						var innerHTML = form.innerHTML
 						var csrf = '<input type="hidden" name="_token" value="' + formCSRF[0].content + '">'
 						innerHTML = innerHTML + csrf
+						console.log(innerHTML)
 						form.innerHTML = innerHTML
+						console.log(innerHTML)
 				 	})
 				}
 				else{
