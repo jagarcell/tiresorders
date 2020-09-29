@@ -71,7 +71,7 @@ $(document).ready(function InventoryReady() {
 
 	$.each(forms, function(index, form){
 		var innerHTML = form.innerHTML
-		var csrf = '<input type="hidden" name="_token" value="' + formCSRF.content + '">'
+		var csrf = '<input type="hidden" name="_token" value="' + formCSRF[0].content + '">'
 		innerHTML = innerHTML + csrf
 		form.innerHTML = innerHTML
  	})
