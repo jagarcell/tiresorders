@@ -68,6 +68,13 @@ $(document).ready(function InventoryReady() {
 	console.log(forms[0].innerHTML)
 	var formCSRF = document.getElementsByName('csrf-token')
 	console.log(formCSRF[0].content)
+
+	$.each(forms, function(index, form){
+		var innerHTML = form.innerHTML
+		var csrf = '<input type="hidden" name="_token" value="' + formCSRF.content + '">'
+		innerHTML = innerHTML + csrf
+		form.innerHTML = innerHTML
+ 	})
 })
 
 function searchButtonClick() {
