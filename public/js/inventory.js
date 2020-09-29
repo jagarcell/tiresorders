@@ -67,7 +67,7 @@ $(document).ready(function InventoryReady() {
 	var forms = $('.formCSRF')
 	console.log(forms[0].innerHTML)
 	var formCSRF = document.getElementsByName('csrf-token')
-	console.log(formCSRF)
+	console.log(formCSRF[0].content)
 })
 
 function searchButtonClick() {
