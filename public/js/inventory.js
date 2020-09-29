@@ -136,7 +136,7 @@ function searchButtonClick() {
 							imgDiv =
 								'<div>' +
 									'<form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 60px; border-style: none !important;" id="dropzone' + invRow.id + '">' +
-										'<input type="hidden" name="_token" value="' + csrf + '">'
+										'<input type="hidden" name="_token" value="' + csrf + '">' +
 										'<input type="text" name="itemid" hidden="" value="' + invRow.id  + '">' +
 									'</form>' +
 								'</div>'
