@@ -56,6 +56,7 @@ $(document).ready(function InventoryReady() {
 				this.on('addedfile', function (file) {
 					// body...
 					filesAccepted = this.getAcceptedFiles()
+					console.log(filesAccepted)
 					if(filesAccepted.length > 0){
 						this.removeFile(filesAccepted[0])
 					}
