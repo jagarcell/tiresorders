@@ -181,6 +181,7 @@ function searchButtonClick() {
 						row.style.color = invRow.pricemodified ? 'black' : 'red'				
 					})
 
+					console.log('discover')
 					Dropzone.discover()
 
 					var forms = $('.formCSRF')
