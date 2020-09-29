@@ -65,9 +65,7 @@ $(document).ready(function InventoryReady() {
 	})
 
 	var forms = $('.formCSRF')
-	console.log(forms[0].innerHTML)
 	var formCSRF = document.getElementsByName('csrf-token')
-	console.log(formCSRF[0].content)
 
 	$.each(forms, function(index, form){
 		var innerHTML = form.innerHTML
@@ -184,6 +182,16 @@ function searchButtonClick() {
 					})
 
 					Dropzone.discover()
+
+					var forms = $('.formCSRF')
+					var formCSRF = document.getElementsByName('csrf-token')
+
+					$.each(forms, function(index, form){
+						var innerHTML = form.innerHTML
+						var csrf = '<input type="hidden" name="_token" value="' + formCSRF[0].content + '">'
+						innerHTML = innerHTML + csrf
+						form.innerHTML = innerHTML
+				 	})
 				}
 				else{
 					// No items found, hide the items table
