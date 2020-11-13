@@ -154,6 +154,8 @@ Route::get('/inventory', 'InventoryController@Inventory');
 
 Route::get('/updateitem', 'InventoryController@UpdateItem');
 
+Route::get('/updateoferta', 'InventoryController@UpdateOferta');
+
 Route::get('/datetimeoffset', 'InventoryController@DateTimeOffset');
 
 /****************************

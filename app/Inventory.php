@@ -510,6 +510,17 @@ class Inventory extends Model
         return ['message' => $message];
     }
 
+    public function UpdateOferta(Request $request)
+    {
+        $id = $request['id'];
+        $oferta = $request['oferta'];
+        $message = "THE ITEM COULDN'T BE UPDATED";
+        if($this->where('id', $id)->update(['oferta' => $oferta]) > 0){
+            $message = "THE ITEM WAS SUCCESSFULLY UPDATED";
+        }
+        return ['message' => $message];
+    }
+
     public function PriceLists(Request $request)
     {
         # code...

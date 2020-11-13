@@ -62,6 +62,11 @@ class InventoryController extends Controller
         return (new Inventory())->UpdateItem($request);
     }
 
+    public function UpdateOferta(Request $request)
+    {
+        return (new Inventory())->UpdateOferta($request);
+    }
+    
     public function PriceLists(Request $request)
     {
         # code...

@@ -242,10 +242,8 @@ function ofertaChange(element) {
 		Number.parseFloat = window.parseFloat
 	}
 	element.value = Number.parseFloat(element.value).toFixed(2)
-	$.get('/updateitem', {id:itemId, oferta:oferta}, function updateItemCallBack(data, status) {
+	$.get('/updateoferta', {id:itemId, oferta:oferta}, function updateItemCallBack(data, status) {
 		updateMessage(data.message)
-		element.parentNode.parentNode.style.color = 'black'
-		element.style.color = 'black'
 	})
 }
 
