@@ -37,7 +37,7 @@
 				<div class="ofertaNComponent">
 					<img src="/public/{{$item->imgpath}}" class="productImageOferta">
 				</div>
-				<div class="ofertaNComponent" style="background-image: url('/public/img/logos/special.png');">
+				<div class="ofertaNComponent" class="ofertaBG">
 					{{$item->oferta}}
 				</div>
 			</div>
