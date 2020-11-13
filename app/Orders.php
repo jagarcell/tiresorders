@@ -23,9 +23,15 @@ class Orders extends Model
     	return $this->where('id', '>', -1)->get();
     }
 
+    public function placeAnOrderTest(Request $request)
+    {
+        # code...
+        return view('/placeanorder');
+    }
+
     public function placeAnOrder(Request $request)
     {
-    	# code...
+        # code...
         return view('/placeanorder');
     }
 

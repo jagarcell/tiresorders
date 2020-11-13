@@ -103,6 +103,8 @@ Route::get('/listusersqbcustomers', 'QuickBooksController@ListUsersQbCustomers')
 *     OrdersController		*
 ****************************/
 
+Route::get('/placeanordertest', 'OrdersController@placeAnOrderTest');
+
 Route::get('/placeanorder', 'OrdersController@placeAnOrder');
 
 Route::get('/additemtoorder', 'OrdersController@addItemToOrder');
