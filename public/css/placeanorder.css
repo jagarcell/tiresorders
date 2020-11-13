@@ -32,6 +32,12 @@
     vertical-align: middle;  
   }
 
+  .labelClass{
+    transform: rotate(-19deg);
+    font-size: xx-large;
+    font-family: monospace;  
+  }
+
   .imageOferta{
     text-align: center;
   }
