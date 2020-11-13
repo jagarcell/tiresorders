@@ -235,6 +235,20 @@ function priceChange(element) {
 	})
 }
 
+function ofertaChange(element) {
+	var itemId = element.parentNode.parentNode.id
+	var oferta = element.value
+	if(!Number.parseFloat){
+		Number.parseFloat = window.parseFloat
+	}
+	element.value = Number.parseFloat(element.value).toFixed(2)
+	$.get('/updateitem', {id:itemId, oferta:oferta}, function updateItemCallBack(data, status) {
+		updateMessage(data.message)
+		element.parentNode.parentNode.style.color = 'black'
+		element.style.color = 'black'
+	})
+}
+
 function updateInventory() {
 	$('#updateInventory').prop('disabled', true)
 	$('#updateMessage')[0].style.color = 'red'
