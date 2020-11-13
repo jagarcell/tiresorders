@@ -36,7 +36,7 @@
 				<br>
 				{{$item->imgpath}}
 				<br>
-				{{$item->description}}
+				{{$item->name}}
 			</div>
 		@endforeach
 	</div>
