@@ -17,7 +17,6 @@ class OrdersController extends Controller
         $this->middleware('auth');
     }
 
-
     public function placeAnOrderTest(Request $request)
     {
         # code...
