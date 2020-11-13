@@ -38,7 +38,7 @@
 					<img src="/public/{{$item->imgpath}}" class="productImageOferta">
 				</div>
 				<div class="ofertaNComponent ofertaBG" >
-					<LABEL class="labelClass itemSpecial">${{$item->oferta}}</LABEL>
+					<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
 				</div>
 			</div>
 		@endforeach
