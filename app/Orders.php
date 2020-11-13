@@ -23,6 +23,7 @@ class Orders extends Model
     	return $this->where('id', '>', -1)->get();
     }
 
+
     public function placeAnOrderTest(Request $request)
     {
         # code...

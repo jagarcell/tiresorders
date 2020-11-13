@@ -16,6 +16,7 @@ class OrdersController extends Controller
         $this->middleware('qbconn');
         $this->middleware('auth');
     }
+    
 
     public function placeAnOrderTest(Request $request)
     {
