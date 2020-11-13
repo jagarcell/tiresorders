@@ -29,6 +29,10 @@
     display: inline-block;
   }
 
+  .imageOferta{
+    text-align: center;
+  }
+
   .ofertasBanner{
     width: 100%;
   }
