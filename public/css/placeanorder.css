@@ -26,7 +26,7 @@
 
   .ofertaNComponent{
     width: 30%;
-    display: inline-block;
+    display: table-cell;
     text-align: center;
     height: 150px;
     vertical-align: middle;  
@@ -40,6 +40,7 @@
     background-image: url('/public/img/logos/special.png');
     background-repeat: no-repeat;
     background-size: contain;  
+    background-position: center;
   }
 
   .ofertasBanner{
