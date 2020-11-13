@@ -35,7 +35,7 @@
 					{{$item->name}}
 				</div>
 				<div class="ofertaNComponent">
-					<img src="/public/{{$item->imgpath}}">
+					<img src="/public/{{$item->imgpath}}" class="productImage">
 				</div>
 				<div class="ofertaNComponent">
 					{{$item->oferta}}
