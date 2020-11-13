@@ -27,7 +27,7 @@
 <div class="mainDiv">
 
 	<div class="ofertasDiv">
-		<img src="public/img/logos/blackfriday.jpg">
+		<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
 	</div>
 	<dir class="ofertasSlideDiv">
 		
