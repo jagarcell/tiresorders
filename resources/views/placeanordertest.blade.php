@@ -27,7 +27,7 @@
 <div class="mainDiv">
 
 	<div class="ofertasDiv">
-		SLIDE
+		<img src="public/img/logos/blackfriday.jpg">
 	</div>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
