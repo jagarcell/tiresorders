@@ -236,6 +236,7 @@ function priceChange(element) {
 }
 
 function ofertaChange(element) {
+	console.log("OFERTA")
 	var itemId = element.parentNode.parentNode.id
 	var oferta = element.value
 	if(!Number.parseFloat){
