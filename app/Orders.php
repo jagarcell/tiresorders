@@ -27,7 +27,7 @@ class Orders extends Model
     public function placeAnOrderTest(Request $request)
     {
         # code...
-        return view('/placeanorder');
+        return view('/placeanordertest');
     }
 
     public function placeAnOrder(Request $request)
