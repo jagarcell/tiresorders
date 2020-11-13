@@ -16,12 +16,12 @@ class OrdersController extends Controller
         $this->middleware('qbconn');
         $this->middleware('auth');
     }
-    
+
 
     public function placeAnOrderTest(Request $request)
     {
         # code...
-        return (new Orders())->placeAnOrder($request);
+        return (new Orders())->placeAnOrderTest($request);
     }
 
     public function placeAnOrder(Request $request)
