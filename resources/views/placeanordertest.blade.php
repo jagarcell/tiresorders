@@ -27,7 +27,6 @@
 <div class="mainDiv">
 
 	<div class="ofertasDiv">
-		<img src="public/img/logos/blackfriday.jpg" width="100%" height="100%">
 	</div>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
