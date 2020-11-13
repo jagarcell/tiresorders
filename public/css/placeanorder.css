@@ -32,10 +32,16 @@
   }
 
   .labelClass{
-    transform: rotate(0deg);
-    font-size: xx-large;
     font-family: monospace;
     color: snow;
+  }
+
+  .itemDescriptionFont{
+    font-size: xx-large;
+  }
+
+  .itemSpecialFont{
+    font-size: x-large;
   }
 
   .imageOferta{
@@ -359,6 +365,18 @@
       display: block;
     }
 
+    .itemDescriptionFont{
+      font-size: x-large;
+    }
+
+    .itemSpecialFont{
+      font-size: large;
+    }
+
+    .productImageOferta{
+      width: 80px; 
+      height: 80px;
+    }
     thead.orderHeader tr {
       position: absolute;
       top: -9999px;
