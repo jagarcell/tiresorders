@@ -25,6 +25,7 @@
 
   .ofertaNComponent{
     width: 33%;
+    display: inline-block;
   }
 
   .ofertasBanner{
