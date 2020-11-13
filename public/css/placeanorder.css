@@ -13,6 +13,12 @@
     margin-left: 10%;
   }
 
+  .ofertasSlideDiv{
+    width: 80%;
+    margin-left: 10%;
+    min-height: 100px;
+  }
+
   .searchDiv{
   	width: 80%;
   	margin-left: 10%;

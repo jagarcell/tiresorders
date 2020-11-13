@@ -29,6 +29,9 @@
 	<div class="ofertasDiv">
 		<img src="public/img/logos/blackfriday.jpg">
 	</div>
+	<dir class="ofertasSlideDiv">
+		
+	</dir>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
 		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">
