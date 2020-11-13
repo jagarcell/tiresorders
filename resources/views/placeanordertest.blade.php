@@ -31,6 +31,7 @@
 	<div class="ofertasSlideDiv">
 		@foreach($Inventory as $key => $item)
 			<div>
+				
 				{{$item->oferta}}
 				{{$item->imgpath}}
 			</div>
