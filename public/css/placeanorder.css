@@ -19,6 +19,14 @@
     min-height: 100px;
   }
 
+  .ofertaNDiv{
+    width: 100%;
+  }
+
+  .ofertaNComponent{
+    width: 33%;
+  }
+
   .ofertasBanner{
     width: 100%;
   }

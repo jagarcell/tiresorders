@@ -30,13 +30,16 @@
 	</div>
 	<div class="ofertasSlideDiv">
 		@foreach($Inventory as $key => $item)
-			<div>
-
-				{{$item->oferta}}
-				<br>
-				{{$item->imgpath}}
-				<br>
-				{{$item->name}}
+			<div class="ofertaNDiv">
+				<div class="ofertaNComponent">
+					{{$item->name}}
+				</div>
+				<div class="ofertaNComponent">
+					<img src="/public/{{$item->imgpath}}">
+				</div>
+				<div class="ofertaNComponent">
+					{{$item->oferta}}
+				</div>
 			</div>
 		@endforeach
 	</div>
