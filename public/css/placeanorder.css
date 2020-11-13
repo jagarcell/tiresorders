@@ -27,6 +27,7 @@
   .ofertaNComponent{
     width: 30%;
     display: inline-block;
+    text-align: center;
   }
 
   .imageOferta{
