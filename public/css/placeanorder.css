@@ -28,6 +28,8 @@
     width: 30%;
     display: inline-block;
     text-align: center;
+    height: 150px;
+    vertical-align: middle;  
   }
 
   .imageOferta{

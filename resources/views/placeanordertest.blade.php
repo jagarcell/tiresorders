@@ -32,13 +32,14 @@
 		@foreach($Inventory as $key => $item)
 			<div class="ofertaNDiv">
 				<div class="ofertaNComponent">
-					{{$item->name}}
+					<LABEL>{{$item->name}}</LABEL>
+					
 				</div>
 				<div class="ofertaNComponent">
 					<img src="/public/{{$item->imgpath}}" class="productImageOferta">
 				</div>
 				<div class="ofertaNComponent ofertaBG" >
-					{{$item->oferta}}
+					<LABEL>{{$item->oferta}}</LABEL>
 				</div>
 			</div>
 		@endforeach
