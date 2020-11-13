@@ -31,9 +31,12 @@
 	<div class="ofertasSlideDiv">
 		@foreach($Inventory as $key => $item)
 			<div>
-				
+
 				{{$item->oferta}}
+				<br>
 				{{$item->imgpath}}
+				<br>
+				{{$item->description}}
 			</div>
 		@endforeach
 	</div>
