@@ -36,7 +36,8 @@
 
   .ofertaBG{
     background-image: url('/public/img/logos/special.png');
-  }
+    background-repeat: no-repeat;
+    background-size: auto;  }
 
   .ofertasBanner{
     width: 100%;
