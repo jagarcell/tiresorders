@@ -27,7 +27,8 @@ class Orders extends Model
     public function placeAnOrderTest(Request $request)
     {
         # code...
-        return view('/placeanordertest');
+        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return view('/placeanordertest', ['Inventory' => $Inventory]);
     }
 
     public function placeAnOrder(Request $request)

@@ -25,13 +25,16 @@
 <body>
 @section('content')
 <div class="mainDiv">
-
 	<div class="ofertasDiv">
 		<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
 	</div>
-	<dir class="ofertasSlideDiv">
-		
-	</dir>
+	<div class="ofertasSlideDiv">
+		@foreach($Inventory as $key => $item)
+			<div>
+				{{$item->oferta}}
+			</div>
+		@endforeach
+	</div>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
 		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">
