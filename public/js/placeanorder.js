@@ -66,7 +66,7 @@ $(document).ready(function placeAnOrderReady() {
 			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
-			ofertaNDivs[i].style.opacity = 100
+			ofertaNDivs[0].style.opacity = 100
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
