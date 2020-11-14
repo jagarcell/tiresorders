@@ -45,8 +45,9 @@ $(document).ready(function placeAnOrderReady() {
 
 	document.getElementById("searchText").focus()
 
-	var ofertaNComponents = $(".ofertaNComponent")
-	console.log(ofertaNComponents)
+	var ofertaNDivs = $(".ofertaNDiv")
+	console.log(ofertaNDivs)
+	console.log(ofertaNDivs[0].opacity)
 
 })
 
