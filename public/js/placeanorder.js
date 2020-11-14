@@ -227,8 +227,9 @@ function addElementToResults(element){
 
 function searchButtonClick() {
 
-	var searchText = document.getElementById('searchText')
-	console.log($(searchText))
+	var searchText = $(document.getElementById('searchText'))
+
+	console.log(searchText)
 
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
