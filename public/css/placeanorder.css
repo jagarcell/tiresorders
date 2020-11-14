@@ -16,13 +16,16 @@
   .ofertasSlideDiv{
     background-color: black;
     padding-top: 10px;
-    padding-bottom: 10px;  }
+    padding-bottom: 10px;  
+    position: relative;
+  }
 
   .ofertaNDiv{
     width: 90%;
     margin-left: 5%;
     opacity: 0%;
     transition: all 3s;
+    position: absolute;
   }
 
   .ofertaNComponent{
