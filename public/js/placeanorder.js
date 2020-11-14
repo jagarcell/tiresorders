@@ -46,7 +46,7 @@ $(document).ready(function placeAnOrderReady() {
 	document.getElementById("searchText").focus()
 
 	var ofertaNDivs = $(".ofertaNDiv")
-	window.setTimeInterval(function(elements, index){
+	window.setTimeout(function(elements, index){
 		console.log(elements)
 		console.log(index)
 	}, 3000, ofertaNDivs, 0)
