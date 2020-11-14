@@ -224,9 +224,9 @@ class Orders extends Model
     public function deleteLineByQbItemId($qbItemIds)
     {
         # code...
-        return $qbItemIds;
         $user = Auth::user();
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
+        return $qbItemIds;
 
         if(!is_null($orders) && count($orders) > 0){
             $order = $orders[0];
