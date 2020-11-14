@@ -223,16 +223,15 @@ class Orders extends Model
 
     public function deleteLineByQbItemId($qbItemIds)
     {
-                        return $qbItemIds;
-
+        
         # code...
         $user = Auth::user();
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
+                return $qbItemIds;
 
         if(!is_null($orders) && count($orders) > 0){
             $order = $orders[0];
             $deletedLines = [];
-                return $qbItemIds;
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
 
