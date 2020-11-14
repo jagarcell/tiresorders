@@ -77,6 +77,7 @@ $(document).ready(function placeAnOrderReady() {
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
 			ofertaNDivs[i].style.visibility = 'visible'
 			ofertaNDivs[0].style.opacity = 100
+			ofertaNDivs[0].checked = 1
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
