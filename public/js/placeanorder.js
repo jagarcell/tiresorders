@@ -88,7 +88,7 @@ $(document).ready(function placeAnOrderReady() {
 
 function specialClick(element) {
 	// body...
-	console.log(element.children)
+	console.log(element.children.getElementsByClassName('ofertaNDiv'))
 }
 
 function ofertaClick(element){
