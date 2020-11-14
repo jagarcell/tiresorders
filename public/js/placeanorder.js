@@ -50,7 +50,8 @@ $(document).ready(function placeAnOrderReady() {
 		for(var i = 0; i < ofertaNDivs.length; i++){
 			if(ofertaNDivs[i].style.opacity == 0)
 			{
-				ofertaNDivs[i].style.opacity = 100	
+				ofertaNDivs[i].style.opacity = 100
+				break;
 			}
 			else{
 				ofertaNDivs[i].style.opacity = 0	
