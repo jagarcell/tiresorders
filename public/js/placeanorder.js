@@ -166,7 +166,6 @@ function ofertaClick(element){
 						
 						if(oferta > 0){
 							price = oferta
-							console.log(price)
 						}
 
 						var CallToConfirm = ''
