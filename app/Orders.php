@@ -229,11 +229,11 @@ class Orders extends Model
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
 
         if(!is_null($orders) && count($orders) > 0){
-                return $qbItemIds;
             $order = $orders[0];
             $deletedLines = [];
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
+                return $qbItemIds;
 
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
                 $Inventory = (new Inventory());
