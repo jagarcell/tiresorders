@@ -86,6 +86,11 @@ $(document).ready(function placeAnOrderReady() {
 	}, 6000)
 })
 
+function specialClick(element) {
+	// body...
+	console.log(element.children)
+}
+
 function ofertaClick(element){
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')

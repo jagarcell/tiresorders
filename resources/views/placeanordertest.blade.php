@@ -25,7 +25,7 @@
 <body>
 @section('content')
 <div class="mainDiv">
-	<div class="ofertaWrap">
+	<div class="ofertaWrap" onclick="specialClick(this)">
 		<div class="ofertasDiv">
 			<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
 		</div>
