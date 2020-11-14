@@ -24,6 +24,11 @@ class InventoryController extends Controller
     	return (new QuickBooks())->placeAnOrder($request);
     }
 
+    public function SearchItemById(Request $request)
+    {
+        return (new Inventory())->SearchItemById($request);
+    }
+
     public function searchInventory(Request $request)
     {
     	# code...

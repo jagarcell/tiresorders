@@ -255,6 +255,13 @@ class Inventory extends Model
     	return $this->where('qbitemid', $qbItemId)->get();
     }
 
+    public function SearchItemById($request)
+    {
+        # code...
+        $localitemid = $request['localitemid'];
+        return FindItemByLocalItemId($localitemid);
+    }
+
     public function FindItemByLocalItemId($localitemid)
     {
         # code...
