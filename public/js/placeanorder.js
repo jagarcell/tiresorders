@@ -45,12 +45,16 @@ $(document).ready(function placeAnOrderReady() {
 
 	document.getElementById("searchText").focus()
 
-	var ofertaNDivs = $(".ofertaNDiv")
-	window.setTimeout(function(elements, index){
-		console.log(elements)
-		console.log(index)
-		window.setTimeout(this(this.elements, this.index + 1), 3000)
-	}, 3000, ofertaNDivs, 0)
+	window.setInterval(function(){
+		var ofertaNDivs = $(".ofertaNDiv")
+		for(var i = 0; i < ofertaNDivs.length; i++){
+			if(ofertaNDivs[i].style.opacity == 0)
+			{
+				ofertaNDivs[i].style.opacity = 100	
+			}
+		}
+		clea
+	}, 3000)
 })
 
 function searchButtonClick() {
