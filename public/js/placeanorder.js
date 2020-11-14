@@ -67,12 +67,12 @@ $(document).ready(function placeAnOrderReady() {
 			if(ofertaNDivs[i].checked == 0)
 			{
 				ofertaNDivs[i].checked = 1
-				ofertaNDivs[i].style.transition = 'all 1s'	
+				ofertaNDivs[i].style.transition = 'all 3s'	
 				ofertaNDivs[i].style.opacity = 100
 				break;
 			}
 			else{
-				ofertaNDivs[i].style.transition = 'all 3s'	
+				ofertaNDivs[i].style.transition = 'all 1s'	
 				ofertaNDivs[i].style.opacity = 0	
 			}
 		}
