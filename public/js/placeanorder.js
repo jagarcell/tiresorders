@@ -47,7 +47,8 @@ $(document).ready(function placeAnOrderReady() {
 
 	var ofertaNDivs = $(".ofertaNDiv")
 
-	console.log(ofertaNDivs)
+	console.log(ofertaNDivs[0].style.opacity)
+	console.log(ofertaNDivs[0].style.transition)
 
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
