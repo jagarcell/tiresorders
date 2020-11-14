@@ -227,9 +227,9 @@ class Orders extends Model
         # code...
         $user = Auth::user();
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
-                return $qbItemIds;
 
         if(!is_null($orders) && count($orders) > 0){
+                return $qbItemIds;
             $order = $orders[0];
             $deletedLines = [];
             foreach ($qbItemIds as $key => $qbItemId) {
