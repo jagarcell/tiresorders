@@ -45,6 +45,7 @@
   .labelClass{
     font-family: monospace;
     color: snow;
+    cursor: inherit;
   }
 
   .itemDescriptionFont{
