@@ -54,7 +54,7 @@ $(document).ready(function placeAnOrderReady() {
 		var ofertaNDivs = $(".ofertaNDiv")
 		var i = 0
 		for(i = 0; i < ofertaNDivs.length; i++){
-			if(ofertaNDivs[i].style.checked == 0)
+			if(ofertaNDivs[i].checked == 0)
 			{
 				ofertaNDivs[i].style.opacity = 100
 				break;
@@ -65,7 +65,7 @@ $(document).ready(function placeAnOrderReady() {
 		}
 		if(i == ofertaNDivs.length){
 			for(i = 0; i < ofertaNDivs.length; i++){
-				ofertaNDivs[i].style.checked = 0
+				ofertaNDivs[i].checked = 0
 			}
 		}
 
