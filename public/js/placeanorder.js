@@ -46,10 +46,10 @@ $(document).ready(function placeAnOrderReady() {
 	document.getElementById("searchText").focus()
 
 	var ofertaNDivs = $(".ofertaNDiv")
-	console.log(ofertaNDivs)
-	console.log(ofertaNDivs[0].style.opacity)
-//	ofertaNDivs[0].style.opacity = '0'
-
+	window.setTimeInterval(function(elements, index){
+		console.log(elements)
+		console.log(index)
+	}, 3000, ofertaNDivs, 0)
 })
 
 function searchButtonClick() {
