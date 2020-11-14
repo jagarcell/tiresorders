@@ -29,7 +29,7 @@
     text-align: center;
     height: 150px;
     vertical-align: middle;
-    opacity: 0%;
+    opacity: 100%;
     transition: all 3s;
   }
 
