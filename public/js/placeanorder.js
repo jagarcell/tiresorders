@@ -65,8 +65,9 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.opacity = 0	
 			}
 		}
-		if(i == ofertaNDivs.length){
-			for(i = 0; i < ofertaNDivs.length; i++){
+		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
+			ofertaNDivs[i].style.opacity = 100
+			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
 		}
