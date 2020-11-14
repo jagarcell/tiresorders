@@ -226,7 +226,6 @@ class Orders extends Model
         # code...
         $user = Auth::user();
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
-        return $qbItemIds;
 
         if(!is_null($orders) && count($orders) > 0){
             $order = $orders[0];
@@ -244,6 +243,9 @@ class Orders extends Model
                 }
                 array_push($deletedLines, $deletedLine);
             }
+
+            return $qbItemIds;
+
             $orderLines = (new OrderLines())->getOrderLinesByOrderId($order->id);
             if(is_null($orderLines) || count($orderLines) == 0){
                 try {
