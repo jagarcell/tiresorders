@@ -373,6 +373,14 @@
       display: block;
     }
 
+    .ofertasSlideDiv{
+      background-color: black;
+      padding-top: 10px;
+      padding-bottom: 10px;  
+      position: relative;
+      height: 150px;
+    }
+
     .itemDescriptionFont{
       font-size: large;
     }
