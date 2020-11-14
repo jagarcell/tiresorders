@@ -7,10 +7,14 @@
     padding-bottom: 40px;
   }
 
+  .ofertaWrap{
+    cursor: pointer;
+  }
 
   .ofertasDiv{
     width: 100%;
     margin-top: 5px;
+    cursor: inherit;
   }
 
   .ofertasSlideDiv{
@@ -19,6 +23,7 @@
     padding-bottom: 10px;  
     position: relative;
     height: 240px;
+    cursor: inherit;
   }
 
   .ofertaNDiv{
@@ -31,7 +36,7 @@
     top: 0;
     height: 100%;
     visibility: hidden;
-    cursor: pointer;
+    cursor: inherit;
   }
 
   .ofertaNComponent{
@@ -40,6 +45,7 @@
     text-align: center;
     height: 100%;
     vertical-align: middle;
+    cursor: inherit;
   }
 
   .labelClass{
