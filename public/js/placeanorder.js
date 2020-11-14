@@ -44,6 +44,7 @@ $(document).ready(function placeAnOrderReady() {
 	}
 
 	document.getElementById("searchText").focus()
+
 })
 
 function searchButtonClick() {

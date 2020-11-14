@@ -21,6 +21,8 @@
   .ofertaNDiv{
     width: 90%;
     margin-left: 5%;
+    opacity: 100%;
+    transition: all 3s;
   }
 
   .ofertaNComponent{
@@ -29,8 +31,6 @@
     text-align: center;
     height: 150px;
     vertical-align: middle;
-    opacity: 100%;
-    transition: all 3s;
   }
 
   .labelClass{
