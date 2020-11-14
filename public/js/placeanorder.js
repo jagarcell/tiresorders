@@ -47,7 +47,7 @@ $(document).ready(function placeAnOrderReady() {
 
 	var ofertaNDivs = $(".ofertaNDiv")
 	console.log(ofertaNDivs)
-	console.log(ofertaNDivs[0].css('opacity'))
+	console.log(ofertaNDivs[0].style.opacity)
 
 })
 
