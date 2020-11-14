@@ -40,7 +40,7 @@
 					<th class="secondCol alignRight" title="QUANTITY IN STOCK">In Stock</th>
 					<th class="thirdCol alignRight" title="QUANTITY IN CUSTOMERS SALES ORDERS">In SO</th>
 					<th class="fourthCol alignRight">Base Cost</th>
-					<th class="fourthCol alignRight">Oferta</th>
+					<th class="fourthCol alignRight" title="SPECIAL OFFER PRICE">Special</th>
 				</tr>
 			</thead>
 			<tbody>
