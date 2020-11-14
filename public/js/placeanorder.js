@@ -46,8 +46,11 @@ $(document).ready(function placeAnOrderReady() {
 	document.getElementById("searchText").focus()
 
 	var ofertaNDivs = $(".ofertaNDiv")
-	console.log(ofertaNDivs)
+
 	for(var i = 0; i < ofertaNDivs.length; i++){
+		if(i == 0){
+			ofertaNDivs[i].style.opacity = 100
+		}
 		ofertaNDivs[i].checked = 0
 	}
 
