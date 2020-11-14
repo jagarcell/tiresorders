@@ -88,7 +88,13 @@ $(document).ready(function placeAnOrderReady() {
 
 function specialClick(element) {
 	// body...
-	console.log(element.children[1].getElementsByClassName('ofertaNDiv'))
+	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
+	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
+		if(ofertaNDivs[i].style.visibility == 'visible'){
+			ofertaClick(ofertaNDivs[i])
+			break;
+		}
+	}
 }
 
 function ofertaClick(element){
