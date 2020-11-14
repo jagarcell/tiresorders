@@ -258,8 +258,8 @@ class Inventory extends Model
     public function SearchItemById($request)
     {
         # code...
-        return "OK";
         $localitemid = $request['localitemid'];
+        return $localitemid;
         return FindItemByLocalItemId($localitemid);
     }
 
