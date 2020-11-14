@@ -52,8 +52,10 @@ $(document).ready(function placeAnOrderReady() {
 			{
 				ofertaNDivs[i].style.opacity = 100	
 			}
+			else{
+				ofertaNDivs[i].style.opacity = 0	
+			}
 		}
-		clea
 	}, 3000)
 })
 
