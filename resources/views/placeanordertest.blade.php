@@ -30,7 +30,7 @@
 	</div>
 	<div class="ofertasSlideDiv">
 		@foreach($Inventory as $key => $item)
-			<div class="ofertaNDiv" onclick="ofertaClick(this)">
+			<div id="{{$item->id}}" class="ofertaNDiv" onclick="ofertaClick(this)">
 				<div class="ofertaNComponent">
 					<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
 				</div>
