@@ -45,6 +45,11 @@ $(document).ready(function placeAnOrderReady() {
 
 	document.getElementById("searchText").focus()
 
+	var ofertaNDivs = $(".ofertaNDiv")
+	for(var i = 0; i < ofertaNDivs.length; i++){
+		ofertaNDivs[i].checked = 0
+	}
+
 	window.setInterval(function(){
 		var ofertaNDivs = $(".ofertaNDiv")
 		for(var i = 0; i < ofertaNDivs.length; i++){
