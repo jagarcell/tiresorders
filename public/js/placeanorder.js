@@ -56,6 +56,7 @@ $(document).ready(function placeAnOrderReady() {
 		for(i = 0; i < ofertaNDivs.length; i++){
 			if(ofertaNDivs[i].checked == 0)
 			{
+				ofertaNDivs[i].checked = 1
 				ofertaNDivs[i].style.opacity = 100
 				break;
 			}
