@@ -235,6 +235,7 @@ class Orders extends Model
                 # code...
 
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
+                return $deletedLine;    
                 $Inventory = (new Inventory());
                 $Items = $Inventory->where('qbitemid', $qbItemId)->get();
                 if(count($Items) > 0){
