@@ -30,19 +30,17 @@
 	</div>
 	<div class="ofertasSlideDiv">
 		@foreach($Inventory as $key => $item)
-			<a href="#">
-				<div id="{{$item->id}}" class="ofertaNDiv" onclick="ofertaClick(this)">
-					<div class="ofertaNComponent">
-						<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
-					</div>
-					<div class="ofertaNComponent">
-						<img src="/public/{{$item->imgpath}}" class="productImageOferta">
-					</div>
-					<div class="ofertaNComponent ofertaBG" >
-						<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
-					</div>
-				</div>
-			</a>
+		<div id="{{$item->id}}" class="ofertaNDiv" onclick="ofertaClick(this)">
+			<div class="ofertaNComponent">
+				<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
+			</div>
+			<div class="ofertaNComponent">
+				<img src="/public/{{$item->imgpath}}" class="productImageOferta">
+			</div>
+			<div class="ofertaNComponent ofertaBG" >
+				<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
+			</div>
+		</div>
 		@endforeach
 	</div>
 	<div class="searchDiv">
