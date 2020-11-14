@@ -259,7 +259,7 @@ class Inventory extends Model
     {
         # code...
         $localitemid = $request['localitemid'];
-        return count(FindItemByLocalItemId($localitemid));
+        return count($this->FindItemByLocalItemId($localitemid));
     }
 
     public function FindItemByLocalItemId($localitemid)
