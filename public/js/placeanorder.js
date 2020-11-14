@@ -90,7 +90,7 @@ function specialClick(element) {
 	// body...
 	var clickElement = $(element)[0]
 	clickElement.saveClick = $(element)[0].attributes[0]
-	$(element)[0].attributes.remove('onclick')
+	$(element)[0].attributes[0].remove()
 	console.log($(element))
 
 	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
