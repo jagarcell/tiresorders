@@ -53,8 +53,8 @@ class OrdersController extends Controller
         /**
         * @param qbItemId
         */
-
         $qbItemIds = $request['qbItemIds'];
+        return $qbItemIds;
         return (new Orders())->deleteLineByQbItemId($qbItemIds);
     }
 
