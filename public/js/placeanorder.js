@@ -56,7 +56,7 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.opacity = 0	
 			}
 		}
-	}, 3000)
+	}, 6000)
 })
 
 function searchButtonClick() {
