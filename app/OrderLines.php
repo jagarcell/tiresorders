@@ -25,7 +25,7 @@ class OrderLines extends Model
         try {
             $deletedLine = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->delete();
             if(!is_null($deletedLine) && $deletedLine > 0){
-                return ['status' => 'success', 'qbitemid' => $qbItemId];
+                return ['status' => 'success', 'qbitemid' => $qbItemId, 'qty' => $deletedLine->qty];
             }
             else{
                 return ['status' => 'failed'];
