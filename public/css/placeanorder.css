@@ -24,7 +24,7 @@
   .ofertaNDiv{
     width: 90%;
     margin-left: 5%;
-    opacity: 0%;
+    opacity: 100%;
     transition: all 3s;
     position: absolute;
     left: 0;
