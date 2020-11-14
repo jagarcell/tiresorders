@@ -233,7 +233,7 @@ class Orders extends Model
             $deletedLines = [];
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
-                return $qbItemId;
+                return $qbItemIds;
 
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
                 $Inventory = (new Inventory());
