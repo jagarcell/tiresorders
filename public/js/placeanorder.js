@@ -50,8 +50,11 @@ $(document).ready(function placeAnOrderReady() {
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
 			ofertaNDivs[i].style.opacity = 100
+			ofertaNDivs[i].checked = 1
 		}
-		ofertaNDivs[i].checked = 0
+		else{
+			ofertaNDivs[i].checked = 0
+		}
 	}
 
 	window.setInterval(function(){
