@@ -89,6 +89,7 @@ $(document).ready(function placeAnOrderReady() {
 function specialClick(element) {
 	// body...
 	$(element)[0].attributes[0].disabled = true
+	console.log($(element))
 	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
 	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
 		if(ofertaNDivs[i].style.visibility == 'visible'){
