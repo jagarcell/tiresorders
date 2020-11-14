@@ -231,9 +231,9 @@ class Orders extends Model
         if(!is_null($orders) && count($orders) > 0){
             $order = $orders[0];
             $deletedLines = [];
+                return $qbItemIds;
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
-                return $qbItemIds;
 
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
                 $Inventory = (new Inventory());
