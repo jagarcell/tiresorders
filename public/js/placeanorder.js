@@ -88,8 +88,10 @@ $(document).ready(function placeAnOrderReady() {
 
 function specialClick(element) {
 	// body...
-	$(element)[0].onclick = null
-	console.log($(element))
+	var ofertaWrap = $(element)[0]
+	ofertaWrap.savedonclick = ofertaWrap.onclick
+	ofertaWrap.onclick = null
+
 	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
 	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
 		if(ofertaNDivs[i].style.visibility == 'visible'){
@@ -229,6 +231,8 @@ function addElementToResults(element){
 			}
 			document.getElementById('tireAnimImg').classList.remove('tireAnim')
 
+			var ofertaWrap = $('.ofertaWrap')[0]
+			ofertaWrap.onclick = ofertaWrap.savedonclick
 			// Enable back the search text bar
 			var searchText = $(document.getElementById('searchText'))
 			searchText[0].disabled = false
