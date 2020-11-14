@@ -87,6 +87,10 @@ $(document).ready(function placeAnOrderReady() {
 	}, 6000)
 })
 
+function ofertaClick(element){
+	console.log(element)
+}
+
 function searchButtonClick() {
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
@@ -155,20 +159,19 @@ function searchButtonClick() {
 						var oferta = data[i]. oferta
 						
 						if(oferta > 0){
-							console.log(oferta)
+							price = oferta
 						}
 
-						if(totalstock){
-
-						}
 						var CallToConfirm = ''
 						if(totalstock < 2)
 						{
 							CallToConfirm = 'Call To Confirm'
 						}
+
 						if(price === null){
 							price = 0
 						}
+
 						var imgpath = data[i].imgpath
 						if(imgpath.length == 0){
 							imgpath = 'img/noimg.jpg'
