@@ -70,8 +70,6 @@ function searchButtonClick() {
 
 	var searchText = document.getElementById('searchText')
 
-	console.log(searchText)
-
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
 	** When Search Button is Clicked we look in the Inventory

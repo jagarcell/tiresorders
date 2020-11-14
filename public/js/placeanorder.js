@@ -226,6 +226,10 @@ function addElementToResults(element){
 }
 
 function searchButtonClick() {
+
+	var searchText = document.getElementById('searchText')
+	console.log(searchText)
+
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
@@ -294,7 +298,6 @@ function searchButtonClick() {
 						
 						if(oferta > 0){
 							price = oferta
-							console.log(price)
 						}
 
 						var CallToConfirm = ''
