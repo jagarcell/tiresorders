@@ -46,6 +46,7 @@ $(document).ready(function placeAnOrderReady() {
 	document.getElementById("searchText").focus()
 
 	var ofertaNDivs = $(".ofertaNDiv")
+	console.log(ofertaNDivs[0])
 
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
