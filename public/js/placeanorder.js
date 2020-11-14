@@ -159,6 +159,7 @@ function searchButtonClick() {
 						
 						if(oferta > 0){
 							price = oferta
+							console.log(price)
 						}
 
 						var CallToConfirm = ''
