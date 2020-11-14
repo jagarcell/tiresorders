@@ -232,9 +232,10 @@ class Orders extends Model
             $deletedLines = [];
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
+                return $qbItemIds;
+
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
                 $Inventory = (new Inventory());
-            return $qbItemIds;
                 $Items = $Inventory->where('qbitemid', $qbItemId)->get();
                 if(count($Items) > 0){
                     $Item = $Items[0];
