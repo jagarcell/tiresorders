@@ -52,8 +52,9 @@ $(document).ready(function placeAnOrderReady() {
 
 	window.setInterval(function(){
 		var ofertaNDivs = $(".ofertaNDiv")
-		for(var i = 0; i < ofertaNDivs.length; i++){
-			if(ofertaNDivs[i].style.opacity == 0)
+		var i = 0
+		for(i = 0; i < ofertaNDivs.length; i++){
+			if(ofertaNDivs[i].style.checked == 0)
 			{
 				ofertaNDivs[i].style.opacity = 100
 				break;
@@ -62,6 +63,12 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.opacity = 0	
 			}
 		}
+		if(i == ofertaNDivs.length){
+			for(i = 0; i < ofertaNDivs.length; i++){
+				ofertaNDivs[i].style.checked = 0
+			}
+		}
+
 	}, 6000)
 })
 
