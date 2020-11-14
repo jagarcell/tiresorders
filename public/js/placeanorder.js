@@ -73,7 +73,7 @@ $(document).ready(function placeAnOrderReady() {
 				break;
 			}
 			else{
-				ofertaNDivs[i].style.transition = 'all 1s'	
+				ofertaNDivs[i].style.transition = 'all 0s'	
 				ofertaNDivs[i].style.opacity = 0
 				ofertaNDivs[i].style.visible = false
 
