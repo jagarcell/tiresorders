@@ -64,13 +64,13 @@ $(document).ready(function placeAnOrderReady() {
 			if(ofertaNDivs[i].checked == 0)
 			{
 				ofertaNDivs[i].checked = 1
-				ofertaNDivs[i].style.visible = true
+				ofertaNDivs[i].visible = true
 				ofertaNDivs[i].style.opacity = 100
 				break;
 			}
 			else{
 				ofertaNDivs[i].style.opacity = 0
-				ofertaNDivs[i].style.visible = false
+				ofertaNDivs[i].visible = false
 
 			}
 		}
