@@ -65,19 +65,16 @@ $(document).ready(function placeAnOrderReady() {
 			{
 				ofertaNDivs[i].checked = 1
 				ofertaNDivs[i].style.visible = true
-				ofertaNDivs[i].style.transition = 'opacity 3s'	
 				ofertaNDivs[i].style.opacity = 100
 				break;
 			}
 			else{
-				ofertaNDivs[i].style.transition = 'all 0s'	
 				ofertaNDivs[i].style.opacity = 0
 				ofertaNDivs[i].style.visible = false
 
 			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
-			ofertaNDivs[0].style.transition = 'opacity 3s'	
 			ofertaNDivs[0].style.opacity = 100
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
