@@ -99,6 +99,11 @@ function specialClick(element) {
 
 function addElementToResults(element){
 	// body...
+
+	// Disable search text bar to avoid search duplication 
+	var searchText = $(document.getElementById('searchText'))
+	searchText[0].disabled = true
+
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
 	** When Search Button is Clicked we look in the Inventory
@@ -221,15 +226,19 @@ function addElementToResults(element){
 				$('#noItemsFoundDiv').show()
 			}
 			document.getElementById('tireAnimImg').classList.remove('tireAnim')
+
+			// Enable back the search text bar
+			var searchText = $(document.getElementById('searchText'))
+			searchText[0].disabled = false
 		}
 	)
 }
 
 function searchButtonClick() {
 
+	// Disable search text bar to avoid search duplication 
 	var searchText = $(document.getElementById('searchText'))
 	searchText[0].disabled = true
-	console.log(searchText)
 
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
@@ -354,6 +363,10 @@ function searchButtonClick() {
 				$('#noItemsFoundDiv').show()
 			}
 			document.getElementById('tireAnimImg').classList.remove('tireAnim')
+
+			// Enable back the search text bar
+			var searchText = $(document.getElementById('searchText'))
+			searchText[0].disabled = false
 		}
 	)
 }
