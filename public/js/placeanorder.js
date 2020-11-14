@@ -91,13 +91,13 @@ function specialClick(element) {
 	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
 	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
 		if(ofertaNDivs[i].style.visibility == 'visible'){
-			ofertaClick(ofertaNDivs[i])
+			addElementToResults(ofertaNDivs[i])
 			break;
 		}
 	}
 }
 
-function ofertaClick(element){
+function addElementToResults(element){
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
