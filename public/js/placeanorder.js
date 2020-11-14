@@ -49,7 +49,7 @@ $(document).ready(function placeAnOrderReady() {
 
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
-			ofertaNDivs[i].style.visibility = visible
+			ofertaNDivs[i].style.visibility = 'visible'
 			ofertaNDivs[i].style.opacity = 100
 			ofertaNDivs[i].checked = 1
 		}
@@ -65,17 +65,17 @@ $(document).ready(function placeAnOrderReady() {
 			if(ofertaNDivs[i].checked == 0)
 			{
 				ofertaNDivs[i].checked = 1
-				ofertaNDivs[i].style.visibility = visible
+				ofertaNDivs[i].style.visibility = 'visible'
 				ofertaNDivs[i].style.opacity = 100
 				break;
 			}
 			else{
-				ofertaNDivs[i].style.visibility = hidden
+				ofertaNDivs[i].style.visibility = 'hidden'
 				ofertaNDivs[i].style.opacity = 0
 			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
-			ofertaNDivs[i].style.visibility = visible
+			ofertaNDivs[i].style.visibility = 'visible'
 			ofertaNDivs[0].style.opacity = 100
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
