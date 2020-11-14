@@ -23,9 +23,10 @@ class OrderLines extends Model
     public function deleteLineByQbItemIdAndOrderId($qbItemId, $orderId)
     {
         try {
-            $deletedLine = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->delete();
-            return $deletedLine;
-            if(!is_null($deletedLine) && $deletedLine > 0){
+            $deletedLine = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->get();
+            $nLinesDeleted = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->delete();
+
+            if($nLinesDeleted > 0){
                 return ['status' => 'success', 'qbitemid' => $qbItemId, 'qty' => $deletedLine->qty];
             }
             else{

@@ -234,13 +234,13 @@ class Orders extends Model
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
 
-                $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
-                return $deletedLine;    
+                $deletedLine = (new O
+
                 $Inventory = (new Inventory());
                 $Items = $Inventory->where('qbitemid', $qbItemId)->get();
                 if(count($Items) > 0){
                     $Item = $Items[0];
-                    return $qbItemIds;
+
                     $Inpurchaseorders = $Item->inpurchaseorders - $deletedLine->qty;
                     $Inventory->where('id', $Item->id)->update(
                         ['inpurchaseorders' => $Inpurchaseorders]);
