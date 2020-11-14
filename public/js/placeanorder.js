@@ -49,7 +49,7 @@ $(document).ready(function placeAnOrderReady() {
 	window.setTimeout(function(elements, index){
 		console.log(elements)
 		console.log(index)
-		window.setTimeout(elements, index + 1)
+		window.setTimeout(this(this.elements, this.index + 1), 3000)
 	}, 3000, ofertaNDivs, 0)
 })
 
