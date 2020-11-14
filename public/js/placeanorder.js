@@ -47,9 +47,6 @@ $(document).ready(function placeAnOrderReady() {
 
 	var ofertaNDivs = $(".ofertaNDiv")
 
-	console.log(ofertaNDivs[0].style.opacity)
-	console.log(ofertaNDivs[0].style.transition)
-
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
 			ofertaNDivs[i].style.opacity = 100
@@ -155,6 +152,12 @@ function searchButtonClick() {
 						var row = itemsTableBody.insertRow(-1)
 						row.id = data[i].qbitemid
 						var price = data[i].price
+						var oferta = data[i]. oferta
+						
+						if(oferta > 0){
+							console.log(oferta)
+						}
+
 						if(totalstock){
 
 						}
