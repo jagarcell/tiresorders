@@ -228,7 +228,7 @@ function addElementToResults(element){
 function searchButtonClick() {
 
 	var searchText = $(document.getElementById('searchText'))
-	searchText[0].disable = true
+	searchText[0].disabled = true
 	console.log(searchText)
 
 	// body...
