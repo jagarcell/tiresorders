@@ -45,6 +45,9 @@ $(document).ready(function placeAnOrderReady() {
 
 	document.getElementById("searchText").focus()
 
+	var ofertaNComponents = $(".ofertaNComponent")
+	console.log(ofertaNComponents)
+
 })
 
 function searchButtonClick() {
