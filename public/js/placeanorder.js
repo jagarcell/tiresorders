@@ -87,7 +87,7 @@ $(document).ready(function placeAnOrderReady() {
 })
 
 function ofertaClick(element){
-	console.log(element)
+	console.log(element.children)
 }
 
 function searchButtonClick() {
