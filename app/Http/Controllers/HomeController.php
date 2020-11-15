@@ -57,9 +57,9 @@ class HomeController extends Controller
     public function welcome(Request $request)
     {
         # code...
-        return "OK";
         $user = Auth::user();
         if(is_null($user)){
+        return "OK";
             return view('auth/login');
         }
         else{
