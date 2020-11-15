@@ -64,7 +64,7 @@ class HomeController extends Controller
         else{
             if($user->type == 'user'){
                 $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
-                return redirect('/placeanorder', ['Inventory' => $Inventory]);
+                return redirect('/placeanorder');
             }
             else{
                 return view('welcome', ['user' => $user]);
