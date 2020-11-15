@@ -607,7 +607,7 @@ class Orders extends Model
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-        return "OK";
+        return $result;
 
         if($result['status'] ==  'success'){
             $order = $result['order'];
