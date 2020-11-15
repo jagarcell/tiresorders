@@ -157,7 +157,7 @@ class Orders extends Model
         }
 
         if(count($orders) == 0){
-            return (['status' => 'no_order']);
+            return (['status' => 'success']);
         }
 
         $order = $orders[0];
