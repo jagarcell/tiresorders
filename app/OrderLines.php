@@ -24,7 +24,7 @@ class OrderLines extends Model
     {
         try {
             $deletedLine = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->get();
-            $qty = $deletedLine->qty;
+            $qty = $deletedLine[0]->qty;
             $nLinesDeleted = $this->where('item_qbid', $qbItemId)->where('order_id', $orderId)->delete();
 
             if($nLinesDeleted > 0){
