@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Users;
 use App\Mail\ApiCodeIntructions;
+use App\Inventory;
 
 class Api extends Model
 {
@@ -121,5 +122,10 @@ class Api extends Model
 			var_dump($value);
 		}
 */
+	}
+
+    public function PublicInventory($request)
+    {
+		return json_encode((new Inventory())->where('id', '>', -1)->get());		
 	}
 }

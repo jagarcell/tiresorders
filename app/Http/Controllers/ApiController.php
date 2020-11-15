@@ -24,4 +24,10 @@ class ApiController extends Controller
     {
         return (new Api())->ApiTest($request);
     }
+
+    public function PublicInventory(Request $request)
+    {
+        # code...
+        return (new Api())->PublicInventory($request);
+    }
 }
