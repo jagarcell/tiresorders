@@ -142,7 +142,7 @@ class Orders extends Model
                 for($i = 0; $i < count($order->lines); $i++){
                     $order->lines[$i]->subTotal =
                         $order->lines[$i]->price * $order->lines[$i]->qty;
-                    $order->total += $order->lines[$i]->subTotal; 
+                    $order->orderTotal += $order->lines[$i]->subTotal; 
                 }
                 return view('viewtheorder', ['order' => $order]);
             }
