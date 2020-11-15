@@ -128,7 +128,7 @@ Route::get('/deleteorderlines', "OrdersController@deleteOrderLines");
 
 Route::get('/viewtheorderbyorderid', 'OrdersController@ViewTheOrderByOrderId');
 
-Route::get('continueshopping', 'OrdersController@ContinueShopping');
+Route::get('/continueshopping', 'OrdersController@ContinueShopping');
 
 Route::get('/ordertoprint/{orderid}', function($orderid){
 	return view('ordertoprint', ['orderid' => $orderid]);
