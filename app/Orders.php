@@ -611,9 +611,9 @@ class Orders extends Model
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-
         if($result['status'] ==  'success'){
             $order = $result['order'];
+            return $order;
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
         $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
