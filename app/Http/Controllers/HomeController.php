@@ -59,7 +59,7 @@ class HomeController extends Controller
         # code...
         $user = Auth::user();
         if(is_null($user)){
-        return "OK";
+        return "OK 62";
             return view('auth/login');
         }
         else{
