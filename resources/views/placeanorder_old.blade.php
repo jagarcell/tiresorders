@@ -25,25 +25,23 @@
 <body>
 @section('content')
 <div class="mainDiv">
-	<div class="ofertaWrap" onclick="specialClick(this)">
-		<div class="ofertasDiv">
-			<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
-		</div>
-		<div class="ofertasSlideDiv">
-			@foreach($Inventory as $key => $item)
-			<div id="{{$item->id}}" class="ofertaNDiv">
-				<div class="ofertaNComponent">
-					<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
-				</div>
-				<div class="ofertaNComponent">
-					<img src="/public/{{$item->imgpath}}" class="productImageOferta">
-				</div>
-				<div class="ofertaNComponent ofertaBG" >
-					<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
-				</div>
+	<div class="ofertasDiv">
+		<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
+	</div>
+	<div class="ofertasSlideDiv">
+		@foreach($Inventory as $key => $item)
+		<div id="{{$item->id}}" class="ofertaNDiv" onclick="ofertaClick(this)">
+			<div class="ofertaNComponent">
+				<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
 			</div>
-			@endforeach
+			<div class="ofertaNComponent">
+				<img src="/public/{{$item->imgpath}}" class="productImageOferta">
+			</div>
+			<div class="ofertaNComponent ofertaBG" >
+				<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
+			</div>
 		</div>
+		@endforeach
 	</div>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
@@ -88,7 +86,6 @@
 	</div>
 	<br>
 	<br>
-	
 	<div class="poweredBy">
 		Powered By: <a target="_blank" href="https://www.allwebdone.com">www.allwebdone.com</a>
 	</div>

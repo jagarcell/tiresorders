@@ -44,9 +44,208 @@ $(document).ready(function placeAnOrderReady() {
 	}
 
 	document.getElementById("searchText").focus()
+
+	var ofertaNDivs = $(".ofertaNDiv")
+
+	for(var i = 0; i < ofertaNDivs.length; i++){
+		if(i == 0){
+			ofertaNDivs[i].style.visibility = 'visible'
+			ofertaNDivs[i].style.opacity = 100
+			ofertaNDivs[i].checked = 1
+		}
+		else{
+			ofertaNDivs[i].checked = 0
+		}
+	}
+
+	window.setInterval(function(){
+		var ofertaNDivs = $(".ofertaNDiv")
+		var i = 0
+		for(i = 0; i < ofertaNDivs.length; i++){
+			if(ofertaNDivs[i].checked == 0)
+			{
+				ofertaNDivs[i].checked = 1
+				ofertaNDivs[i].style.visibility = 'visible'
+				ofertaNDivs[i].style.opacity = 100
+				break;
+			}
+			else{
+				ofertaNDivs[i].style.visibility = 'hidden'
+				ofertaNDivs[i].style.opacity = 0
+			}
+		}
+		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
+			ofertaNDivs[0].checked = 1
+			ofertaNDivs[0].style.visibility = 'visible'
+			ofertaNDivs[0].style.opacity = 100
+			for(i = 1; i < ofertaNDivs.length; i++){
+				ofertaNDivs[i].checked = 0
+			}
+		}
+
+	}, 6000)
 })
 
+function specialClick(element) {
+	// body...
+	var ofertaWrap = $(element)[0]
+	ofertaWrap.savedonclick = ofertaWrap.onclick
+	ofertaWrap.onclick = null
+
+	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
+	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
+		if(ofertaNDivs[i].style.visibility == 'visible'){
+			addElementToResults(ofertaNDivs[i])
+			break;
+		}
+	}
+}
+
+function addElementToResults(element){
+	// body...
+
+	// Disable search text bar to avoid search duplication 
+	var searchText = $(document.getElementById('searchText'))
+	searchText[0].disabled = true
+
+	document.getElementById('tireAnimImg').classList.add('tireAnim')
+	/*
+	** When Search Button is Clicked we look in the Inventory
+	** for the records matching the searchText criteria
+	**
+	*/
+
+	/*
+	** Get Items table to be able to show or hide it
+	*/	
+	var itemsTable = $('#itemsTable')
+	/* Get the items table body in order to be able
+	** to add rows only to the table body
+	*/
+	var itemsTableBody = $('#itemsTable tbody')[0]
+
+	/* Get just the table body rows in order
+	** to be able to delete just these rows
+	*/
+	var itemsTableRows = $('#itemsTable tbody tr')
+	
+	var searchText = $('#searchText').val()
+
+
+	var totalTable = $('#totalTable')
+
+	/* Let's hide the order to show the items
+	** matching the search criteria
+	*/
+	$( "#orderDialog" ).hide()
+
+	/*
+	** Search the inventory
+	*/
+	$.get('/searchitembyid', 
+		{
+			id:element.id,
+		}, 
+		function seacrhItemByIdCallBack(data, status) {
+		// body...
+			// Clear the Items table body rows
+			itemsTableRows.remove()
+			if(data != null && data.length > 0){
+				/*
+				** If new matching items where found
+				** let's create the items table rows
+				*/
+				for (var i = 0; i < data.length; i++) {
+					var inpurchaseorders = data[i].inpurchaseorders
+					var instock = data[i].instock
+					if(inpurchaseorders == null){
+						inpurchaseorders = 0
+					}
+					if(instock === null){
+						instock = 0
+					}
+					var totalstock = Number(inpurchaseorders) +
+									Number(instock)
+
+					if(totalstock > 0){
+						var row = itemsTableBody.insertRow(-1)
+						row.id = data[i].qbitemid
+						var price = data[i].price
+						var oferta = data[i]. oferta
+						
+						if(oferta > 0){
+							price = oferta
+						}
+
+						var CallToConfirm = ''
+						if(totalstock < 2)
+						{
+							CallToConfirm = 'Call To Confirm'
+						}
+
+						if(price === null){
+							price = 0
+						}
+
+						var imgpath = data[i].imgpath
+						if(imgpath.length == 0){
+							imgpath = 'img/noimg.jpg'
+						}
+						if(!Number.parseFloat){
+							Number.parseFloat = window.parseFloat
+						}
+						row.innerHTML +=
+							'<td id="description_' + row.id + '" class="firstCol borderBottom">' +
+								'<div class="itemDescription"><img src="public/' + imgpath + '" class="productImage"></div>' +
+								'<div>' + data[i].name + '</div>' +
+							'</td>' +
+							'<td id="instock_' + row.id + '" class="secondCol borderBottom instock">' +
+								(totalstock > 24 ? "24+" : Number.parseFloat(totalstock).toFixed(0)) + 
+								'<div hidden="true" id="instock1_' + row.id + '">' + Number.parseFloat(totalstock).toFixed(0) + '</div>' + 
+								'<div class="CallToConfirm">' + 
+								CallToConfirm + '</div>' +
+							'</td>' +
+							'<td id="qty1_' + row.id + '" class="thirdCol borderBottom"><input id="qty2_' + row.id + '" type="number" value="1" min="0" max="' + totalstock + '" class="alignRight qtyInput" onchange="qtyChange(this)" onkeyup="qtyChange(this)"></td>' +
+							'<td id="price_' + row.id + '" class="fourthCol borderBottom price">' +
+								Number.parseFloat(price).toFixed(2) +
+							'</td>' +
+							'<td id="subtotal_' + row.id + '" class="fifthCol borderBottom price">' +
+								Number.parseFloat(price).toFixed(2) +
+							'</td>' +
+							'<td id="selected_' + row.id + '" class="sixCol textCentered"><input type="checkbox" class="editSelectedBox" onchange="selectChanged(this)"></td>'
+					}
+				}
+
+				// Items found, show the items table
+				itemsTable.show()
+				totalTable.show()
+				//Hide the No Items Found Message
+				$('#noItemsFoundDiv').hide()
+			}
+			else{
+				// No items found, hide the items table
+				itemsTable.hide()
+				totalTable.hide()
+				// Show No Items Found
+				$('#noItemsFoundDiv').show()
+			}
+			document.getElementById('tireAnimImg').classList.remove('tireAnim')
+
+			var ofertaWrap = $('.ofertaWrap')[0]
+			ofertaWrap.onclick = ofertaWrap.savedonclick
+			// Enable back the search text bar
+			var searchText = $(document.getElementById('searchText'))
+			searchText[0].disabled = false
+		}
+	)
+}
+
 function searchButtonClick() {
+
+	// Disable search text bar to avoid search duplication 
+	var searchText = $(document.getElementById('searchText'))
+	searchText[0].disabled = true
+
 	// body...
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
@@ -111,17 +310,22 @@ function searchButtonClick() {
 						var row = itemsTableBody.insertRow(-1)
 						row.id = data[i].qbitemid
 						var price = data[i].price
-						if(totalstock){
-
+						var oferta = data[i]. oferta
+						
+						if(oferta > 0){
+							price = oferta
 						}
+
 						var CallToConfirm = ''
 						if(totalstock < 2)
 						{
 							CallToConfirm = 'Call To Confirm'
 						}
+
 						if(price === null){
 							price = 0
 						}
+
 						var imgpath = data[i].imgpath
 						if(imgpath.length == 0){
 							imgpath = 'img/noimg.jpg'
@@ -165,6 +369,10 @@ function searchButtonClick() {
 				$('#noItemsFoundDiv').show()
 			}
 			document.getElementById('tireAnimImg').classList.remove('tireAnim')
+
+			// Enable back the search text bar
+			var searchText = $(document.getElementById('searchText'))
+			searchText[0].disabled = false
 		}
 	)
 }

@@ -40,6 +40,7 @@
 					<th class="secondCol alignRight" title="QUANTITY IN STOCK">In Stock</th>
 					<th class="thirdCol alignRight" title="QUANTITY IN CUSTOMERS SALES ORDERS">In SO</th>
 					<th class="fourthCol alignRight">Base Cost</th>
+					<th class="fourthCol alignRight" title="SPECIAL OFFER PRICE">Special</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,6 +73,7 @@
 					@else
 					<td class="fourthCol"><input type="text" value="{{sprintf('%.02f', $item->price)}}" class="alignRight" style="color: red;" onchange="priceChange(this)"></td>
 					@endif
+					<td class="fourthCol"><input type="text" value="{{sprintf('%.02f', $item->oferta)}}" class="alignRight" style="color: black;" onchange="ofertaChange(this)"></td>
 				</tr>
 				@endforeach
 			</tbody>

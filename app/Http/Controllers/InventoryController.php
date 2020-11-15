@@ -24,6 +24,11 @@ class InventoryController extends Controller
     	return (new QuickBooks())->placeAnOrder($request);
     }
 
+    public function SearchItemById(Request $request)
+    {
+        return (new Inventory())->SearchItemById($request);
+    }
+
     public function searchInventory(Request $request)
     {
     	# code...
@@ -62,6 +67,11 @@ class InventoryController extends Controller
         return (new Inventory())->UpdateItem($request);
     }
 
+    public function UpdateOferta(Request $request)
+    {
+        return (new Inventory())->UpdateOferta($request);
+    }
+    
     public function PriceLists(Request $request)
     {
         # code...

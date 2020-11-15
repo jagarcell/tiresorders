@@ -103,6 +103,9 @@ Route::get('/listusersqbcustomers', 'QuickBooksController@ListUsersQbCustomers')
 *     OrdersController		*
 ****************************/
 
+
+Route::get('/placeanordertest', 'OrdersController@placeAnOrderTest');
+
 Route::get('/placeanorder', 'OrdersController@placeAnOrder');
 
 Route::get('/additemtoorder', 'OrdersController@addItemToOrder');
@@ -125,7 +128,7 @@ Route::get('/deleteorderlines', "OrdersController@deleteOrderLines");
 
 Route::get('/viewtheorderbyorderid', 'OrdersController@ViewTheOrderByOrderId');
 
-Route::get('continueshopping', 'OrdersController@ContinueShopping');
+Route::get('/continueshopping', 'OrdersController@ContinueShopping');
 
 Route::get('/ordertoprint/{orderid}', function($orderid){
 	return view('ordertoprint', ['orderid' => $orderid]);
@@ -143,6 +146,8 @@ Route::get('/searchinventory', 'InventoryController@searchInventory');
 
 Route::get('/searchfor', 'InventoryController@SearchFor');
 
+Route::get('/searchitembyid', 'InventoryController@SearchItemById');
+
 Route::get('/syncronizeinventories', 'InventoryController@SyncronizeInventories');
 
 Route::get('/getinventory', 'InventoryController@GetInventory');
@@ -150,6 +155,8 @@ Route::get('/getinventory', 'InventoryController@GetInventory');
 Route::get('/inventory', 'InventoryController@Inventory');
 
 Route::get('/updateitem', 'InventoryController@UpdateItem');
+
+Route::get('/updateoferta', 'InventoryController@UpdateOferta');
 
 Route::get('/datetimeoffset', 'InventoryController@DateTimeOffset');
 

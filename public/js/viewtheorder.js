@@ -13,6 +13,7 @@ $(document).ready(function viewtheorderReady() {
 function continueShoppingButtonClick() {
 	// body...
 	var specialInstructions = ''
+	
 	if(typeof $('#additionalInstructionsText')[0] === 'undefined'){
 		window.open('/placeanorder', '_parent')
 		return
@@ -27,7 +28,8 @@ function continueShoppingButtonClick() {
 		function continueshoppingCallBack(data, status) {
 		// body...
 			window.open('/placeanorder', '_parent')
-	})
+		}
+	)
 }
 
 function checkForDeleteChange(element) {

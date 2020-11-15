@@ -23,10 +23,19 @@ class Orders extends Model
     	return $this->where('id', '>', -1)->get();
     }
 
+
+    public function placeAnOrderTest(Request $request)
+    {
+        # code...
+        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return view('/placeanordertest', ['Inventory' => $Inventory]);
+    }
+
     public function placeAnOrder(Request $request)
     {
-    	# code...
-        return view('/placeanorder');
+        # code...
+        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return view('/placeanorder', ['Inventory' => $Inventory]);
     }
 
     public function findOrderByUserId($userId)
@@ -129,6 +138,12 @@ class Orders extends Model
             if(isset($result['order'])){
                 $order = $result['order'];
                 $order->submit = "yes";
+                $order->total = 0;
+                for($i = 0; $i < count($order->lines); $i++){
+                    $order->lines[$i]->subTotal =
+                        $order->lines[$i]->price * $order->lines[$i]->qty;
+                    $order->orderTotal += $order->lines[$i]->subTotal; 
+                }
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
@@ -148,7 +163,7 @@ class Orders extends Model
         }
 
         if(count($orders) == 0){
-            return (['status' => 'success']);
+            return (['status' => 'success', 'order' => 'no_order']);
         }
 
         $order = $orders[0];
@@ -214,6 +229,7 @@ class Orders extends Model
 
     public function deleteLineByQbItemId($qbItemIds)
     {
+        
         # code...
         $user = Auth::user();
         $orders = $this->where('user_id', $user->id)->where('status', 'open')->get();
@@ -223,17 +239,22 @@ class Orders extends Model
             $deletedLines = [];
             foreach ($qbItemIds as $key => $qbItemId) {
                 # code...
+
                 $deletedLine = (new OrderLines())->deleteLineByQbItemIdAndOrderId($qbItemId, $order->id);
+
                 $Inventory = (new Inventory());
                 $Items = $Inventory->where('qbitemid', $qbItemId)->get();
                 if(count($Items) > 0){
                     $Item = $Items[0];
-                    $Inpurchaseorders = $Item->inpurchaseorders - $deletedLine->qty;
+
+                    $Inpurchaseorders = $Item->inpurchaseorders - $deletedLine['qty'];
                     $Inventory->where('id', $Item->id)->update(
                         ['inpurchaseorders' => $Inpurchaseorders]);
                 }
                 array_push($deletedLines, $deletedLine);
             }
+
+
             $orderLines = (new OrderLines())->getOrderLinesByOrderId($order->id);
             if(is_null($orderLines) || count($orderLines) == 0){
                 try {
@@ -481,7 +502,8 @@ class Orders extends Model
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
-                return redirect('/placeanorder');
+                $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+                return view('/placeanorder', ['Inventory' => $Inventory]);
             }
         }
 
@@ -587,16 +609,20 @@ class Orders extends Model
     {
         # code...
         $specialInstructions = $request['specialinstructions'];
+        if(is_null($specialInstructions)){
+            $specialInstructions = "";
+        }
 
         $user = Auth::user();
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-
-        if($result['status'] ==  'success'){
+        if($result['status'] ==  'success' && $result['order'] !== 'no_order'){
             $order = $result['order'];
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
-        return view('/placeanorder');
+
+        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return view('/placeanorder', ['Inventory' => $Inventory]);
     }
 }

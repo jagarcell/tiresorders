@@ -255,6 +255,13 @@ class Inventory extends Model
     	return $this->where('qbitemid', $qbItemId)->get();
     }
 
+    public function SearchItemById($request)
+    {
+        # code...
+        $id = $request['id'];
+        return $this->FindItemByLocalItemId($id);
+    }
+
     public function FindItemByLocalItemId($localitemid)
     {
         # code...
@@ -505,6 +512,17 @@ class Inventory extends Model
         $price = $request['price'];
         $message = "THE ITEM COULDN'T BE UPDATED";
         if($this->where('id', $id)->update(['price' => $price, 'pricemodified' => true]) > 0){
+            $message = "THE ITEM WAS SUCCESSFULLY UPDATED";
+        }
+        return ['message' => $message];
+    }
+
+    public function UpdateOferta(Request $request)
+    {
+        $id = $request['id'];
+        $oferta = $request['oferta'];
+        $message = "THE ITEM COULDN'T BE UPDATED";
+        if($this->where('id', $id)->update(['oferta' => $oferta]) > 0){
             $message = "THE ITEM WAS SUCCESSFULLY UPDATED";
         }
         return ['message' => $message];

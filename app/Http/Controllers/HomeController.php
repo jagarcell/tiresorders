@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\CompanyInfo;
+use App\Inventory;
 
 class HomeController extends Controller
 {
@@ -62,6 +63,7 @@ class HomeController extends Controller
         }
         else{
             if($user->type == 'user'){
+                $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
                 return redirect('/placeanorder');
             }
             else{

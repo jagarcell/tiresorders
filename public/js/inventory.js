@@ -68,6 +68,8 @@ $(document).ready(function InventoryReady() {
 function searchButtonClick() {
 
 
+	var searchText = document.getElementById('searchText')
+
 	document.getElementById('tireAnimImg').classList.add('tireAnim')
 	/*
 	** When Search Button is Clicked we look in the Inventory
@@ -232,6 +234,18 @@ function priceChange(element) {
 		updateMessage(data.message)
 		element.parentNode.parentNode.style.color = 'black'
 		element.style.color = 'black'
+	})
+}
+
+function ofertaChange(element) {
+	var itemId = element.parentNode.parentNode.id
+	var oferta = element.value
+	if(!Number.parseFloat){
+		Number.parseFloat = window.parseFloat
+	}
+	element.value = Number.parseFloat(element.value).toFixed(2)
+	$.get('/updateoferta', {id:itemId, oferta:oferta}, function updateItemCallBack(data, status) {
+		updateMessage(data.message)
 	})
 }
 

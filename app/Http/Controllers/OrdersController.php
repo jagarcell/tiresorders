@@ -17,10 +17,16 @@ class OrdersController extends Controller
         $this->middleware('auth');
     }
 
+    public function placeAnOrderTest(Request $request)
+    {
+        # code...
+        return (new Orders())->placeAnOrderTest($request);
+    }
+
     public function placeAnOrder(Request $request)
     {
-    	# code...
-    	return (new Orders())->placeAnOrder($request);
+        # code...
+        return (new Orders())->placeAnOrder($request);
     }
 
     public function getOrders(Request $request)
@@ -47,7 +53,6 @@ class OrdersController extends Controller
         /**
         * @param qbItemId
         */
-
         $qbItemIds = $request['qbItemIds'];
         return (new Orders())->deleteLineByQbItemId($qbItemIds);
     }
