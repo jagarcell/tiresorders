@@ -26,6 +26,8 @@ function continueShoppingButtonClick() {
 		},
 		function continueshoppingCallBack(data, status) {
 		// body...
+		console.log(data);
+		return;
 			window.open('/placeanorder', '_parent')
 	})
 }
@@ -77,7 +79,6 @@ function deleteSelectedClick() {
 			}, 
 			function deletelinebyqbitemidCallBack(data, status) {
 			// body...
-				console.log(data)
 				if(data.status == 'success'){
 					$('#deleteSelectedButton').hide()
 					$.each(data.deletedlines, function(index, deletedline){

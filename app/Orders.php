@@ -602,14 +602,12 @@ class Orders extends Model
     {
         # code...
         $specialInstructions = $request['specialinstructions'];
-        if($specialInstructions == null){
-            $specialInstructions = "";
-        }
 
         $user = Auth::user();
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
+        return "OK";
 
         if($result['status'] ==  'success'){
             $order = $result['order'];
