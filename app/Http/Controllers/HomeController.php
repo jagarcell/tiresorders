@@ -59,11 +59,11 @@ class HomeController extends Controller
         # code...
         $user = Auth::user();
         if(is_null($user)){
-        return "OK 62";
             return view('auth/login');
         }
         else{
             if($user->type == 'user'){
+        return "OK 62";
                 $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
                 return redirect('/placeanorder', ['Inventory' => $Inventory]);
             }
