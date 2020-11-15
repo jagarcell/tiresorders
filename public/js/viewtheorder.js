@@ -27,7 +27,6 @@ function continueShoppingButtonClick() {
 		},
 		function continueshoppingCallBack(data, status) {
 		// body...
-		console.log(data)
 			window.open('/placeanorder', '_parent')
 		}
 	)

@@ -157,7 +157,7 @@ class Orders extends Model
         }
 
         if(count($orders) == 0){
-            return (['status' => 'success']);
+            return (['status' => 'no_order']);
         }
 
         $order = $orders[0];
@@ -611,11 +611,11 @@ class Orders extends Model
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-        return $result;
-        if($result['status'] ==  'success'){
+        if($result['status'] ==  'success' ){
             $order = $result['order'];
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
+
         $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
         return view('/placeanorder', ['Inventory' => $Inventory]);
     }
