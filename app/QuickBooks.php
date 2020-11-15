@@ -105,7 +105,8 @@ class QuickBooks extends Model
                     $companyName = $companyInfo['CompanyName'];
                     session('companyName', $companyName);
                     $InventorySummary = json_decode($this->InventorySummary($request), true);
-                    return redirect('/placeanorder');
+                    $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+                    return redirect('/placeanorder', ['Inventory' => $Inventory]);
                     break;
                 case 'Invoice':
                     $companyInfo = json_decode($this->companyInfo(), true);

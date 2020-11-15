@@ -496,7 +496,8 @@ class Orders extends Model
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
-                return redirect('/placeanorder');
+                $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+                return redirect('/placeanorder', ['Inventory' => $Inventory]);
             }
         }
 
@@ -615,7 +616,7 @@ class Orders extends Model
             $order = $result['order'];
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
-            return $order;
-        return view('/placeanorder');
+        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return view('/placeanorder', ['Inventory' => $Inventory]);
     }
 }
