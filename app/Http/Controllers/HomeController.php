@@ -63,8 +63,8 @@ class HomeController extends Controller
         }
         else{
             if($user->type == 'user'){
-        return "OK 62";
                 $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        return "OK 62";
                 return redirect('/placeanorder', ['Inventory' => $Inventory]);
             }
             else{
