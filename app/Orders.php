@@ -602,7 +602,10 @@ class Orders extends Model
     {
         # code...
         $specialInstructions = $request['specialinstructions'];
- 
+        if(is_null($specialInstructions)){
+            $specialInstructions = "";
+        }
+
         $user = Auth::user();
         $request['userid'] = $user->id;
 
