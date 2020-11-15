@@ -183,6 +183,16 @@ Route::get('/searchesbydates', 'SearchesDatesController@SearchesByDates');
 Route::post('/fileupload', 'uploadController@fileUpload');
 
 /****************************
+*       apiController  	    *
+****************************/
+
+Route::post('api/inventory', 'ApiController@inventory');
+
+Route::get('api/createapikey', 'ApiController@CreateApiKey');
+
+Route::get('api/apitest', 'ApiController@ApiTest');
+
+/****************************
 *     errorsController  	*
 ****************************/
 
