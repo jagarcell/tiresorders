@@ -157,7 +157,7 @@ class Orders extends Model
         }
 
         if(count($orders) == 0){
-            return (['status' => 'success']);
+            return (['status' => 'success', 'order' => 'no_order']);
         }
 
         $order = $orders[0];
@@ -611,7 +611,7 @@ class Orders extends Model
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-        if($result['status'] ==  'success' ){
+        if($result['status'] ==  'success' && $result['order'] !== 'no_order'){
             $order = $result['order'];
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
