@@ -610,7 +610,7 @@ class Orders extends Model
 
         if($result['status'] ==  'success'){
             $order = $result['order'];
-            return $order;
+            return $order->id;
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
         return view('/placeanorder');
