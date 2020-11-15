@@ -602,7 +602,7 @@ class Orders extends Model
     {
         # code...
         $specialInstructions = $request['specialinstructions'];
-
+ 
         $user = Auth::user();
         $request['userid'] = $user->id;
 
@@ -610,8 +610,8 @@ class Orders extends Model
 
         if($result['status'] ==  'success'){
             $order = $result['order'];
-            return $order->id;
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
+       return $specialInstructions;
         }
         return view('/placeanorder');
     }
