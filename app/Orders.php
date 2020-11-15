@@ -241,7 +241,7 @@ class Orders extends Model
                 if(count($Items) > 0){
                     $Item = $Items[0];
 
-                    return $deletedLine->qty;
+                    return $deletedLine['qty'];
                     $Inpurchaseorders = $Item->inpurchaseorders - $deletedLine->qty;
                     $Inventory->where('id', $Item->id)->update(
                         ['inpurchaseorders' => $Inpurchaseorders]);
