@@ -607,10 +607,10 @@ class Orders extends Model
         $request['userid'] = $user->id;
 
         $result = $this->getOrderByUserId($request);
-        return $result;
 
         if($result['status'] ==  'success'){
             $order = $result['order'];
+            return $order;
             $this->where('id', $order->id)->update(['specialinstructions' => $specialInstructions]);
         }
         return view('/placeanorder');
