@@ -503,7 +503,7 @@ class Orders extends Model
             }
             else{
                 $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
-                return redirect('/placeanorder', ['Inventory' => $Inventory]);
+                return view('/placeanorder', ['Inventory' => $Inventory]);
             }
         }
 
