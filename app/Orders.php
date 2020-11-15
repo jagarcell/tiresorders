@@ -138,6 +138,10 @@ class Orders extends Model
             if(isset($result['order'])){
                 $order = $result['order'];
                 $order->submit = "yes";
+                for($i = 0; $i < count($order->lines); $i++){
+                    $order->lines[$i]->subTotal =
+                        $order->lines[$i]->price * $order->lines[$i]->qty;
+                }
                 return view('viewtheorder', ['order' => $order]);
             }
             else{
