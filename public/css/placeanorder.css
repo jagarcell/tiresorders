@@ -22,7 +22,7 @@
     padding-top: 10px;
     padding-bottom: 10px;  
     position: relative;
-    height: 240px;
+    height: 270px;
     cursor: inherit;
   }
 
@@ -34,7 +34,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    height: 100%;
+    height: inherit;
     visibility: hidden;
     cursor: inherit;
   }
@@ -43,7 +43,7 @@
     width: 30%;
     display: table-cell;
     text-align: center;
-    height: 100%;
+    height: inherit;
     vertical-align: middle;
     cursor: inherit;
   }
@@ -59,7 +59,7 @@
   }
 
   .itemSpecialFont{
-    font-size: x-large;
+    font-size: xxx-large;
   }
 
   .imageOferta{
