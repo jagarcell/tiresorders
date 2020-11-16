@@ -59,7 +59,7 @@
   }
 
   .itemSpecialFont{
-    font-size: x-large;
+    font-size: xxx-large;
   }
 
   .imageOferta{
@@ -376,7 +376,6 @@
   }
 }
 
-
 @media only screen and (max-width: 900px) {
   table, thead, tbody, th, td, tr {
     display: block;
@@ -386,9 +385,6 @@
     font-size: large;
   }
 
-  .itemSpecialFont{
-    font-size: xxx-large;
-  }
 }
 /* Styles For Mobile Screen */
 
@@ -399,8 +395,6 @@
 
     .ofertasSlideDiv{
       background-color: black;
-      padding-top: 10px;
-      padding-bottom: 10px;  
       position: relative;
       height: 150px;
     }
@@ -410,7 +404,7 @@
     }
 
     .itemSpecialFont{
-      font-size: xxx-large;
+      font-size: x-large;
     }
 
     .productImageOferta{
