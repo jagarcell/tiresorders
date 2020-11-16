@@ -572,6 +572,9 @@
       display: initial;
     }
 
+    .ofertasSlideDiv{
+      height: 350px;
+    }
     .itemDescriptionFont{
       font-size: 44px;
     }
