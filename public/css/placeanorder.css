@@ -40,12 +40,22 @@
   }
 
   .ofertaNComponent{
-    width: 30%;
     display: table-cell;
     text-align: center;
     height: inherit;
     vertical-align: middle;
     cursor: inherit;
+  }
+
+  .ofertaNComponent1{
+    width: 30%;
+  }
+
+  .ofertaNComponent2{
+    width: 30%;
+  }
+  .ofertaNComponent3{
+    width: 30%;
   }
 
   .labelClass{
@@ -385,6 +395,17 @@
     font-size: 36px;
   }
 
+  .ofertaNComponent1{
+    width: 30%;
+  }
+
+  .ofertaNComponent2{
+    width: 30%;
+  }
+  .ofertaNComponent3{
+    width: 30%;
+  }
+
 }
 /* Styles For Mobile Screen */
 
@@ -536,11 +557,22 @@
       display: initial;
     }
 
+    .ofertaNComponent1{
+      width: 30%;
+    }
+  
+    .ofertaNComponent2{
+      width: 20%;
+    }
+    .ofertaNComponent3{
+      width: 50%;
+    }
+  
     .itemDescriptionFont{
       font-size: large;
     }
   
     .itemSpecialFont{
-      font-size: xxx-large;
+      font-size: 36px;
     }
   }
