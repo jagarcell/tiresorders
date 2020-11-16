@@ -18,12 +18,12 @@
   }
 
   .ofertasSlideDiv{
-    width: 30%;
-    height: 270px;
-    text-align: center;
-    vertical-align: middle;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;  
+    position: relative;
+    height: 240px;
     cursor: inherit;
-    display: table-cell;  
   }
 
   .ofertaNDiv{
@@ -36,17 +36,16 @@
     top: 0;
     height: 100%;
     visibility: hidden;
-    cursor: inherit;    
-
+    cursor: inherit;
   }
 
   .ofertaNComponent{
     width: 30%;
-    height: 270px;
+    display: table-cell;
     text-align: center;
+    height: 100%;
     vertical-align: middle;
     cursor: inherit;
-    display: table-cell;  
   }
 
   .labelClass{
@@ -56,7 +55,7 @@
   }
 
   .itemDescriptionFont{
-    font-size: xxx-large;
+    font-size: xx-large;
   }
 
   .itemSpecialFont{
@@ -68,7 +67,7 @@
   }
 
   .ofertaBG{
-    background-image: url('/public/img/logos/specialLarge.png');
+    background-image: url('/public/img/logos/special.png');
     background-repeat: no-repeat;
     background-size: contain;  
     background-position: center;
