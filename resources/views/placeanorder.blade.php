@@ -27,7 +27,7 @@
 <div class="mainDiv">
 	<div class="ofertaWrap" onclick="specialClick(this)">
 		<div class="ofertasDiv">
-			<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
+			<img src="public/img/logos/blackfriday1.jpg" class="ofertasBanner">
 		</div>
 		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
