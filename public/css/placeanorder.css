@@ -567,7 +567,12 @@
       min-width: 85px;
       display: initial;
     }
-  
+
+    .ofertasDiv{
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
     .itemSpecialFont{
       font-size: 48px;
     }
