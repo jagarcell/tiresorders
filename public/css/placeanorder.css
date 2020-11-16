@@ -420,6 +420,11 @@
       height: 200px;
     }
 
+    .ofertasDiv{
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
     .ofertaNComponent1{
       width: 30%;
     }
@@ -566,11 +571,6 @@
       width: 15%;
       min-width: 85px;
       display: initial;
-    }
-
-    .ofertasDiv{
-      padding-left: 5px;
-      padding-right: 5px;
     }
     
     .itemSpecialFont{
