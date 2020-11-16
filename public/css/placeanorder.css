@@ -420,6 +420,17 @@
       height: 200px;
     }
 
+    .ofertaNComponent1{
+      width: 30%;
+    }
+  
+    .ofertaNComponent2{
+      width: 20%;
+    }
+    .ofertaNComponent3{
+      width: 50%;
+    }
+  
     .itemDescriptionFont{
       font-size: large;
     }
