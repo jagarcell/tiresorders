@@ -63,7 +63,7 @@
   }
 
   .itemDescriptionFont{
-    font-size: xx-large;
+    font-size: 54px;
   }
 
   .itemSpecialFont{
@@ -434,7 +434,7 @@
     }
   
     .itemDescriptionFont{
-      font-size: 18px;
+      font-size: 22px;
     }
 
     .itemSpecialFont{
@@ -569,7 +569,11 @@
       min-width: 85px;
       display: initial;
     }
-    
+
+    .itemDescriptionFont{
+      font-size: 48px;
+    }
+      
     .itemSpecialFont{
       font-size: 48px;
     }
