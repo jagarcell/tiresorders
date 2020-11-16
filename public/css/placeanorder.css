@@ -385,7 +385,7 @@
       outline: none;
   }
 }
-
+/*
 @media only screen and (min-width: 900px) {
   table, thead, tbody, th, td, tr {
     display: block;
@@ -407,6 +407,7 @@
   }
 
 }
+*/
 /* Styles For Mobile Screen */
 
 @media only screen and (max-width: 700px) {
@@ -567,7 +568,11 @@
       min-width: 85px;
       display: initial;
     }
-
+  
+    .itemSpecialFont{
+      font-size: 36px;
+    }
+  
     .ofertaNComponent1{
       width: 30%;
     }
@@ -578,8 +583,5 @@
     .ofertaNComponent3{
       width: 50%;
     }
-  
-    .itemDescriptionFont{
-      font-size: large;
-    }
+ 
   }
