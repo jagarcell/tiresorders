@@ -79,6 +79,8 @@
     background-repeat: no-repeat;
     background-size: contain;  
     background-position: center;
+    width: 80px;
+    height: 80px;
   }
 
   .ofertasBanner{
