@@ -418,12 +418,9 @@
       background-color: black;
       position: relative;
       height: 200px;
-    }
-
-    .ofertasDiv{
       padding-left: 5px;
       padding-right: 5px;
-    }
+      }
 
     .ofertaNComponent1{
       width: 30%;
