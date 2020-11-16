@@ -432,11 +432,11 @@
     }
   
     .itemDescriptionFont{
-      font-size: x-large;
+      font-size: large;
     }
 
     .itemSpecialFont{
-      font-size: xx-large;
+      font-size: 26px;
     }
 
     .productImageOferta{
