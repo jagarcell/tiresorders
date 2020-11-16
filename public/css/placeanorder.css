@@ -541,4 +541,12 @@
       min-width: 85px;
       display: initial;
     }
-}
+
+    .itemDescriptionFont{
+      font-size: large;
+    }
+  
+    .itemSpecialFont{
+      font-size: xxx-large;
+    }
+  }
