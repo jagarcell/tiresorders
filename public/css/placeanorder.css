@@ -381,6 +381,10 @@
     display: block;
   }
 
+  .itemSpecialFont{
+    font-size: 36px;
+  }
+
 }
 /* Styles For Mobile Screen */
 
@@ -392,7 +396,7 @@
     .ofertasSlideDiv{
       background-color: black;
       position: relative;
-      height: 150px;
+      height: 200px;
     }
 
     .itemDescriptionFont{
