@@ -67,7 +67,7 @@
   }
 
   .itemSpecialFont{
-    font-size: 36px;
+    font-size: 54px;
   }
 
   .imageOferta{
@@ -383,6 +383,7 @@
       outline: none;
   }
 }
+
 /*
 @media only screen and (min-width: 900px) {
   table, thead, tbody, th, td, tr {
@@ -568,7 +569,7 @@
     }
   
     .itemSpecialFont{
-      font-size: 36px;
+      font-size: 48px;
     }
   
     .ofertaNComponent1{
