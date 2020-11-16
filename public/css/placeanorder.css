@@ -411,7 +411,48 @@
 */
 /* Styles For Mobile Screen */
 
-@media only screen and (max-width: 700px) {
+/* Styles For Mobile Tablet Screen */
+
+@media only screen and (max-width: 900px) and (min-width: 701px){
+    .searchBar{
+      width: 83%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
+
+    .ofertasSlideDiv{
+      height: 350px;
+    }
+    .itemDescriptionFont{
+      font-size: 44px;
+    }
+      
+    .itemSpecialFont{
+      font-size: 44px;
+    }
+  
+    .ofertaNComponent1{
+      width: 30%;
+    }
+  
+    .ofertaNComponent2{
+      width: 20%;
+    }
+    .ofertaNComponent3{
+      width: 50%;
+    }
+ 
+  }
+
+  @media only screen and (max-width: 700px) {
     table, thead, tbody, th, td, tr {
       display: block;
     }
@@ -436,11 +477,11 @@
     }
   
     .itemDescriptionFont{
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .itemSpecialFont{
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .productImageOferta{
@@ -554,44 +595,3 @@
     td:nth-of-type(5):before { content: "SubTotal"; text-align: right; background-color: black; color: white;}
     td:nth-of-type(6):before { content: ""; text-align: right; background-color: black; color: white;}
 }
-
-/* Styles For Mobile Tablet Screen */
-
-@media only screen and (max-width: 900px) and (min-width: 701px){
-    .searchBar{
-      width: 83%;
-      border-radius: 20px;
-      border: solid dimgray 2px;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-
-    .searchButton{
-      width: 15%;
-      min-width: 85px;
-      display: initial;
-    }
-
-    .ofertasSlideDiv{
-      height: 350px;
-    }
-    .itemDescriptionFont{
-      font-size: 44px;
-    }
-      
-    .itemSpecialFont{
-      font-size: 44px;
-    }
-  
-    .ofertaNComponent1{
-      width: 30%;
-    }
-  
-    .ofertaNComponent2{
-      width: 20%;
-    }
-    .ofertaNComponent3{
-      width: 50%;
-    }
- 
-  }
