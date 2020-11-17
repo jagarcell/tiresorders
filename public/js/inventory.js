@@ -226,7 +226,6 @@ function imgClick(img) {
 }
 
 function priceChange(element) {
-	console.log('price')
 	var itemId = element.parentNode.parentNode.id
 	var price = element.value
 	if(!Number.parseFloat){
@@ -241,7 +240,6 @@ function priceChange(element) {
 }
 
 function ofertaChange(element) {
-	console.log('oferta')
 	var itemId = element.parentNode.parentNode.id
 	var oferta = element.value
 	if(!Number.parseFloat){
