@@ -289,10 +289,14 @@ class Inventory extends Model
             return ['status' => 'fail', 'message' => $e];
         }
 
+        // $Count1 IS SET TO 100 BECAUSE THAT IS THE
+        // TOP RESULTS THAT QUICKBOOKS WILL GIVE US
         $Count1 = $Count/100;
 
+        // ROUNDED COUNT
         $Fcount = floor($Count1);
 
+        // REMAINING COUNT AFTER ROUNDING
         $Rest = ($Count1 - $Fcount);
         if($Rest > 0){
             $Fcount += 1;
@@ -424,9 +428,9 @@ class Inventory extends Model
             if($qbItem->Type == 'Inventory'){
 
                 $localItems = $this->where('qbitemid', $qbItem->Id)->get();
+                // IF THE QBITEM IS NOT IN THE LOCAL
+                // INVENTORY THEN  WHE WILL CREATE IT
                 if(count($localItems) == 0){
-                    // IF THE QBITEM IS NOT IN THE LOCAL
-                    // INVENTORY THEN  WHE WILL CREATE IT
                     $Inventory = new Inventory();
                     $Inventory->qbitemid = $qbItem->Id;
                     if($qbItem->Description === null){
@@ -450,9 +454,9 @@ class Inventory extends Model
                     $Inventory->archive = false;
                     $Inventory->save();
                 }
+                // IF IT IS ALREADY IN THE LOCAL INVENTORY
+                // THEN LET'S UPDATE SOME NEEDED FIELDS
                 else{
-                    // IF IT IS ALREADY IN THE LOCAL INVENTORY
-                    // THEN LET'S UPDATE SOME NEEDED FIELDS
                     $localItem = $localItems[0];
                     if($qbItem->Description === null){
                         $localItem->description = "";
@@ -467,6 +471,10 @@ class Inventory extends Model
                         $localItem->name = $qbItem->Name;
                     }
                     $localItem->instock = $qbItem->QtyOnHand;
+                    if($localItem->price != $qbItem->UnitPrice){
+                        $localItem->price = $qbItem->UnitPrice;
+                        $localItem->pricemodified = false;
+                    }                    
                     $localItem->inpurchaseorders = 0;
                     $localItem->update = $update + 1;
                     $localItem->archive = false;
