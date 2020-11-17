@@ -471,12 +471,12 @@ class Inventory extends Model
                         $localItem->name = $qbItem->Name;
                     }
                     $localItem->instock = $qbItem->QtyOnHand;
-/*
+
                     if($localItem->price != $qbItem->UnitPrice){
                         $localItem->price = $qbItem->UnitPrice;
                         $localItem->pricemodified = false;
                     }                    
-*/
+
                     $localItem->inpurchaseorders = 0;
                     $localItem->update = $update + 1;
                     $localItem->archive = false;
