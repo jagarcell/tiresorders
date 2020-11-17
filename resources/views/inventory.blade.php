@@ -73,6 +73,7 @@
 					@else
 					<td class="fourthCol"><input type="text" value="{{sprintf('%.02f', $item->price)}}" class="alignRight" style="color: red;" onchange="priceChange(this)"></td>
 					@endif
+					
 					<td class="fourthCol borderBottom"><input type="text" value="{{sprintf('%.02f', $item->oferta)}}" class="alignRight" style="color: black;" onchange="ofertaChange(this)"></td>
 				</tr>
 				@endforeach
