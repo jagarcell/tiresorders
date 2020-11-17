@@ -158,7 +158,7 @@ function searchButtonClick() {
 							'<td class="secondCol alignRight">' + Number.parseFloat(invRow.instock).toFixed(2) + '</td>' +
 							'<td class="thirdCol alignRight">' + Number.parseFloat(invRow.inorders).toFixed(2) + '</td>' +
 							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.price).toFixed(2) + '" class="alignRight" onchange="priceChange(this)"></td>' +
-							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.oferta).toFixed(2) + '" class="alignRight"></td>'
+							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.oferta).toFixed(2) + '" class="alignRight" onchange="ofertaChange(this)"></td>'
 
 							Dropzone.options[invRow.id] = {
 								uploadMultiple : false,
