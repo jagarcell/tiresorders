@@ -22,30 +22,38 @@
     padding-top: 10px;
     padding-bottom: 10px;  
     position: relative;
-    height: 240px;
+    height: 450px;
     cursor: inherit;
   }
 
   .ofertaNDiv{
-    width: 90%;
-    margin-left: 5%;
     opacity: 0%;
     transition: opacity 3s;
     position: absolute;
     left: 0;
     top: 0;
-    height: 100%;
+    height: inherit;
     visibility: hidden;
     cursor: inherit;
   }
 
   .ofertaNComponent{
-    width: 30%;
     display: table-cell;
     text-align: center;
-    height: 100%;
+    height: inherit;
     vertical-align: middle;
     cursor: inherit;
+  }
+
+  .ofertaNComponent1{
+    width: 30%;
+  }
+
+  .ofertaNComponent2{
+    width: 30%;
+  }
+  .ofertaNComponent3{
+    width: 30%;
   }
 
   .labelClass{
@@ -55,11 +63,11 @@
   }
 
   .itemDescriptionFont{
-    font-size: xx-large;
+    font-size: 54px;
   }
 
   .itemSpecialFont{
-    font-size: x-large;
+    font-size: 54px;
   }
 
   .imageOferta{
@@ -71,6 +79,8 @@
     background-repeat: no-repeat;
     background-size: contain;  
     background-position: center;
+    width: 80px;
+    height: 80px;
   }
 
   .ofertasBanner{
@@ -376,27 +386,102 @@
   }
 }
 
+/*
+@media only screen and (min-width: 900px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  .itemSpecialFont{
+    font-size: 36px;
+  }
+
+  .ofertaNComponent1{
+    width: 30%;
+  }
+
+  .ofertaNComponent2{
+    width: 20%;
+  }
+  .ofertaNComponent3{
+    width: 50%;
+  }
+
+}
+*/
 /* Styles For Mobile Screen */
 
-@media only screen and (max-width: 700px) {
+/* Styles For Mobile Tablet Screen */
+
+@media only screen and (max-width: 900px) and (min-width: 701px){
+    .searchBar{
+      width: 83%;
+      border-radius: 20px;
+      border: solid dimgray 2px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .searchButton{
+      width: 15%;
+      min-width: 85px;
+      display: initial;
+    }
+
+    .ofertasSlideDiv{
+      height: 350px;
+    }
+    .itemDescriptionFont{
+      font-size: 44px;
+    }
+      
+    .itemSpecialFont{
+      font-size: 44px;
+    }
+  
+    .ofertaNComponent1{
+      width: 30%;
+    }
+  
+    .ofertaNComponent2{
+      width: 20%;
+    }
+    .ofertaNComponent3{
+      width: 50%;
+    }
+ 
+  }
+
+  @media only screen and (max-width: 700px) {
     table, thead, tbody, th, td, tr {
       display: block;
     }
 
     .ofertasSlideDiv{
       background-color: black;
-      padding-top: 10px;
-      padding-bottom: 10px;  
       position: relative;
-      height: 150px;
+      height: 250px;
+      padding-left: 5px;
+      padding-right: 5px;
     }
 
+    .ofertaNComponent1{
+      width: 30%;
+    }
+  
+    .ofertaNComponent2{
+      width: auto;
+    }
+    .ofertaNComponent3{
+      width: 60%;
+    }
+  
     .itemDescriptionFont{
-      font-size: large;
+      font-size: 20px;
     }
 
     .itemSpecialFont{
-      font-size: large;
+      font-size: 20px;
     }
 
     .productImageOferta{
@@ -509,22 +594,4 @@
     td:nth-of-type(4):before { content: "Price"; text-align: right; background-color: black; color: white;}
     td:nth-of-type(5):before { content: "SubTotal"; text-align: right; background-color: black; color: white;}
     td:nth-of-type(6):before { content: ""; text-align: right; background-color: black; color: white;}
-}
-
-/* Styles For Mobile Tablet Screen */
-
-@media only screen and (max-width: 900px) and (min-width: 701px){
-    .searchBar{
-      width: 83%;
-      border-radius: 20px;
-      border: solid dimgray 2px;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-
-    .searchButton{
-      width: 15%;
-      min-width: 85px;
-      display: initial;
-    }
 }

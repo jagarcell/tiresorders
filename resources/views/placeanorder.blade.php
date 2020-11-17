@@ -27,18 +27,18 @@
 <div class="mainDiv">
 	<div class="ofertaWrap" onclick="specialClick(this)">
 		<div class="ofertasDiv">
-			<img src="public/img/logos/blackfriday.jpg" class="ofertasBanner">
+			<img src="public/img/logos/blackfriday1.jpg" class="ofertasBanner">
 		</div>
 		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
-				<div class="ofertaNComponent">
+				<div class="ofertaNComponent ofertaNComponent1">
 					<LABEL class="labelClass itemDescriptionFont">{{$item->name}}</LABEL>
 				</div>
-				<div class="ofertaNComponent">
+				<div class="ofertaNComponent ofertaNComponent2">
 					<img src="/public/{{$item->imgpath}}" class="productImageOferta">
 				</div>
-				<div class="ofertaNComponent ofertaBG" >
+				<div class="ofertaNComponent ofertaNComponent3 ofertaBG" >
 					<LABEL class="labelClass itemSpecialFont">${{$item->oferta}}</LABEL>
 				</div>
 			</div>

@@ -127,6 +127,7 @@ function searchButtonClick() {
 						invRow.instock = invRow.instock == null ? 0 : invRow.instock
 						invRow.inorders = invRow.inorders == null ? 0 : invRow.inorders
 						invRow.price = invRow.price == null ? 0 : invRow.price
+						invRow.oferta = invRow.oferta == null ? 0 : invRow.oferta
 						invRow.name = invRow.name == null ? '' : invRow.name
 						var imgDiv =
 							'<div>' +
@@ -156,7 +157,8 @@ function searchButtonClick() {
 							'<td class="secondCol alignRight">' + Number.parseFloat(invRow.inpurchaseorders).toFixed(2) + '</td>' +
 							'<td class="secondCol alignRight">' + Number.parseFloat(invRow.instock).toFixed(2) + '</td>' +
 							'<td class="thirdCol alignRight">' + Number.parseFloat(invRow.inorders).toFixed(2) + '</td>' +
-							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.price).toFixed(2) + '" class="alignRight" onchange="priceChange(this)"></td>'
+							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.price).toFixed(2) + '" class="alignRight" onchange="priceChange(this)"></td>' +
+							'<td class="fourthCol"><input type="text" value="' + Number.parseFloat(invRow.oferta).toFixed(2) + '" class="alignRight"></td>'
 
 							Dropzone.options[invRow.id] = {
 								uploadMultiple : false,
