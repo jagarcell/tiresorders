@@ -126,10 +126,6 @@ class Api extends Model
 
     public function PublicInventory($request)
     {
-		return (new Inventory())->where('id', '>', -1)->orderBy('price')->get(['name', 'imgpath']);
-	}
-
-	public function PublicInventorySearch($request){
 		return (new Inventory())->SearchPublicInventory($request);
 	}
 }

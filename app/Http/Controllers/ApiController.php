@@ -30,8 +30,4 @@ class ApiController extends Controller
         # code...
         return (new Api())->PublicInventory($request);
     }
-
-	public function PublicInventorySearch(Request $request){
-		return (new Api())->PublicInventorySearch($request);
-	}
 }
