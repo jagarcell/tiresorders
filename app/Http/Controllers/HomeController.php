@@ -68,7 +68,6 @@ class HomeController extends Controller
             }
             else{
                 return redirect('/inventory');
-                return view('welcome', ['user' => $user]);
             }
         }
     }
