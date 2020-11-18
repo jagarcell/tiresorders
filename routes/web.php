@@ -194,6 +194,8 @@ Route::get('api/apitest', 'ApiController@ApiTest');
 
 Route::get('api/publicinventory', 'ApiController@PublicInventory');
 
+Route::get('api/publicinventorysearch', 'ApiController@PublicInventorySearch');
+
 /****************************
 *     errorsController  	*
 ****************************/

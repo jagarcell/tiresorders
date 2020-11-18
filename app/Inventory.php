@@ -585,4 +585,35 @@ class Inventory extends Model
         // RETURN CLIENT DATE
         return ['serverdate' => $serverdate, 'clientdate' => $clientdate];
     }
+
+    public function SearchPublicInventory($request){
+        $Description = $request['description'];
+        $Keywords = explode(" ", $Description);
+
+        $query = " where archive = 0 and ((description like '%";
+        $first = true;
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            if($first){
+                $first = false;
+                $query = $query . $Keyword . "%')";
+            }
+            else{
+                $query = $query . "or (description like '%" . $Keyword . "%')";
+            }
+        }
+        foreach ($Keywords as $key => $Keyword) {
+            # code...
+            $query = $query . "or (name like '%" . $Keyword . "%')";
+        }
+
+        $query = $query . ")";
+
+        $queryorder = " order by price";
+
+        // ... WE SEARCH THE LOCAL INVENTORY
+        $basequery = "select name, imgpath from inventories";
+        $Items = DB::select($basequery . $query . $queryorder);
+        return $Items;
+    }
 }

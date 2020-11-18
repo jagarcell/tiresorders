@@ -128,4 +128,8 @@ class Api extends Model
     {
 		return json_encode((new Inventory())->where('id', '>', -1)->get(['name', 'imgpath']), true);
 	}
+
+	public function PublicInventorySearch($request){
+		return (new Inventory())->SearchPublicInventory($request);
+	}
 }
