@@ -126,6 +126,7 @@ class Api extends Model
 
     public function PublicInventory($request)
     {
+		return "OK";
 		return ((new Inventory())->where('id', '>', -1)->get(['name', 'imgpath']));
 	}
 }
