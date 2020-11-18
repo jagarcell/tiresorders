@@ -126,6 +126,6 @@ class Api extends Model
 
     public function PublicInventory($request)
     {
-		return json_decode((new Inventory())->where('id', '>', -1)->get(['name', 'imgpath']), true);
+		return json_encode((new Inventory())->where('id', '>', -1)->get(['name', 'imgpath']), true);
 	}
 }
