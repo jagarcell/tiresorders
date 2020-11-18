@@ -614,9 +614,9 @@ class Inventory extends Model
         // ... WE SEARCH THE LOCAL INVENTORY
         $basequery = "select name, imgpath from inventories";
         $Items = DB::select($basequery . $query . $queryorder);
-        foreach($Items as $key => $Item){
-            if(strlen($Item->imgpath) == 0){
-                $Item->imgpath = "img/noimg.jpg";
+        for($i = 0; $i < count($Items); $i++){
+            if(strlen($Items[$i]->imgpath) == 0){
+                $Items[$i]->imgpath = "img/noimg.jpg";
             }
         }
         return $Items;
