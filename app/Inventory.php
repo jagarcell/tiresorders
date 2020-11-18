@@ -590,7 +590,7 @@ class Inventory extends Model
         $Description = $request['description'];
         $Keywords = explode(" ", $Description);
 
-        $query = " where archive = 0 and ((description like '%";
+        $query = " where archive = 0 and instock > 0 and ((description like '%";
         $first = true;
         foreach ($Keywords as $key => $Keyword) {
             # code...
