@@ -609,7 +609,7 @@ class Inventory extends Model
 
         $query = $query . ")";
 
-        $queryorder = " order by price";
+        $queryorder = " order by instock desc";
 
         // ... WE SEARCH THE LOCAL INVENTORY
         $basequery = "select name, imgpath from inventories";
