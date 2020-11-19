@@ -22,6 +22,12 @@ Route::get('/test', function(){
 Auth::routes(['verify' => true]);
 
 /****************************
+* 		LoginController		*
+****************************/
+
+Route::get('/authenticate', 'LoginController@authenticate');
+
+/****************************
 * 		HomeController		*
 ****************************/
 
