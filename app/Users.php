@@ -232,4 +232,17 @@ class Users extends Model
             return ['status' => 'fail', 'message' => $e];
         }
     }
+
+    public function Authenticate($request){
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return "OK";
+        }
+        else{
+            return "REJECTED";
+        }
+
+    }
 }

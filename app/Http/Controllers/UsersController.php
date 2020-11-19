@@ -73,4 +73,9 @@ class UsersController extends Controller
         # code...
         return (new Users())->FindUsersByPriceList($request);
     }
+
+    public function Authenticate(Request $request)
+    {
+        return (new Users())->authenticate($request);
+    }
 }

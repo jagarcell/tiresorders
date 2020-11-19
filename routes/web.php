@@ -31,11 +31,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/getcompany', 'HomeController@getCompany');
 
-Route::get('/authenticate', 'HomeController@authenticate');
-
 /****************************
 * 		UsersController		*
 ****************************/
+
+Route::get('/authenticate', 'UsersController@Authenticate');
 
 Route::get('/hasadmin', 'UsersController@hasAdmin');
 
