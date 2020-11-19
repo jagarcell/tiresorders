@@ -22,12 +22,6 @@ Route::get('/test', function(){
 Auth::routes(['verify' => true]);
 
 /****************************
-* 		LoginController		*
-****************************/
-
-Route::get('/authenticate', 'Auth\LoginController@authenticate');
-
-/****************************
 * 		HomeController		*
 ****************************/
 
@@ -36,6 +30,8 @@ Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/getcompany', 'HomeController@getCompany');
+
+Route::get('/authenticate', 'HomeController@authenticate');
 
 /****************************
 * 		UsersController		*
