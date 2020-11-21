@@ -35,7 +35,7 @@ Route::get('/getcompany', 'HomeController@getCompany');
 * 		UsersController		*
 ****************************/
 
-Route::post('/authenticate', 'UsersController@Authenticate');
+Route::get('/authenticate', 'UsersController@Authenticate');
 
 Route::get('/hasadmin', 'UsersController@hasAdmin');
 
