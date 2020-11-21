@@ -234,7 +234,6 @@ class Users extends Model
     }
 
     public function Authenticate($request){
-        return ['email' => $request['email']];
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

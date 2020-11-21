@@ -186,7 +186,7 @@ Route::post('/fileupload', 'uploadController@fileUpload');
 *       apiController  	    *
 ****************************/
 
-Route::post('/api/authenticate', 'UsersController@Authenticate');
+Route::post('api/authenticate', 'UsersController@Authenticate');
 
 Route::post('api/inventory', 'ApiController@inventory');
 
