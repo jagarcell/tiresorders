@@ -35,8 +35,6 @@ Route::get('/getcompany', 'HomeController@getCompany');
 * 		UsersController		*
 ****************************/
 
-Route::get('/authenticate', 'UsersController@Authenticate');
-
 Route::get('/hasadmin', 'UsersController@hasAdmin');
 
 Route::get('/listusers', 'UsersController@listUsers')->middleware('checkifcanregister');
@@ -187,6 +185,8 @@ Route::post('/fileupload', 'uploadController@fileUpload');
 /****************************
 *       apiController  	    *
 ****************************/
+
+Route::post('/api/authenticate', 'UsersController@Authenticate');
 
 Route::post('api/inventory', 'ApiController@inventory');
 
