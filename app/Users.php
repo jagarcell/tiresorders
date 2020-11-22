@@ -240,7 +240,7 @@ class Users extends Model
             $users = $this->where('email', $credentials->email)->get();
             if(count($users) > 0){
                 $apikey = $user[0]->api_key;
-                return ['status' => 'OK', 'apikey' => $apikey];
+                return ['apikey' => $apikey];
             }
         }
         return "REJECTED";
