@@ -235,7 +235,7 @@ class Users extends Model
 
     public function Authenticate($request){
         $credentials = $request->only('email', 'password');
-        return['email' => $request['email'], 'password' => $request['password']];
+
         if (Auth::attempt($credentials)) {
             $users = $this->where('email', $request['email'])->get();
             if(count($users) > 0){
