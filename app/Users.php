@@ -237,6 +237,7 @@ class Users extends Model
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            return['status' => 'OK'];
             $users = $this->where('email', $request['email'])->get();
             if(count($users) > 0){
                 $apikey = $user[0]->api_key;
