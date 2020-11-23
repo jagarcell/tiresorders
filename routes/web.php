@@ -213,3 +213,7 @@ route::get('privacy', function(){
 route::get('eula', function(){
 	return view('eula');
 });
+
+route::get('searchinventory1', 'InventoryController@searchInventory1');
+
+route::get('searchforapi1', 'InventoryController@SearchForApi1');
