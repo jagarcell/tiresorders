@@ -223,7 +223,7 @@ class Inventory extends Model
         
 
         // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
-        $LocalInventory = $this->where('update', '<', $update + 1)->update(['archive' => true]);
+        $this->where('update', '<', $update + 1)->update(['archive' => 1, 'update' => 0]);
 
         // ADD TO THE STOCK THE PRODUCTS IN PURCHASE ORDERS
         try {
