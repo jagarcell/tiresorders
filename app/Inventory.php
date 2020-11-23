@@ -12,112 +12,9 @@ use \Datetime;
 use \DateInterval;
 use \DateTimeZone;
 
-/*
-use App\QuickBooks;
-use App\QbToken;
-use App\PriceLevels;
-use App\Orders;
-use App\OrderLines;
-use App\ItemsInOrders;
-use App\PriceListHeader;
-use App\PriceListLines;
-use App\QbItemsIds;
-use App\Searches;
-use App\SearchesDates;
-*/
-
 class Inventory extends Model
 {
     //
-    public function SearchForApi(Request $request)
-    {
-        # code...
-        $api_key = $request['api_key'];
-
-        $Items = array();
-
-        $ItemsForApi = array();
-
-        $users = (new Users())->where('api_key', $api_key)->get();
-
-        if(count($users) == 0){
-            return $ItemsForApi;
-        }
-
-        $user = $users[0];
-
-        // IF THE USER IS WORKING WITH PRICE LEVELS ...
-        if($user->pricelevels_id != -1){
-            // ... WE SEARCH THE LOCAL INVENTORY
-            $basequery = "select * from inventories";
-            $Items = DB::select($basequery);
-            $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
-
-            if(count($priceLevels)){
-                $priceLevel = $priceLevels[0];
-                $factor = 1;
-                if($priceLevel->type == 'increment'){
-                    $factor = 1 + $priceLevel->percentage/100;
-                }
-                else{
-                    $factor = 1 - $priceLevel->percentage/100;
-                }
-                foreach ($Items as $key => $Item) {
-                    $Item->price *= $factor;
-
-                    $imgpath = "";
-                    if(strlen($Item->imgpath) > 0){
-                        $imgpath = env('APP_URL') . "/public/" . $Item->imgpath;
-                    }
-                    array_push(
-                        $ItemsForApi, 
-                        (object) [
-                            'description' => $Item->name,
-                            'instock' => $Item->instock,
-                            'price' => $Item->price,
-                            'imgpath' => $imgpath,
-                        ]
-                    );
-                }
-            }
-        }
-
-        // IF THE USER IS WORKING WITH PRICE LISTS ...
-        if($user->pricelist_id != -1){
-            // ... WE SEARCH THE PRICE LIST
-            $basequery = "select * from price_list_lines";
-
-            $Items = DB::select($basequery . " where pricelistheaderid=" . $user->pricelist_id);
-
-            foreach ($Items as $key => $Item) {
-                # code...
-                $LocalItems = $this->FindItemByLocalItemId($Item->localitemid);
-
-                if(count($LocalItems) > 0){
-                    $LocalItem = $LocalItems[0];
-
-                    $imgpath = "";
-
-                    if(strlen($LocalItem->imgpath) > 0){
-                        $imgpath = env('APP_URL') . "/public/" . $LocalItem->imgpath;
-                    }
-
-                    array_push(
-                        $ItemsForApi, 
-                        (object)[
-                            'description' => $LocalItem->name,
-                            'instock' => $LocalItem->instock,
-                            'price' => $LocalItem->price,
-                            'imgpath' => $imgpath,
-                        ]
-                    );
-                }
-            }
-        }
-
-        return ($ItemsForApi);
-    }
-
     public function searchInventory(Request $request)
     {
     	# code...
@@ -585,12 +482,13 @@ class Inventory extends Model
         // RETURN CLIENT DATE
         return ['serverdate' => $serverdate, 'clientdate' => $clientdate];
     }
-
-    public function SearchPublicInventory($request){
+    public function SearchForApi(Request $request)
+    {
+    	# code...
         $Description = $request['description'];
         $Keywords = explode(" ", $Description);
 
-        $query = " where archive = 0 and instock > 0 and ((description like '%";
+        $query = " where archive = 0 and ((description like '%";
         $first = true;
         foreach ($Keywords as $key => $Keyword) {
             # code...
@@ -609,19 +507,118 @@ class Inventory extends Model
 
         $query = $query . ")";
 
-        $queryorder = " order by instock desc";
+        $queryorder = " order by price";
 
-        // ... WE SEARCH THE LOCAL INVENTORY
-        $basequery = "select name, imgpath from inventories";
-        $Items = DB::select($basequery . $query . $queryorder);
-        for($i = 0; $i < count($Items); $i++){
-            if(strlen($Items[$i]->imgpath) == 0){
-                $Items[$i]->imgpath = env('APP_URL') . "/public/" . "img/noimg.jpg";
-            }
-            else{
-                $Items[$i]->imgpath = env('APP_URL') . "/public/" . $Items[$i]->imgpath;                
+        $user = Auth::user();
+        $Items = array();
+
+        // IF THE USER IS WORKING WITH PRICE LEVELS ...
+        if($user->pricelevels_id != -1){
+            // ... WE SEARCH THE LOCAL INVENTORY
+            $basequery = "select * from inventories";
+            $Items = DB::select($basequery . $query . $queryorder);
+            $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
+
+            if(count($priceLevels)){
+                $priceLevel = $priceLevels[0];
+                $factor = 1;
+                if($priceLevel->type == 'increment'){
+                    $factor = 1 + $priceLevel->percentage/100;
+                }
+                else{
+                    $factor = 1 - $priceLevel->percentage/100;
+                }
+                foreach ($Items as $key => $Item) {
+                    $Item->price *= $factor;
+                }
             }
         }
-        return $Items;
+
+        // IF THE USER IS WORKING WITH PRICE LISTS ...
+        if($user->pricelist_id != -1){
+            // ... WE SEARCH THE PRICE LIST
+            $basequery = "select * from price_list_lines";
+
+            $Items = DB::select($basequery . $query . " and pricelistheaderid=" . $user->pricelist_id . $queryorder);
+
+            foreach ($Items as $key => $Item) {
+                # code...
+                $LocalItems = $this->FindItemByLocalItemId($Item->localitemid);
+                if(count($LocalItems) > 0){
+                    $LocalItem = $LocalItems[0];
+                    $Item->qbitemid = $LocalItem->qbitemid;
+                    $Item->instock = $LocalItem->instock;
+                    $Item->inorders = $LocalItem->inorders;
+                    $Item->modified = $LocalItem->pricemodified;
+                    $Item->imgpath = $LocalItem->imgpath;
+                    $Item->inpurchaseorders = $LocalItem->inpurchaseorders;
+                }
+            }
+        }
+
+        try {
+            DB::beginTransaction();
+            $searchId = -1;
+            // WE CHECK IF THERE WERE MATCHES
+            if(count($Items) > 0){
+                // IF WE FOUND SOMETHING THEN MATCH=TRUE
+                $searchId = (new Searches())->AddNewSearch($Description, true);
+            }
+            else{
+                $searchId = (new Searches())->AddNewSearch($Description, false);
+            }
+
+            $searchDate = date("Y-m-d H:i:s");
+
+            (new SearchesDates())->AddNewDate($user->id, $searchId, $searchDate);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
+    	return $Items;
+    }
+
+    public function SearchPublicInventory($request){
+        if(isset($request['api_key'])){
+            return $this->SearchForApi($request);
+        }
+        else{
+            $Description = $request['description'];
+            $Keywords = explode(" ", $Description);
+    
+            $query = " where archive = 0 and instock > 0 and ((description like '%";
+            $first = true;
+            foreach ($Keywords as $key => $Keyword) {
+                # code...
+                if($first){
+                    $first = false;
+                    $query = $query . $Keyword . "%')";
+                }
+                else{
+                    $query = $query . "or (description like '%" . $Keyword . "%')";
+                }
+            }
+            foreach ($Keywords as $key => $Keyword) {
+                # code...
+                $query = $query . "or (name like '%" . $Keyword . "%')";
+            }
+    
+            $query = $query . ")";
+    
+            $queryorder = " order by instock desc";
+    
+            // ... WE SEARCH THE LOCAL INVENTORY
+            $basequery = "select name, imgpath from inventories";
+            $Items = DB::select($basequery . $query . $queryorder);
+            for($i = 0; $i < count($Items); $i++){
+                if(strlen($Items[$i]->imgpath) == 0){
+                    $Items[$i]->imgpath = env('APP_URL') . "/public/" . "img/noimg.jpg";
+                }
+                else{
+                    $Items[$i]->imgpath = env('APP_URL') . "/public/" . $Items[$i]->imgpath;                
+                }
+            }
+            return $Items;
+        }
     }
 }
