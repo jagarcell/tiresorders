@@ -233,6 +233,7 @@ class Users extends Model
         }
     }
 
+    // FOR API AUTHENTICATION    
     public function Authenticate($request){
         $credentials = $request->only('email', 'password');
 

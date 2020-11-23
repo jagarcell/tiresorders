@@ -72,10 +72,10 @@ class Inventory extends Model
                     array_push(
                         $ItemsForApi, 
                         (object) [
-                            'Description' => $Item->name,
-                            'Instock' => $Item->instock,
-                            'Price' => $Item->price,
-                            'Imgpath' => $imgpath,
+                            'description' => $Item->name,
+                            'instock' => $Item->instock,
+                            'price' => $Item->price,
+                            'imgpath' => $imgpath,
                         ]
                     );
                 }
@@ -105,10 +105,10 @@ class Inventory extends Model
                     array_push(
                         $ItemsForApi, 
                         (object)[
-                            'Description' => $LocalItem->name,
-                            'Instock' => $LocalItem->instock,
-                            'Price' => $LocalItem->price,
-                            'Imgpath' => $imgpath,
+                            'description' => $LocalItem->name,
+                            'instock' => $LocalItem->instock,
+                            'price' => $LocalItem->price,
+                            'imgpath' => $imgpath,
                         ]
                     );
                 }
@@ -616,7 +616,7 @@ class Inventory extends Model
         $Items = DB::select($basequery . $query . $queryorder);
         for($i = 0; $i < count($Items); $i++){
             if(strlen($Items[$i]->imgpath) == 0){
-                $Items[$i]->imgpath = "img/noimg.jpg";
+                $Items[$i]->imgpath =  env('APP_URL') . "/public/" . $Item->imgpath;
             }
         }
         return $Items;
