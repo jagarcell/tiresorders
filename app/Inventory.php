@@ -12,6 +12,8 @@ use \Datetime;
 use \DateInterval;
 use \DateTimeZone;
 
+use App\Users;
+
 class Inventory extends Model
 {
     //
@@ -484,8 +486,10 @@ class Inventory extends Model
     }
     public function SearchForApi(Request $request)
     {
-    	# code...
+        # code...
+        $api_key = $request['api_key'];
         $Description = $request['description'];
+
         $Keywords = explode(" ", $Description);
 
         $query = " where archive = 0 and ((description like '%";
@@ -509,8 +513,13 @@ class Inventory extends Model
 
         $queryorder = " order by price";
 
-        $user = Auth::user();
         $Items = array();
+        $Users = (new Users())->where('api_key', $api_key)->get();
+        if(count($Users) == 0){
+            return $Items;
+        }
+
+        $user = $Users[0];
 
         // IF THE USER IS WORKING WITH PRICE LEVELS ...
         if($user->pricelevels_id != -1){
