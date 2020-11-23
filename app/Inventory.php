@@ -510,8 +510,8 @@ class Inventory extends Model
         }
 
         $query = $query . ")";
-
-        $queryorder = " order by price";
+    
+        $queryorder = " order by instock desc";
 
         $Items = array();
         $Users = (new Users())->where('api_key', $api_key)->get();
@@ -524,9 +524,14 @@ class Inventory extends Model
         if($user->type == 'admin'){
             // ... WE SEARCH THE LOCAL INVENTORY
             $basequery = "select * from inventories";
-            $Items = DB::select($basequery . $query);
+            $Items = DB::select($basequery . $query) . $queryorder;
             for($i = 0; $i < count($Items); $i++){
-                $Items[$i]->imgpath = env('APP_URL') . "/public/" . $Items[$i]->imgpath;
+                if(strlen($Items[0]->imgpath) == 0){
+                    $Items[$i]->imgpath = env('APP_URL') . "/public/" . 'img/noimg.jpg';
+                }
+                else{
+                    $Items[$i]->imgpath = env('APP_URL') . "/public/" . $Items[$i]->imgpath;
+                }
             }
             return $Items;
         }
