@@ -526,7 +526,7 @@ class Inventory extends Model
             $basequery = "select * from inventories";
             $Items = DB::select($basequery . $query) . $queryorder;
             for($i = 0; $i < count($Items); $i++){
-                if(strlen($Items[0]->imgpath) == 0){
+                if(strlen($Items[$i]->imgpath) == 0){
                     $Items[$i]->imgpath = env('APP_URL') . "/public/" . 'img/noimg.jpg';
                 }
                 else{
