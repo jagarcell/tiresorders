@@ -216,4 +216,4 @@ route::get('eula', function(){
 
 route::get('searchinventory1', 'InventoryController@searchInventory1');
 
-route::get('searchforapi1', 'InventoryController@SearchForApi1');
+route::get('api/searchforapi1', 'InventoryController@SearchForApi1');
