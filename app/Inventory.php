@@ -616,7 +616,10 @@ class Inventory extends Model
         $Items = DB::select($basequery . $query . $queryorder);
         for($i = 0; $i < count($Items); $i++){
             if(strlen($Items[$i]->imgpath) == 0){
-                $Items[$i]->imgpath =  env('APP_URL') . "/public/" . $Item->imgpath;
+                $Items[$i]->imgpath = env('APP_URL') . "/public/" . "img/noimg.jpg";
+            }
+            else{
+                $Items[$i]->imgpath = env('APP_URL') . "/public/" . $Items[$i]->imgpath;                
             }
         }
         return $Items;
