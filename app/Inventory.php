@@ -524,7 +524,7 @@ class Inventory extends Model
         if($user->type == 'admin'){
             // ... WE SEARCH THE LOCAL INVENTORY
             $basequery = "select * from inventories";
-            $Items = DB::select($basequery . $query . $queryorder);
+            $Items = DB::select($basequery . $query);
             return $Items;
         }
         else{
