@@ -516,74 +516,82 @@ class Inventory extends Model
         $Items = array();
         $Users = (new Users())->where('api_key', $api_key)->get();
         if(count($Users) == 0){
-            return ['status' => 'NO USERS'];
             return $Items;
         }
 
         $user = $Users[0];
 
-        // IF THE USER IS WORKING WITH PRICE LEVELS ...
-        if($user->pricelevels_id != -1){
+        if($user->type == 'admin'){
             // ... WE SEARCH THE LOCAL INVENTORY
             $basequery = "select * from inventories";
             $Items = DB::select($basequery . $query . $queryorder);
-            $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
+            return $Items;
+        }
+        else{
+            // IF THE USER IS WORKING WITH PRICE LEVELS ...
+            if($user->pricelevels_id != -1){
+                // ... WE SEARCH THE LOCAL INVENTORY
+                $basequery = "select * from inventories";
+                $Items = DB::select($basequery . $query . $queryorder);
+                $priceLevels = (new PriceLevels())->getPriceLevel($user->pricelevels_id);
 
-            if(count($priceLevels)){
-                $priceLevel = $priceLevels[0];
-                $factor = 1;
-                if($priceLevel->type == 'increment'){
-                    $factor = 1 + $priceLevel->percentage/100;
+                if(count($priceLevels)){
+                    $priceLevel = $priceLevels[0];
+                    $factor = 1;
+                    if($priceLevel->type == 'increment'){
+                        $factor = 1 + $priceLevel->percentage/100;
+                    }
+                    else{
+                        $factor = 1 - $priceLevel->percentage/100;
+                    }
+                    foreach ($Items as $key => $Item) {
+                        $Item->price *= $factor;
+                    }
+                }
+            }
+
+            // IF THE USER IS WORKING WITH PRICE LISTS ...
+            if($user->pricelist_id != -1){
+                // ... WE SEARCH THE PRICE LIST
+                $basequery = "select * from price_list_lines";
+
+                $Items = DB::select($basequery . $query . " and pricelistheaderid=" . $user->pricelist_id . $queryorder);
+
+                foreach ($Items as $key => $Item) {
+                    # code...
+                    $LocalItems = $this->FindItemByLocalItemId($Item->localitemid);
+                    if(count($LocalItems) > 0){
+                        $LocalItem = $LocalItems[0];
+                        $Item->qbitemid = $LocalItem->qbitemid;
+                        $Item->instock = $LocalItem->instock;
+                        $Item->inorders = $LocalItem->inorders;
+                        $Item->modified = $LocalItem->pricemodified;
+                        $Item->imgpath = $LocalItem->imgpath;
+                        $Item->inpurchaseorders = $LocalItem->inpurchaseorders;
+                    }
+                }
+            }
+
+            try {
+                DB::beginTransaction();
+                $searchId = -1;
+                // WE CHECK IF THERE WERE MATCHES
+                if(count($Items) > 0){
+                    // IF WE FOUND SOMETHING THEN MATCH=TRUE
+                    $searchId = (new Searches())->AddNewSearch($Description, true);
                 }
                 else{
-                    $factor = 1 - $priceLevel->percentage/100;
+                    $searchId = (new Searches())->AddNewSearch($Description, false);
                 }
-                foreach ($Items as $key => $Item) {
-                    $Item->price *= $factor;
-                }
-            }
-        }
 
-        // IF THE USER IS WORKING WITH PRICE LISTS ...
-        if($user->pricelist_id != -1){
-            // ... WE SEARCH THE PRICE LIST
-            $basequery = "select * from price_list_lines";
+                $searchDate = date("Y-m-d H:i:s");
 
-            $Items = DB::select($basequery . $query . " and pricelistheaderid=" . $user->pricelist_id . $queryorder);
-
-            foreach ($Items as $key => $Item) {
-                # code...
-                $LocalItems = $this->FindItemByLocalItemId($Item->localitemid);
-                if(count($LocalItems) > 0){
-                    $LocalItem = $LocalItems[0];
-                    $Item->qbitemid = $LocalItem->qbitemid;
-                    $Item->instock = $LocalItem->instock;
-                    $Item->inorders = $LocalItem->inorders;
-                    $Item->modified = $LocalItem->pricemodified;
-                    $Item->imgpath = $LocalItem->imgpath;
-                    $Item->inpurchaseorders = $LocalItem->inpurchaseorders;
-                }
-            }
-        }
-
-        try {
-            DB::beginTransaction();
-            $searchId = -1;
-            // WE CHECK IF THERE WERE MATCHES
-            if(count($Items) > 0){
-                // IF WE FOUND SOMETHING THEN MATCH=TRUE
-                $searchId = (new Searches())->AddNewSearch($Description, true);
-            }
-            else{
-                $searchId = (new Searches())->AddNewSearch($Description, false);
+                (new SearchesDates())->AddNewDate($user->id, $searchId, $searchDate);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
             }
 
-            $searchDate = date("Y-m-d H:i:s");
-
-            (new SearchesDates())->AddNewDate($user->id, $searchId, $searchDate);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
         }
     	return $Items;
     }
