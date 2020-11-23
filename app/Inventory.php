@@ -263,7 +263,11 @@ class Inventory extends Model
         $user = Auth::user();
         $Items = array();
 
-        return ['pricelevels_id' => $user->pricelevels_id, 'pricelist_id' => $user->pricelist_id];
+        return [
+            'pricelevels_id' => $user->pricelevels_id, 
+            'pricelist_id' => $user->pricelist_id,
+            'userid' => $user->id,
+        ];
 
         // IF THE USER IS WORKING WITH PRICE LEVELS ...
         if($user->pricelevels_id != -1){
@@ -369,7 +373,11 @@ class Inventory extends Model
 
         $user = $Users[0];
         
-        return ['pricelevels_id' => $user->pricelevels_id, 'pricelist_id' => $user->pricelist_id];
+        return [
+            'pricelevels_id' => $user->pricelevels_id, 
+            'pricelist_id' => $user->pricelist_id,
+            'userid' =>$user->id,
+        ];
 
 
         if($user->type == 'admin'){
