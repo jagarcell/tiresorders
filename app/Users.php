@@ -241,7 +241,8 @@ class Users extends Model
             $users = $this->where('email', $request['email'])->get();
             if(count($users) > 0){
                 $apikey = $users[0]->api_key;
-                return ['status' => 'OK', 'apiKey' => $apikey];
+                $userType = $users[0]->type;
+                return ['status' => 'OK', 'apiKey' => $apikey, 'userType' => $userType];
             }
         }
         return ['status' => 'DECLINED'];
