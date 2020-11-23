@@ -516,6 +516,7 @@ class Inventory extends Model
         $Items = array();
         $Users = (new Users())->where('api_key', $api_key)->get();
         if(count($Users) == 0){
+            return ['status' => 'NO USERS'];
             return $Items;
         }
 
