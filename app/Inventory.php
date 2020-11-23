@@ -524,7 +524,7 @@ class Inventory extends Model
         if($user->type == 'admin'){
             // ... WE SEARCH THE LOCAL INVENTORY
             $basequery = "select * from inventories";
-            $Items = DB::select($basequery . $query) . $queryorder;
+            $Items = DB::select($basequery . $query . $queryorder);
             for($i = 0; $i < count($Items); $i++){
                 if(strlen($Items[$i]->imgpath) == 0){
                     $Items[$i]->imgpath = env('APP_URL') . "/public/" . 'img/noimg.jpg';
