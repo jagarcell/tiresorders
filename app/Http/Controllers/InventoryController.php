@@ -11,13 +11,6 @@ use Carbon\Carbon;
 class InventoryController extends Controller
 {
     //
-    public function searchInventory1(Request $request){
-        return (new Inventory())->searchInventory1($request);
-    }
-
-    public function SearchForApi1(Request $request){
-        return (new Inventory())->SearchForApi1($request);
-    }
 
     public function __construct()
     {
