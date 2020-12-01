@@ -29,6 +29,7 @@
 		<div class="ofertasDiv">
 			<img src="public/img/logos/blackfriday1.jpg" class="ofertasBanner">
 		</div>
+		@if(count($Inventory) > 0)	
 		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
@@ -44,6 +45,7 @@
 			</div>
 			@endforeach
 		</div>
+		@endif
 	</div>
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
