@@ -22,11 +22,9 @@
     background-color: black;
     padding-top: 10px;
     padding-bottom: 10px;
- /*   position: relative; */
-    min-height: fit-content;
-/*    height: 450px; */
+    position: relative;
+    height: 450px; 
     cursor: inherit;
-    display: none;
   }
 
   .ofertaNDiv{
