@@ -9,13 +9,13 @@
 
   .ofertaWrap{
     cursor: pointer;
-    display: none;
   }
 
   .ofertasDiv{
     width: 100%;
     margin-top: 5px;
     cursor: inherit;
+    display: none;
   }
 
   .ofertasSlideDiv{
@@ -23,7 +23,7 @@
     padding-top: 10px;
     padding-bottom: 10px;  
     position: relative;
-    height: 450px;
+/*    height: 450px; */
     cursor: inherit;
   }
 
