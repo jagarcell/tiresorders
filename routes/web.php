@@ -186,13 +186,15 @@ Route::post('/fileupload', 'uploadController@fileUpload');
 *       apiController  	    *
 ****************************/
 
+Route::post('api/authenticate', 'UsersController@Authenticate');
+
 Route::post('api/inventory', 'ApiController@inventory');
 
 Route::get('api/createapikey', 'ApiController@CreateApiKey');
 
 Route::get('api/apitest', 'ApiController@ApiTest');
 
-Route::get('api/publicinventory', 'ApiController@PublicInventory');
+Route::post('api/publicinventory', 'ApiController@PublicInventory');
 
 /****************************
 *     errorsController  	*

@@ -232,4 +232,20 @@ class Users extends Model
             return ['status' => 'fail', 'message' => $e];
         }
     }
+
+    // FOR API AUTHENTICATION    
+    public function Authenticate($request){
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $users = $this->where('email', $request['email'])->get();
+            if(count($users) > 0){
+                $apikey = $users[0]->api_key;
+                $userType = $users[0]->type;
+                return ['status' => 'OK', 'apiKey' => $apikey, 'userType' => $userType];
+            }
+        }
+        return ['status' => 'DECLINED'];
+
+    }
 }

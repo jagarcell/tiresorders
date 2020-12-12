@@ -34,7 +34,8 @@ class Orders extends Model
     public function placeAnOrder(Request $request)
     {
         # code...
-        $Inventory = (new Inventory())->where('oferta', '>', 0)->get();
+        
+        $Inventory = (new Inventory())->where('instock', '>', 0)->where('oferta', '>', 0)->get();
         return view('/placeanorder', ['Inventory' => $Inventory]);
     }
 

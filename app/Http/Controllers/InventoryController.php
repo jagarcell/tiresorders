@@ -11,6 +11,7 @@ use Carbon\Carbon;
 class InventoryController extends Controller
 {
     //
+
     public function __construct()
     {
     	# code...
