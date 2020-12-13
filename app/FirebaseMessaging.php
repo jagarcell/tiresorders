@@ -59,7 +59,6 @@ class FirebaseMessaging extends Model
 
          try {
             $tokens = $this->where('fcm_token', $token)->get();
-            dd($tokens);
             if(count($tokens) == 0){
                 $this->fcm_token = $token;
                 $this->userid = $userId;
