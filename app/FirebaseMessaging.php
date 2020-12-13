@@ -123,7 +123,6 @@ class FirebaseMessaging extends Model
             case 'all':
                 $registeredTokens = $this->where('id', '>', -1)->get();
                 foreach($registeredTokens as $key => $registeredToken){
-                    return['tokens' => $registeredToken->fcm_token];
                     array_push($tokens, $registeredToken->fcm_token);
                 }
                 break;
@@ -138,6 +137,7 @@ class FirebaseMessaging extends Model
                 }
             break;
         }
+
         $serverKey = $fbconfig['FCM_SERVER_KEY'];
 
         $title = "Message From Prestige Tires";
