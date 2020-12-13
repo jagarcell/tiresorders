@@ -108,29 +108,37 @@ class FirebaseMessaging extends Model
     */
     public function SendNotification($request)
     {
+        // GET THE FIRBASE MESSAGONG CONFIG PARAMETERS
         $fbconfig = config('firebasemessaging');
 
+        // SET THE INFO FOR THE NOTIFICATION
         $title = isset($request['title']) ? $request['title'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TITLE'];
         $body = isset($request['body']) ? $request['body'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_BODY'];
         $image = isset($request['image']) ? $request['image'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_IMAGE'];
         $to = isset($request['to']) ? $request['to'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TO'];
 
+        // FIREBASE SEND URL
         $url = "https://fcm.googleapis.com/fcm/send";
 
+        // ARRAY TO HOLD THE VALID TOKENS TO NOTIFY    
         $tokens = array();
 
+        // DETERMINE WHO IS GOING TO GET NOTIFICATIONS
         switch ($to) {
             case 'all':
+                // ALL APPLICATION WITH A VALID TOKEN
+                // USERS WILL GET THE NOTIFICACTION
                 $registeredTokens = $this->where('id', '>', -1)->get();
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->fcm_token);
                 }
                 break;
             default:
-            echo('NOT ALL');
+                // ONLY THE TYPE OF USERS (admin or user) INDICATED
+                // BY $to WILL RECEIVE THE NOTIFICATION
                 $registeredTokens = DB::table('users')
                     ->join('firebase_messagings', 'users.id', '=', 'firebase_messagings.userid')
-                        ->where('users.type', '=', $to)->get();
+                        ->where('users.type', '=', $to)->select('firebase_messaging.fcm_token')->get();
                 return ['tokens' => $registeredTokens] ;   
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->fcm_token);
