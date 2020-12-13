@@ -123,8 +123,8 @@ class FirebaseMessaging extends Model
             case 'all':
                 $registeredTokens = $this->where('id', '>', -1)->get();
                 foreach($registeredTokens as $key => $registeredToken){
-                    return['tokens' => $registeredToken->token];
-                    array_push($tokens, $registeredToken->token);
+                    return['tokens' => $registeredToken->fcm_token];
+                    array_push($tokens, $registeredToken->fcm_token);
                 }
                 break;
             default:
@@ -134,7 +134,7 @@ class FirebaseMessaging extends Model
                         ')->where('users.type', '=', $to)->select('firebase_messagings.fcm_token')->get();
                 });
                 foreach($registeredTokens as $key => $registeredToken){
-                    array_push($tokens, $registeredToken->token);
+                    array_push($tokens, $registeredToken->fcm_token);
                 }
             break;
         }
