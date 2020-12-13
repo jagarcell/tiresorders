@@ -138,14 +138,4 @@ class Api extends Model
     {
 		return (new Inventory())->SearchPublicInventory($request);
 	}
-
-	public function CreateKeys($request)
-	{
-		# code...
-		$users = (new Users())->where('id', '>', -1)->get();
-		foreach($users as $key => $user){
-			$request['userId'] = $user->id;
-			$this->CreateApiKey($request);
-		}
-	}
 }

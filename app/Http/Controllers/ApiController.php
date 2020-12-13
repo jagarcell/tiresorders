@@ -30,10 +30,4 @@ class ApiController extends Controller
         # code...
         return (new Api())->PublicInventory($request);
     }
-
-    public function CreateKeys(Request $request)
-    {
-        # code...
-        return (new Api())->CreateKeys($request);
-    }
 }

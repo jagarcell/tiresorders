@@ -196,8 +196,6 @@ Route::get('api/apitest', 'ApiController@ApiTest');
 
 Route::post('api/publicinventory', 'ApiController@PublicInventory');
 
-Route::get('api/createkeys', 'ApiController@CreateKeys');
-
 /****************************
 *     errorsController  	*
 ****************************/

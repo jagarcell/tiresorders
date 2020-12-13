@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Users;
+
 class FirebaseMessaging extends Model
 {
     public function TestMessage($request)
@@ -44,12 +46,24 @@ class FirebaseMessaging extends Model
     public function AddFcmToken($request)
     {
          # code...
+         $userId = -1;
+         if(isset($request['apikey'])){
+            $apiKey = $request['apiKey'];
+            $users = (new Users())->where('api_key', $apiKey)->get();
+            if(count($users) > 0){
+                $user = $users[0];
+                $userId = $user->id;
+            }
+         }
+
          try {
             $tokens = $this->where('fcm_token', $token)->get();
             if(count($tokens) == 0){
                 $this->fcm_token = $token;
-
                 $this->save();
+            }
+            else{
+                $this->where('fcm_token', $token)->update(['userid' => $userId]);
             }
             return ['status' => 'OK'];
         } catch (\Throwable $th) {
