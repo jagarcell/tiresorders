@@ -46,6 +46,7 @@ class FirebaseMessaging extends Model
     public function AddFcmToken($request)
     {
          # code...
+         dd("STOP");
          $userId = -1;
          if(isset($request['apikey'])){
             $apiKey = $request['apikey'];
