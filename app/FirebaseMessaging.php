@@ -113,7 +113,7 @@ class FirebaseMessaging extends Model
         $title = isset($request['title']) ? $request['title'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TITLE'];
         $body = isset($request['body']) ? $request['body'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_BODY'];
         $image = isset($request['image']) ? $request['image'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_IMAGE'];
-        $to = isset($request['to'] ? $request['to'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TO']);
+        $to = isset($request['to']) ? $request['to'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TO'];
 
         $url = "https://fcm.googleapis.com/fcm/send";
 
