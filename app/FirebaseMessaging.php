@@ -148,7 +148,7 @@ class FirebaseMessaging extends Model
         // THE FCM SERVER KEY NEEDED TO SEND NOTIFICATIONS
         $serverKey = $fbconfig['FCM_SERVER_KEY'];
 
-        $notification = array('title' =>$title , 'body' => $body, 'image' => $image);
+        $notification = array('title' =>$title , 'body' => $body, 'image' => env('APP_URL') . $image);
         $arrayToSend = array('registration_ids' => $tokens, 'notification' => $notification,'priority'=>'high');
         $json = json_encode($arrayToSend);
         $headers = array();
