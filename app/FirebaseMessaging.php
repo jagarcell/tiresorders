@@ -122,8 +122,8 @@ class FirebaseMessaging extends Model
         switch ($to) {
             case 'all':
                 $registeredTokens = $this->where('id', '>', -1)->get();
-                return['tokens' => $registeredTokens];
                 foreach($registeredTokens as $key => $registeredToken){
+                    return['tokens' => $registeredToken->token];
                     array_push($tokens, $registeredToken->token);
                 }
                 break;
