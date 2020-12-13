@@ -130,8 +130,7 @@ class FirebaseMessaging extends Model
             echo('NOT ALL');
                 $registeredTokens = DB::table('users')->join('firebase_messagings', function($join){
                     $join->on(
-                        'users.id', '=', 'firebase_messagings.userid
-                        ')->where('users.type', '=', $to);
+                        'users.id', '=', 'firebase_messagings.userid')->where('users.type', '=', $to);
                 })->get();
                 return ['tokens' => $registeredTokens] ;   
                 foreach($registeredTokens as $key => $registeredToken){
