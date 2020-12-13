@@ -18,7 +18,7 @@ class FirebaseMessaging extends Model
         }
 
         $serverKey = env('FCM_SERVER_KEY');
-        
+
         $title = "Message From Prestige Tires";
         $body = "Great Special This Week";
         $notification = array('title' =>$title , 'body' => $body, 'image' => '/public/img/coding.jpg');
@@ -44,7 +44,6 @@ class FirebaseMessaging extends Model
     public function AddFcmToken($request)
     {
          # code...
-         $userId = isset($request['user'])
          try {
             $tokens = $this->where('fcm_token', $token)->get();
             if(count($tokens) == 0){
