@@ -131,8 +131,8 @@ class FirebaseMessaging extends Model
                 $registeredTokens = DB::table('users')->join('firebase_messagings', function($join){
                     $join->on(
                         'users.id', '=', 'firebase_messagings.userid
-                        ')->where('users.type', '=', $to)->get();
-                });
+                        ')->where('users.type', '=', $to);
+                })->get();
                 return ['tokens' => $registeredTokens] ;   
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->fcm_token);
