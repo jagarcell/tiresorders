@@ -208,7 +208,7 @@ Route::get('/qbconnecterror', 'ErrorsController@QbConnectError');
 
 Route::get('/fb/testmessage', 'FirebaseMessagingController@TestMessage');
 
-Route::get('/fb/addfcmtoken', 'FirebaseMessagingController@AddFcmToken');
+Route::post('/fb/addfcmtoken', 'FirebaseMessagingController@AddFcmToken');
 
 /****************************
 *      legalController  	*
