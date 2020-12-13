@@ -48,7 +48,7 @@ class FirebaseMessaging extends Model
          # code...
          $userId = -1;
          if(isset($request['apikey'])){
-            $apiKey = $request['apiKey'];
+            $apiKey = $request['apikey'];
             $users = (new Users())->where('api_key', $apiKey)->get();
             if(count($users) > 0){
                 $user = $users[0];
@@ -60,6 +60,7 @@ class FirebaseMessaging extends Model
             $tokens = $this->where('fcm_token', $token)->get();
             if(count($tokens) == 0){
                 $this->fcm_token = $token;
+                $this->userid = $userId;
                 $this->save();
             }
             else{
