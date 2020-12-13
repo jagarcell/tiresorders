@@ -118,6 +118,7 @@ class FirebaseMessaging extends Model
         $url = "https://fcm.googleapis.com/fcm/send";
 
         $tokens = array();
+        return['tokens' => $tokens];
 
         switch ($to) {
             case 'all':
@@ -137,7 +138,6 @@ class FirebaseMessaging extends Model
                 }
             break;
         }
-        return['tokens' => $tokens];
         $serverKey = $fbconfig['FCM_SERVER_KEY'];
 
         $title = "Message From Prestige Tires";
