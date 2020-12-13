@@ -118,11 +118,11 @@ class FirebaseMessaging extends Model
         $url = "https://fcm.googleapis.com/fcm/send";
 
         $tokens = array();
-        return['tokens' => $tokens];
 
         switch ($to) {
             case 'all':
                 $registeredTokens = $this->where('id', '>', -1)->get();
+                return['tokens' => $registeredTokens];
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->token);
                 }
