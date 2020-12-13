@@ -19,4 +19,9 @@ class FirebaseMessagingController extends Controller
         # code...
         return (new FirebaseMessaging())->AddFcmToken($request);
     }
+
+    public function SendNotification(Request $request)
+    {
+        return (new FirebaseMessaging())->SendNotification($request);
+    }
 }

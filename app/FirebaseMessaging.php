@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 use App\Users;
 
@@ -43,13 +44,14 @@ class FirebaseMessaging extends Model
         curl_close($ch);
     }
 
-    /*
-    ***
-    *** Parameters:
-    *** @ token
-    *** @ apikey (optional if it is an authenticated user)
-    ***
+    /** 
+    *
+    * Parameters:
+    * @ token
+    * @ apikey (optional if it is an authenticated user)
+    *
     */
+
     public function AddFcmToken($request)
     {
          # code...
@@ -94,5 +96,69 @@ class FirebaseMessaging extends Model
             // SOMETHING WENT WRONG
             return ['status' => 'ERROR', 'message' => $th];
         }
+    }
+
+    /** 
+    *
+    * @param title
+    * @param body
+    * @param image
+    * @param to [all, admin or user]
+    *
+    */
+    public function SendNotification($request)
+    {
+        $fbconfig = config('firebasemessaging');
+
+        $title = isset($request['title']) ? $request['title'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TITLE'];
+        $body = isset($request['body']) ? $request['body'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_BODY'];
+        $image = isset($request['image']) ? $request['image'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_IMAGE'];
+        $to = isset($request['to'] ? $request['to'] : $fbconfig['FCM_NOTIFICATION_DEFAULT_TO']);
+
+        $url = "https://fcm.googleapis.com/fcm/send";
+
+        $tokens = array();
+
+        switch ($to) {
+            case 'all':
+                $registeredTokens = $this->where('id', '>', -1)->get();
+                foreach($registeredTokens as $key => $registeredToken){
+                    array_push($tokens, $registeredToken->token);
+                }
+                break;
+            default:
+                $registeredTokens = DB::table('users')->join('firebase_messagings', function($join){
+                    $join->on(
+                        'users.id', '=', 'firebase_messagings.userid
+                        ')->where('users.type', '=', $to)->select('firebase_messagings.fcm_token')->get();
+                });
+                foreach($registeredTokens as $key => $registeredToken){
+                    array_push($tokens, $registeredToken->token);
+                }
+            break;
+        }
+        return['tokens' => $tokens];
+        $serverKey = $fbconfig['FCM_SERVER_KEY'];
+
+        $title = "Message From Prestige Tires";
+        $body = "Great Special This Week";
+        $notification = array('title' =>$title , 'body' => $body, 'image' => '/public/img/coding.jpg');
+        $arrayToSend = array('registration_ids' => $tokens, 'notification' => $notification,'priority'=>'high');
+        $json = json_encode($arrayToSend);
+        $headers = array();
+        $headers[] = 'Content-Type: application/json';
+        $headers[] = 'Authorization: key='. $serverKey;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+        //Send the request
+        $response = curl_exec($ch);
+        //Close request
+        if ($response === FALSE) {
+        die('FCM Send Error: ' . curl_error($ch));
+        }
+        curl_close($ch);
     }
 }
