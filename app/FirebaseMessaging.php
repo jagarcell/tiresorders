@@ -145,12 +145,10 @@ class FirebaseMessaging extends Model
             break;
         }
 
-        return ['tokens' => $tokens];    
+        // THE FCM SERVER KEY NEEDED TO SEND NOTIFICATIONS
         $serverKey = $fbconfig['FCM_SERVER_KEY'];
 
-        $title = "Message From Prestige Tires";
-        $body = "Great Special This Week";
-        $notification = array('title' =>$title , 'body' => $body, 'image' => '/public/img/coding.jpg');
+        $notification = array('title' =>$title , 'body' => $body, 'image' => $image);
         $arrayToSend = array('registration_ids' => $tokens, 'notification' => $notification,'priority'=>'high');
         $json = json_encode($arrayToSend);
         $headers = array();
@@ -165,7 +163,7 @@ class FirebaseMessaging extends Model
         $response = curl_exec($ch);
         //Close request
         if ($response === FALSE) {
-        die('FCM Send Error: ' . curl_error($ch));
+            die('FCM Send Error: ' . curl_error($ch));
         }
         curl_close($ch);
     }
