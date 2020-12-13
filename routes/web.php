@@ -196,11 +196,21 @@ Route::get('api/apitest', 'ApiController@ApiTest');
 
 Route::post('api/publicinventory', 'ApiController@PublicInventory');
 
+Route::get('api/createkeys', 'ApiController@CreateKeys');
+
 /****************************
 *     errorsController  	*
 ****************************/
 
 Route::get('/qbconnecterror', 'ErrorsController@QbConnectError');
+
+/*************************************
+*        Firebase Messaging          * 
+*************************************/
+
+Route::get('/fb/testmessage', 'FirebaseMessagingController@TestMessage');
+
+Route::post('/fb/addfcmtoken', 'FirebaseMessagingController@AddFcmToken');
 
 /****************************
 *      legalController  	*

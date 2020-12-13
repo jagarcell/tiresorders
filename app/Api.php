@@ -26,16 +26,21 @@ class Api extends Model
 	    return $randomString; 
 	}
 
-	public function CreateApiKey($request)
+    /**
+     * @parameter userId
+    */
+	
+	 public function CreateApiKey($request)
 	{
 		# code...
 		$userId = $request['userId'];
-    	$api_key = $this->GenerateApiKey(64);
+	
+		$api_key = $this->GenerateApiKey(64);
     	$user = (new Users())->where('id', $userId)->get();
     	if(count($user) > 0){
     		$useremail = $user[0]->email;
     		if(strlen($user[0]->api_key) > 0){
-    			$this->SendInstructions($user[0]->api_key, $useremail);
+//    			$this->SendInstructions($user[0]->api_key, $useremail);
 	    		return ['status' => 'ok', 'api_key' => $user[0]->api_key];
     		}
     		else{
@@ -52,7 +57,7 @@ class Api extends Model
 		    		return ['status' => 'error'];
     			}
 	    		(new Users())->where('id', $userId)->update(['api_key' => $api_key]);
-	    		$this->SendInstructions($api_key, $useremail);
+//	    		$this->SendInstructions($api_key, $useremail);
 	    		return ['status' => 'ok', 'api_key' => $api_key];
     		}
     	}
@@ -127,5 +132,15 @@ class Api extends Model
     public function PublicInventory($request)
     {
 		return (new Inventory())->SearchPublicInventory($request);
+	}
+
+	public function CreateKeys($request)
+	{
+		# code...
+		$users = (new Users())->where('id', '>', -1)->get();
+		foreach($users as $key => $user){
+			$request['userId'] = $user->id;
+			$this->CreateApiKey($request);
+		}
 	}
 }
