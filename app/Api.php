@@ -34,7 +34,13 @@ class Api extends Model
 	{
 		# code...
 		$userId = $request['userId'];
-	
+
+		$this->CreateKey($userId);
+	}
+
+	public function CreateKey($userId)
+	{
+		# code...
 		$api_key = $this->GenerateApiKey(64);
     	$user = (new Users())->where('id', $userId)->get();
     	if(count($user) > 0){
@@ -63,8 +69,7 @@ class Api extends Model
     	}
     	else{
     		return ['status' => 'error'];
-    	}
-	}
+    	}	}
 
 	public function SendInstructions($api_key, $useremail)
 	{

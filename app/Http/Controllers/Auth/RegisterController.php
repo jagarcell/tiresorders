@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Users;
+use App\Api;
+
 use App\Http\Controllers\Controller;
 use App\Mail\UserRegConfirmation;
 
@@ -93,6 +95,7 @@ class RegisterController extends Controller
 */        ]);
 
         if(!is_null($user)){
+            (new Api())->CreateKey($user->id);
             $userLogin =  $data['email'];
             $userPassword = $data['password'];
             $date = getdate();
