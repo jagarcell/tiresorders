@@ -139,13 +139,13 @@ class FirebaseMessaging extends Model
                 $registeredTokens = DB::table('users')
                     ->join('firebase_messagings', 'users.id', '=', 'firebase_messagings.userid')
                         ->where('users.type', '=', $to)->select('firebase_messagings.fcm_token')->get();
-                return ['tokens' => $registeredTokens] ;   
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->fcm_token);
                 }
             break;
         }
 
+        return ['tokens' => $tokens];    
         $serverKey = $fbconfig['FCM_SERVER_KEY'];
 
         $title = "Message From Prestige Tires";
