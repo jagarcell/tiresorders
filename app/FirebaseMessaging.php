@@ -46,9 +46,9 @@ class FirebaseMessaging extends Model
     public function AddFcmToken($request)
     {
          # code...
-         dd("STOP");
          $userId = -1;
          if(isset($request['apikey'])){
+            dd("STOP1");
             $apiKey = $request['apikey'];
             $users = (new Users())->where('api_key', $apiKey)->get();
             if(count($users) > 0){
@@ -56,6 +56,7 @@ class FirebaseMessaging extends Model
                 $userId = $user->id;
             }
          }
+         dd("STOP2");
 
          try {
             $tokens = $this->where('fcm_token', $token)->get();
