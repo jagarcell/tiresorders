@@ -24,4 +24,9 @@ class FirebaseMessagingController extends Controller
     {
         return (new FirebaseMessaging())->SendNotification($request);
     }
+
+    public function Notification(Request $request)
+    {
+        return (new FirebaseMessaging())->Notification($request);
+    }
 }

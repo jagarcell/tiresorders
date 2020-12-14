@@ -168,4 +168,9 @@ class FirebaseMessaging extends Model
         }
         curl_close($ch);
     }
+
+    public function Notification($notification)
+    {
+        return view('notification');
+    }
 }
