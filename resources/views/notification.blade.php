@@ -12,13 +12,13 @@
 	@section('scripts')
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	<script type="text/javascript" src="public/js/notification.js"></script>
-    <script type="text/javascript" src="public/js/dropzone.js"></script>
+  	<script type="text/javascript" src="/public/js/notification.js"></script>
+    <script type="text/javascript" src="/public/js/dropzone.js"></script>
 	@endsection
 
 	@section('styles')
-	<link rel="stylesheet" type="text/css" href="public/css/notification.css">
-    <link rel="stylesheet" type="text/css" href="public/css/dropzone.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/notification.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/dropzone.css">
 	@endsection
 </head>
 <body>
