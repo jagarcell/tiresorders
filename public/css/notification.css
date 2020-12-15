@@ -60,7 +60,7 @@
 }
 
 .notiSendButton{
-    display: inline;
+   width: auto;
 }
 
 .notiToDiv{
