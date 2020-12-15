@@ -213,7 +213,7 @@ Route::get('/fb/testmessage', 'FirebaseMessagingController@TestMessage');
 
 Route::post('/fb/addfcmtoken', 'FirebaseMessagingController@AddFcmToken');
 
-Route::get('/fb/sendnotification', 'FirebaseMessagingController@SendNotification');
+Route::post('/fb/sendnotification', 'FirebaseMessagingController@SendNotification');
 
 Route::get('/fb/notification', 'FirebaseMessagingController@Notification');
 

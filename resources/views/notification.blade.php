@@ -37,7 +37,7 @@
                 @csrf
             </form>
         </div>
-        <form action="/fb/sendnotification" method="GET" id="notiForm">
+        <form action="/fb/sendnotification" method="POST" id="notiForm">
             <div class="notiSubject">
                 <input type="text" placeholder="Subject" name="title">
             </div>
