@@ -19,8 +19,6 @@ jQuery(() => {
                         preview[0].style.marginTop = 20
 
                         var dz = $('.dropzone')
-                        dz[0].style.padding = 0
-                        dz[0].style.paddingTop = 20
                         
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
