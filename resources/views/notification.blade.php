@@ -35,10 +35,10 @@
             </form>
         </div>
         <div class="notiSubject">
-
+            <input type="text" placeholder="Subject">
         </div>
         <div class="notiText">
-
+            <input type="text" placeholder="Message">
         </div>
     </div>
 </div>
