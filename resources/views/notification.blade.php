@@ -29,8 +29,10 @@
         <label>Notification</label>
     </div>
     <div class="notiFrame">
-        <div class="notiImage dropzone">
-
+        <div class="notiImage">
+            <form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;"">
+                @csrf
+            </form>
         </div>
         <div class="notiSubject">
 
