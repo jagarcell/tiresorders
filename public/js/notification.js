@@ -6,6 +6,7 @@ jQuery(() => {
         var dropZones = $('.dropzone')
 
         $.each(dropZones, function (index, dropzone) {
+            console.log(dropzone)
             Dropzone.options[dropzone.id] = {
                 uploadMultiple: false,
                 dictDefaultMessage: 'Drop An Image Or Click To Search One',
