@@ -12,6 +12,7 @@ jQuery(() => {
 //				forceFallback : true,
                 init: function dropzoneInit() {
                     // body...
+                    console.log('init')
                     this.on('addedfile', function (file) {
                         // body...
                         console.log(file)
