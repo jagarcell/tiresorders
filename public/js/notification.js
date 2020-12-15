@@ -4,6 +4,7 @@ jQuery(() => {
         */
         //	Dropzone.autoDiscover = false
         var dropZones = $('.dropzone')
+        console.log(dropZones)
 
         $.each(dropZones, function (index, dropzone) {
             console.log(dropzone)
