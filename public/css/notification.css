@@ -26,7 +26,7 @@
     top: 0px;
     width: 25%;
     height: 100%;
-    border-right-color: black;
+    border: right 1;
     border-width: 1px;
 }
 
