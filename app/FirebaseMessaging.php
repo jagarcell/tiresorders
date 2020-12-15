@@ -125,7 +125,7 @@ class FirebaseMessaging extends Model
 
         // DETERMINE WHO IS GOING TO GET NOTIFICATIONS
         switch ($to) {
-            case 'all':
+            case 'everyone':
                 // ALL APPLICATION WITH A VALID TOKEN
                 // USERS WILL GET THE NOTIFICACTION
                 $registeredTokens = $this->where('id', '>', -1)->get();
