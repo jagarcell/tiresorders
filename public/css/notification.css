@@ -43,6 +43,7 @@
     left: 25%;
     height: 25%;
     width: 75%;
+    padding-left: 10px;
 }
 
 .notiText{
@@ -51,6 +52,7 @@
     top: 25%;
     height: 75%;
     width: 75%;
+    padding-left: 10px;
 }
 
 .messageText{
