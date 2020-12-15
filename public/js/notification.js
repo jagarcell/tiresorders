@@ -16,6 +16,7 @@ jQuery(() => {
                         // body...
                         var preview = $('.dz-preview')
                         preview[0].style.margin = 0
+                        preview[0].style.marginTop = 20
 
                         var dz = $('.dropzone')
                         dz[0].style.padding = 0
