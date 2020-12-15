@@ -61,10 +61,17 @@
 
 .notiSendButton{
    width: auto;
-   background-image: url(/public/img/logos/tirebg.png);
-   border-radius: 20px;
-   color: white;
-   padding: 10px;}
+}
+
+.actionButton {
+    border-radius: 10px;
+    height: 40px;
+    background-image: url(/public/img/logos/tirebg.png);
+    color: white;
+    text-align: center;
+    align-self: center;
+    cursor: pointer;
+}
 
 .notiToDiv{
     display: inline;
