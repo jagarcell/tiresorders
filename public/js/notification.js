@@ -19,7 +19,7 @@ jQuery(() => {
 
                         var dz = $('.dropzone')
                         dz[0].style.padding = 0
-                        dz[0].style.paddingTop = 10
+                        dz[0].style.paddingTop = 20
                         
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
