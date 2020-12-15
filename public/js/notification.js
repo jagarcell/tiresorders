@@ -16,7 +16,7 @@ jQuery(() => {
                         // body...
                         var preview = $('.dz-preview')
                         console.log(preview)
-                        preview[0].style.margin = 0
+                        preview[0].style.margin = '0px !important'
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
