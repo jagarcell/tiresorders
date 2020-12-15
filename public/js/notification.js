@@ -17,7 +17,8 @@ jQuery(() => {
                     console.log('init')
                     this.on('addedfile', function (file) {
                         // body...
-                        console.log(file)
+                        var preview = $('.dropzone-preview')
+                        console.log(preview)
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
