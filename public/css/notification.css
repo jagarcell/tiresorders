@@ -1,5 +1,5 @@
 .notiMainDiv{
-    text-align: center;
+    text-align-last: center;
     width: 100%;
 }
 
@@ -7,4 +7,11 @@
     width: 70%;
     font-size: 32px;
     text-align: left;
+    padding-left: 10px;
+}
+
+.notiFrame{
+    border: solid;
+    border-color: black;
+    border-width: 3px;
 }
