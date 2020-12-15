@@ -15,7 +15,9 @@ jQuery(() => {
                     this.on('addedfile', function (file) {
                         // body...
                         var notiImage = $('#notiImage')
-                        notiImage.val(notiImage.val() + '/' + file.notiImage)
+                        console.log(notiImage)
+                        console.log(notiImage.val())
+                        notiImage.attr('value', notiImage.val() + '/' + file.name)
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
