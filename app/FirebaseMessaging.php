@@ -35,6 +35,10 @@ class FirebaseMessaging extends Model
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+        
+		//So that curl_exec returns the contents of the cURL; rather than echoing it
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        
         //Send the request
         $response = curl_exec($ch);
         //Close request
@@ -160,8 +164,11 @@ class FirebaseMessaging extends Model
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
-        //Send the request
-        $response = curl_exec($ch, true);
+        
+		//So that curl_exec returns the contents of the cURL; rather than echoing it
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);//Send the request
+        $response = curl_exec($ch);
+
         //Close request
         if ($response === FALSE) {
             die('FCM Send Error: ' . curl_error($ch));
