@@ -6,9 +6,8 @@
     <meta  name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>Notification</title>
-	<!-- STYLES -->
-	<link rel="stylesheet" type="text/css" href="public/css/inventory.css">
 
+    <!-- SCRIPTS -->
 	@section('scripts')
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -16,6 +15,7 @@
     <script type="text/javascript" src="/public/js/dropzone.js"></script>
 	@endsection
 
+    <!-- STYLES -->
 	@section('styles')
 	<link rel="stylesheet" type="text/css" href="/public/css/notification.css">
     <link rel="stylesheet" type="text/css" href="/public/css/dropzone.css">

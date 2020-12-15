@@ -1,12 +1,4 @@
 jQuery(() => {
-
-        /* Events Handlers */
-        var d = new Date()
-        var n = d.getTimezoneOffset()
-
-        window.onresize = resizeWindow
-
-
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
         */
