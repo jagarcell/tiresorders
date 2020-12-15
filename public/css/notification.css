@@ -12,9 +12,34 @@
 }
 
 .notiFrame{
+    position: relative;
     width: 70%;
     border: solid;
     border-color: black;
     border-width: 2px;
     min-height: 200px;
+}
+
+.notiImage{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 25%;
+    height: 100%;
+}
+
+.notiSubject{
+    position: absolute;
+    top: 0px;
+    left: 25%;
+    height: 25%;
+    width: auto;
+}
+
+.notiText{
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    height: 75%;
+    width: auto;
 }

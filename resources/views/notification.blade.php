@@ -29,7 +29,15 @@
         <label>Notification</label>
     </div>
     <div class="notiFrame">
-        
+        <div class="notiImage">
+
+        </div>
+        <div class="notiSubject">
+
+        </div>
+        <div class="notiText">
+            
+        </div>
     </div>
 </div>
 @endsection
