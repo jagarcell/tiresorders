@@ -31,7 +31,7 @@
     </div>
     <div class="notiFrame">
         <div class="notiImage">
-            <form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;">
+            <form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;" id="dropzone1">
                 @csrf
             </form>
         </div>
