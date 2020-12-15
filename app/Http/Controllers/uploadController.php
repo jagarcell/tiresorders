@@ -21,4 +21,9 @@ class uploadController extends Controller
 	        (new Inventory())->where('id', $itemid)->update(['imgpath' => $path]);
         }
     }
+
+    public function PushNoificationImageUpload(Request $request)
+    {
+        
+    }
 }
