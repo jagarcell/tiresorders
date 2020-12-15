@@ -4,10 +4,8 @@ jQuery(() => {
         */
         //	Dropzone.autoDiscover = false
         var dropZones = $('.dropzone')
-        console.log(dropZones)
 
         $.each(dropZones, function (index, dropzone) {
-            console.log(dropzone)
             Dropzone.options[dropzone.id] = {
                 uploadMultiple: false,
                 dictDefaultMessage: 'Drop An Image Or Click To Search One',
@@ -19,6 +17,7 @@ jQuery(() => {
                         // body...
                         var preview = $('.dz-preview')
                         console.log(preview)
+                        preview[0].style.margin = 0
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
