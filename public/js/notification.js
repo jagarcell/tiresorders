@@ -17,7 +17,7 @@ jQuery(() => {
                     console.log('init')
                     this.on('addedfile', function (file) {
                         // body...
-                        var preview = $('.dropzone-preview')
+                        var preview = $('.dz-preview')
                         console.log(preview)
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
