@@ -46,7 +46,7 @@
             </div>
             <!-- THE NAME FOR THE IMAGE INPUT WILL BE SET TO 'image'
              FROM JAVASCRIPT IF AN IMAGE IS UPLOADED -->
-            <input type="url" name="" value="/public/img/notification" hidden="" id="notiImage">
+            <input type="url" name="" value="/public/img/notification" id="notiImage">
         </form>
     </div>
     <div class="notiSendDiv">
