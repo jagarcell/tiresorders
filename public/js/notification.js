@@ -14,9 +14,7 @@ jQuery(() => {
                     // body...
                     this.on('addedfile', function (file) {
                         // body...
-
-                        var dz = $('.dropzone')
-                        
+                        console.log(file)
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
