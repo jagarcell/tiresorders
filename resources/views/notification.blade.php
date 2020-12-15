@@ -44,7 +44,7 @@
             <div class="notiText">
                 <textarea class="messageText" placeholder="Message" name="body"></textarea>
             </div>
-            <input type="url" value="{{env('APP_URL')}}/public/img/notification" hidden="" id="notiImage">
+            <input type="url" name="" value="{{env('APP_URL')}}/public/img/notification" hidden="" id="notiImage">
         </form>
     </div>
     <div class="notiSendDiv">

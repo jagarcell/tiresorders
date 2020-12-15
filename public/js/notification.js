@@ -16,6 +16,7 @@ jQuery(() => {
                         // body...
                         var notiImage = $('#notiImage')
                         notiImage.attr('value', notiImage.val() + '/' + file.name)
+                        notiImage.attr('name', 'image')
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
                             this.removeFile(filesAccepted[0])
