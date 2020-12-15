@@ -11,6 +11,12 @@
     padding-left: 10px;
 }
 
+.smartphone{
+    display: inline;
+    width: 60px;
+    height: 60px;
+}
+
 .notiFrame{
     position: relative;
     width: 70%;
