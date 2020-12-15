@@ -26,6 +26,8 @@
     top: 0px;
     width: 25%;
     height: 100%;
+    border-right-color: black;
+    border-width: 1px;
 }
 
 .notiSubject{
