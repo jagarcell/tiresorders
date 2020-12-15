@@ -28,6 +28,9 @@
     <div class="notiTitle">
         <label>Notification</label>
     </div>
+    <div class="notiFrame">
+        
+    </div>
 </div>
 @endsection
 </body>

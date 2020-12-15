@@ -12,6 +12,7 @@
 }
 
 .notiFrame{
+    width: 70%;
     border: solid;
     border-color: black;
     border-width: 3px;
