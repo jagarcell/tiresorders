@@ -13,8 +13,10 @@
 
 .smartphone{
     display: inline;
-    max-width: 60px;
-    max-height: 60px;
+}
+
+.smartPhoneImage{
+    height: 60px;
 }
 
 .notiFrame{

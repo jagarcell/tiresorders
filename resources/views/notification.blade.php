@@ -27,7 +27,7 @@
 <div class="notiMainDiv">
     <div class="notiTitle">
         <label>Notification</label>
-        <div class="smartphone"><img src="/public/img/logos/Smartphone.png"></div>
+        <div class="smartphone"><img src="/public/img/logos/Smartphone.png" class="smartPhoneImage"></div>
     </div>
     <div class="notiFrame">
         <div class="notiImage">
