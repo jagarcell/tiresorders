@@ -15,9 +15,7 @@ jQuery(() => {
                     this.on('addedfile', function (file) {
                         // body...
                         var preview = $('.dz-preview')
-                        preview[0].style.margin = 0
-                        var dropzone = $('.dropzone')
-                        dropzone[0].style.margin = 0
+                        preview[0].style.margin = '0px !important'
                         
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {
