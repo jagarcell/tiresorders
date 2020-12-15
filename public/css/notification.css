@@ -59,6 +59,10 @@
     text-align: -webkit-center;
 }
 
+.notiSendButton{
+    display: inline;
+}
+
 .notiToDiv{
     display: inline;
 }

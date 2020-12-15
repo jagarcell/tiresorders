@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="notiSendDiv">
-        <input type="button" value="SEND NOTIFICATION">
+        <input type="button" value="SEND NOTIFICATION" class="notiSendButton">
         <div class="notiToDiv">TO:</div>
         <div class="notiToSelectDiv">
             <select>
