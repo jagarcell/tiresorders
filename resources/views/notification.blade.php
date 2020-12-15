@@ -33,30 +33,31 @@
     </div>
     <div class="notiFrame">
         <div class="notiImage">
-            <form action="/pushnoificationmagepload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;" id="dropzone1">
+            <form action="/pushnotificationtmageupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;" id="dropzone1">
                 @csrf
             </form>
         </div>
 
-        <div class="notiSubject">
-            <input type="text" placeholder="Subject" name="title">
-        </div>
-        <div class="notiText">
-            <textarea class="messageText" placeholder="Message" name="body"></textarea>
-        </div>
-        <input type="url" name="image" value="{{env('APP_URL')}}/public/img/notification" hidden="" id="notiImage">
-
-    </div>
-    <div class="notiSendDiv">
-        <input type="button" value="SEND NOTIFICATION" class="notiSendButton actionButton">
-        <div class="notiToDiv">TO:</div>
-        <div class="notiToSelectDiv">
-            <select>
-                <option value="1" title="Every One Using The App">EVERYONE</option>
-                <option value="2" title="Only Authenticated Admin">ADMIN</option>
-                <option value="3" title="Only Authenticated User">USER</option>
-                <option value="4" title="Both Aunthenticated Admin And User">ADMIN & USER</option>
-            </select>
+        <form action="/sendnotification">
+            <div class="notiSubject">
+                <input type="text" placeholder="Subject" name="title">
+            </div>
+            <div class="notiText">
+                <textarea class="messageText" placeholder="Message" name="body"></textarea>
+            </div>
+            <input type="url" name="image" value="{{env('APP_URL')}}/public/img/notification" hidden="" id="notiImage">
+        </form>
+        <div class="notiSendDiv">
+            <input type="button" value="SEND NOTIFICATION" class="notiSendButton actionButton">
+            <div class="notiToDiv">TO:</div>
+            <div class="notiToSelectDiv">
+                <select>
+                    <option value="1" title="Every One Using The App">EVERYONE</option>
+                    <option value="2" title="Only Authenticated Admin">ADMIN</option>
+                    <option value="3" title="Only Authenticated User">USER</option>
+                    <option value="4" title="Both Aunthenticated Admin And User">ADMIN & USER</option>
+                </select>
+            </div>
         </div>
     </div>
 </div>
