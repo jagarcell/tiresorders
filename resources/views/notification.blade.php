@@ -33,7 +33,7 @@
     </div>
     <div class="notiFrame">
         <div class="notiImage">
-            <form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important; padding-top: 10px;" id="dropzone1">
+            <form action="/fileupload" method="post" enctype="multipart/form-data" class="dropzone" style="width: 100%; height: 100%; border-style: none !important;" id="dropzone1">
                 @csrf
                 <input type="text" name="notiimagepath" value="/public/img/notification" hidden="">
             </form>
