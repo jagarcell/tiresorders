@@ -12,11 +12,9 @@ jQuery(() => {
 //				forceFallback : true,
                 init: function dropzoneInit() {
                     // body...
-                    console.log('init')
                     this.on('addedfile', function (file) {
                         // body...
                         var preview = $('.dz-preview')
-                        console.log(preview)
                         preview[0].style.margin = 0
                         filesAccepted = this.getAcceptedFiles()
                         if (filesAccepted.length > 0) {

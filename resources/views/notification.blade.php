@@ -7,6 +7,8 @@
 
 	<title>Notification</title>
 
+    <link rel="shortcut icon" href="/public/favicon.ico"/>
+
     <!-- SCRIPTS -->
 	@section('scripts')
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
