@@ -25,7 +25,7 @@
 @section('content')
 {{ csrf_field() }}
 <div>
-    <div class="title">
+    <div class="notiTitle">
         <label>Notification</label>
     </div>
 </div>
