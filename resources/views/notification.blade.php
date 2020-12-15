@@ -42,7 +42,7 @@
             <input type="text" placeholder="Subject">
         </div>
         <div class="notiText">
-            <input type="text" placeholder="Message">
+            <textarea class="messageText" placeholder="Message"></textarea>
         </div>
     </div>
     <div class="notiSendDiv">
