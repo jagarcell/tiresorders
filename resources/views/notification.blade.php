@@ -42,6 +42,18 @@
             <input type="text" placeholder="Message">
         </div>
     </div>
+    <div class="notiSendDiv">
+        <input type="button" value="SEND NOTIFICATION">
+        <div class="notiToDiv">TO:</div>
+        <div class="notiToSelectDiv">
+            <select>
+                <option value="1">EVRYONE</option>
+                <option value="2">ADMIN</option>
+                <option value="3">USER</option>
+                <option value="4">ADMIN & USER</option>
+            </select>
+        </div>
+    </div>
 </div>
 @endsection
 </body>
