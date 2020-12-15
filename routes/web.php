@@ -182,6 +182,9 @@ Route::get('/searchesbydates', 'SearchesDatesController@SearchesByDates');
 
 Route::post('/fileupload', 'uploadController@fileUpload');
 
+Route::post('/pushnoificationmagepload', 'uploadController@PushNoificationImageUpload');
+
+
 /****************************
 *       apiController  	    *
 ****************************/

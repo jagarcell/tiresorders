@@ -24,6 +24,10 @@ class uploadController extends Controller
 
     public function PushNoificationImageUpload(Request $request)
     {
-        
+        $fileToUpload = $request->file('file');
+
+        if(!empty($_FILES)){
+	        $path = $fileToUpload->storeAs('img/notification', $_FILES['file']['name'], 'welcome_images');
+        }
     }
 }
