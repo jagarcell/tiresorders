@@ -62,11 +62,11 @@
     </div>
     <div class="successMessagesDiv messageDivFrame">
         <label id="nSuccess" class="nMessages"></label>
-        <div class="notiSendMessageText">MESSAGES WHERE SUCCESSFULLY SENT</div>
+        <div class="notiSendMessageText">{{config('notifications')['NOTIFICATIONS_SUCCESS_MESSAGE']}}</div>
     </div>
     <div class="failureMessagesDiv messageDivFrame">
         <label id="nFailure" class="nMessages"></label>
-        <div class="notiSendMessageText">MESSAGES FAILED TO BE SENT</div>
+        <div class="notiSendMessageText">NOTIFICATIONS FAILED TO BE SENT</div>
     </div>
 
 </div>
