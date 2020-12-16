@@ -42,7 +42,9 @@ function sendNotification() {
     if(image != null){
         params.image = image
     }
-    $.post('/fb/sendnotification', params, (data, status) => {
+    $.post('/fb/sendnotification', 
+        params, 
+        (data, status) => {
             console.log(data)
         }
     )
