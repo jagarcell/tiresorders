@@ -32,6 +32,7 @@ jQuery(() => {
 )
 
 function sendNotification() {
+    console.log('send')
     var title = document.getElementsByName('title')
     var body = document.getElementsByName('body')
     var image = document.getElementsByName('image')
