@@ -51,7 +51,7 @@ function sendNotification() {
             if(results.success > 0)
             {
                 $('#nSuccess')[0].textContent = results.success
-                $('.successMessagesDiv')[0].attr('display', 'inline')
+               console.log($('.successMessagesDiv'))
             }
             if(results.failure > 0)
             {
