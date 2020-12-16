@@ -48,6 +48,14 @@ function sendNotification() {
         params, 
         function (data, status) {
             var results = JSON.parse(data)
+            if(results.success > 0)
+            {
+                console.lof($('#nSuccess'))
+            }
+            if(results.failure > 0)
+            {
+
+            }
             console.log(results.success)
         }
     )
