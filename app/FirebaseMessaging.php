@@ -137,12 +137,25 @@ class FirebaseMessaging extends Model
                     array_push($tokens, $registeredToken->fcm_token);
                 }
                 break;
+            case 'admin&user':
+                // ONLY THE TYPE OF USERS (admin or user) INDICATED
+                // BY $to WILL RECEIVE THE NOTIFICATION
+                $registeredTokens = DB::table('users')
+                    ->join('firebase_messagings', 'users.id', '=', 'firebase_messagings.userid')
+                        ->where('users.type', '=', 'admin')
+                        ->where('users.type', '=', 'user')
+                        ->select('firebase_messagings.fcm_token')->get();
+                foreach($registeredTokens as $key => $registeredToken){
+                    array_push($tokens, $registeredToken->fcm_token);
+                }
+            break;
             default:
                 // ONLY THE TYPE OF USERS (admin or user) INDICATED
                 // BY $to WILL RECEIVE THE NOTIFICATION
                 $registeredTokens = DB::table('users')
                     ->join('firebase_messagings', 'users.id', '=', 'firebase_messagings.userid')
-                        ->where('users.type', '=', $to)->select('firebase_messagings.fcm_token')->get();
+                        ->where('users.type', '=', $to)
+                        ->select('firebase_messagings.fcm_token')->get();
                 foreach($registeredTokens as $key => $registeredToken){
                     array_push($tokens, $registeredToken->fcm_token);
                 }
