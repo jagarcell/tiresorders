@@ -95,6 +95,7 @@
 .successMessagesDiv{
     text-align: center;
     color: green;
+    display: none;
 }
 
 .nMessages{
@@ -109,6 +110,7 @@
 .failureMessagesDiv{
     text-align: center;
     color: red;
+    display: none;
 }
 
 input {
