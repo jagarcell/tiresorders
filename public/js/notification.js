@@ -50,7 +50,7 @@ function sendNotification() {
             var results = JSON.parse(data)
             if(results.success > 0)
             {
-                console.lof($('#nSuccess'))
+                console.log($('#nSuccess'))
             }
             if(results.failure > 0)
             {
