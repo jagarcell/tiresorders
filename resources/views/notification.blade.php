@@ -37,23 +37,21 @@
                 @csrf
             </form>
         </div>
-        <form action="/fb/sendnotification" method="POST" id="notiForm">
-            <div class="notiSubject">
-                <input type="text" placeholder="Subject" name="title">
-            </div>
-            <div class="notiText">
-                <textarea class="messageText" placeholder="Message" name="body"></textarea>
-            </div>
-            <!-- THE NAME FOR THE IMAGE INPUT WILL BE SET TO 'image'
-             FROM JAVASCRIPT IF AN IMAGE IS UPLOADED -->
-            <input type="hidden" name="" value="/public/img/notification" id="notiImage">
-        </form>
+        <div class="notiSubject">
+            <input type="text" placeholder="Subject" name="title">
+        </div>
+        <div class="notiText">
+            <textarea class="messageText" placeholder="Message" name="body"></textarea>
+        </div>
+        <!-- THE NAME FOR THE IMAGE INPUT WILL BE SET TO 'image'
+            FROM JAVASCRIPT IF AN IMAGE IS UPLOADED -->
+        <input type="hidden" name="" value="/public/img/notification" id="notiImage">
     </div>
     <div class="notiSendDiv">
-        <input type="submit"  value="SEND NOTIFICATION" class="notiSendButton actionButton" form="notiForm">
+        <input type="button" id="sendNotiButton"  value="SEND NOTIFICATION" class="notiSendButton actionButton">
         <div class="notiToDiv">TO:</div>
         <div class="notiToSelectDiv">
-            <select form="notiForm" name="to">
+            <select name="to">
                 <option value="everyone" title="Every One Using The App">EVERYONE</option>
                 <option value="admin" title="Only Authenticated Admin">ADMIN</option>
                 <option value="user" title="Only Authenticated User">USER</option>

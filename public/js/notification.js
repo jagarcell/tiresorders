@@ -1,4 +1,7 @@
 jQuery(() => {
+
+        $('#sendNotiButton').on('click', sendNotification)
+
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
         */
@@ -25,4 +28,20 @@ jQuery(() => {
                 },
             }
         })
-    })
+    }
+)
+
+function sendNotification() {
+    var title = document.getElementsByName('title')
+    var body = document.getElementsByName('body')
+    var image = document.getElementsByName('image')
+    var to = document.getElementsByName('to')
+    var params = {title:title, body:body, to:to}
+    if(image != null){
+        params.image = image
+    }
+    $.post('/fb/sendnotification', params, (data, status) => {
+            console.log(data)
+        }
+    )
+}
