@@ -33,15 +33,16 @@ jQuery(() => {
 
 function sendNotification() {
     console.log('send')
-    var title = document.getElementsByName('title')
-    var body = document.getElementsByName('body')
-    var image = document.getElementsByName('image')
-    var to = document.getElementsByName('to')
+    var title = document.getElementsByName('title').val()
+    var body = document.getElementsByName('body').val()
+    var image = document.getElementsByName('image').val()
+    var to = document.getElementsByName('to').val()
     var params = {title:title, body:body, to:to}
 
     if(image != null){
         params.image = image
     }
+    console.log(params)
     $.post('/fb/sendnotification', 
         params, 
         function (data, status) {
