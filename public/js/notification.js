@@ -32,15 +32,12 @@ jQuery(() => {
 )
 
 function sendNotification() {
-    console.log('send')
     var title = document.getElementsByName('title')[0].value
     var body = document.getElementsByName('body')[0].value
     var image = document.getElementsByName('image')[0] == undefined ? null : 
                     document.getElementsByName('image')[0].value
     var to = document.getElementsByName('to')[0].value
 
-    console.log(image)
-    return
     var params = {title:title, body:body, to:to}
 
     if(image != null){
