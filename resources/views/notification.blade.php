@@ -53,7 +53,7 @@
         <input type="submit"  value="SEND NOTIFICATION" class="notiSendButton actionButton" form="notiForm">
         <div class="notiToDiv">TO:</div>
         <div class="notiToSelectDiv">
-            <select>
+            <select form="notiForm" name="to">
                 <option value="everyone" title="Every One Using The App">EVERYONE</option>
                 <option value="admin" title="Only Authenticated Admin">ADMIN</option>
                 <option value="user" title="Only Authenticated User">USER</option>
