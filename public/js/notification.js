@@ -50,7 +50,8 @@ function sendNotification() {
             var results = JSON.parse(data)
             if(results.success > 0)
             {
-                console.log($('#nSuccess'))
+                $('#nSuccess')[0].textContent = results.success
+                $('.successMessagesDiv')[0].attr('display', 'inline')
             }
             if(results.failure > 0)
             {
