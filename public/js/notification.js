@@ -56,9 +56,10 @@ function sendNotification() {
             }
             if(results.failure > 0)
             {
-
+                $('#nFailure')[0].textContent = results.failure
+                $('.failureMessagesDiv')[0].style = 'display:inline-block;'
+                setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 3000)
             }
-            console.log(results.success)
         }
     )
 }

@@ -65,7 +65,7 @@
         <div class="notiSendMessageText">MESSAGES WHERE SUCCESSFULLY SENT</div>
     </div>
     <div class="failureMessagesDiv messageDivFrame">
-        <label id="nSuccess" class="nMessages"></label>
+        <label id="nFailure" class="nMessages"></label>
         <div class="notiSendMessageText">MESSAGES FAILED TO BE SENT</div>
     </div>
 
