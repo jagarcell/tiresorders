@@ -88,6 +88,25 @@
     display: inline;
 }
 
+.successMessagesDiv{
+    text-align: center;
+    color: green;
+}
+
+.nMessages{
+    font-size: 22px;
+}
+
+.notiSendMessageText{
+    padding-left: 10px;
+    display: inline;
+}
+
+.failureMessagesDiv{
+    text-align: center;
+    color: red;
+}
+
 input {
     width: 100%;
     height: 100%;

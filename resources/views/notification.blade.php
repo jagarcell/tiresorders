@@ -47,7 +47,7 @@
             FROM JAVASCRIPT IF AN IMAGE IS UPLOADED -->
         <input type="hidden" name="" value="/public/img/notification" id="notiImage">
     </div>
-    
+
     <div class="notiSendDiv">
         <input type="button" id="sendNotiButton"  value="SEND NOTIFICATION" class="notiSendButton actionButton">
         <div class="notiToDiv">TO:</div>
@@ -60,6 +60,15 @@
             </select>
         </div>
     </div>
+    <div class="successMessagesDiv">
+        <label id="nSuccess" class="nMessages"></label>
+        <div class="notiSendMessageText">MESSAGES WHERE SUCCESSFULLY SENT</div>
+    </div>
+    <div class="failureMessagesDiv">
+        <label id="nSuccess" class="nMessages"></label>
+        <div class="notiSendMessageText">MESSAGES FAILED TO BE SENT</div>
+    </div>
+
 </div>
 @endsection
 </body>
