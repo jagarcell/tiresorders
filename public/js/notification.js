@@ -38,6 +38,7 @@ function sendNotification() {
     var image = document.getElementsByName('image')
     var to = document.getElementsByName('to')
     var params = {title:title, body:body, to:to}
+    console.log(params)
     if(image != null){
         params.image = image
     }
