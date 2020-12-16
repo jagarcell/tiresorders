@@ -60,11 +60,11 @@
             </select>
         </div>
     </div>
-    <div class="successMessagesDiv">
+    <div class="successMessagesDiv messageDivFrame">
         <label id="nSuccess" class="nMessages"></label>
         <div class="notiSendMessageText">MESSAGES WHERE SUCCESSFULLY SENT</div>
     </div>
-    <div class="failureMessagesDiv">
+    <div class="failureMessagesDiv messageDivFrame">
         <label id="nSuccess" class="nMessages"></label>
         <div class="notiSendMessageText">MESSAGES FAILED TO BE SENT</div>
     </div>

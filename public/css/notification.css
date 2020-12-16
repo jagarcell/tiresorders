@@ -88,6 +88,10 @@
     display: inline;
 }
 
+.messageDivFrame{
+    padding: 20px;
+}
+
 .successMessagesDiv{
     text-align: center;
     color: green;
