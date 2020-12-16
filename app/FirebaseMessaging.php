@@ -187,7 +187,7 @@ class FirebaseMessaging extends Model
             die('FCM Send Error: ' . curl_error($ch));
         }
         curl_close($ch);
-        return $response->success;
+        return $response['success'];
     }
 
     public function Notification($notification)
