@@ -52,13 +52,13 @@ function sendNotification() {
             {
                 $('#nSuccess')[0].textContent = results.success
                 $('.successMessagesDiv')[0].style = 'display:inline-block;'
-                setTimeout(()=>{$('.successMessagesDiv')[0].style = 'display:none;'}, 3000)
+                setTimeout(()=>{$('.successMessagesDiv')[0].style = 'display:none;'}, 5000)
             }
             if(results.failure > 0)
             {
                 $('#nFailure')[0].textContent = results.failure
                 $('.failureMessagesDiv')[0].style = 'display:inline-block;'
-                setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 3000)
+                setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 5000)
             }
         }
     )
