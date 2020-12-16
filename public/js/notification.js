@@ -47,7 +47,7 @@ function sendNotification() {
     $.post('/fb/sendnotification', 
         params, 
         function (data, status) {
-            console.log(data.success)
+            console.log(data['success'])
         }
     )
 }
