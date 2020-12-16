@@ -51,7 +51,8 @@ function sendNotification() {
             if(results.success > 0)
             {
                 $('#nSuccess')[0].textContent = results.success
-                $('.successMessagesDiv')[0].style = 'display:inline;'
+                $('.successMessagesDiv')[0].style = 'display:inline-block;'
+                setTimeout(()=>{$('.successMessagesDiv')[0].style = 'display:none;'}, 3000)
             }
             if(results.failure > 0)
             {
