@@ -38,13 +38,13 @@ function sendNotification() {
     var image = document.getElementsByName('image')
     var to = document.getElementsByName('to')
     var params = {title:title, body:body, to:to}
-    console.log(params)
+
     if(image != null){
         params.image = image
     }
     $.post('/fb/sendnotification', 
-    {title:title, body:body, to:to}, 
-        (data, status) => {
+        params, 
+        function (data, status) {
             console.log(data)
         }
     )
