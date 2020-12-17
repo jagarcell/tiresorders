@@ -66,7 +66,7 @@
     </div>
     <div class="failureMessagesDiv messageDivFrame">
         <label id="nFailure" class="nMessages"></label>
-        <div class="notiSendMessageText">NOTIFICATIONS FAILED TO BE SENT</div>
+        <div class="notiSendMessageText">{{config('notifications')['NOTIFICATIONS_FAILURE_MESSAGE']}}</div>
     </div>
 
 </div>
