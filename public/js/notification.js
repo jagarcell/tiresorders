@@ -32,7 +32,7 @@ jQuery(() => {
     }
 )
 
-function messagetextChange() {
+function messageTextChange() {
     var messageText = $('.messageText')[0]
     console.log(messageText.val().length)
 }
