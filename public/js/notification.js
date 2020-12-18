@@ -1,7 +1,7 @@
 jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
-        $('#bodyText').on('change', messageTextChange)
+        $('#bodyText').on('change keyup paste', messageTextChange)
 
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
