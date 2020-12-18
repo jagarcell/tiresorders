@@ -29,13 +29,18 @@
 }
 
 .notiImage{
+    position: absolute;
+    left: 0px;
+    top: 0px;
     width: 50%;
     height: 100%;
     border: dotted;
 }
 
 .notiMessage{
-    display: inline;
+    position: absolute;
+    left: 50%;
+    top: 0px;
     width: 50%;
     height: 100%;
 }
