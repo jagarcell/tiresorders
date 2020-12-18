@@ -1,7 +1,7 @@
 jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
-        $('.messageText').on('change', messageTextChange)
+        $('.messageText').on('changed', messageTextChange)
 
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
@@ -33,9 +33,11 @@ jQuery(() => {
 )
 
 function messageTextChange() {
+
     var messageText = $('.messageText')[0]
     console.log(messageText.val().length)
 }
+
 function sendNotification() {
     var title = document.getElementsByName('title')[0].value
     var body = document.getElementsByName('body')[0].value
