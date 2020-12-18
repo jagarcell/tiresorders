@@ -41,7 +41,7 @@
             <input type="text" placeholder="Subject" name="title">
         </div>
         <div class="notiText">
-            <textarea class="messageText" placeholder="Message" name="body" maxlength="110"></textarea>
+            <textarea class="messageText" id="bodyText" placeholder="Message" name="body" maxlength="110"></textarea>
         </div>
         <div>
             <label id="nChars"></label>
