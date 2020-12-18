@@ -41,8 +41,12 @@
             <input type="text" placeholder="Subject" name="title">
         </div>
         <div class="notiText">
-            <textarea class="messageText" placeholder="Message" name="body"></textarea>
+            <textarea class="messageText" placeholder="Message" name="body" maxlength="110"></textarea>
         </div>
+        <div>
+            <label id="nChars"></label>
+        </div>
+
         <!-- THE NAME FOR THE IMAGE INPUT WILL BE SET TO 'image'
             FROM JAVASCRIPT IF AN IMAGE IS UPLOADED -->
         <input type="hidden" name="" value="/public/img/notification" id="notiImage">
