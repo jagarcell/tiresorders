@@ -60,9 +60,8 @@
     height: 10%;
     width: 50%;
     font-size: 14px;
-    padding: 2px;
-    border-left: 1px;
-    border-right: 1px;
+    border-left: solid gray 1px;
+    border-right: solid gray 1px;
 }
 
 .ofMaxChars{
