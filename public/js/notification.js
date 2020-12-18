@@ -2,7 +2,7 @@ jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
         $('#bodyText').on('change keyup paste', messageTextChange)
-        $('#nChars')[0].textContent = 0
+        $('#nChars')[0].textContent = 110
 
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
@@ -36,7 +36,7 @@ jQuery(() => {
 function messageTextChange() {
     var messageText = $('#bodyText')
     var nChars = $('#nChars')
-    nChars[0].textContent = messageText[0].value.length
+    nChars[0].textContent = 110 - messageText[0].value.length
 }
 
 function sendNotification() {
