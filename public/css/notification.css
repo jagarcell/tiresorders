@@ -29,38 +29,32 @@
 }
 
 .notiImage{
-    position: absolute;
-    left: 0px;
-    top: 0px;
     width: 50%;
     height: 100%;
     border: dotted;
 }
 
-.notiSubject{
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    height: 25%;
+.notiMessage{
+    display: inline;
     width: 50%;
+    height: 100%;
+}
+
+.notiSubject{
+    height: 25%;
+    width: 100%;
     font-size: 14px;
 }
 
 .notiText{
-    position: absolute;
-    left: 50%;
-    top: 25%;
     height: 45%;
-    width: 50%;
+    width: 100%;
     font-size: 14px;
 }
 
 .nCharsDiv{
-    position: absolute;
-    top: 70%;
-    left: 50%;
     height: 30%;
-    width: 50%;
+    width: 100%;
     font-size: 14px;
     border-left: solid gray 1px;
     border-right: solid gray 1px;
