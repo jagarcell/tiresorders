@@ -38,7 +38,7 @@
             </form>
         </div>
         <div class="notiSubject">
-            <input type="text" placeholder="Subject" name="title">
+            <input type="text" placeholder="Subject" name="title" maxlength="30">
         </div>
         <div class="notiText">
             <textarea class="messageText" id="bodyText" placeholder="Message" name="body" maxlength="110"></textarea>
