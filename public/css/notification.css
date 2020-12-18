@@ -173,9 +173,9 @@ input {
 
 }
 .notiToDiv{
-    display: inline-block;
+    display: block;
 }
 
 .notiToSelectDiv{
-    display: inline-block;
+    display: block;
 }
