@@ -78,6 +78,10 @@
     padding-left: 10px;
     padding-top: 10px;
     overflow-y: hidden;
+    border-left: gray 1px solid;
+    border-bottom: none;
+    border-right: gray 1px solid;
+    resize: none;
 }
 
 .notiSendDiv{
