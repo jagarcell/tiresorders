@@ -147,7 +147,7 @@ input {
     
 .notiFrame{
     width: 250px;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .notiImage{
@@ -179,4 +179,7 @@ input {
     display: block;
 }
 
+.notiSendDiv{
+    padding-bottom: 40px;
+}
 }
