@@ -167,4 +167,15 @@ input {
     height: 50%;
 }
 
+.notiTitle{
+    width: 250px;
+}
+
+}
+.notiToDiv{
+    display: inline-block;
+}
+
+.notiToSelectDiv{
+    display: inline-block;
 }
