@@ -2,7 +2,8 @@ jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
         $('#bodyText').on('change keyup paste', messageTextChange)
-
+        nChars[0].textContent = 0
+        
         // APPLY THE DROPZONES
         /*	Dropzone.discover()
         */

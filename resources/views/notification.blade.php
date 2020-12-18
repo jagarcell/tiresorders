@@ -44,7 +44,7 @@
             <textarea class="messageText" id="bodyText" placeholder="Message" name="body" maxlength="110"></textarea>
         </div>
         <div class="nCharsDiv">
-            <label id="nChars" class=""></label>0<label class="ofMaxChars">Characters Of 110</label>
+            <label id="nChars"></label><label class="ofMaxChars">Characters Of 110</label>
         </div>
 
         <!-- THE NAME FOR THE IMAGE INPUT WILL BE SET TO 'image'
