@@ -53,6 +53,9 @@
     width: 50%;
 }
 .nCharsClass{
+    position: absolute;
+    top: 90%;
+    left: 50%;
     height: 10%;
     width: 50%;
 }
