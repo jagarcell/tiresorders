@@ -171,11 +171,12 @@ input {
     width: 250px;
 }
 
-}
 .notiToDiv{
     display: block;
 }
 
 .notiToSelectDiv{
     display: block;
+}
+
 }
