@@ -34,7 +34,7 @@ jQuery(() => {
 
 function messageTextChange() {
     var messageText = $('#bodyText')
-    console.log(messageText.value.length)
+    console.log(messageText)
 }
 
 function sendNotification() {
