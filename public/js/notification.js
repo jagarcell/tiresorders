@@ -60,6 +60,7 @@ function sendNotification() {
             {
                 $('#nSuccess')[0].textContent = results.success
                 $('.successMessagesDiv')[0].style = 'display:inline-block;'
+                $('.successMessagesDiv')[0].scrollIntoView(true)
                 setTimeout(()=>{$('.successMessagesDiv')[0].style = 'display:none;'}, 5000)
             }
             if(results.failure > 0)
