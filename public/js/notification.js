@@ -55,7 +55,6 @@ function sendNotification() {
     $.post('/fb/sendnotification', 
         params, 
         function (data, status) {
-            console.log(data)
             $('.commandExecutedDiv')[0].style = 'display:inline-block;'
             setTimeout(() => {
                 $('.commandExecutedDiv')[0].style = 'display:none;'
