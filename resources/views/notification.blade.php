@@ -66,6 +66,9 @@
             </select>
         </div>
     </div>
+    <div class="commandExecutedDiv">
+        {{config('notifications')['NOTIFICATIONS_COMMAND_EXECUTED']}}
+    </div>
     <div class="successMessagesDiv messageDivFrame">
         <label id="nSuccess" class="nMessages"></label>
         <div class="notiSendMessageText">{{config('notifications')['NOTIFICATIONS_SUCCESS_MESSAGE']}}</div>

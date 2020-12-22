@@ -116,6 +116,12 @@
     width: 100%;
 }
 
+.commandExecutedDiv{
+    text-align: center;
+    color: blue;
+    display: none;
+}
+
 .successMessagesDiv{
     text-align: center;
     color: green;
