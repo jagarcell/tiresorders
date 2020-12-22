@@ -1,5 +1,3 @@
-const { set } = require("lodash")
-
 jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
