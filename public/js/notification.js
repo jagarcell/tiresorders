@@ -55,6 +55,7 @@ function sendNotification() {
     $.post('/fb/sendnotification', 
         params, 
         function (data, status) {
+            console.log(data)
             var results = JSON.parse(data)
             $('.commandExecutedDiv')[0].style = 'display:inline-block;'
             if(results.success > 0)
