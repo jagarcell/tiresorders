@@ -65,10 +65,12 @@ function sendNotification() {
             }
             if(results.failure > 0)
             {
+/*                
                 $('#nFailure')[0].textContent = results.failure
                 $('.failureMessagesDiv')[0].style = 'display:inline-block;'
                 $('.failureMessagesDiv')[0].scrollIntoView(true)
                 setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 5000)
+*/  
             }
         }
     )
