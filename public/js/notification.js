@@ -1,3 +1,5 @@
+const { set } = require("lodash")
+
 jQuery(() => {
 
         $('#sendNotiButton').on('click', sendNotification)
@@ -56,28 +58,35 @@ function sendNotification() {
         params, 
         function (data, status) {
             console.log(data)
-            var results = JSON.parse(data)
             $('.commandExecutedDiv')[0].style = 'display:inline-block;'
-            if(results.success > 0)
-            {
-                $('#nSuccess')[0].textContent = results.success
-                $('.successMessagesDiv')[0].style = 'display:inline-block;'
-                $('.successMessagesDiv')[0].scrollIntoView(true)
-                setTimeout(()=>{
-                    $('.successMessagesDiv')[0].style = 'display:none;'
-                    $('.commandExecutedDiv')[0].style = 'display:none;'
+            setTimeout(() => {
+                $('.commandExecutedDiv')[0].style = 'display:none;'
+            }, 5000)
+            try {
+                var results = JSON.parse(data)
+                if(results.success > 0)
+                {
+                    $('#nSuccess')[0].textContent = results.success
+                    $('.successMessagesDiv')[0].style = 'display:inline-block;'
+                    $('.successMessagesDiv')[0].scrollIntoView(true)
+                    setTimeout(()=>{
+                        $('.successMessagesDiv')[0].style = 'display:none;'
+                    
+                    }, 5000)
+                }
+                if(results.failure > 0)
+                {
+    /*                
+                    $('#nFailure')[0].textContent = results.failure
+                    $('.failureMessagesDiv')[0].style = 'display:inline-block;'
+                    $('.failureMessagesDiv')[0].scrollIntoView(true)
+                    setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 5000)
+    */  
+                }
+                     
+            } catch (error) {
                 
-                }, 5000)
             }
-            if(results.failure > 0)
-            {
-/*                
-                $('#nFailure')[0].textContent = results.failure
-                $('.failureMessagesDiv')[0].style = 'display:inline-block;'
-                $('.failureMessagesDiv')[0].scrollIntoView(true)
-                setTimeout(()=>{$('.failureMessagesDiv')[0].style = 'display:none;'}, 5000)
-*/  
-            }
-        }
+       }
     )
 }
