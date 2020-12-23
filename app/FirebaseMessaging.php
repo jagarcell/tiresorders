@@ -88,14 +88,14 @@ class FirebaseMessaging extends Model
                 $this->fcm_token = $token;
                 $this->userid = $userId;
                 $this->save();
+                return ['status' => 'OK', 'userid' => -1];
             }
             else{
                 // A RECORD WAS FOUND FOR THE FCM TOKEN
                 // LET'S UPDATE THE USER ASSOCIATED TO IT
                 $this->where('fcm_token', $token)->update(['userid' => $userId]);
+                return ['status' => 'OK', 'userid' => $userId];
             }
-            // EEVRYTHING OK
-            return ['status' => 'OK'];
         } catch (\Throwable $th) {
             // SOMETHING WENT WRONG
             return ['status' => 'ERROR', 'message' => $th];
