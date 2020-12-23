@@ -94,7 +94,7 @@ class FirebaseMessaging extends Model
                 // A RECORD WAS FOUND FOR THE FCM TOKEN
                 // LET'S UPDATE THE USER ASSOCIATED TO IT
                 $c = $this->where('fcm_token', $token)->update(['userid' => $userId + 0]);
-                return ['status' => 'OK', 'userid' => $userId, 'count' => 'UPDATE = ' . $c];
+                return ['status' => 'OK', 'userid' => $userId, 'count' => 'UPDATE ' . $c];
             }
         } catch (\Throwable $th) {
             // SOMETHING WENT WRONG
