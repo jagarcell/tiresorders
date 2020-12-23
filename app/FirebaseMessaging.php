@@ -76,6 +76,7 @@ class FirebaseMessaging extends Model
                 // ... THEN SET THE userId TO THIS USER'S ID
                 $user = $users[0];
                 $userId = $user->id;
+                return ['status' => 'OK', 'userid' => $userId, 'count' => 'users > 0'];
             }
          }
 
