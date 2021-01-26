@@ -189,6 +189,10 @@ function set_layout() {
 
 function goButtonClick() {
 	// body...
+	var priceListId = $('#descriptionSelect').val()
+	console.log(priceListId)
+	return
+
 	savePricesFlag = true
 	if(!Number.parseFloat){
 		Number.parseFloat = window.parseFloat
