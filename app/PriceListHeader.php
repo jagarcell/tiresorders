@@ -22,7 +22,7 @@ class PriceListHeader extends Model
 
 		$changeFactor = ($upDown == 'up') ? (1 + $percentage/100) : (1 - $percentage/100);
 
-    	$items = (new Inventory())->where('id', '>', -1)->get();
+    	$items = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid')->get();
 
 		(new PriceListLines())->where('pricelistheaderid', $priceListId)->delete();
 
@@ -116,7 +116,7 @@ class PriceListHeader extends Model
     		return['status' => 'fail', 'message' => 'FAILED TO CREATE THIS LIST HEADER', 'System message' => $e];
     	}
 
-    	$items = (new Inventory())->where('id', '>', -1)->get();
+    	$items = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid')->get();
 
     	foreach ($items as $key => $item) {
     		# code...
