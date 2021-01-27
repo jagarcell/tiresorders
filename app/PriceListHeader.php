@@ -20,7 +20,52 @@ class PriceListHeader extends Model
 		$percentage = $request["percentage"];
 		$upDown = $request["updown"];
 
-		return['status' => 'OK', 'pricelistid' => $priceListId];
+		$changeFactor = $upDown == 'up' ? 1 + $percentage : 1 - $percentage;
+
+    	$items = (new Inventory())->where('id', '>', -1)->get();
+
+    	foreach ($items as $key => $item) {
+    		# code...
+            try {
+        		$priceListLines = (new PriceListLines());
+        		$priceListLines->pricelistheaderid = $this->id;
+        		$priceListLines->localitemid = $item->id;
+        		$priceListLines->qbitemid = $item->qbitemid;
+        		$priceListLines->price = $item->price * $changeFactor;
+
+                if($item->description === null){
+                    $priceListLines->description = "";
+                }
+                else{
+                    $priceListLines->description = $item->description;
+                }
+                if($item->name === null){
+                    $priceListLines->name = "";   
+                }
+                else{
+                    $priceListLines->name = $item->name;
+                }
+
+	    		$priceListLines->save();
+    		} catch (\Exception $e) {
+                (new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
+                (new PriceListHeader())->where('id', $this->id)->delete();
+	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
+    		}
+    	}
+    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
+    	foreach ($priceListLines as $key => $priceListLine) {
+    		# code...
+    		$items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
+    		if(count($items)){
+    			$priceListLine->description = $items[0]->name;
+    		}
+    		else{
+    			$priceListLine->description = 'ITEM NOT FOUND';
+    		}
+    	}
+
+    	return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
 	}
 
     public function GetPriceListsHeaders($request)
