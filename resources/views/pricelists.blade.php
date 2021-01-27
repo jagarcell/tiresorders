@@ -4,6 +4,7 @@
 <head>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+	<link rel="shortcut icon" href="public/favicon.ico"/>
 
 	<title>PRICE LISTS</title>
 
@@ -14,7 +15,6 @@
 	@endsection
 
 	@section('styles')
-	<link rel="shortcut icon" href="public/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="public/css/dropzone.css">
     <link rel="stylesheet" type="text/css" href="public/css/pricelists.css">
 	@endsection
