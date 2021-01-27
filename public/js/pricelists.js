@@ -210,7 +210,7 @@ function goButtonClick() {
 					'</tr>'
 				})
 				var listTableBody = $('.listTableBody')[0]
-				console.log(listTableBody.innerHTML)
+				listTableBody.innerHTML = listTableBodyRows
 			}
 		}
 	)
