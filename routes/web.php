@@ -71,6 +71,8 @@ Route::get('/createnewlist', 'PriceListsController@CreateNewList')->middleware('
 
 Route::get('/updateprices', 'PriceListsController@UpdatePrices');
 
+Route::get('/modifyprices', 'PriceListsController@ModifyPrices');
+
 Route::get('/pricelistbyid', 'PriceListsController@PriceListById');
 
 Route::get('/deletelistbyid', 'PriceListsController@DeleteListById');

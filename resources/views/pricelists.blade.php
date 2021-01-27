@@ -32,7 +32,7 @@
 		<select id="descriptionSelect" class="descriptionSelect">
 		@foreach($pricelists as $key => $pricelist)
 		<option value="{{$pricelist->id}}">
-			{{$pricelist->description}}			
+			{{$pricelist->description}}
 		</option>
 		@endforeach
 		</select>

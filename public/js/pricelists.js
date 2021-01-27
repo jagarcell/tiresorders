@@ -190,7 +190,11 @@ function set_layout() {
 function goButtonClick() {
 	// body...
 	var priceListId = $('#descriptionSelect').val()
+	var percentage = $("#percentage").val()
+	var priceChangeType = $("#priceChangeType").val()
 	console.log(priceListId)
+	console.log(percentage)
+	console.log(priceChangeType)
 	return
 
 	savePricesFlag = true
