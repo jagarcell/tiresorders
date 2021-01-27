@@ -56,7 +56,8 @@ class PriceListHeader extends Model
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
-    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $priceListId)->get();
+		$priceListLines = (new PriceListLines())->
+			where('pricelistheaderid', $priceListId)->orderBy('id')->get();
 
     	return ['status' => 'ok', 'pricelistid' => $priceListId, 'pricelistlines' => $priceListLines];
 	}
@@ -146,7 +147,8 @@ class PriceListHeader extends Model
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
-    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
+		$priceListLines = (new PriceListLines())
+			->where('pricelistheaderid', $this->id)->orderBy('id')->get();
     	foreach ($priceListLines as $key => $priceListLine) {
     		# code...
     		$items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
