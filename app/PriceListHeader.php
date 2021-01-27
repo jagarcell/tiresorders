@@ -34,6 +34,7 @@ class PriceListHeader extends Model
         		$priceListLines->localitemid = $item->id;
         		$priceListLines->qbitemid = $item->qbitemid;
         		$priceListLines->price = $item->price * $changeFactor;
+				$priceListLines->modified = true;
 
                 if($item->description === null){
                     $priceListLines->description = "";
