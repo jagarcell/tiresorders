@@ -19,6 +19,7 @@ class PriceListHeader extends Model
 		$priceListId = $request["pricelistid"];
 		$percentage = $request["percentage"];
 		$upDown = $request["updown"];
+		return['status' => 'OK', 'pricelistid' => $priceListId, 'percentage' => $percentage, 'updown' => $updown];
 	}
 
     public function GetPriceListsHeaders($request)

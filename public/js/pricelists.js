@@ -192,9 +192,16 @@ function goButtonClick() {
 	var priceListId = $('#descriptionSelect').val()
 	var percentage = $("#percentage").val()
 	var priceChangeType = $("#priceChangeType").val()
-	console.log(priceListId)
-	console.log(percentage)
-	console.log(priceChangeType)
+	$.get('/modifyprices',
+		 {
+			pricelistid:priceListId,
+			percentage:percentage,
+			updown:priceChangeType 	
+		},
+		function (data, status) {
+			console.log(data)
+		}
+	)
 	return
 
 	savePricesFlag = true
