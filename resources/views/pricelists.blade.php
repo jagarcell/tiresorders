@@ -4,6 +4,7 @@
 <head>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+	<link rel="shortcut icon" href="public/favicon.ico"/>
 
 	<title>PRICE LISTS</title>
 
@@ -32,7 +33,7 @@
 		<select id="descriptionSelect" class="descriptionSelect">
 		@foreach($pricelists as $key => $pricelist)
 		<option value="{{$pricelist->id}}">
-			{{$pricelist->description}}			
+			{{$pricelist->description}}
 		</option>
 		@endforeach
 		</select>
