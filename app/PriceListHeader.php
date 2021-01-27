@@ -20,7 +20,7 @@ class PriceListHeader extends Model
 		$percentage = $request["percentage"];
 		$upDown = $request["updown"];
 
-		$changeFactor = ($upDown == 'up') ? (1 + $percentage) : (1 - $percentage);
+		$changeFactor = ($upDown == 'up') ? (1 + $percentage/100) : (1 - $percentage/100);
 		return ["status" => "ok", "changefactor" => $changeFactor];
 
     	$items = (new Inventory())->where('id', '>', -1)->get();
