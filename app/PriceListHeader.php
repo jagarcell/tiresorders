@@ -21,17 +21,16 @@ class PriceListHeader extends Model
 		$upDown = $request["updown"];
 
 		$changeFactor = ($upDown == 'up') ? (1 + $percentage/100) : (1 - $percentage/100);
-		return ["status" => "ok", "changefactor" => $changeFactor];
 
     	$items = (new Inventory())->where('id', '>', -1)->get();
 
-		(new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
+		(new PriceListLines())->where('pricelistheaderid', $priceListId)->delete();
 
     	foreach ($items as $key => $item) {
     		# code...
             try {
         		$priceListLines = (new PriceListLines());
-        		$priceListLines->pricelistheaderid = $this->id;
+        		$priceListLines->pricelistheaderid = $priceListId;
         		$priceListLines->localitemid = $item->id;
         		$priceListLines->qbitemid = $item->qbitemid;
         		$priceListLines->price = $item->price * $changeFactor;
@@ -51,14 +50,14 @@ class PriceListHeader extends Model
 
 	    		$priceListLines->save();
     		} catch (\Exception $e) {
-                (new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
-                (new PriceListHeader())->where('id', $this->id)->delete();
+                (new PriceListLines())->where('pricelistheaderid', $priceListId)->delete();
+                (new PriceListHeader())->where('id', $priceListId)->delete();
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
-    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
+    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $priceListId)->get();
 
-    	return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
+    	return ['status' => 'ok', 'pricelistid' => $priceListId, 'pricelistlines' => $priceListLines];
 	}
 
     public function GetPriceListsHeaders($request)
