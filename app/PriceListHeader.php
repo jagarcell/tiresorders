@@ -20,9 +20,11 @@ class PriceListHeader extends Model
 		$percentage = $request["percentage"];
 		$upDown = $request["updown"];
 
-		$changeFactor = $upDown == 'up' ? 1 + $percentage : 1 - $percentage;
+		$changeFactor = ($upDown == 'up') ? (1 + $percentage) : (1 - $percentage);
 
     	$items = (new Inventory())->where('id', '>', -1)->get();
+
+		(new PriceListLines())->where('pricelistheaderid', $this->id)->delete();
 
     	foreach ($items as $key => $item) {
     		# code...
@@ -54,16 +56,6 @@ class PriceListHeader extends Model
     		}
     	}
     	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
-    	foreach ($priceListLines as $key => $priceListLine) {
-    		# code...
-    		$items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
-    		if(count($items)){
-    			$priceListLine->description = $items[0]->name;
-    		}
-    		else{
-    			$priceListLine->description = 'ITEM NOT FOUND';
-    		}
-    	}
 
     	return ['status' => 'ok', 'pricelistid' => $this->id, 'pricelistlines' => $priceListLines];
 	}
