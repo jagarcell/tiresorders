@@ -200,8 +200,18 @@ function goButtonClick() {
 		},
 		function (data, status) {
 			console.log(data)
-			var listTableBody = $('.listTableBody')[0]
-			console.log(listTableBody)
+			if(data.status == 'ok'){
+				var listTableBodyRows = ""
+				$.each(data.pricelistlines, function (index, pricelistline) {
+					listTableBodyRows +=
+					'<tr id="' + pricelistline.id + '" class="listTableBodyRow">' +
+						'<td class="itemColumn">' + pricelistline.description + '</td>' +
+						'<td class="priceColumnValue"><input type="number" value="' + Number.parseFloat(pricelistline.price).toFixed(2) + '" class="priceInput"  onchange="priceValueChange(this)"></td>' +
+					'</tr>'
+				})
+				var listTableBody = $('.listTableBody')[0]
+				console.log(listTableBody.innerHTML)
+			}
 		}
 	)
 	return
