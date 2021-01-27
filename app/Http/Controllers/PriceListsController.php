@@ -12,7 +12,7 @@ class PriceListsController extends Controller
     //
     public function ModifyPrices(Request $request)
     {
-        return (new PriceListHeader())->ModifyPrices($reuqest);
+        return (new PriceListHeader())->ModifyPrices($request);
     }
 
     public function GetPriceListsHeaders(Request $request)
