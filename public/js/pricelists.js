@@ -189,6 +189,32 @@ function set_layout() {
 
 function goButtonClick() {
 	// body...
+	var priceListId = $('#descriptionSelect').val()
+	var percentage = $("#percentage").val()
+	var priceChangeType = $("#priceChangeType").val()
+	$.get('/modifyprices',
+		 {
+			pricelistid:priceListId,
+			percentage:percentage,
+			updown:priceChangeType 	
+		},
+		function (data, status) {
+			if(data.status == 'ok'){
+				var listTableBodyRows = ""
+				$.each(data.pricelistlines, function (index, pricelistline) {
+					listTableBodyRows +=
+					'<tr id="' + pricelistline.id + '" class="listTableBodyRow">' +
+						'<td class="itemColumn">' + pricelistline.name + '</td>' +
+						'<td class="priceColumnValue"><input type="number" value="' + Number.parseFloat(pricelistline.price).toFixed(2) + '" class="priceInput"  onchange="priceValueChange(this)"></td>' +
+					'</tr>'
+				})
+				var listTableBody = $('.listTableBody')[0]
+				listTableBody.innerHTML = listTableBodyRows
+			}
+		}
+	)
+	return
+
 	savePricesFlag = true
 	if(!Number.parseFloat){
 		Number.parseFloat = window.parseFloat

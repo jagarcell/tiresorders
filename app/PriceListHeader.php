@@ -13,7 +13,55 @@ use App\Users;
 
 class PriceListHeader extends Model
 {
-    //
+	//
+	public function ModifyPrices($request)
+	{
+		$priceListId = $request["pricelistid"];
+		$percentage = $request["percentage"];
+		$upDown = $request["updown"];
+
+		$changeFactor = ($upDown == 'up') ? (1 + $percentage/100) : (1 - $percentage/100);
+
+    	$items = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid')->get();
+
+		(new PriceListLines())->where('pricelistheaderid', $priceListId)->delete();
+
+    	foreach ($items as $key => $item) {
+    		# code...
+            try {
+        		$priceListLines = (new PriceListLines());
+        		$priceListLines->pricelistheaderid = $priceListId;
+        		$priceListLines->localitemid = $item->id;
+        		$priceListLines->qbitemid = $item->qbitemid;
+        		$priceListLines->price = $item->price * $changeFactor;
+				$priceListLines->modified = true;
+
+                if($item->description === null){
+                    $priceListLines->description = "";
+                }
+                else{
+                    $priceListLines->description = $item->description;
+                }
+                if($item->name === null){
+                    $priceListLines->name = "";   
+                }
+                else{
+                    $priceListLines->name = $item->name;
+                }
+
+	    		$priceListLines->save();
+    		} catch (\Exception $e) {
+                (new PriceListLines())->where('pricelistheaderid', $priceListId)->delete();
+                (new PriceListHeader())->where('id', $priceListId)->delete();
+	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
+    		}
+    	}
+		$priceListLines = (new PriceListLines())->
+			where('pricelistheaderid', $priceListId)->orderBy('id')->get();
+
+    	return ['status' => 'ok', 'pricelistid' => $priceListId, 'pricelistlines' => $priceListLines];
+	}
+
     public function GetPriceListsHeaders($request)
     {
         # code...
@@ -68,7 +116,7 @@ class PriceListHeader extends Model
     		return['status' => 'fail', 'message' => 'FAILED TO CREATE THIS LIST HEADER', 'System message' => $e];
     	}
 
-    	$items = (new Inventory())->where('id', '>', -1)->get();
+    	$items = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid')->get();
 
     	foreach ($items as $key => $item) {
     		# code...
@@ -99,7 +147,8 @@ class PriceListHeader extends Model
 	    		return['status' => 'fail', 'message' => 'FAILED TO CREATE A LIST LINE', 'System message' => $e];
     		}
     	}
-    	$priceListLines = (new PriceListLines())->where('pricelistheaderid', $this->id)->get();
+		$priceListLines = (new PriceListLines())
+			->where('pricelistheaderid', $this->id)->orderBy('id')->get();
     	foreach ($priceListLines as $key => $priceListLine) {
     		# code...
     		$items = (new Inventory())->where('id', $priceListLine->localitemid)->get();
@@ -123,7 +172,8 @@ class PriceListHeader extends Model
 
 	    	if(count($priceLists) > 0){
 	    		$priceList = $priceLists[0];
-	    		$lines = (new PriceListLines())->where('pricelistheaderid', $id)->get();
+				$lines = (new PriceListLines())
+				->where('pricelistheaderid', $id)->orderBy('id')->get();
 
 	    		foreach ($lines as $key => $line) {
 	    			# code...
