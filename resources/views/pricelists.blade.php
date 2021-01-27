@@ -14,6 +14,7 @@
 	@endsection
 
 	@section('styles')
+	<link rel="shortcut icon" href="/public/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="public/css/dropzone.css">
     <link rel="stylesheet" type="text/css" href="public/css/pricelists.css">
 	@endsection
