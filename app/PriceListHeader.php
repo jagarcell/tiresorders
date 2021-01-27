@@ -172,7 +172,8 @@ class PriceListHeader extends Model
 
 	    	if(count($priceLists) > 0){
 	    		$priceList = $priceLists[0];
-	    		$lines = (new PriceListLines())->where('pricelistheaderid', $id)->get();
+				$lines = (new PriceListLines())
+				->where('pricelistheaderid', $id)->orderBy('id')->get();
 
 	    		foreach ($lines as $key => $line) {
 	    			# code...
