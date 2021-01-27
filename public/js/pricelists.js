@@ -205,7 +205,7 @@ function goButtonClick() {
 				$.each(data.pricelistlines, function (index, pricelistline) {
 					listTableBodyRows +=
 					'<tr id="' + pricelistline.id + '" class="listTableBodyRow">' +
-						'<td class="itemColumn">' + pricelistline.description + '</td>' +
+						'<td class="itemColumn">' + pricelistline.name + '</td>' +
 						'<td class="priceColumnValue"><input type="number" value="' + Number.parseFloat(pricelistline.price).toFixed(2) + '" class="priceInput"  onchange="priceValueChange(this)"></td>' +
 					'</tr>'
 				})
