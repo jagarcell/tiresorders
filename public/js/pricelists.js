@@ -199,7 +199,6 @@ function goButtonClick() {
 			updown:priceChangeType 	
 		},
 		function (data, status) {
-			console.log(data)
 			if(data.status == 'ok'){
 				var listTableBodyRows = ""
 				$.each(data.pricelistlines, function (index, pricelistline) {
