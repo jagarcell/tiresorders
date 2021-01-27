@@ -16,9 +16,11 @@ class PriceListHeader extends Model
 	//
 	public function ModifyPrices($request)
 	{
+/*		
 		$priceListId = $request["pricelistid"];
 		$percentage = $request["percentage"];
 		$upDown = $request["updown"];
+*/		
 		return['status' => 'OK'];
 	}
 
