@@ -200,6 +200,8 @@ function goButtonClick() {
 		},
 		function (data, status) {
 			console.log(data)
+			var listTableBody = $('.listTableBody')[0]
+			console.log(listTableBody)
 		}
 	)
 	return
