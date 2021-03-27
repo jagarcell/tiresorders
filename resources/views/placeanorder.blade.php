@@ -26,9 +26,12 @@
 <body>
 @section('content')
 <div class="mainDiv">
-	<div class="ofertaWrap" onclick="specialClick(this)">
+	<div class="ofertaWrap">
+	<!--div class="ofertaWrap" onclick="specialClick(this)"-->
 		<div class="ofertasDiv">
+			<a href="www.allwebdone.com">
 			<img src="public/img/logos/Moving.png" class="ofertasBanner">
+			</a>
 		</div>
 		@if(count($Inventory) > 0)	
 		<div class="ofertasSlideDiv">
