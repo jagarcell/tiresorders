@@ -29,7 +29,7 @@
 	<div class="ofertaWrap">
 	<!--div class="ofertaWrap" onclick="specialClick(this)"-->
 		<div class="ofertasDiv">
-			<a href="https://www.allwebdone.com">
+			<a href="https://www.allwebdone.com" target="_blank">
 			<img src="public/img/logos/Moving.png" class="ofertasBanner">
 			</a>
 		</div>
