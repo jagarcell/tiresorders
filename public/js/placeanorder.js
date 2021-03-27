@@ -89,11 +89,10 @@ $(document).ready(function placeAnOrderReady() {
 function specialClick(element) {
 	// body...
 	var ofertaWrap = $(element)[0]
-
 	ofertaWrap.savedonclick = ofertaWrap.onclick
 	ofertaWrap.onclick = null
 
-	var ofertaNDivs = element.children[1].getElementsByClassName('ofertaNDiv')
+	var ofertaNDivs = element.children[0].getElementsByClassName('ofertaNDiv')
 	for (var i = ofertaNDivs.length - 1; i >= 0; i--) {
 		if(ofertaNDivs[i].style.visibility == 'visible'){
 			addElementToResults(ofertaNDivs[i])
