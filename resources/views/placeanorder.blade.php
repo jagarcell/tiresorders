@@ -28,7 +28,7 @@
 <div class="mainDiv">
 	<div class="ofertaWrap" onclick="specialClick(this)">
 		<div class="ofertasDiv">
-			<img src="public/img/logos/blackfriday1.jpg" class="ofertasBanner">
+			<img src="public/img/logos/moving.png" class="ofertasBanner">
 		</div>
 		@if(count($Inventory) > 0)	
 		<div class="ofertasSlideDiv">
