@@ -26,14 +26,14 @@
 <body>
 @section('content')
 <div class="mainDiv">
-	<div class="ofertaWrap">
 		<div class="ofertasDiv">
 			<a href="https://goo.gl/maps/KBbbJs5neKbgiyLB8" target="_blank">
 			<img src="public/img/logos/Moving.png" class="ofertasBanner">
 			</a>
 		</div>
+	<div class="ofertaWrap" onclick="specialClick(this)">
 		@if(count($Inventory) > 0)	
-		<div class="ofertasSlideDiv" onclick="specialClick(this)">
+		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
 				<div class="ofertaNComponent ofertaNComponent1">
