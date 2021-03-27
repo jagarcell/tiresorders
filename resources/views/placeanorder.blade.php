@@ -29,6 +29,7 @@
 	<div class="ofertaWrap" onclick="specialClick(this)">
 		<div class="ofertasDiv">
 			<img src="public/img/logos/Moving.png" class="ofertasBanner">
+			<div class="address">Hope to see you soon at 10903 NW 122 STREET MEDLEY FL 33178</div>
 		</div>
 		@if(count($Inventory) > 0)	
 		<div class="ofertasSlideDiv">
