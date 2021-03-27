@@ -34,7 +34,7 @@
 			</a>
 		</div>
 		@if(count($Inventory) > 0)	
-		<div class="ofertasSlideDiv" onclick="specialClick(this)">
+		<div class="ofertasSlideDiv" onclick="specialClick(this.parent)">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
 				<div class="ofertaNComponent ofertaNComponent1">
