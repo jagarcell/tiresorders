@@ -213,10 +213,6 @@
 	  border-color: black;
 	}
 
-	.fixed_header thead tr {
-
-	}
-
 	.fixed_header tr {
 		border-bottom: double black;
 	}
@@ -225,12 +221,6 @@
 	.fixed_header thead {
 		background: black;
 		color:#fff;
-	}
-
-	.fixed_header th, .fixed_header td {
-	/*  padding: 5px;
-	  text-align: left;
-	*/
 	}
 
 	select {
