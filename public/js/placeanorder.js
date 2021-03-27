@@ -89,7 +89,7 @@ $(document).ready(function placeAnOrderReady() {
 function specialClick(element) {
 	// body...
 	var ofertaWrap = $(element)[0]
-	console.log($(element)[0])
+	console.log($(element)[0].parentNode)
 
 	ofertaWrap.savedonclick = ofertaWrap.onclick
 	ofertaWrap.onclick = null
