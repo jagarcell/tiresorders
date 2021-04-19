@@ -47,7 +47,6 @@ $(document).ready(function InventoryReady() {
 	var dropZones = $('.dropzone')
 
 	$.each(dropZones, function(index, dropzone){
-		console.log(Dropzone.options[dropzone.id])
 		Dropzone.options[dropzone.id] = {
 			uploadMultiple : false,
 			dictDefaultMessage : 'Drop An Image Or Click To Search One',
@@ -217,6 +216,7 @@ function imgClick(img) {
 				// body...
 				this.on('addedfile', function (file) {
 					// body...
+					console.log('acepted')
 					filesAccepted = this.getAcceptedFiles()
 					if(filesAccepted.length > 0){
 						this.removeFile(filesAccepted[0])
