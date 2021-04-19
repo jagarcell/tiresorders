@@ -216,7 +216,6 @@ function imgClick(img) {
 				// body...
 				this.on('addedfile', function (file) {
 					// body...
-					console.log('acepted')
 					filesAccepted = this.getAcceptedFiles()
 					if(filesAccepted.length > 0){
 						this.removeFile(filesAccepted[0])
