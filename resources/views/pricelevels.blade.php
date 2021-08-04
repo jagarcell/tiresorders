@@ -30,7 +30,7 @@
 			<thead>
 				<tr>
 					<th class="firstCol">Description</th>
-					<th class="secondCol">%</th>
+					<th class="secondCol perctHeaderAlign">%</th>
 					<th class="thirdCol">Type</th>
 				</tr>
 			</thead>
@@ -38,7 +38,7 @@
 				@foreach($pricelevels as $key => $pricelevel)
 				<tr id="{{$pricelevel->id}}">
 					<td class="firstCol"><input type="text" value="{{$pricelevel->description}}" onchange="descriptionChange(this)"></td>
-					<td class="secondCol"><input type="text" value="{{$pricelevel->percentage}}" onchange="percentageChange(this)"></td>
+					<td class="secondCol"><input type="text" value="{{$pricelevel->percentage}}" onchange="percentageChange(this)" class="perctAlign"></td>
 					<td class="thirdCol">
 						<select onchange="typeChange(this)">
 							<option value="discount" {{($pricelevel->type == 'discount') ? 'selected' : ' '}}>Discount</option>
