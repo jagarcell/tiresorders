@@ -1,9 +1,10 @@
 .perctHeaderAlign{
-	text-align: center;
+	text-align: center !important;
 }
 
 .perctAlign{
 	text-align: end;
+	padding-right: 10px;
 }
 
 .pricelevelsMainDiv{
