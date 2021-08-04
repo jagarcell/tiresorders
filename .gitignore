@@ -18,3 +18,4 @@ yarn-error.log
 /tools
 /public/img
 .ftpquota
+error_log
