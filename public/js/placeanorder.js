@@ -92,7 +92,7 @@ $(document).ready(function placeAnOrderReady() {
 					})
 
 					ofertasSlideDiv.innerHTML = ""	
-					ofertasSlideDiv.innerHTML = newHTML1
+//					ofertasSlideDiv.innerHTML = newHTML1
 					console.log(newHTML1)
 
 					var ofertaNDivs = $(".ofertaNDiv")
