@@ -35,7 +35,7 @@
 	<!-- THIS IS THE SLIDE SHOW OF THE SPECIALS -->
 	<div class="ofertaWrap" onclick="specialClick(this)">
 		@if(count($Inventory) > 0)
-		<div class="ofertasSlideDiv">
+		<div id="ofertasSlideDiv" class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
 				<div class="ofertaNComponent ofertaNComponent1">
