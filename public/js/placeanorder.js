@@ -98,26 +98,15 @@ $(document).ready(function placeAnOrderReady() {
 
 			var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
 			console.log(ofertaNDivs)
-
-			for(var i = 0; i < ofertaNDivs.length; i++){
-				if(i == 0){
-					ofertaNDivs[i].style.visibility = 'visible'
-					ofertaNDivs[i].style.opacity = 100
-					ofertaNDivs[i].checked = 1
-				}
-				else{
-					ofertaNDivs[i].checked = 0
-				}
-			}
 		
-/*
+
 			ofertaNDivs[0].checked = 1
 			ofertaNDivs[0].style.visibility = 'visible'
 			ofertaNDivs[0].style.opacity = 100
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
-*/			
+			
 		}
 
 	}, 6000)
