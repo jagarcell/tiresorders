@@ -81,6 +81,7 @@ $(document).ready(function placeAnOrderReady() {
 					var ofertasSlideDiv = document.getElementsByClassName('ofertasSlideDiv')[0]
 					console.log(ofertasSlideDiv)
 					var ofertasSlideDivTemplate = document.getElementsByClassName('ofertasSlideDivTemplate')[0]
+					console.log(ofertasSlideDivTemplate)
 				}
 			})
 
