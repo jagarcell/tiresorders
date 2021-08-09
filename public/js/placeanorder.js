@@ -62,8 +62,6 @@ $(document).ready(function placeAnOrderReady() {
 		var ofertaNDivs = $(".ofertaNDiv")
 		var i = 0
 		for(i = 0; i < ofertaNDivs.length; i++){
-			var ofertaDiv = $(ofertaNDivs[i]).find('.itemNameId')
-			console.log(ofertaDiv[0].innerHTML)
 			if(ofertaNDivs[i].checked == 0)
 			{
 				ofertaNDivs[i].checked = 1
