@@ -86,6 +86,7 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML = newHTML.replace(/item-id/g, special.id)
 						newHTML = newHTML.replace(/item-name/g, special.name)
 						$(newHTML).find('.imgPathId')[0].src = '/public/' + special.imgpath
+						console.log($(newHTML).find('.imgPathId')[0])
 						newHTML = newHTML.replace(/item-oferta/g, special.oferta)
 
 						newHTML1 += newHTML
