@@ -79,9 +79,16 @@ $(document).ready(function placeAnOrderReady() {
 			$.get('/specials', function(data, status){
 				if(status == 'success'){
 					var ofertasSlideDiv = document.getElementsByClassName('ofertasSlideDiv')[0]
-					console.log(ofertasSlideDiv)
 					var ofertasSlideDivTemplate = document.getElementsByClassName('ofertasSlideDivTemplate')[0]
-					console.log(ofertasSlideDivTemplate)
+					var newHTML1 = ""
+					$.each(data.specials, function(index, special){
+						var newHTML = ofertasSlideDivTemplate.innerHTML
+						newHTML = newHTML.replace(/item-id/g, special.id)
+						newHTML = newHTML.replace(/item-name/g, special.name)
+						newHTML = newHTML.replace(/item-imgpath/, special.imgpath)
+						newHTML = newHTML.replace(/item-oferta/g, special.oferta)
+						newHTML1 += newHTML
+					})
 				}
 			})
 

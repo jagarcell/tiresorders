@@ -54,15 +54,15 @@
 	</div>
 	<!-- HTML TEMPLATE TO CREATE A SLIDE SHOW DIV FROM JS -->
 	<div class="ofertasSlideDivTemplate" hidden>
-		<div id="{{$item->id}}" class="ofertaNDiv">
+		<div id="item-id" class="ofertaNDiv">
 			<div class="ofertaNComponent ofertaNComponent1">
-				<LABEL class="labelClass itemDescriptionFont itemNameId">{{$item->name}}</LABEL>
+				<LABEL class="labelClass itemDescriptionFont itemNameId">item-name</LABEL>
 			</div>
 			<div class="ofertaNComponent ofertaNComponent2">
-				<img src="/public/{{$item->imgpath}}" class="productImageOferta imgPathId">
+				<img src="/public/item-imgpath" class="productImageOferta imgPathId">
 			</div>
 			<div class="ofertaNComponent ofertaNComponent3 ofertaBG" >
-				<LABEL class="labelClass itemSpecialFont ofertaId">${{$item->oferta}}</LABEL>
+				<LABEL class="labelClass itemSpecialFont ofertaId">item-oferta</LABEL>
 			</div>
 		</div>
 	</div>
