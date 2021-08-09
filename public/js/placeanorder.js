@@ -78,10 +78,10 @@ $(document).ready(function placeAnOrderReady() {
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length -1){
 			$.get('/specials', function(data, status){
 				if(status == 'success'){
-					console.log(data)
+					var ofertasSlideDiv = document.getElementsByClassName('ofertasSlideDiv')[0]
+					console.log(ofertasSlideDiv)
 				}
 			})
-			console.log('done')
 
 			ofertaNDivs[0].checked = 1
 			ofertaNDivs[0].style.visibility = 'visible'
