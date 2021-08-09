@@ -76,13 +76,13 @@ $(document).ready(function placeAnOrderReady() {
 			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
-/*			$.get('/specials', function(data, status){
+			$.get('/specials', function(data, status){
 				if(status == 'success'){
 					console.log(data)
 				}
 			})
 			console.log('done')
-*/
+
 			ofertaNDivs[0].checked = 1
 			ofertaNDivs[0].style.visibility = 'visible'
 			ofertaNDivs[0].style.opacity = 100
