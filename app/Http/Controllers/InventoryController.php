@@ -30,10 +30,10 @@ class InventoryController extends Controller
         return (new Inventory())->SearchItemById($request);
     }
 
-    public function searchItemsByIds(Request $request)
+    public function specials(Request $request)
     {
         # code...
-        return (new Inventory())->searchItemsByIds($request);
+        return (new Inventory())->specials($request);
     }
 
     public function searchInventory(Request $request)

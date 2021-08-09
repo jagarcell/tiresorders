@@ -150,7 +150,7 @@ Route::get('/searchfor', 'InventoryController@SearchFor');
 
 Route::get('/searchitembyid', 'InventoryController@SearchItemById');
 
-Route::get('/searchitemsbyids', 'InventoryController@searchItemsByIds');
+Route::get('/specials', 'InventoryController@specials');
 
 Route::get('/syncronizeinventories', 'InventoryController@SyncronizeInventories');
 

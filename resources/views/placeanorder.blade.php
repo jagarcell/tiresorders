@@ -26,13 +26,15 @@
 <body>
 @section('content')
 <div class="mainDiv">
-		<div class="ofertasDiv" hidden>
-			<a href="https://goo.gl/maps/KBbbJs5neKbgiyLB8" target="_blank">
-			<img src="public/img/logos/Moving.png" class="ofertasBanner">
-			</a>
-		</div>
+	<!-- THIS IS THE BANNER AT THE TOP OF THE CLIENTS PAGE -->
+	<div class="ofertasDiv" hidden>
+		<a href="https://goo.gl/maps/KBbbJs5neKbgiyLB8" target="_blank">
+		<img src="public/img/logos/Moving.png" class="ofertasBanner">
+		</a>
+	</div>
+	<!-- THIS IS THE SLIDE SHOW OF THE SPECIALS -->
 	<div class="ofertaWrap" onclick="specialClick(this)">
-		@if(count($Inventory) > 0)	
+		@if(count($Inventory) > 0)
 		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
 			<div id="{{$item->id}}" class="ofertaNDiv">
@@ -50,6 +52,21 @@
 		</div>
 		@endif
 	</div>
+	<!-- HTML TEMPLATE TO CREATE A SLIDE SHOW DIV FROM JS -->
+	<div class="ofertasSlideDivTemplate" hidden>
+		<div id="{{$item->id}}" class="ofertaNDiv">
+			<div class="ofertaNComponent ofertaNComponent1">
+				<LABEL class="labelClass itemDescriptionFont itemNameId">{{$item->name}}</LABEL>
+			</div>
+			<div class="ofertaNComponent ofertaNComponent2">
+				<img src="/public/{{$item->imgpath}}" class="productImageOferta imgPathId">
+			</div>
+			<div class="ofertaNComponent ofertaNComponent3 ofertaBG" >
+				<LABEL class="labelClass itemSpecialFont ofertaId">${{$item->oferta}}</LABEL>
+			</div>
+		</div>
+	</div>
+
 	<div class="searchDiv">
 		<input type="text" id="searchText" placeholder="Enter Your Search" autofocus="true" class="searchBar">
 		<input type="button" id="searchButton" class="actionButton searchButton" value="Search">

@@ -56,7 +56,6 @@ $(document).ready(function placeAnOrderReady() {
 		else{
 			ofertaNDivs[i].checked = 0
 		}
-		console.log(ofertaNDivs[i].id)
 	}
 	
 	window.setInterval(function(){
@@ -82,6 +81,11 @@ $(document).ready(function placeAnOrderReady() {
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
+			$.get('/specials', function(data, status){
+				if(status == 'success'){
+					console.log(data)
+				}
+			})
 		}
 
 	}, 6000)
