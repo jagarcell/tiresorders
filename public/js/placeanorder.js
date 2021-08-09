@@ -87,7 +87,7 @@ $(document).ready(function placeAnOrderReady() {
 					console.log(data)
 				}
 			})
-
+			console.log('done')
 		}
 
 	}, 6000)
