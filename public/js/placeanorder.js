@@ -80,6 +80,7 @@ $(document).ready(function placeAnOrderReady() {
 				if(status == 'success'){
 					var ofertasSlideDiv = document.getElementsByClassName('ofertasSlideDiv')[0]
 					console.log(ofertasSlideDiv)
+					var ofertasSlideDivTemplate = document.getElementsByClassName('ofertasSlideDivTemplate')[0]
 				}
 			})
 
