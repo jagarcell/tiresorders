@@ -75,7 +75,7 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.opacity = 0
 			}
 		}
-		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
+		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length -1){
 			$.get('/specials', function(data, status){
 				if(status == 'success'){
 					console.log(data)
