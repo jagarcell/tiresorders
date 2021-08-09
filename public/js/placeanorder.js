@@ -46,6 +46,8 @@ $(document).ready(function placeAnOrderReady() {
 	document.getElementById("searchText").focus()
 
 	var ofertaNDivs = $(".ofertaNDiv")
+	console.log(ofertaNDivs)
+	console.log($('#ofertasSlideDiv').find('.ofertaNDiv'))	
 
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
@@ -92,7 +94,7 @@ $(document).ready(function placeAnOrderReady() {
 					})
 
 //					ofertasSlideDiv.innerHTML = newHTML1
-					console.log(newHTML1)
+//					console.log(newHTML1)
 				}
 			})
 
