@@ -116,8 +116,9 @@ $(document).ready(function placeAnOrderReady() {
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
+*/			
 		}
-*/
+
 	}, 6000)
 })
 
