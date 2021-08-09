@@ -97,6 +97,7 @@ $(document).ready(function placeAnOrderReady() {
 			})
 
 			var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
+			console.log(ofertaNDivs)
 
 			for(var i = 0; i < ofertaNDivs.length; i++){
 				if(i == 0){
