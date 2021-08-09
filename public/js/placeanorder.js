@@ -91,21 +91,19 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML1 += newHTML
 					})
 
-//					ofertasSlideDiv.innerHTML = newHTML1
+					ofertasSlideDiv.innerHTML = newHTML1
 //					console.log(newHTML1)
 				}
+
+				var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
+	
+				ofertaNDivs[0].checked = 1
+				ofertaNDivs[0].style.visibility = 'visible'
+				ofertaNDivs[0].style.opacity = 100
+				for(i = 1; i < ofertaNDivs.length; i++){
+					ofertaNDivs[i].checked = 0
+				}
 			})
-
-			var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
-			console.log(ofertaNDivs)
-		
-
-			ofertaNDivs[0].checked = 1
-			ofertaNDivs[0].style.visibility = 'visible'
-			ofertaNDivs[0].style.opacity = 100
-			for(i = 1; i < ofertaNDivs.length; i++){
-				ofertaNDivs[i].checked = 0
-			}
 			
 		}
 
