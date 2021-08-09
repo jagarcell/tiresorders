@@ -56,7 +56,7 @@ $(document).ready(function placeAnOrderReady() {
 		else{
 			ofertaNDivs[i].checked = 0
 		}
-		console.log($(ofertaNDivs[i]).find('.itemId').val())
+		console.log(ofertaNDivs[i].id)
 	}
 	
 	window.setInterval(function(){

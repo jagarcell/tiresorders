@@ -35,7 +35,6 @@
 		@if(count($Inventory) > 0)	
 		<div class="ofertasSlideDiv">
 			@foreach($Inventory as $key => $item)
-			<input type="text" value="{{$item->id}}" class="itemId" hidden>
 			<div id="{{$item->id}}" class="ofertaNDiv">
 				<div class="ofertaNComponent ofertaNComponent1">
 					<LABEL class="labelClass itemDescriptionFont itemNameId">{{$item->name}}</LABEL>
