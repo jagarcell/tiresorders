@@ -91,8 +91,7 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML1 += newHTML
 					})
 
-					ofertasSlideDiv.innerHTML = newHTML1
-//					console.log(newHTML1)
+//					ofertasSlideDiv.innerHTML = newHTML1
 				}
 
 				var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
