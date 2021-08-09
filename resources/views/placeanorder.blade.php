@@ -59,7 +59,7 @@
 				<LABEL class="labelClass itemDescriptionFont itemNameId">item-name</LABEL>
 			</div>
 			<div class="ofertaNComponent ofertaNComponent2">
-				<img class="productImageOferta imgPathId">
+				<img src="" class="productImageOferta imgPathId">
 			</div>
 			<div class="ofertaNComponent ofertaNComponent3 ofertaBG" >
 				<LABEL class="labelClass itemSpecialFont ofertaId">item-oferta</LABEL>
