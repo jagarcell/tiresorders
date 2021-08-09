@@ -91,6 +91,7 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML1 += newHTML
 					})
 
+					ofertasSlideDiv.innerHTML = ""	
 					ofertasSlideDiv.innerHTML = newHTML1
 					console.log(newHTML1)
 
