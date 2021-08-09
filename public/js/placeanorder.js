@@ -45,9 +45,8 @@ $(document).ready(function placeAnOrderReady() {
 
 	document.getElementById("searchText").focus()
 
-	var ofertaNDivs = $(".ofertaNDiv")
+	var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
 	console.log(ofertaNDivs)
-	console.log($('#ofertasSlideDiv').find('.ofertaNDiv'))	
 
 	for(var i = 0; i < ofertaNDivs.length; i++){
 		if(i == 0){
@@ -77,7 +76,7 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.opacity = 0
 			}
 		}
-		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length -1){
+		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
 			$.get('/specials', function(data, status){
 				if(status == 'success'){
 					var ofertasSlideDiv = document.getElementsByClassName('ofertasSlideDiv')[0]
