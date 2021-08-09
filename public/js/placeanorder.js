@@ -92,7 +92,7 @@ $(document).ready(function placeAnOrderReady() {
 					})
 
 					ofertasSlideDiv.innerHTML = ""	
-//					ofertasSlideDiv.innerHTML = newHTML1
+					ofertasSlideDiv.innerHTML = newHTML1
 					console.log(newHTML1)
 
 					var ofertaNDivs = $(".ofertaNDiv")
@@ -104,6 +104,7 @@ $(document).ready(function placeAnOrderReady() {
 							ofertaNDivs[i].checked = 1
 						}
 						else{
+							ofertaNDivs[i].style.visibility = 'hidden'
 							ofertaNDivs[i].checked = 0
 						}
 					}					
