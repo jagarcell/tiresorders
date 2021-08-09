@@ -26,7 +26,7 @@
 <body>
 @section('content')
 <div class="mainDiv">
-		<div class="ofertasDiv">
+		<div class="ofertasDiv" hidden>
 			<a href="https://goo.gl/maps/KBbbJs5neKbgiyLB8" target="_blank">
 			<img src="public/img/logos/Moving.png" class="ofertasBanner">
 			</a>
