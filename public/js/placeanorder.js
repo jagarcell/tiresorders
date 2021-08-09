@@ -76,18 +76,19 @@ $(document).ready(function placeAnOrderReady() {
 			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
-			ofertaNDivs[0].checked = 1
-			ofertaNDivs[0].style.visibility = 'visible'
-			ofertaNDivs[0].style.opacity = 100
-			for(i = 1; i < ofertaNDivs.length; i++){
-				ofertaNDivs[i].checked = 0
-			}
 			$.get('/specials', function(data, status){
 				if(status == 'success'){
 					console.log(data)
 				}
 			})
 			console.log('done')
+
+			ofertaNDivs[0].checked = 1
+			ofertaNDivs[0].style.visibility = 'visible'
+			ofertaNDivs[0].style.opacity = 100
+			for(i = 1; i < ofertaNDivs.length; i++){
+				ofertaNDivs[i].checked = 0
+			}
 		}
 
 	}, 6000)
