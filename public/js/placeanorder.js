@@ -90,6 +90,8 @@ $(document).ready(function placeAnOrderReady() {
 						
 						newHTML1 += newHTML
 					})
+
+					ofertasSlideDiv.innerHTML = newHTML1
 					console.log(newHTML1)
 
 					var ofertaNDivs = $(".ofertaNDiv")
