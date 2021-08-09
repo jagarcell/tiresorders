@@ -85,7 +85,7 @@ $(document).ready(function placeAnOrderReady() {
 						var newHTML = ofertasSlideDivTemplate.innerHTML
 						newHTML = newHTML.replace(/item-id/g, special.id)
 						newHTML = newHTML.replace(/item-name/g, special.name)
-						$(newHTML).find('.imgPathId')[0].setAttribute("src", '/public/' + special.imgpath)
+						$(newHTML).find('.imgPathId')[0].src = '/public/' + special.imgpath
 						newHTML = newHTML.replace(/item-oferta/g, special.oferta)
 
 						newHTML1 += newHTML
