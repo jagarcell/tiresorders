@@ -59,7 +59,7 @@ $(document).ready(function placeAnOrderReady() {
 	}
 	
 	window.setInterval(function(){
-		var ofertaNDivs = $(".ofertaNDiv")
+		var ofertaNDivs = $('#ofertasSlideDiv').find('.ofertaNDiv')
 		var i = 0
 	
 		for(i = 0; i < ofertaNDivs.length; i++){
