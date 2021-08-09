@@ -87,9 +87,10 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML = newHTML.replace(/item-name/g, special.name)
 						newHTML = newHTML.replace(/src=""/g, "src='/public/" + special.imgpath + "'")
 						newHTML = newHTML.replace(/item-oferta/g, special.oferta)
+						
 						newHTML1 += newHTML
 					})
-					ofertasSlideDiv.innerHTML = newHTML1
+					console.log(newHTML1)
 				}
 			})
 
