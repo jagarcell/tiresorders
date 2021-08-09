@@ -89,6 +89,7 @@ $(document).ready(function placeAnOrderReady() {
 						newHTML = newHTML.replace(/item-oferta/g, special.oferta)
 						newHTML1 += newHTML
 					})
+					console.log(newHTML1)
 				}
 			})
 
