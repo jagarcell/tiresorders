@@ -30,6 +30,12 @@ class InventoryController extends Controller
         return (new Inventory())->SearchItemById($request);
     }
 
+    public function searchItemsByIds(Request $request)
+    {
+        # code...
+        return (new Inventory())->searchItemsByIds($request);
+    }
+
     public function searchInventory(Request $request)
     {
     	# code...
