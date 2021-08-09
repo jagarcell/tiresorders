@@ -74,13 +74,6 @@ $(document).ready(function placeAnOrderReady() {
 				ofertaNDivs[i].style.visibility = 'hidden'
 				ofertaNDivs[i].style.opacity = 0
 			}
-			if(i == 0){
-				$.get('/specials', function(data, status){
-					if(status == 'success'){
-						console.log(data)
-					}
-				})
-			}
 		}
 		if(ofertaNDivs.length > 0 && i == ofertaNDivs.length){
 			ofertaNDivs[0].checked = 1
@@ -89,6 +82,12 @@ $(document).ready(function placeAnOrderReady() {
 			for(i = 1; i < ofertaNDivs.length; i++){
 				ofertaNDivs[i].checked = 0
 			}
+			$.get('/specials', function(data, status){
+				if(status == 'success'){
+					console.log(data)
+				}
+			})
+
 		}
 
 	}, 6000)
