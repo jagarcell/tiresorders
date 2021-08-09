@@ -54,7 +54,7 @@
 	</div>
 	<!-- HTML TEMPLATE TO CREATE A SLIDE SHOW DIV FROM JS -->
 	<div class="ofertasSlideDivTemplate" hidden>
-		<div id="item-id" class="ofertaNDiv">
+		<div id="item-id" class="ofertaNDiv" style="visibility:hidden">
 			<div class="ofertaNComponent ofertaNComponent1">
 				<LABEL class="labelClass itemDescriptionFont itemNameId">item-name</LABEL>
 			</div>

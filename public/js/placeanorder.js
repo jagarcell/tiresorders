@@ -104,7 +104,6 @@ $(document).ready(function placeAnOrderReady() {
 							ofertaNDivs[i].checked = 1
 						}
 						else{
-							ofertaNDivs[i].style.visibility = 'hidden'
 							ofertaNDivs[i].checked = 0
 						}
 					}					
