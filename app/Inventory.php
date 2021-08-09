@@ -280,6 +280,18 @@ class Inventory extends Model
         return $this->FindItemByLocalItemId($id);
     }
 
+    public function searchItemsByIds($request)
+    {
+        # code...
+        $ids = $request['ids'];
+        $items = array();
+        foreach($ids as $key => $id){
+            $item = $this->FindItemByLocalItemId($id);
+            array_push($items, $item);
+        }
+        return $items;
+    }
+
     public function FindItemByLocalItemId($localitemid)
     {
         # code...
