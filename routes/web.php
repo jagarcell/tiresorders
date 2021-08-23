@@ -15,6 +15,8 @@
 
 use Illuminate\Http\Request;
 
+Route::get('/testmail', 'HomeController@TestMail');
+
 Route::get('/test', function(){
 	return view('/test');
 });
