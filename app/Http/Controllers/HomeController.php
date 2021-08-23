@@ -81,10 +81,8 @@ class HomeController extends Controller
         # code...
         try {
             //code...
-            
-            Mail::to('jagarcell@gmail.com')->send(new TestMail())->subject('PRUEBA DE EMAIL');
+            Mail::to('jagarcell@gmail.com')->send((new TestMail())->subject('PRUEBA DE EMAIL'));
             return 'MAIL';
-
         } catch (\Throwable $th) {
             //throw $th;
             return $th;
