@@ -78,7 +78,7 @@ class HomeController extends Controller
 
     public function TestMail(Request $request)
     {
-        $Subject = isset($requets['message']) ? $request['message'] : 'SIN ASUNTO';
+        $Subject = isset($request['message']) ? $request['message'] : 'SIN ASUNTO';
         # code...
         try {
             //code...
