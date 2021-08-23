@@ -78,10 +78,11 @@ class HomeController extends Controller
 
     public function TestMail(Request $request)
     {
+        $Subject = isset($requets['message']) ? $request['message'] : 'SIN ASUNTO';
         # code...
         try {
             //code...
-            Mail::to('jagarcell@gmail.com')->send((new TestMail())->subject('PRUEBA DE EMAIL'));
+            Mail::to('jagarcell@gmail.com')->send((new TestMail())->subject($Subject));
             return 'MAIL';
         } catch (\Throwable $th) {
             //throw $th;
