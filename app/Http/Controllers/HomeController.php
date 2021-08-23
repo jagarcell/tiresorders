@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+use App\Mail\TestMail;
+
 
 use App\Http\CompanyInfo;
 use App\Inventory;
@@ -80,7 +82,7 @@ class HomeController extends Controller
         try {
             //code...
             
-            Mail::to('jagarcell@gmail.com')->send('MENSAJE DE PRUEBA')->subject('PRUEBA DE EMAIL');
+            Mail::to('jagarcell@gmail.com')->send(new TestMail())->subject('PRUEBA DE EMAIL');
             return 'MAIL';
 
         } catch (\Throwable $th) {
