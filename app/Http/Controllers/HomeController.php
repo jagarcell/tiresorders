@@ -77,7 +77,7 @@ class HomeController extends Controller
     public function TestMail(Request $request)
     {
         # code...
-        Mail::to('jagarcell@gmail.com')->send('MENSAJE DE PRUEBA')->subject('PRUEBA DE EMAIL');
+//        Mail::to('jagarcell@gmail.com')->send('MENSAJE DE PRUEBA')->subject('PRUEBA DE EMAIL');
         return 'MAIL';
     }
 }
