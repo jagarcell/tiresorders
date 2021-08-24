@@ -16,9 +16,11 @@ class TestMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $Message;
+    public function __construct($Message)
     {
         //
+        $this->Message = $Message;
     }
 
     /**

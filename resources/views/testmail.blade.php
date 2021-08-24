@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div>
-        TEST EMAIL
+        {{$Message}}
 	</div>
 </body>
 </html>
