@@ -146,7 +146,8 @@
 	}
 
 	.importButton{
-		position: absolute;
+		position: static;
+		display: flex;
 	}
 
 	.updateMessage{
