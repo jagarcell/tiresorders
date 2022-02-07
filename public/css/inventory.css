@@ -195,6 +195,12 @@
 		animation-duration: 1s;
 		animation-iteration-count:9000;
 	}
+
+	.inventoryButtons{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
   
 	/* Safari 4.0 - 8.0 */
 	@-webkit-keyframes tireAnimation {

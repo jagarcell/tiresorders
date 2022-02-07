@@ -86,7 +86,10 @@
 	<div id="myProgress">
 	  <div id="myBar"></div>
 	</div>
-	<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
+	<div class="inventoryButtons">
+		<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
+		<div class="updateInventory"><input id="importCSV" type="button" class="actionButton updateInventoryButton" value="IMPORT CSV" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
+	</div>
 </div>
 @endsection
 </body>

@@ -5,6 +5,7 @@ $(document).ready(function InventoryReady() {
 	var n = d.getTimezoneOffset()
 
 	$('#updateInventory').click(updateInventory)
+	$('#importCSV').click(importCsv)
 	$('#searchButton').click(searchButtonClick)
 
 	$('#noItemsFoundDiv').hide()
@@ -353,6 +354,10 @@ function updateInventory() {
 		$('#updateInventory').prop('disabled', false)
 
 	})
+}
+
+function importCsv() {
+	alert('IMPORT CSV')
 }
 
 function updateMessage(message) {
