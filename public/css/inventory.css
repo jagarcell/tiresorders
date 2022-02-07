@@ -132,6 +132,7 @@
 	}
 
 	.updateInventory{
+		width: 200px;
 		margin-top: 10px;
 		margin-bottom: 40px;
 		min-width: 200px;
