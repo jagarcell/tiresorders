@@ -149,6 +149,10 @@
 
 	}
 
+	.csvImport{
+		width: 100px;
+	}
+
 	.updateInventoryButton{
 		width: 25%;
 		min-width: 200px;
