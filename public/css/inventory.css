@@ -139,6 +139,15 @@
 		min-width: 200px;
 		text-align: center;
 	}
+	.updateInventoryWrap{
+		position: relative;
+		width: 400px;
+		margin-top: 10px;
+		margin-bottom: 40px;
+		min-width: 200px;
+		text-align: center;
+
+	}
 
 	.updateInventoryButton{
 		width: 25%;
