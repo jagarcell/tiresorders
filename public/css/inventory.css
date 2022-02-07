@@ -132,6 +132,7 @@
 	}
 
 	.updateInventory{
+		position: relative;
 		width: 200px;
 		margin-top: 10px;
 		margin-bottom: 40px;
@@ -142,6 +143,10 @@
 	.updateInventoryButton{
 		width: 25%;
 		min-width: 200px;
+	}
+
+	.importButton{
+		position: absolute;
 	}
 
 	.updateMessage{
