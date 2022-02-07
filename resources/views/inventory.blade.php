@@ -88,7 +88,7 @@
 	</div>
 	<div class="inventoryButtons">
 		<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
-		<div class="updateInventory"><input id="importCSV" type="button" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV"></div>
+		<div class="updateInventory"><input id="importCSV" type="file" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV"></div>
 	</div>
 </div>
 @endsection
