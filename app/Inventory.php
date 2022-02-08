@@ -753,7 +753,7 @@ class Inventory extends Model
                 }
     
                 $invItems = (new Inventory())->where('id', '>', -1)->get();
-                
+
                 foreach ($invItems as $key => $invItem) {
                     # code...
                     if(isset($items[$invItem->id])){
@@ -779,7 +779,7 @@ class Inventory extends Model
                     }
                     else{
                         // TO BE DELETED
-                        (new Inventory())->where('id', invItem->id)->delete();
+                        (new Inventory())->where('id', $invItem->id)->delete();
                     }
 
                     // ALL NEW RECORDS
