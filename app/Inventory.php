@@ -666,24 +666,11 @@ class Inventory extends Model
 
         $uploadOk = 1;
 
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
         // Check file size
         if ($_FILES["csvFile"]["size"] > 500000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
-
-        // Allow certain file formats
-        /*
-        if($file_type != "csv") {
-            echo "Sorry, only CSV files are allowed.";
-            $uploadOk = 0;
-        }
-        */
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
