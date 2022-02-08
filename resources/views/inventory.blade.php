@@ -93,7 +93,7 @@
 				@csrf
 				<input type="hidden" name="MAX_FILE_SIZE" value="500000">
 				<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
-				<input type="file" class="csvImport"  name="csvFile" accept="csv">
+				<input type="file" class="csvImport"  name="csvFile" accept=".csv">
 			</form>
 		</div>
 	</div>
