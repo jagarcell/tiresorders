@@ -663,7 +663,7 @@ class Inventory extends Model
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         echo $tmpfile . "->" . $target_file;
-        
+        return;
         $uploadOk = 1;
 
         // Check if file already exists
