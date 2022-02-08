@@ -688,7 +688,7 @@ class Inventory extends Model
 
                     $items = [];
                     $uId = 0;
-                    
+
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -700,8 +700,7 @@ class Inventory extends Model
                     ){
                         if($row[0] != "id")
                         {
-                            $id = $row[0];
-                            $id = $id == "" ? "A" . $uId : $id;
+                            $id = $row[0] == "" ? "A" . $uId : $row[0];
                             if(!isset($items[$id])){
                                 $items[$id] = 
                                 [
