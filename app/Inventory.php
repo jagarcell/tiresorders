@@ -658,6 +658,6 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        dd($request);
+        echo($request);
     }
 }
