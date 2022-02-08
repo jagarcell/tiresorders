@@ -663,7 +663,7 @@ class Inventory extends Model
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $file_type = $_FILES["csvFile"]["type"];
-        
+
         $uploadOk = 1;
 
         // Check if file already exists
@@ -676,11 +676,15 @@ class Inventory extends Model
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
+        
         // Allow certain file formats
+        /*
         if($file_type != "csv") {
             echo "Sorry, only CSV files are allowed.";
             $uploadOk = 0;
         }
+        */
+
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
