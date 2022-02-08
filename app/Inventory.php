@@ -746,11 +746,63 @@ class Inventory extends Model
                             }
                         }
                     };
-                    dd($items);                    
+
+
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
     
+                $invItems = (new Inventory())->where('id', '>', -1)->get();
+                
+                foreach ($invItems as $key => $invItem) {
+                    # code...
+                    if(isset($items[$invItem->id])){
+                        // FOR UPDATE
+                        (new Inventory())->where('id', $invItem->id)->update(
+                            [
+                                "qbitemid" => $row[1],
+                                "description" => $row[2],
+                                "instock" => $row[3],
+                                "inorders" => $row[4],
+                                "price" => $row[5],
+                                "created_at" => $row[6],
+                                "updated_at" => $row[7],
+                                "pricemodified" => $row[8],
+                                "imgpath" => $row[9],
+                                "name" => $row[10],
+                                "inpurchaseorders" => $row[11],
+                                "update" => $row[12],
+                                "archive" => $row[13],
+                                "oferta" => $row[14],
+                            ]
+                        );
+                    }
+                    else{
+                        // TO BE DELETED
+                        (new Inventory())->where('id', invItem->id)->delete();
+                    }
+
+                    // ALL NEW RECORDS
+                    for($i = 0; $i < $uId; $i++){
+                        $row = $items["A" . $i];
+                    
+                        $this->qbitemid = $row[1];
+                        $this->description = $row[2];
+                        $this->instock = $row[3];
+                        $this->inorders = $row[4];
+                        $this->price = $row[5];
+                        $this->created_at = $row[6];
+                        $this->updated_at = $row[7];
+                        $this->pricemodified = $row[8];
+                        $this->imgpath = $row[9];
+                        $this->name = $row[10];
+                        $this->inpurchaseorders = $row[11];
+                        $this->update = $row[12];
+                        $this->archive = $row[13];
+                        $this->oferta = $row[14];
+                        $this->save();
+                    }
+                }   
             } catch (\Throwable $th) {
                 //throw $th;
                 echo $th;
