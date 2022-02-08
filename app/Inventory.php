@@ -747,6 +747,7 @@ class Inventory extends Model
                         }
                     };
 
+                    dd($items);
 
                 } else {
                     echo "Sorry, there was an error uploading your file.";
