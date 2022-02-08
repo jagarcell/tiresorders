@@ -89,8 +89,10 @@
 	<div class="inventoryButtons">
 		<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
 		<div class="updateInventory1">
-			<input id="importCSV" type="button" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
-			<input id="csvFile" type="file" class="csvImport"  title="CHOOSE A CSV FILE">
+			<form action="/csvimport">
+				<input id="importCSV" type="button" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
+				<input id="csvFile" type="file" class="csvImport"  name="csvFile">
+			</form>
 		</div>
 	</div>
 </div>

@@ -654,4 +654,10 @@ class Inventory extends Model
             return $Items;
         }
     }
+
+    public function CsvImport($request)
+    {
+        # code...
+        dd($request);
+    }
 }

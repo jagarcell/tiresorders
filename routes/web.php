@@ -166,6 +166,8 @@ Route::get('/updateoferta', 'InventoryController@UpdateOferta');
 
 Route::get('/datetimeoffset', 'InventoryController@DateTimeOffset');
 
+Route::post('/csvimport',  'InventoryController@CsvImport');
+
 /****************************
 *     SearchesController  	*
 ****************************/

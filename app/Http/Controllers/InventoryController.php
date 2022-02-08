@@ -92,4 +92,10 @@ class InventoryController extends Controller
         return;    
         return (new Inventory())->DateTimeOffset($request);
     }
+
+    public function CsvImport(Request $request)
+    {
+        # code...
+        return (new Inventory())->CsvImport($request);
+    }
 }
