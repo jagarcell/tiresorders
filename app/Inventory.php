@@ -694,6 +694,7 @@ class Inventory extends Model
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
+            dd($_FILES["csvFile"]);
             echo $_FILES["csvFile"]["tmp_name"] . " -> " . $target_file;
             try {
                 //code...
