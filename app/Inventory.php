@@ -658,10 +658,12 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        $tmp_file = realpath(dirname(getcwd())) . $_FILES["csvFile"]["tmp_name"];
+        $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
+        echo $tmpfile . "->" . $target_file;
+        
         $uploadOk = 1;
 
         // Check if file already exists
