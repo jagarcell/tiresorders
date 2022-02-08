@@ -658,7 +658,7 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        $target_dir = "/storage/uploads";
+        $target_dir = "/storage/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         echo $target_file;
         return;
