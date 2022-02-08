@@ -91,7 +91,7 @@
 		<div class="updateInventory1">
 			<form enctype="multipart/form-data" action="/csvimport" method="POST" style="display:none">
 				@csrf
-				<input type="hidden" name="MAX_FILE_SIZE" value="30000"/>
+				<!--input type="hidden" name="MAX_FILE_SIZE" value="30000"/-->
 				<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
 				<input id="csvFile" type="file" class="csvImport"  name="csvFile">
 			</form>
