@@ -685,8 +685,10 @@ class Inventory extends Model
                         "r",
                         false
                     );
+
                     $items = [];
                     $uId = 0;
+                    
                     while(
                         $row = fgetcsv(
                             $stream,
