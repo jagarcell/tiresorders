@@ -133,12 +133,22 @@
 
 	.updateInventory{
 		position: relative;
-		width: 50%;
+		width: 30%;
 		margin-top: 10px;
 		margin-bottom: 40px;
 		min-width: 200px;
 		text-align: center;
 	}
+
+	.updateInventory{
+		position: relative;
+		width: 70%;
+		margin-top: 10px;
+		margin-bottom: 40px;
+		min-width: 200px;
+		text-align: center;
+	}
+
 	.updateInventoryWrap{
 		position: relative;
 		width: 400px;
@@ -150,7 +160,7 @@
 	}
 
 	.csvImport{
-		width: 100px;
+		width: auto;
 	}
 
 	.updateInventoryButton{
