@@ -695,7 +695,7 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if(line > 0){
+                        if($line > 0){
                             dd($row);
                         }
                     };
