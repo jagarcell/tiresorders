@@ -660,7 +660,7 @@ class Inventory extends Model
         # code...
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
-        $target_dir = "/public/uploads/";
+        $target_dir = "public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $file_type = $_FILES["csvFile"]["type"];
 
@@ -676,7 +676,7 @@ class Inventory extends Model
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
-        
+
         // Allow certain file formats
         /*
         if($file_type != "csv") {
