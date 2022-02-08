@@ -738,8 +738,8 @@ class Inventory extends Model
                                     "archive" => $row[13],
                                     "oferta" => $row[14],
                                 ];
-                                $uId++;
                             }
+                            $uId++;
                         }
                     };
                     dd($items);                    
