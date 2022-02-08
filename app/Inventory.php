@@ -685,6 +685,7 @@ class Inventory extends Model
                         "r",
                         false
                     );
+                    $items = [];
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -695,14 +696,16 @@ class Inventory extends Model
                         )
                     ){
                         if(
-                            $row[0] != "description" &&
-                            $row[1] != "description" &&
-                            $row[2] != "description"
+                            $row[0] != "id"
                         ){
-                            echo $row[2];
+                            $id = $row[0];
+                            $items[$id] = 
+                            [
+                                "qbitemid" => $row[1],
+                            ];
                         }
                     };
-                    
+                    dd($items);                    
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
