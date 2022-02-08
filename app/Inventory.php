@@ -660,6 +660,8 @@ class Inventory extends Model
         # code...
         $target_dir = "/storage/uploads";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
+        echo $target_file;
+        return;
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         // Check if image file is a actual image or fake image
