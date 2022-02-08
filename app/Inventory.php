@@ -699,7 +699,7 @@ class Inventory extends Model
                             $row[1] != "description" &&
                             $row[2] != "description"
                         ){
-                            dd($row);
+                            echo $row;
                         }
                     };
                     
