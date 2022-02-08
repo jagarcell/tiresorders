@@ -758,6 +758,7 @@ class Inventory extends Model
                     # code...
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
+                        $row = $items[$invItem->id];
                         (new Inventory())->where('id', $invItem->id)->update(
                             [
                                 "qbitemid" => $row[1],
