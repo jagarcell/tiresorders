@@ -694,6 +694,8 @@ class Inventory extends Model
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
+            echo $_FILES["csvFile"]["tmp_name"] . " -> " . $target_file;
+            return;
             if (move_uploaded_file($_FILES["csvFile"]["tmp_name"], $target_file)) {
                 echo "The file ". basename( $_FILES["csvFile"]["name"]). " has been uploaded.";
             } else {
