@@ -696,9 +696,8 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if(
-                            $row[0] != "id"
-                        ){
+                        if($row[0] != "id")
+                        {
                             $id = $row[0];
                             $id = $id == "" ? "A" . $uId : $id;
                             if(!isset($items[$id])){
@@ -738,7 +737,7 @@ class Inventory extends Model
                                     "archive" => $row[13],
                                     "oferta" => $row[14],
                                 ];
-                                $uId++;
+                                $uId = $uId + 1;
                             }
                         }
                     };
