@@ -680,7 +680,12 @@ class Inventory extends Model
             try {
                 //code...
                 if (move_uploaded_file($tmp_file, $target_file)) {
-                    echo "The file ". basename( $_FILES["csvFile"]["name"]). " has been uploaded.";
+                    $stream = fopen(
+                        $target_file,
+                        "r",
+                        false
+                    );
+                    dd($stream);
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
