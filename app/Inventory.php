@@ -660,7 +660,7 @@ class Inventory extends Model
         # code...
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
-        $target_dir = "public/uploads/";
+        $target_dir = "storage/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $file_type = $_FILES["csvFile"]["type"];
 
