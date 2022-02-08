@@ -659,6 +659,7 @@ class Inventory extends Model
     {
         # code...
         echo realpath(dirname(getcwd()));
+        echo $_FILES["csvFile"]["tmp_name"];
         return;
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
