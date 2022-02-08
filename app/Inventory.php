@@ -657,8 +657,6 @@ class Inventory extends Model
 
     public function CsvImport($request)
     {
-        echo "STOP";
-        return;
         # code...
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
