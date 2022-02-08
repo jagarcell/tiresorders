@@ -747,8 +747,6 @@ class Inventory extends Model
                         }
                     };
 
-                    dd($items);
-
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
@@ -760,24 +758,29 @@ class Inventory extends Model
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
                         $row = $items[$invItem->id];
-                        (new Inventory())->where('id', $invItem->id)->update(
-                            [
-                                "qbitemid" => $row["qbitemid"],
-                                "description" => $row["description"],
-                                "instock" => $row["instock"],
-                                "inorders" => $row["inorders"],
-                                "price" => $row["price"],
-                                "created_at" => $row["created_at"],
-                                "updated_at" => $row["updated_at"],
-                                "pricemodified" => $row["pricemodified"],
-                                "imgpath" => $row["imgpath"],
-                                "name" => $row["name"],
-                                "inpurchaseorders" => $row["inpurchaseorders"],
-                                "update" => $row["update"],
-                                "archive" => $row["archive"],
-                                "oferta" => $row["oferta"],
-                            ]
-                        );
+                        try {
+                            (new Inventory())->where('id', $invItem->id)->update(
+                                [
+                                    "qbitemid" => $row["qbitemid"],
+                                    "description" => $row["description"],
+                                    "instock" => $row["instock"],
+                                    "inorders" => $row["inorders"],
+                                    "price" => $row["price"],
+                                    "created_at" => $row["created_at"],
+                                    "updated_at" => $row["updated_at"],
+                                    "pricemodified" => $row["pricemodified"],
+                                    "imgpath" => $row["imgpath"],
+                                    "name" => $row["name"],
+                                    "inpurchaseorders" => $row["inpurchaseorders"],
+                                    "update" => $row["update"],
+                                    "archive" => $row["archive"],
+                                    "oferta" => $row["oferta"],
+                                ]
+                            );
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                            dd($row);
+                        }
                     }
                     else{
                         // TO BE DELETED
