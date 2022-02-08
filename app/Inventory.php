@@ -700,7 +700,7 @@ class Inventory extends Model
                             $row[0] != "id"
                         ){
                             $id = $row[0];
-                            $id == "" ? $id = "A0" : $id = $id;
+                            $id == "" ? $id = "A" . $uId : $id = $id;
                             if(!isset($items[$id])){
                                 $items[$id] = 
                                 [
