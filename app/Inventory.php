@@ -686,19 +686,14 @@ class Inventory extends Model
                         false
                     );
                     $line = 0;
-                    while(
-                        $row = fgetcsv(
-                            $stream,
-                            5000,
-                            ";",
-                            "\"",
-                            "\\"
-                        )
-                    ){
-                        if($line > 0){
-                            dd($row);
-                        }
-                    };
+                    $row = fgetcsv(
+                        $stream,
+                        5000,
+                        ";",
+                        "\"",
+                        "\\"
+                    );
+                    dd($row);
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
