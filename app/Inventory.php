@@ -685,7 +685,20 @@ class Inventory extends Model
                         "r",
                         false
                     );
-                    dd($stream);
+                    $line = 0;
+                    while(
+                        $row = fgetcsv(
+                            $stream,
+                            5000,
+                            ";",
+                            "\"",
+                            "\\"
+                        )
+                    ){
+                        if(line > 0){
+                            dd($row);
+                        }
+                    };
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
