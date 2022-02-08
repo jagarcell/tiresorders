@@ -686,6 +686,7 @@ class Inventory extends Model
                         false
                     );
                     $items = [];
+                    $uId = 0;
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -699,23 +700,45 @@ class Inventory extends Model
                             $row[0] != "id"
                         ){
                             $id = $row[0];
-                            $items[$id] = 
-                            [
-                                "qbitemid" => $row[1],
-                                "description" => $row[2],
-                                "instock" => $row[3],
-                                "inorders" => $row[4],
-                                "price" => $row[5],
-                                "created_at" => $row[6],
-                                "updated_at" => $row[7],
-                                "pricemodified" => $row[8],
-                                "imgpath" => $row[9],
-                                "name" => $row[10],
-                                "inpurchaseorders" => $row[11],
-                                "update" => $row[12],
-                                "archive" => $row[13],
-                                "oferta" => $row[14],
-                            ];
+                            if(!isset($items[$id])){
+                                $items[$id] = 
+                                [
+                                    "qbitemid" => $row[1],
+                                    "description" => $row[2],
+                                    "instock" => $row[3],
+                                    "inorders" => $row[4],
+                                    "price" => $row[5],
+                                    "created_at" => $row[6],
+                                    "updated_at" => $row[7],
+                                    "pricemodified" => $row[8],
+                                    "imgpath" => $row[9],
+                                    "name" => $row[10],
+                                    "inpurchaseorders" => $row[11],
+                                    "update" => $row[12],
+                                    "archive" => $row[13],
+                                    "oferta" => $row[14],
+                                ];
+                            }
+                            else{
+                                $items["A" . $uId] = 
+                                [
+                                    "qbitemid" => $row[1],
+                                    "description" => $row[2],
+                                    "instock" => $row[3],
+                                    "inorders" => $row[4],
+                                    "price" => $row[5],
+                                    "created_at" => $row[6],
+                                    "updated_at" => $row[7],
+                                    "pricemodified" => $row[8],
+                                    "imgpath" => $row[9],
+                                    "name" => $row[10],
+                                    "inpurchaseorders" => $row[11],
+                                    "update" => $row[12],
+                                    "archive" => $row[13],
+                                    "oferta" => $row[14],
+                                ];
+                                $uId++;
+                            }
                         }
                     };
                     dd($items);                    
