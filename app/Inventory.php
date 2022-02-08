@@ -759,23 +759,22 @@ class Inventory extends Model
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
                         $row = $items[$invItem->id];
-                        dd($row);
                         (new Inventory())->where('id', $invItem->id)->update(
                             [
-                                "qbitemid" => $row[1],
-                                "description" => $row[2],
-                                "instock" => $row[3],
-                                "inorders" => $row[4],
-                                "price" => $row[5],
-                                "created_at" => $row[6],
-                                "updated_at" => $row[7],
-                                "pricemodified" => $row[8],
-                                "imgpath" => $row[9],
-                                "name" => $row[10],
-                                "inpurchaseorders" => $row[11],
-                                "update" => $row[12],
-                                "archive" => $row[13],
-                                "oferta" => $row[14],
+                                "qbitemid" => $row[0],
+                                "description" => $row[1],
+                                "instock" => $row[2],
+                                "inorders" => $row[3],
+                                "price" => $row[4],
+                                "created_at" => $row[5],
+                                "updated_at" => $row[6],
+                                "pricemodified" => $row[7],
+                                "imgpath" => $row[8],
+                                "name" => $row[9],
+                                "inpurchaseorders" => $row[10],
+                                "update" => $row[11],
+                                "archive" => $row[12],
+                                "oferta" => $row[13],
                             ]
                         );
                     }
@@ -788,20 +787,20 @@ class Inventory extends Model
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
-                        $this->qbitemid = $row[1];
-                        $this->description = $row[2];
-                        $this->instock = $row[3];
-                        $this->inorders = $row[4];
-                        $this->price = $row[5];
-                        $this->created_at = $row[6];
-                        $this->updated_at = $row[7];
-                        $this->pricemodified = $row[8];
-                        $this->imgpath = $row[9];
-                        $this->name = $row[10];
-                        $this->inpurchaseorders = $row[11];
-                        $this->update = $row[12];
-                        $this->archive = $row[13];
-                        $this->oferta = $row[14];
+                        $this->qbitemid = $row[0];
+                        $this->description = $row[1];
+                        $this->instock = $row[2];
+                        $this->inorders = $row[3];
+                        $this->price = $row[4];
+                        $this->created_at = $row[5];
+                        $this->updated_at = $row[6];
+                        $this->pricemodified = $row[7];
+                        $this->imgpath = $row[8];
+                        $this->name = $row[9];
+                        $this->inpurchaseorders = $row[10];
+                        $this->update = $row[11];
+                        $this->archive = $row[12];
+                        $this->oferta = $row[13];
                         $this->save();
                     }
                 }   
