@@ -357,7 +357,8 @@ function updateInventory() {
 }
 
 function importCsv() {
-	alert('IMPORT CSV')
+	var file = $('csvFile').val()
+	alert(file)
 }
 
 function updateMessage(message) {
