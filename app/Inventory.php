@@ -685,7 +685,6 @@ class Inventory extends Model
                         "r",
                         false
                     );
-                    $line = 0;
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -695,10 +694,13 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if($line > 0){
+                        if(
+                            $row[0] != "description" &&
+                            $row[1] != "description" &&
+                            $row[2] != "description"
+                        ){
                             dd($row);
                         }
-                        $line++;
                     };
                     
                 } else {
