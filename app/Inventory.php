@@ -658,9 +658,8 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        echo realpath(dirname(getcwd())) . " = " . $_FILES["csvFile"]["tmp_name"];
-        
-        return;
+        $tmp_file = realpath(dirname(getcwd())) . " = " . $_FILES["csvFile"]["tmp_name"];
+
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $uploadOk = 1;
@@ -697,10 +696,9 @@ class Inventory extends Model
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
-            echo $_FILES["csvFile"]["tmp_name"] . " -> " . $target_file;
             try {
                 //code...
-                if (move_uploaded_file($_FILES["csvFile"]["tmp_name"], $target_file)) {
+                if (move_uploaded_file($tmp_file, $target_file)) {
                     echo "The file ". basename( $_FILES["csvFile"]["name"]). " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
