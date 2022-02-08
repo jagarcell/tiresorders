@@ -658,6 +658,8 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
+        echo realpath(dirname(getcwd()));
+        return;
         $target_dir = "/public/uploads/";
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $uploadOk = 1;
