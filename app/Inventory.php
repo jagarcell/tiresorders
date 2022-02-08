@@ -684,9 +684,8 @@ class Inventory extends Model
             $uploadOk = 0;
         }
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"
-             && $imageFileType != "pdf" && $imageFileType != "xps") {
-            echo "Sorry, only JPG, JPEG, PNG, PDF, XPS & GIF files are allowed.";
+        if($imageFileType != "csv") {
+            echo "Sorry, only CSV files are allowed.";
             echo " " . $imageFileType . " ";
             $uploadOk = 0;
         }
