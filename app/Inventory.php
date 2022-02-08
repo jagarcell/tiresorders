@@ -761,20 +761,20 @@ class Inventory extends Model
                         $row = $items[$invItem->id];
                         (new Inventory())->where('id', $invItem->id)->update(
                             [
-                                "qbitemid" => $row[0],
-                                "description" => $row[1],
-                                "instock" => $row[2],
-                                "inorders" => $row[3],
-                                "price" => $row[4],
-                                "created_at" => $row[5],
-                                "updated_at" => $row[6],
-                                "pricemodified" => $row[7],
-                                "imgpath" => $row[8],
-                                "name" => $row[9],
-                                "inpurchaseorders" => $row[10],
-                                "update" => $row[11],
-                                "archive" => $row[12],
-                                "oferta" => $row[13],
+                                "qbitemid" => $row["qbitemid"],
+                                "description" => $row["description"],
+                                "instock" => $row["instock"],
+                                "inorders" => $row["inorders"],
+                                "price" => $row["price"],
+                                "created_at" => $row["created_at"],
+                                "updated_at" => $row["updated_at"],
+                                "pricemodified" => $row["pricemodified"],
+                                "imgpath" => $row["imgpath"],
+                                "name" => $row["name"],
+                                "inpurchaseorders" => $row["inpurchaseorders"],
+                                "update" => $row["update"],
+                                "archive" => $row["archive"],
+                                "oferta" => $row["oferta"],
                             ]
                         );
                     }
@@ -787,20 +787,20 @@ class Inventory extends Model
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
-                        $this->qbitemid = $row[0];
-                        $this->description = $row[1];
-                        $this->instock = $row[2];
-                        $this->inorders = $row[3];
-                        $this->price = $row[4];
-                        $this->created_at = $row[5];
-                        $this->updated_at = $row[6];
-                        $this->pricemodified = $row[7];
-                        $this->imgpath = $row[8];
-                        $this->name = $row[9];
-                        $this->inpurchaseorders = $row[10];
-                        $this->update = $row[11];
-                        $this->archive = $row[12];
-                        $this->oferta = $row[13];
+                        $this->qbitemid = $row["qbitemid"];
+                        $this->description = $row["description"];
+                        $this->instock = $row["instock"];
+                        $this->inorders = $row["inorders"];
+                        $this->price = $row["price"];
+                        $this->created_at = $row["created_at"];
+                        $this->updated_at = $row["updated_at"];
+                        $this->pricemodified = $row["pricemodified"];
+                        $this->imgpath = $row["imgpath"];
+                        $this->name = $row["name"];
+                        $this->inpurchaseorders = $row["inpurchaseorders"];
+                        $this->update = $row["update"];
+                        $this->archive = $row["archive"];
+                        $this->oferta = $row["oferta"];
                         $this->save();
                     }
                 }   
