@@ -765,7 +765,7 @@ class Inventory extends Model
                                     "description" => $row["description"],
                                     "instock" => $row["instock"],
                                     "inorders" => $row["inorders"],
-                                    "price" => $row["price"],
+                                    "price" => $this->remakeDecimalPoints($row["price"]),
                                     "created_at" => $row["created_at"],
                                     "updated_at" => $row["updated_at"],
                                     "pricemodified" => $row["pricemodified"],
@@ -774,13 +774,11 @@ class Inventory extends Model
                                     "inpurchaseorders" => $row["inpurchaseorders"],
                                     "update" => $row["update"],
                                     "archive" => $row["archive"],
-                                    "oferta" => $row["oferta"],
+                                    "oferta" => $this->remakeDecimalPoints($row["oferta"]),
                                 ]
                             );
                         } catch (\Throwable $th) {
                             //throw $th;
-                            $row["price"] = $this->remakeDecimalPoints($row["price"]);
-
                             dd($row);
                         }
                     }
@@ -797,7 +795,7 @@ class Inventory extends Model
                         $this->description = $row["description"];
                         $this->instock = $row["instock"];
                         $this->inorders = $row["inorders"];
-                        $this->price = $row["price"];
+                        $this->price = $this->remakeDecimalPoints($row["price"]);
                         $this->created_at = $row["created_at"];
                         $this->updated_at = $row["updated_at"];
                         $this->pricemodified = $row["pricemodified"];
@@ -806,13 +804,14 @@ class Inventory extends Model
                         $this->inpurchaseorders = $row["inpurchaseorders"];
                         $this->update = $row["update"];
                         $this->archive = $row["archive"];
-                        $this->oferta = $row["oferta"];
+                        $this->oferta = $this->remakeDecimalPoints($row["oferta"]);
                         $this->save();
                     }
                 }   
             } catch (\Throwable $th) {
                 //throw $th;
                 echo $th;
+                dd($row);
             }
         }
     }
