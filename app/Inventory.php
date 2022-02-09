@@ -753,8 +753,9 @@ class Inventory extends Model
                 }
     
                 $invItems = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
+                dd($invItem[0]->qbitemid);
+
                 foreach ($invItems as $key => $invItem) {
-                    dd($invItem->qbitemid);
                     # code...
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
