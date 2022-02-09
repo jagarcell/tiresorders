@@ -863,7 +863,7 @@ class Inventory extends Model
     public function remakeComaToPoint($number)
     {
         # code...
-        $number = \str_replace([".", ","], [",", ""], $number);
+        $number = \str_replace([",", "."], ["", ","], $number);
         return $number;
     }
 
