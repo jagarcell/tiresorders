@@ -658,6 +658,11 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
+        if(strlen() == 0){
+            echo("NO FILE WAS CHOSEN");
+            return;
+        }
+
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
         $target_dir = "storage/uploads/";
