@@ -771,14 +771,14 @@ class Inventory extends Model
                                 $newItem->description = $row[0];
                                 $newItem->instock = $row[1];
                                 $newItem->inorders = 0;
-                                $newItem->price = $this->remakePointToComa($row[2]);
+                                $newItem->price = $this->setDecimalPoint($row[2]);
                                 $newItem->pricemodified = 0;
                                 $newItem->imgpath = $row[3];
                                 $newItem->name = $row[4];
                                 $newItem->inpurchaseorders = 0;
                                 $newItem->update = 0;
                                 $newItem->archive = 0;
-                                $newItem->oferta = $this->remakePointToComa($row[5]);
+                                $newItem->oferta = $this->setDecimalPoint($row[5]);
                                 $newItem->save();
     
                                 $qbItemId++;
@@ -876,10 +876,10 @@ class Inventory extends Model
             $line = 
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
-                $this->remakeComaToPoint($item->price) . ";" .
+                $this->setDecimalPoint($item->price) . ";" .
                 $item->imgpath . ";" .
                 trim($item->name) . ";" .
-                $this->remakeComaToPoint($item->oferta) . ";";
+                $this->setDecimalPoint($item->oferta) . ";";
 
             fwrite($stream, $line);
         }
@@ -909,6 +909,18 @@ class Inventory extends Model
     {
         # code...
         $number = \str_replace([",", "."], ["", ","], $number);
+        return $number;
+    }
+    
+    public function setDecimalPoint($number)
+    {
+        # code...
+        $number = \str_replace([",", "."], ["", ""], $number);
+        $length = strlen($number);
+        $number1 = substr($number, 0, $length - 2);
+        $number2 = \substr($number, $length -2, 2);
+        $number = $number1 . "," . $number2;
+
         return $number;
     }
 
