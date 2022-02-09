@@ -820,8 +820,7 @@ class Inventory extends Model
     public function remakeDecimalPoints($number)
     {
         # code...
-
-        $number = \str_replace($number, ".", "");
+        $number = \str_replace(".", "", $number);
         return $number;
     }
 }
