@@ -658,7 +658,6 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
         $target_dir = "storage/uploads/";
@@ -677,7 +676,8 @@ class Inventory extends Model
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
-        } else {
+        } 
+        else {
             try {
                 //code...
                 if (move_uploaded_file($tmp_file, $target_file)) {
@@ -686,69 +686,6 @@ class Inventory extends Model
                         "r",
                         false
                     );
-
-                    $items = [];
-                    $uId = 0;
-/*
-                    while(
-                        $row = fgetcsv(
-                            $stream,
-                            5000,
-                            ";",
-                            "\"",
-                            "\\"
-                        )
-                    ){
-                        if($row[0] != "id")
-                        {
-                            $id = $row[0];
-                            if($row[0] == ""){
-                                $id = "A" . $uId;
-                                $uId++;
-                                $row[1] = "A" . $uId;
-                            }
-                            if(!isset($items[$id])){
-                                $items[$id] = 
-                                [
-                                    "qbitemid" => $row[1],
-                                    "description" => $row[2],
-                                    "instock" => $row[3],
-                                    "inorders" => $row[4],
-                                    "price" => $row[5],
-                                    "created_at" => $row[6],
-                                    "updated_at" => $row[7],
-                                    "pricemodified" => $row[8],
-                                    "imgpath" => $row[9],
-                                    "name" => $row[10],
-                                    "inpurchaseorders" => $row[11],
-                                    "update" => $row[12],
-                                    "archive" => $row[13],
-                                    "oferta" => $row[14],
-                                ];
-                            }
-                            else{
-                                $items["A" . $uId] = 
-                                [
-                                    "qbitemid" => $row[1],
-                                    "description" => $row[2],
-                                    "instock" => $row[3],
-                                    "inorders" => $row[4],
-                                    "price" => $row[5],
-                                    "created_at" => $row[6],
-                                    "updated_at" => $row[7],
-                                    "pricemodified" => $row[8],
-                                    "imgpath" => $row[9],
-                                    "name" => $row[10],
-                                    "inpurchaseorders" => $row[11],
-                                    "update" => $row[12],
-                                    "archive" => $row[13],
-                                    "oferta" => $row[14],
-                                ];
-                                $uId = $uId + 1;
-                            }
-                        }
-                    };
-*/
 
                     DB::table('inventories')->truncate();
 
@@ -785,8 +722,6 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
-                                echo($th);
-                                dd($this->setDecimalPoint($row[2]));
                             }
                         }
                     };                    
@@ -794,67 +729,6 @@ class Inventory extends Model
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
-/*
-                $invItems = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
-                $lastQbItemId = $invItems[0]->qbitemid;
-
-                $invItems = (new Inventory())->where('id', '>', -1)->orderBy('id', 'asc')->get();
-
-                foreach ($invItems as $key => $invItem) {
-                    # code...
-                    if(isset($items[$invItem->id])){
-                        // FOR UPDATE
-                        $row = $items[$invItem->id];
-                        try {
-                            (new Inventory())->where('id', $invItem->id)->update(
-                                [
-                                    "qbitemid" => $row["qbitemid"],
-                                    "description" => $row["description"],
-                                    "instock" => $row["instock"],
-                                    "inorders" => $row["inorders"],
-                                    "price" => $this->remakePointToComa($row["price"]),
-                                    "created_at" => $row["created_at"],
-                                    "updated_at" => $row["updated_at"],
-                                    "pricemodified" => $row["pricemodified"],
-                                    "imgpath" => $row["imgpath"],
-                                    "name" => $row["name"],
-                                    "inpurchaseorders" => $row["inpurchaseorders"],
-                                    "update" => $row["update"],
-                                    "archive" => $row["archive"],
-                                    "oferta" => $this->remakePointToComa($row["oferta"]),
-                                ]
-                            );
-                        } catch (\Throwable $th) {
-                            //throw $th;
-                        }
-                    }
-                    else{
-                        // TO BE DELETED
-                        (new Inventory())->where('id', $invItem->id)->delete();
-                    }
-                    // ALL NEW RECORDS
-                    for($i = 0; $i < $uId; $i++){
-                        $row = $items["A" . $i];
-                    
-                        $this->qbitemid = $i + $lastQbItemId + 1;
-                        $this->description = $row["description"];
-                        $this->instock = $row["instock"];
-                        $this->inorders = $row["inorders"];
-                        $this->price = $this->remakePointToComa($row["price"]);
-                        $this->created_at = $row["created_at"];
-                        $this->updated_at = $row["updated_at"];
-                        $this->pricemodified = $row["pricemodified"];
-                        $this->imgpath = $row["imgpath"];
-                        $this->name = $row["name"];
-                        $this->inpurchaseorders = $row["inpurchaseorders"];
-                        $this->update = 0;
-                        $this->archive = 0;
-                        $this->oferta = $this->remakePointToComa($row["oferta"]);
-                        $this->save();
-                    }
-                }   
-*/
-
             } catch (\Throwable $th) {
                 //throw $th;
             }
@@ -896,20 +770,6 @@ class Inventory extends Model
         readfile($targetFile);
         exit();
         return redirect('/inventory');
-    }
-
-    public function remakePointToComa($number)
-    {
-        # code...
-        $number = \str_replace([".", ","], ["", "."], $number);
-        return $number;
-    }
-    
-    public function remakeComaToPoint($number)
-    {
-        # code...
-        $number = \str_replace([",", "."], ["", ","], $number);
-        return $number;
     }
     
     public function setDecimalPoint($number)
