@@ -870,7 +870,7 @@ class Inventory extends Model
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $this->remakeComaToPoint($item->price) . ";" .
-                $this->imgpath . ";" .
+                $item->imgpath . ";" .
                 trim($item->name) . ";" .
                 $this->remakeComaToPoint($item->oferta) . ";";
 
