@@ -88,12 +88,16 @@
 	</div>
 	<div class="inventoryButtons">
 		<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
-		<div class="updateInventory1">
-			<form enctype="multipart/form-data" action="/csvimport" method="POST" style="display:none">
+		<div class="updateInventory1" style="display:none">
+			<form enctype="multipart/form-data" action="/csvimport" method="POST">
 				@csrf
 				<input type="hidden" name="MAX_FILE_SIZE" value="500000">
 				<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
 				<input type="file" class="csvImport"  name="csvFile" accept=".csv">
+			</form>
+			<form>
+				<input type="button" class="actionButton updateInventoryButton" value="EXPORT CSV" title="EXPORT INVENTORY TO CSV">
+				<input type="file" class="csvImport" name="csvExportFile" accept=".csv">
 			</form>
 		</div>
 	</div>
