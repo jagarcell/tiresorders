@@ -787,7 +787,6 @@ class Inventory extends Model
                         (new Inventory())->where('id', $invItem->id)->delete();
                     }
                     // ALL NEW RECORDS
-                    dd($uId);
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
