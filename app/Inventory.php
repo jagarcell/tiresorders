@@ -766,19 +766,20 @@ class Inventory extends Model
                         {
                             try {
                                 //code...
-                                $this->qbitemid = $qbItemId;
-                                $this->description = $row[0];
-                                $this->instock = $row[1];
-                                $this->inorders = 0;
-                                $this->price = $this->remakePointToComa($row[2]);
-                                $this->pricemodified = 0;
-                                $this->imgpath = $row[3];
-                                $this->name = $row[4];
-                                $this->inpurchaseorders = 0;
-                                $this->update = 0;
-                                $this->archive = 0;
-                                $this->oferta = $this->remakePointToComa($row[5]);
-                                $this->save();
+                                $newItem = (new Inventory());
+                                $newItem->qbitemid = $qbItemId;
+                                $newItem->description = $row[0];
+                                $newItem->instock = $row[1];
+                                $newItem->inorders = 0;
+                                $newItem->price = $this->remakePointToComa($row[2]);
+                                $newItem->pricemodified = 0;
+                                $newItem->imgpath = $row[3];
+                                $newItem->name = $row[4];
+                                $newItem->inpurchaseorders = 0;
+                                $newItem->update = 0;
+                                $newItem->archive = 0;
+                                $newItem->oferta = $this->remakePointToComa($row[5]);
+                                $newItem->save();
     
                                 $qbItemId++;
     
@@ -857,7 +858,6 @@ class Inventory extends Model
                 echo $th;
             }
         }
-        return;
         return redirect('/inventory');
     }
 
