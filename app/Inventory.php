@@ -659,7 +659,7 @@ class Inventory extends Model
     {
         # code...
         if(strlen(basename($_FILES["csvFile"]["name"])) == 0){
-            echo "NO FILE WAS CHOSEN";
+            echo "<div style='width:100%; text-align:center;'>NO FILE WAS CHOSEN<div>";
             return;
         }
 
