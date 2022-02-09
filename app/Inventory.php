@@ -756,7 +756,7 @@ class Inventory extends Model
 
                 foreach ($invItems as $key => $invItem) {
                     # code...
-                    dd($items[$invItem->id]);
+                    dd($items);
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
                         $row = $items[$invItem->id];
