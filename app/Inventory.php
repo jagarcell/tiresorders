@@ -658,7 +658,7 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        DB::table('inventory')->truncate();
+        DB::table('inventories')->truncate();
         return redirect('inventory');
 
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
