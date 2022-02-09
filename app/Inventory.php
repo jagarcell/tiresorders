@@ -831,10 +831,10 @@ class Inventory extends Model
             fwrite($stream, "\r\n");
             # code...
             $line = 
-                $item->description . ";" .
+                trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $item->price . ";" .
-                $item->name . ";" .
+                trim($item->name) . ";" .
                 $item->oferta . ";";
 
             fwrite($stream, $line);
