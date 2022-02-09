@@ -658,8 +658,6 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        DB::table('inventories')->truncate();
-        return redirect('inventory');
 
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
@@ -752,6 +750,9 @@ class Inventory extends Model
                     };
 */
 
+                    DB::table('inventories')->truncate();
+
+                    $qbItemId = 0;
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -761,60 +762,30 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if($row[0] != "id")
+                        if($row[0] != "description")
                         {
-                            $id = $row[0];
-                            if($row[0] == ""){
-                                $id = "A" . $uId;
-                                $uId++;
-                                $row[1] = "A" . $uId;
-                            }
-                            if(!isset($items[$id])){
-                                $items[$id] = 
-                                [
-                                    "qbitemid" => $row[1],
-                                    "description" => $row[2],
-                                    "instock" => $row[3],
-                                    "inorders" => $row[4],
-                                    "price" => $row[5],
-                                    "created_at" => $row[6],
-                                    "updated_at" => $row[7],
-                                    "pricemodified" => $row[8],
-                                    "imgpath" => $row[9],
-                                    "name" => $row[10],
-                                    "inpurchaseorders" => $row[11],
-                                    "update" => $row[12],
-                                    "archive" => $row[13],
-                                    "oferta" => $row[14],
-                                ];
-                            }
-                            else{
-                                $items["A" . $uId] = 
-                                [
-                                    "qbitemid" => $row[1],
-                                    "description" => $row[2],
-                                    "instock" => $row[3],
-                                    "inorders" => $row[4],
-                                    "price" => $row[5],
-                                    "created_at" => $row[6],
-                                    "updated_at" => $row[7],
-                                    "pricemodified" => $row[8],
-                                    "imgpath" => $row[9],
-                                    "name" => $row[10],
-                                    "inpurchaseorders" => $row[11],
-                                    "update" => $row[12],
-                                    "archive" => $row[13],
-                                    "oferta" => $row[14],
-                                ];
-                                $uId = $uId + 1;
-                            }
+                            $this->qbitemid = $qbItemId;
+                            $this->description = $row[0];
+                            $this->instock = $row[1];
+                            $this->inorders = 0;
+                            $this->price = $this->remakePointToComa($row[2]);
+                            $this->pricemodified = 0;
+                            $this->imgpath = $row[3];
+                            $this->name = $row[4];
+                            $this->inpurchaseorders = 0;
+                            $this->update = 0;
+                            $this->archive = 0;
+                            $this->oferta = $this->remakePointToComa($row[5]);
+                            $this->save();
+
+                            $qbItemId++;
                         }
                     };                    
 
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
-    
+/*
                 $invItems = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
                 $lastQbItemId = $invItems[0]->qbitemid;
 
@@ -873,6 +844,8 @@ class Inventory extends Model
                         $this->save();
                     }
                 }   
+*/
+
             } catch (\Throwable $th) {
                 //throw $th;
                 echo $th;
@@ -889,7 +862,7 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"description";"instock";"price";"name";"oferta"');
+        fwrite($stream, '"description";"instock";"price";"imgpath";"name";"oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
@@ -897,6 +870,7 @@ class Inventory extends Model
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $this->remakeComaToPoint($item->price) . ";" .
+                $this->imgpath . ";" .
                 trim($item->name) . ";" .
                 $this->remakeComaToPoint($item->oferta) . ";";
 
