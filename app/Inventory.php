@@ -802,8 +802,8 @@ class Inventory extends Model
                         $this->imgpath = $row["imgpath"];
                         $this->name = $row["name"];
                         $this->inpurchaseorders = $row["inpurchaseorders"];
-                        $this->update = $row["update"];
-                        $this->archive = $row["archive"];
+                        $this->update = 0;
+                        $this->archive = 0;
                         $this->oferta = $this->remakeDecimalPoints($row["oferta"]);
                         $this->save();
                     }
@@ -813,6 +813,7 @@ class Inventory extends Model
                 echo $th;
             }
         }
+        return redirect('/inventory');
     }
 
     public function remakeDecimalPoints($number)
