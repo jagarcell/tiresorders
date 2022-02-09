@@ -752,7 +752,8 @@ class Inventory extends Model
                     echo "Sorry, there was an error uploading your file.";
                 }
     
-                $invItems = (new Inventory())->where('id', '>', -1)->get();
+                $invItems = (new Inventory())->where('id', '>', -1)->desc('qbitemid')->get();
+                dd($invItems);
 
                 foreach ($invItems as $key => $invItem) {
                     # code...
