@@ -697,6 +697,32 @@ class Inventory extends Model
                         false
                     );
 
+                    $row = fgetcsv(
+                        $stream,
+                        5000,
+                        ";",
+                        "\"",
+                        "\\"
+                    );
+
+                    if(
+                        count($row) != 0 ||
+                        $row[0] != "description" ||
+                        $row[0] != "instock" ||
+                        $row[0] != "price" ||
+                        $row[0] != "imgpath" ||
+                        $row[0] != "name" ||
+                        $row[0] != "oferta"
+                    ){
+                        echo "<div style='color: red;
+                        font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
+                        text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
+                        echo "<div style='width:100%; display:flex; flex-direction:column; justify-content: center; text-align:center;'>
+                        <a href='/inventory'>BACK TO INVENTORY</a></div>";
+                        
+                        return;
+                    }
+
                     DB::table('inventories')->truncate();
 
                     $qbItemId = 0;
