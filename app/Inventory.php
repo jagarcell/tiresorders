@@ -771,7 +771,6 @@ class Inventory extends Model
                                 $newItem->description = $row[0];
                                 $newItem->instock = $row[1];
                                 $newItem->inorders = 0;
-                                dd($this->setDecimalPoint($row[2]));
                                 $newItem->price = $this->setDecimalPoint($row[2]);
                                 $newItem->pricemodified = 0;
                                 $newItem->imgpath = $row[3];
@@ -787,6 +786,7 @@ class Inventory extends Model
                             } catch (\Throwable $th) {
                                 //throw $th;
                                 echo($th);
+                                dd($this->setDecimalPoint($row[2]));
                             }
                         }
                     };                    
