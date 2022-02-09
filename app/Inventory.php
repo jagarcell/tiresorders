@@ -769,7 +769,7 @@ class Inventory extends Model
                                     "description" => $row["description"],
                                     "instock" => $row["instock"],
                                     "inorders" => $row["inorders"],
-                                    "price" => $this->remakeDecimalPoints($row["price"]),
+                                    "price" => $this->remakePointToComa($row["price"]),
                                     "created_at" => $row["created_at"],
                                     "updated_at" => $row["updated_at"],
                                     "pricemodified" => $row["pricemodified"],
@@ -778,7 +778,7 @@ class Inventory extends Model
                                     "inpurchaseorders" => $row["inpurchaseorders"],
                                     "update" => $row["update"],
                                     "archive" => $row["archive"],
-                                    "oferta" => $this->remakeDecimalPoints($row["oferta"]),
+                                    "oferta" => $this->remakePointToComa($row["oferta"]),
                                 ]
                             );
                         } catch (\Throwable $th) {
@@ -797,7 +797,7 @@ class Inventory extends Model
                         $this->description = $row["description"];
                         $this->instock = $row["instock"];
                         $this->inorders = $row["inorders"];
-                        $this->price = $this->remakeDecimalPoints($row["price"]);
+                        $this->price = $this->remakePointToComa($row["price"]);
                         $this->created_at = $row["created_at"];
                         $this->updated_at = $row["updated_at"];
                         $this->pricemodified = $row["pricemodified"];
@@ -806,7 +806,7 @@ class Inventory extends Model
                         $this->inpurchaseorders = $row["inpurchaseorders"];
                         $this->update = 0;
                         $this->archive = 0;
-                        $this->oferta = $this->remakeDecimalPoints($row["oferta"]);
+                        $this->oferta = $this->remakePointToComa($row["oferta"]);
                         $this->save();
                     }
                 }   
@@ -833,9 +833,9 @@ class Inventory extends Model
             $line = 
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
-                $item->price . ";" .
+                remakeComaToPoint($item->price) . ";" .
                 trim($item->name) . ";" .
-                $item->oferta . ";";
+                remakeComaToPoint($item->oferta) . ";";
 
             fwrite($stream, $line);
         }
@@ -853,10 +853,17 @@ class Inventory extends Model
         return redirect('/inventory');
     }
 
-    public function remakeDecimalPoints($number)
+    public function remakePointToComa($number)
     {
         # code...
         $number = \str_replace([".", ","], ["", "."], $number);
+        return $number;
+    }
+    
+    public function remakeComaToPoint($number)
+    {
+        # code...
+        $number = \str_replace([".", ","], [",", ""], $number);
         return $number;
     }
 
