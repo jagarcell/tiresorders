@@ -921,7 +921,7 @@ class Inventory extends Model
         $length = strlen($number);
         $number1 = substr($number, 0, $length - 2);
         $number2 = \substr($number, $length -2, 2);
-        $number = $number1 . "," . $number2;
+        $number = $number1 . "." . $number2;
 
         return $number;
     }
