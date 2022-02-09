@@ -788,6 +788,7 @@ class Inventory extends Model
                     }
                     return;
                     // ALL NEW RECORDS
+                    dd($uId);
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
