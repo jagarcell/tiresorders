@@ -95,9 +95,9 @@
 				<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
 				<input type="file" class="csvImport"  name="csvFile" accept=".csv">
 			</form>
-			<form>
+			<form action="/csvexport">
 				<input type="button" class="actionButton updateInventoryButton" value="EXPORT CSV" title="EXPORT INVENTORY TO CSV">
-				<input type="file" class="csvImport" name="csvExportFile" accept=".csv">
+				<input type="file" class="csvImport" name="csvFile" accept=".csv">
 			</form>
 		</div>
 	</div>

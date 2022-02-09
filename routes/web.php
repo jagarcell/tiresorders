@@ -168,6 +168,8 @@ Route::get('/datetimeoffset', 'InventoryController@DateTimeOffset');
 
 Route::post('/csvimport',  'InventoryController@CsvImport');
 
+Route::post('/csvexport',  'InventoryController@CsvExport');
+
 /****************************
 *     SearchesController  	*
 ****************************/
