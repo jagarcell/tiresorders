@@ -791,7 +791,7 @@ class Inventory extends Model
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
-                        $this->qbitemid = $row["qbitemid"];
+                        $this->qbitemid = $i + 100000;
                         $this->description = $row["description"];
                         $this->instock = $row["instock"];
                         $this->inorders = $row["inorders"];
