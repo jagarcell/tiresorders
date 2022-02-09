@@ -812,6 +812,7 @@ class Inventory extends Model
                 echo $th;
             }
         }
+        return redirect('/inventory');
     }
 
     public function remakeDecimalPoints($number)
