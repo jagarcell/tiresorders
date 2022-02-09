@@ -766,7 +766,7 @@ class Inventory extends Model
                         {
                             echo($row[0]);
                             echo("\n\r");
-                            
+
                             try {
                                 //code...
                                 $newItem = (new Inventory());
@@ -788,7 +788,7 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
-                                dd($row);
+                                echo($th);
                             }
                         }
                     };                    
