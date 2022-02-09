@@ -828,7 +828,7 @@ class Inventory extends Model
         $stream = fopen($targetFile, 'w');
         fwrite($stream, '"description";"instock";"price";"name";"oferta"');
         foreach ($items as $key => $item) {
-            fwrite("\r\n");
+            fwrite($stream, "\r\n");
             # code...
             $line = 
                 $item->description . ";" .
