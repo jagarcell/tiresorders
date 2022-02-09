@@ -764,9 +764,6 @@ class Inventory extends Model
                     ){
                         if($row[0] != "description")
                         {
-                            echo($row[0]);
-                            echo("\n\r");
-
                             try {
                                 //code...
                                 $newItem = (new Inventory());
@@ -774,6 +771,7 @@ class Inventory extends Model
                                 $newItem->description = $row[0];
                                 $newItem->instock = $row[1];
                                 $newItem->inorders = 0;
+                                dd($this->setDecimalPoint($row[2]));
                                 $newItem->price = $this->setDecimalPoint($row[2]);
                                 $newItem->pricemodified = 0;
                                 $newItem->imgpath = $row[3];
