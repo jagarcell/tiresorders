@@ -895,6 +895,7 @@ class Inventory extends Model
         header('Pragma: public');
         header('Content-Length: ' . filesize($targetFile));
         readfile($targetFile);
+        exit();
         
         return redirect('/inventory');
     }
