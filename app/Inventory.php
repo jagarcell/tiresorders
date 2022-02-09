@@ -658,6 +658,9 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
+        DB::table('inventory')->truncate();
+        return redirect('inventory');
+
         $tmp_file = $_FILES["csvFile"]["tmp_name"];
 
         $target_dir = "storage/uploads/";
@@ -688,7 +691,7 @@ class Inventory extends Model
 
                     $items = [];
                     $uId = 0;
-
+/*
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -747,6 +750,66 @@ class Inventory extends Model
                             }
                         }
                     };
+*/
+
+                    while(
+                        $row = fgetcsv(
+                            $stream,
+                            5000,
+                            ";",
+                            "\"",
+                            "\\"
+                        )
+                    ){
+                        if($row[0] != "id")
+                        {
+                            $id = $row[0];
+                            if($row[0] == ""){
+                                $id = "A" . $uId;
+                                $uId++;
+                                $row[1] = "A" . $uId;
+                            }
+                            if(!isset($items[$id])){
+                                $items[$id] = 
+                                [
+                                    "qbitemid" => $row[1],
+                                    "description" => $row[2],
+                                    "instock" => $row[3],
+                                    "inorders" => $row[4],
+                                    "price" => $row[5],
+                                    "created_at" => $row[6],
+                                    "updated_at" => $row[7],
+                                    "pricemodified" => $row[8],
+                                    "imgpath" => $row[9],
+                                    "name" => $row[10],
+                                    "inpurchaseorders" => $row[11],
+                                    "update" => $row[12],
+                                    "archive" => $row[13],
+                                    "oferta" => $row[14],
+                                ];
+                            }
+                            else{
+                                $items["A" . $uId] = 
+                                [
+                                    "qbitemid" => $row[1],
+                                    "description" => $row[2],
+                                    "instock" => $row[3],
+                                    "inorders" => $row[4],
+                                    "price" => $row[5],
+                                    "created_at" => $row[6],
+                                    "updated_at" => $row[7],
+                                    "pricemodified" => $row[8],
+                                    "imgpath" => $row[9],
+                                    "name" => $row[10],
+                                    "inpurchaseorders" => $row[11],
+                                    "update" => $row[12],
+                                    "archive" => $row[13],
+                                    "oferta" => $row[14],
+                                ];
+                                $uId = $uId + 1;
+                            }
+                        }
+                    };                    
 
                 } else {
                     echo "Sorry, there was an error uploading your file.";
