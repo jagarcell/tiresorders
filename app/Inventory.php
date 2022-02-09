@@ -779,6 +779,8 @@ class Inventory extends Model
                             );
                         } catch (\Throwable $th) {
                             //throw $th;
+                            $row["price"] = $this->remakeDecimalPoints($row["price"]);
+
                             dd($row);
                         }
                     }
@@ -813,5 +815,13 @@ class Inventory extends Model
                 echo $th;
             }
         }
+    }
+
+    public function remakeDecimalPoints($number)
+    {
+        # code...
+
+        $number = \str_replace($number, ".", "");
+        return $number;
     }
 }
