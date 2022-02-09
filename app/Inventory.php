@@ -753,7 +753,9 @@ class Inventory extends Model
                 }
     
                 $invItems = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
-                dd($invItems[0]->qbitemid);
+                $lastQbItemId = $invItems[0]->qbitemid;
+
+                $invItems = (new Inventory())->where('id', '>', -1)->orderBy('id', 'asc')->get();
 
                 foreach ($invItems as $key => $invItem) {
                     # code...
@@ -791,7 +793,7 @@ class Inventory extends Model
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
-                        $this->qbitemid = $i + 1000000;
+                        $this->qbitemid = $i + $lastQbItemId + 1;
                         $this->description = $row["description"];
                         $this->instock = $row["instock"];
                         $this->inorders = $row["inorders"];
