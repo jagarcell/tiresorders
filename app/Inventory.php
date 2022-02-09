@@ -784,7 +784,6 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
-                                dd($row);
                             }
                         }
                     };                    
@@ -887,8 +886,7 @@ class Inventory extends Model
         fclose($stream);
 
         header('Content-Description: File Transfer');
-        header('Content-Type: text/text');
-        header('Content-Transfer-Encoding: binary');
+        header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="'.basename($targetFile).'"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
