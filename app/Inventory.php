@@ -790,7 +790,6 @@ class Inventory extends Model
                     // ALL NEW RECORDS
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
-                        dd($row);
                     
                         $this->qbitemid = $row["qbitemid"];
                         $this->description = $row["description"];
