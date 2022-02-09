@@ -705,16 +705,33 @@ class Inventory extends Model
                         "\\"
                     );
 
-                    if(count($row) != 6){
-                        echo "<div style='color: red;
-                        font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
-                        text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
-                        echo "<div style='width:100%; display:flex; flex-direction:column; justify-content: center; text-align:center;'>
-                        <a href='/inventory'>BACK TO INVENTORY</a></div>";
-                        
-                        return;
+                    while(
+                        $row = fgetcsv(
+                            $stream,
+                            5000,
+                            ";",
+                            "\"",
+                            "\\"
+                        )
+                    ){
+                        if(count($row) != 6){
+                            echo "<div style='color: red;
+                            font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
+                            text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
+                            echo "<div style='width:100%; display:flex; flex-direction:column; justify-content: center; text-align:center;'>
+                            <a href='/inventory'>BACK TO INVENTORY</a></div>";
+                            
+                            return;
+                        }
                     }
+                    fclose($stream);
 
+                    $stream = fopen(
+                        $target_file,
+                        "r",
+                        false
+                    );
+                   
                     DB::table('inventories')->truncate();
 
                     $qbItemId = 0;
@@ -752,7 +769,8 @@ class Inventory extends Model
                                 //throw $th;
                             }
                         }
-                    };                    
+                    };
+                    fclose($stream);
 
                 } else {
                     echo "Sorry, there was an error uploading your file.";
