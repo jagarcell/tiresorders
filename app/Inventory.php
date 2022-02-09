@@ -833,9 +833,9 @@ class Inventory extends Model
             $line = 
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
-                remakeComaToPoint($item->price) . ";" .
+                $this->remakeComaToPoint($item->price) . ";" .
                 trim($item->name) . ";" .
-                remakeComaToPoint($item->oferta) . ";";
+                $this->remakeComaToPoint($item->oferta) . ";";
 
             fwrite($stream, $line);
         }
