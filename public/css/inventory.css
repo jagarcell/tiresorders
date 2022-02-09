@@ -138,6 +138,7 @@
 		margin-bottom: 40px;
 		min-width: 200px;
 		text-align: center;
+		align-self: center;
 	}
 
 	.updateInventory1{
@@ -237,7 +238,7 @@
 	.inventoryButtons{
 		width: 100%;
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column;
 	}
   
 	/* Safari 4.0 - 8.0 */
