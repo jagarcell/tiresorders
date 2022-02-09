@@ -887,8 +887,9 @@ class Inventory extends Model
         fclose($stream);
 
         header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-//        header('Content-Disposition: attachment; filename="'.basename($targetFile).'"');
+        header('Content-Type: text/text');
+        header('Content-Transfer-Encoding: binary');
+        header('Content-Disposition: attachment; filename="'.basename($targetFile).'"');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
