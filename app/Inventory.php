@@ -821,12 +821,12 @@ class Inventory extends Model
     public function CsvExport($request)
     {
         # code...
-        $targetFile = "storage/uploads/PrestigeInventory.csv";
+        $targetFile = "storage/uploads/PrestigeTiresInventory.csv";
 
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"description";"instock";"price";"name";"oferta"');
+        fwrite($stream, '"description";"instock";"price";"name";"oferta"\\n\\r');
         foreach ($items as $key => $item) {
             # code...
         }
