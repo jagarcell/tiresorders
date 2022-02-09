@@ -147,6 +147,16 @@
 		margin-bottom: 40px;
 		min-width: 200px;
 		text-align: center;
+		text-align: center;
+		min-height: 17vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.csvForm{
+		width: 50%;
+		padding-left: 10%;
+		padding-right: 10%;
 	}
 
 	.updateInventoryWrap{
@@ -282,10 +292,6 @@
 		margin-top: 10px;
 		margin-bottom: 40px;
 		min-width: 200px;
-		text-align: center;
-		min-height: 17vh;
-		display: flex;
-		align-items: center;
 	}
 }
 
