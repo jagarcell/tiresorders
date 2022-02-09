@@ -785,6 +785,7 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
+                                dd($row);
                             }
                         }
                     };                    
