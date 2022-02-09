@@ -283,6 +283,9 @@
 		margin-bottom: 40px;
 		min-width: 200px;
 		text-align: center;
+		min-height: 17vh;
+		display: flex;
+		align-items: center;
 	}
 }
 
