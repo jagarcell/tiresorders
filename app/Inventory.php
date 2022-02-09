@@ -658,8 +658,8 @@ class Inventory extends Model
     public function CsvImport($request)
     {
         # code...
-        if(strlen(basename($_FILES["csvFile"]["name"]) == 0){
-            echo("NO FILE WAS CHOSEN");
+        if(strlen(basename($_FILES["csvFile"]["name"])) == 0){
+            echo "NO FILE WAS CHOSEN";
             return;
         }
 
