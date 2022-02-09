@@ -896,7 +896,7 @@ class Inventory extends Model
         header('Content-Length: ' . filesize($targetFile));
         readfile($targetFile);
         exit();
-        
+        return;
         return redirect('/inventory');
     }
 
