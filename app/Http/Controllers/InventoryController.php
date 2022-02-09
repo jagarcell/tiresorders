@@ -98,4 +98,10 @@ class InventoryController extends Controller
         # code...
         return (new Inventory())->CsvImport($request);
     }
+
+    public function CsvExport(Request $request)
+    {
+        # code...
+        return (new Inventory())->CsvExport($request);
+    }
 }

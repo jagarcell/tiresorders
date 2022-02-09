@@ -818,10 +818,27 @@ class Inventory extends Model
         return redirect('/inventory');
     }
 
+    public function CsvExport($request)
+    {
+        # code...
+        $targetFile = "storage/uploads/PrestigeInventory.csv";
+
+        $items = (new Inventory())->where('id', '>', -1)->get();
+
+        $stream = fopen($targetFile, 'w');
+        fwrite($stream, '"description";"instock";"price";"name";"oferta"');
+        foreach ($items as $key => $item) {
+            # code...
+        }
+        fclose($stream);
+        return redirect('/inventory');
+    }
+
     public function remakeDecimalPoints($number)
     {
         # code...
         $number = \str_replace([".", ","], ["", "."], $number);
         return $number;
     }
+
 }
