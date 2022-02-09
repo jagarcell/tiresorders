@@ -754,12 +754,12 @@ class Inventory extends Model
     
                 $invItems = (new Inventory())->where('id', '>', -1)->get();
 
+                dd($items);
                 foreach ($invItems as $key => $invItem) {
                     # code...
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
                         $row = $items[$invItem->id];
-                        dd($row);
                         try {
                             (new Inventory())->where('id', $invItem->id)->update(
                                 [
