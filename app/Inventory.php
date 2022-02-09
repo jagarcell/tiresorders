@@ -764,21 +764,28 @@ class Inventory extends Model
                     ){
                         if($row[0] != "description")
                         {
-                            $this->qbitemid = $qbItemId;
-                            $this->description = $row[0];
-                            $this->instock = $row[1];
-                            $this->inorders = 0;
-                            $this->price = $this->remakePointToComa($row[2]);
-                            $this->pricemodified = 0;
-                            $this->imgpath = $row[3];
-                            $this->name = $row[4];
-                            $this->inpurchaseorders = 0;
-                            $this->update = 0;
-                            $this->archive = 0;
-                            $this->oferta = $this->remakePointToComa($row[5]);
-                            $this->save();
-
-                            $qbItemId++;
+                            try {
+                                //code...
+                                $this->qbitemid = $qbItemId;
+                                $this->description = $row[0];
+                                $this->instock = $row[1];
+                                $this->inorders = 0;
+                                $this->price = $this->remakePointToComa($row[2]);
+                                $this->pricemodified = 0;
+                                $this->imgpath = $row[3];
+                                $this->name = $row[4];
+                                $this->inpurchaseorders = 0;
+                                $this->update = 0;
+                                $this->archive = 0;
+                                $this->oferta = $this->remakePointToComa($row[5]);
+                                $this->save();
+    
+                                $qbItemId++;
+    
+                            } catch (\Throwable $th) {
+                                //throw $th;
+                                dd($row);
+                            }
                         }
                     };                    
 
