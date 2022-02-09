@@ -92,8 +92,10 @@
 			<form enctype="multipart/form-data" action="/csvimport" method="POST" class="csvForm">
 				@csrf
 				<input type="hidden" name="MAX_FILE_SIZE" value="500000">
-				<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
-				<input type="file" class="csvImport"  name="csvFile" accept=".csv">
+				<div class="chooseFile">
+					<input type="submit" class="actionButton updateInventoryButton" value="IMPORT CSV" title="IMPORT INVENTORY FROM CSV">
+					<input type="file" class="csvImport"  name="csvFile" accept=".csv">
+				</div>
 			</form class="csvForm">
 			<form action="/csvexport" method="POST">
 				@csrf
