@@ -851,6 +851,7 @@ class Inventory extends Model
                 echo $th;
             }
         }
+        return;
         return redirect('/inventory');
     }
 
