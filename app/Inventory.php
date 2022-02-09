@@ -756,7 +756,6 @@ class Inventory extends Model
 
                 foreach ($invItems as $key => $invItem) {
                     # code...
-                    dd($invItem->id);
                     if(isset($items[$invItem->id])){
                         // FOR UPDATE
                         $row = $items[$invItem->id];
@@ -791,7 +790,7 @@ class Inventory extends Model
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
                     
-                        $this->qbitemid = $i + 100000;
+                        $this->qbitemid = $i + 1000000;
                         $this->description = $row["description"];
                         $this->instock = $row["instock"];
                         $this->inorders = $row["inorders"];
@@ -813,7 +812,7 @@ class Inventory extends Model
                 echo $th;
             }
         }
-//        return redirect('/inventory');
+        return redirect('/inventory');
     }
 
     public function remakeDecimalPoints($number)
