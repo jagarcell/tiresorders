@@ -705,7 +705,7 @@ class Inventory extends Model
                         "\\"
                     );
 
-                    if(count($row) != 0){
+                    if(count($row) != 6){
                         echo "<div style='color: red;
                         font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
                         text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
