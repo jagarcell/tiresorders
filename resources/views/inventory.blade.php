@@ -88,7 +88,7 @@
 	</div>
 	<div class="inventoryButtons">
 		<div class="updateInventory"><input id="updateInventory" type="button" class="actionButton updateInventoryButton" value="UPDATE WITH QB" title="SYNCHRONIZE LOCAL INVENTORY WITH QUICKBOOKS"></div>
-		<div class="updateInventory1">
+		<div class="updateInventory1" style="display:none">
 			<form action="/csvexport" method="POST">
 				@csrf
 				<input type="submit" class="actionButton updateInventoryButton" value="EXPORT CSV" title="EXPORT INVENTORY TO CSV">
