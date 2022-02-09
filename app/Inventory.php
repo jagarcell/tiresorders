@@ -786,7 +786,7 @@ class Inventory extends Model
                         // TO BE DELETED
                         (new Inventory())->where('id', $invItem->id)->delete();
                     }
-
+                    return;
                     // ALL NEW RECORDS
                     for($i = 0; $i < $uId; $i++){
                         $row = $items["A" . $i];
