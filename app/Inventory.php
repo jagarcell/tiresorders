@@ -779,13 +779,13 @@ class Inventory extends Model
                             );
                         } catch (\Throwable $th) {
                             //throw $th;
-                            dd($row);
                         }
                     }
                     else{
                         // TO BE DELETED
                         (new Inventory())->where('id', $invItem->id)->delete();
                     }
+                    dd($row);
 
                     // ALL NEW RECORDS
                     for($i = 0; $i < $uId; $i++){
