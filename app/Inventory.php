@@ -764,6 +764,7 @@ class Inventory extends Model
                     ){
                         if($row[0] != "description")
                         {
+                            echo($row);
                             try {
                                 //code...
                                 $newItem = (new Inventory());
