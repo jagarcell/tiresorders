@@ -797,6 +797,7 @@ class Inventory extends Model
 
                     $invItems = (new Inventory())->where('id', '>', -1)->get();
 
+                    dd($items);
                     foreach ($invItems as $key => $invItem) {
                         # code...
                         if(!isset($items[$invItem->id])){
