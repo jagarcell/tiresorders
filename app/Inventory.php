@@ -753,7 +753,7 @@ class Inventory extends Model
                                 //code...
                                 $id = $row[0];
                                 $invItems = (new Inventory())->where('id', $id)->get();
-                                dd($invItems);
+                               dd($invItems);
                                 if(count($invItems) > 0){
                                     // ITEM IMPORTED IS ALREADY IN THE DB, UPDATE IT
                                     $invItem = $invItems[0];
@@ -782,6 +782,7 @@ class Inventory extends Model
                                     $newItem->update = 0;
                                     $newItem->archive = 0;
                                     $newItem->oferta = $this->setDecimalPoint($row[5]);
+                                    dd($newItem);
                                     $newItem->save();
         
                                     $qbItemId++;
