@@ -753,7 +753,7 @@ class Inventory extends Model
                                 //code...
                                 $id = $row[0];
                                 $invItems = (new Inventory())->where('id', $id)->get();
-                               dd($invItems);
+
                                 if(count($invItems) > 0){
                                     // ITEM IMPORTED IS ALREADY IN THE DB, UPDATE IT
                                     $invItem = $invItems[0];
