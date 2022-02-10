@@ -790,6 +790,8 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
+                                echo $th;
+                                return;
                                 dd($newItem);
                             }
                         }
