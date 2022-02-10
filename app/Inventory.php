@@ -782,7 +782,6 @@ class Inventory extends Model
                                     $newItem->update = 0;
                                     $newItem->archive = 0;
                                     $newItem->oferta = $this->setDecimalPoint($row[5]);
-                                    dd($newItem);
                                     $newItem->save();
         
                                     $qbItemId++;
@@ -790,6 +789,8 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
+                                dd($newItem);
+
                             }
                         }
                     };
