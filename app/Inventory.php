@@ -749,6 +749,7 @@ class Inventory extends Model
                     ){
                         if($row[0] != "id")
                         {
+                            $newItem = [];
                             try {
                                 //code...
                                 $id = $row[0];
