@@ -697,6 +697,8 @@ class Inventory extends Model
                         false
                     );
 
+                    $items = [];
+
                     $row = fgetcsv(
                         $stream,
                         5000,
@@ -723,6 +725,7 @@ class Inventory extends Model
                             
                             return;
                         }
+                        $items[$row[0]] = ['present' => true];
                     }
                     fclose($stream);
 
@@ -731,10 +734,9 @@ class Inventory extends Model
                         "r",
                         false
                     );
-                   
-                    DB::table('inventories')->truncate();
 
-                    $qbItemId = 0;
+                    $qbItemId = 1;
+
                     while(
                         $row = fgetcsv(
                             $stream,
@@ -744,26 +746,44 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if($row[0] != "description")
+                        if($row[0] != "id")
                         {
                             try {
                                 //code...
-                                $newItem = (new Inventory());
-                                $newItem->qbitemid = $qbItemId;
-                                $newItem->description = $row[0];
-                                $newItem->instock = $row[1];
-                                $newItem->inorders = 0;
-                                $newItem->price = $this->setDecimalPoint($row[2]);
-                                $newItem->pricemodified = 0;
-                                $newItem->imgpath = $row[3];
-                                $newItem->name = $row[4];
-                                $newItem->inpurchaseorders = 0;
-                                $newItem->update = 0;
-                                $newItem->archive = 0;
-                                $newItem->oferta = $this->setDecimalPoint($row[5]);
-                                $newItem->save();
-    
-                                $qbItemId++;
+                                $id = $row[0];
+                                $invItems = (new Inventory())->where('id', $id)->get();
+                                if(count($invItems) > 0){
+                                    // ITEM IMPORTED IS ALREADY IN THE DB, UPDATE IT
+                                    $invItem = $invItems[0];
+                                    (new Inventory())->where('id', $id)->update(
+                                        [
+                                            'description' => $row[1],
+                                            'instock' => $row[2],
+                                            'price' => $this->setDecimalPoint($row[3]),
+                                            'name' => $row[4],
+                                            'oferta' => $this->setDecimalPoint($row[4])
+                                        ]
+                                    );
+                                }
+                                else{
+                                    // NEW ITEM FROM THE IMPORT, ADD IT
+                                    $newItem = (new Inventory());
+                                    $newItem->qbitemid = $qbItemId;
+                                    $newItem->description = $row[1];
+                                    $newItem->instock = $row[2];
+                                    $newItem->inorders = 0;
+                                    $newItem->price = $this->setDecimalPoint($row[3]);
+                                    $newItem->pricemodified = 0;
+                                    $newItem->imgpath = "";
+                                    $newItem->name = $row[4];
+                                    $newItem->inpurchaseorders = 0;
+                                    $newItem->update = 0;
+                                    $newItem->archive = 0;
+                                    $newItem->oferta = $this->setDecimalPoint($row[5]);
+                                    $newItem->save();
+        
+                                    $qbItemId++;
+                                }
     
                             } catch (\Throwable $th) {
                                 //throw $th;
@@ -771,6 +791,15 @@ class Inventory extends Model
                         }
                     };
                     fclose($stream);
+
+                    $invItems = (new Inventory())->where('id', '>', -1)->get();
+
+                    foreach ($invItems as $key => $invItem) {
+                        # code...
+                        if(!isset($items[$invItem->id])){
+                            (new Inventory())->where('id', $invItem->id)->delete();
+                        }
+                    }
 
                 } else {
                     echo "Sorry, there was an error uploading your file.";
@@ -790,7 +819,7 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"id";"description";"instock";"price";"imgpath";"name";"oferta"');
+        fwrite($stream, '"id";"description";"instock";"price";"name";"oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
@@ -799,7 +828,6 @@ class Inventory extends Model
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $this->setDecimalPoint($item->price) . ";" .
-                $item->imgpath . ";" .
                 trim($item->name) . ";" .
                 $this->setDecimalPoint($item->oferta) . ";";
 
