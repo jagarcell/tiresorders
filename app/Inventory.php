@@ -764,7 +764,7 @@ class Inventory extends Model
                                             'instock' => $row[2],
                                             'price' => $this->setDecimalPoint($row[3]),
                                             'name' => $row[4],
-                                            'oferta' => $this->setDecimalPoint($row[4])
+                                            'oferta' => $this->setDecimalPoint($row[5])
                                         ]
                                     );
                                 }
@@ -791,7 +791,6 @@ class Inventory extends Model
     
                             } catch (\Throwable $th) {
                                 //throw $th;
-                                dd($newItem);
                             }
                         }
                     };
@@ -812,8 +811,6 @@ class Inventory extends Model
                 }
             } catch (\Throwable $th) {
                 //throw $th;
-                echo $th;
-                return;
             }
         }
         return redirect('/inventory');
