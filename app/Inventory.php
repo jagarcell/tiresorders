@@ -810,6 +810,8 @@ class Inventory extends Model
                 }
             } catch (\Throwable $th) {
                 //throw $th;
+                dd($newItem);
+
             }
         }
         return redirect('/inventory');
