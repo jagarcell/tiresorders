@@ -717,7 +717,6 @@ class Inventory extends Model
                         )
                     ){
                         if(count($row) != 6){
-                            dd($row);
                             echo "<div style='color: red;
                             font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
                             text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
@@ -769,7 +768,6 @@ class Inventory extends Model
                                     );
                                 }
                                 else{
-                                    dd($row);
                                     // NEW ITEM FROM THE IMPORT, ADD IT
                                     $newItem = (new Inventory());
                                     $newItem->qbitemid = $qbItemId;
@@ -798,7 +796,6 @@ class Inventory extends Model
 
                     $invItems = (new Inventory())->where('id', '>', -1)->get();
 
-                    dd($items);
                     foreach ($invItems as $key => $invItem) {
                         # code...
                         if(!isset($items[$invItem->id])){
