@@ -830,7 +830,7 @@ class Inventory extends Model
                 $item->instock  . ";" .
                 $this->setDecimalPoint($item->price) . ";" .
                 trim($item->name) . ";" .
-                $this->setDecimalPoint($item->oferta) . ";";
+                $this->setDecimalPoint($item->oferta);
 
             fwrite($stream, $line);
         }
