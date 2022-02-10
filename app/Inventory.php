@@ -790,11 +790,12 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"description";"instock";"price";"imgpath";"name";"oferta"');
+        fwrite($stream, '"id";"description";"instock";"price";"imgpath";"name";"oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
             $line = 
+                $item->id . ";" .
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $this->setDecimalPoint($item->price) . ";" .
