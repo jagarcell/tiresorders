@@ -769,6 +769,7 @@ class Inventory extends Model
                                     );
                                 }
                                 else{
+                                    dd($row);
                                     // NEW ITEM FROM THE IMPORT, ADD IT
                                     $newItem = (new Inventory());
                                     $newItem->qbitemid = $qbItemId;
