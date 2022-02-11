@@ -743,7 +743,7 @@ class Inventory extends Model
 
                     $qbIds = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
                     if(count($qbIds) > 0){
-                        $qbItemId = $qbIds[0]->qbitemid;
+                        $qbItemId = $qbIds[0]->qbitemid + 1;
                     }
 
                     while(
