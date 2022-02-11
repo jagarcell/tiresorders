@@ -53,6 +53,11 @@ class InventoryController extends Controller
         return (new Inventory())->SyncronizeInventories($request);
     }
 
+    public function SyncronizeInventories1(Request $request)
+    {
+        return (new Inventory())->SyncronizeInventories1($request);
+    }
+
     public function GetInventory(Request $request)
     {
         (new Inventory())->GetInventory($request);

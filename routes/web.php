@@ -156,6 +156,8 @@ Route::get('/specials', 'InventoryController@specials');
 
 Route::get('/syncronizeinventories', 'InventoryController@SyncronizeInventories');
 
+Route::get('/sync', 'InventoryController@SyncronizeInventories1');
+
 Route::get('/getinventory', 'InventoryController@GetInventory');
 
 Route::get('/inventory', 'InventoryController@Inventory');

@@ -431,6 +431,142 @@ class Inventory extends Model
         return ['status' => 'ok', 'LocalInventory' => $LocalInventory];
     }
 
+    public function SyncronizeInventories1(Request $request)
+    {
+        $result = (new QbToken())->GetDataService();
+
+        $dataService = $result['dataService'];
+        $dataService->throwExceptionOnError(true);
+
+
+        if(is_null($dataService))
+        {
+            $authUrl = $result['authUrl'];
+            session(['qbapi' => 'InventorySummary']);
+            return ['authUrl' => $authUrl];
+        }
+
+        try {
+            $Count = $dataService->query("SELECT COUNT(*) FROM Item");
+        } catch (\SdkException $e) {
+            return ['status' => 'fail', 'message' => $e];
+        }
+
+        // $Count1 IS SET TO 100 BECAUSE THAT IS THE
+        // TOP RESULTS THAT QUICKBOOKS WILL GIVE US
+        $Count1 = $Count/100;
+
+        // ROUNDED COUNT
+        $Fcount = floor($Count1);
+
+        // REMAINING COUNT AFTER ROUNDING
+        $Rest = ($Count1 - $Fcount);
+        if($Rest > 0){
+            $Fcount += 1;
+        }
+
+        DB::beginTransaction();
+
+        $update = 0;
+        (new Inventory())->where('id', '>', -1)->update(['update' => $update]);
+
+        // ADD OR UPDATE QUICKBOOKS ITEMS TO LOCAL INVENTORY
+        for($i = 0; $i < $Fcount; $i++){
+            try {
+                $QbInventory = $dataService->query("SELECT * FROM Item STARTPOSITION " . $i*100 . "  MAXRESULTS 100");
+                dd($QbInventory);
+            } catch (\SdkException $e) {
+                DB::rollback();
+                return ['status' => 'fail', 'message' => $e];                
+            }
+            try {
+                $this->Sync($QbInventory, $update);
+            } catch (\QueryException $e) {
+                return ['status' => 'fail', 'message' => $e];                
+            }
+        }
+        
+
+        // REMOVE ITEMS FROM LOCAL INVENTORY THAT ARE NOT ANY MORE IN QUICKBOOKS
+        $this->where('update', '<', $update + 1)->update(['archive' => 1]);
+
+        // ADD TO THE STOCK THE PRODUCTS IN PURCHASE ORDERS
+        try {
+            $QbPurchaseOrders = $dataService->query("SELECT * FROM PurchaseOrder");
+        } catch (\SdkException $e) {
+            DB::rollback();
+            return ['status' => 'fail', 'message' => $e];                
+        }
+
+        foreach ($QbPurchaseOrders as $key => $QbPurchaseOrder) {
+            # IF THE ORDER IS OPEN ...
+            if($QbPurchaseOrder->POStatus == 'Open'){
+                # ... LET'S PROCCESS THE ORDER LINES
+                $QbPurchaseOrderLines = $QbPurchaseOrder->Line;
+                if(gettype($QbPurchaseOrderLines) == "array"){
+                    foreach ($QbPurchaseOrderLines as $key1 => $QbPurchaseOrderLine) {
+                        $this->ProccessQbPoLine($QbPurchaseOrderLine);                        
+                    }
+                }
+                else{
+                    $QbPurchaseOrderLine = $QbPurchaseOrder->Line;
+                    $this->ProccessQbPoLine($QbPurchaseOrderLine);                        
+                }
+            }
+        }
+
+        $PriceListHeaders = (new PriceListHeader())->where('id', '>', -1)->get();
+        
+        $LocalInventory = $this->where('id', '>', -1)->where('archive', 0)->get();
+
+        // LET'S UPDATE THE PRICE LISTS
+        $update = 0;
+
+        (new PriceListLines())->where('id', '>', -1)->update(['update' => 0]);
+
+        foreach ($LocalInventory as $key => $Item) {
+            # code...
+            // CHECK IF THIS INVENTORY ITEM IS ALREADY IN THE PRICE LIST
+            $PriceListLines = new PriceListLines();
+            $ItemsInLists = $PriceListLines->GetItemPriceByItemId($Item->id);
+
+            if(count($ItemsInLists) > 0){
+                // THE ITEM IS IN THIS LISTS, LET'S UPDATE DESCRIPTIONS
+                $PriceListLines->where('localitemid', $Item->id)->update(['description' => $Item->description, 'name' => $Item->name, 'update' => 1]);
+            }
+            else{
+                // THIS ITEM ISN'T IN THE LIST, LET'S ADD IT
+                foreach ($PriceListHeaders as $key => $PriceListHeader) {
+                    # code...
+                    $PriceListLines->pricelistheaderid = $PriceListHeader->id;
+                    $PriceListLines->localitemid = $Item->id;
+                    $PriceListLines->qbitemid = $Item->qbitemid;
+                    $PriceListLines->price = $Item->price;
+                    if($Item->description === null) {
+                        $PriceListLines->description = "";
+                    } else {
+                        $PriceListLines->description = $Item->description;
+                    }
+                    if($Item->name === null){
+                        $PriceListLines->name = "";
+                    }
+                    else{
+                        $PriceListLines->name = $Item->name;
+                    }
+                    $PriceListLines->update = 1;
+                    $PriceListLines->save();
+                }
+            }
+        }
+
+        // LET'S REMOVE FROM THE LIST THE PRODUCTS NOT PRESENT IN QUICKBOOKS
+        (new PriceListLines())->where('update', 0)->delete();
+
+        DB::commit();
+        // RETURN THE UPDATED LOCAL INVENTORY  
+        return ['status' => 'ok', 'LocalInventory' => $LocalInventory];
+    }
+
     public function ProccessQbPoLine($QbPurchaseOrderLine)
     {
         # LET'S SEE IF THE ITEM HAS BEEN SEEN BEFORE
@@ -850,7 +986,7 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"id";"description";"instock";"price";"name";"oferta"');
+        fwrite($stream, '"id";"";"description";"instock";"price";"name";"oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
