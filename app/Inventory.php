@@ -838,12 +838,12 @@ class Inventory extends Model
             fwrite($stream, "\r\n");
             # code...
             $line = 
-                '"' . $item->id . '"' . ";" .
-                '"' . trim($item->description) . '"' . ";" .
-                '"' . $item->instock  . '"' . ";" .
-                '"' . $this->setDecimalPoint($item->price) . '"' . ";" .
-                '"' . trim($item->name) . '"' . ";" .
-                '"' . $this->setDecimalPoint($item->oferta) . '"';
+                $item->id . ";" .
+                trim($item->description) . ";" .
+                $item->instock  . ";" .
+                $this->setDecimalPoint($item->price) . ";" .
+                trim($item->name) . ";" .
+                $this->setDecimalPoint($item->oferta);
 
             fwrite($stream, $line);
         }
