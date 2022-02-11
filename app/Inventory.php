@@ -870,7 +870,6 @@ class Inventory extends Model
 
         } catch (\Throwable $th) {
             //throw $th;
-            echo $th;
         }
 
         # code...
@@ -1035,6 +1034,8 @@ class Inventory extends Model
                 }
             } catch (\Throwable $th) {
                 //throw $th;
+                echo $th;
+                return;
             }
         }
         return redirect('/inventory');
@@ -1047,7 +1048,6 @@ class Inventory extends Model
             Mail::to("jagarcell@gmail.com")->send((new CsvImported())->subject('Csv File Exported'));
         } catch (\Throwable $th) {
             //throw $th;
-            echo $th;
         }
 
         # code...
