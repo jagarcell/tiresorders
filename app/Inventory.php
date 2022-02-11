@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+use App\Mail\CsvImported;
+
 use \Datetime;
 use \DateInterval;
 use \DateTimeZone;
@@ -660,15 +662,8 @@ class Inventory extends Model
     {
         try {
             //code...
-            Mail::send([
-                'text' => 'The Csv File was imported',
-            ], [
-                'user' => 'Jorge'
-            ], function ($message) {
-              $message
-                ->to("jagarcell@gmail.com")
-                ->subject("Csv Imported");
-            });
+            Mail::to("jagarcell@gmail.com")->send((new CsvImported())->subject('Csv File Imported'));
+
         } catch (\Throwable $th) {
             //throw $th;
             echo $th;
