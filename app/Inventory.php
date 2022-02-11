@@ -861,8 +861,6 @@ class Inventory extends Model
     public function setDecimalPoint($number)
     {
         # code...
-        $number = $number + "00";
-
         $number = \str_replace([",", "."], ["", ""], $number);
         $length = strlen($number);
         $number1 = substr($number, 0, $length - 2);
