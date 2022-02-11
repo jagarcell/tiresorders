@@ -651,16 +651,17 @@ class Inventory extends Model
 
     public function Sync1($QbInventory, $update)
     {
-        dd($QbInventory);
         foreach ($QbInventory as $key => $qbItem) {
 
             // SEARCH THE QB INVENTORY
             if($qbItem->Type == 'Inventory'){
+                if($qbItem->Sku == '4823100300322'){
+                    dd($qbItem);    
+                }
 
 //                $localItems = $this->where('qbitemid', $qbItem->Id)->get();
 
                 $localItems = $this->where('name', $qbItem->Name)->where('description', $qbItem->Description)->get();
-  
                 // IF THE QBITEM IS NOT IN THE LOCAL
                 // INVENTORY THEN  WHE WILL CREATE IT
                 if(count($localItems) == 0){
@@ -692,8 +693,8 @@ class Inventory extends Model
                 // THEN LET'S UPDATE SOME NEEDED FIELDS
                 else{
                     $localItem = $localItems[0];
-                    $localItem->sku = $qbItem->Sku;
                     $localItem->qbitemid = $qbItem->Id;
+                    $localItem->sku = $qbItem->Sku;
                     if($qbItem->Description === null){
                         $localItem->description = "";
                     }
