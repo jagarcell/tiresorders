@@ -864,12 +864,6 @@ class Inventory extends Model
 
     public function CsvImport($request)
     {
-        echo "<div 
-                    style='width:100%; height:200px; display:flex; flex-direction:column; 
-                    justify-content:center; text-align:center; color:blue'; font-size:28;>
-
-                    IMPORTING INVENTORY CSV FILE
-            </div>";
         try {
             //code...
             Mail::to("jagarcell@gmail.com")->send((new CsvImported())->subject('Csv File Imported'));
@@ -1040,8 +1034,6 @@ class Inventory extends Model
                 }
             } catch (\Throwable $th) {
                 //throw $th;
-                echo $th;
-                return;
             }
         }
         return redirect('/inventory');
