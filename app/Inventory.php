@@ -691,6 +691,8 @@ class Inventory extends Model
                 // THEN LET'S UPDATE SOME NEEDED FIELDS
                 else{
                     $localItem = $localItems[0];
+                    $Inventory->sku = $qbItem->Sku;
+                    $inventory->qbitemid = $qbItem->id;
                     if($qbItem->Description === null){
                         $localItem->description = "";
                     }
