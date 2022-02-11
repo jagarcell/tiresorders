@@ -674,6 +674,8 @@ class Inventory extends Model
         $target_file = $target_dir . basename($_FILES["csvFile"]["name"]);
         $file_type = $_FILES["csvFile"]["type"];
 
+        $newItem = [];
+
         $uploadOk = 1;
 
         // Check file size
@@ -753,7 +755,6 @@ class Inventory extends Model
                     ){
                         if($row[0] != "id")
                         {
-                            $newItem = [];
                             try {
                                 //code...
                                 $id = $row[0];
