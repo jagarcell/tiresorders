@@ -793,8 +793,7 @@ class Inventory extends Model
                                     $newItem->save();
         
                                     $qbItemId++;
-                                    $items[$newItem->id] = ['present' => true]; 
-
+                                    $items[$newItem->id] = ['present' => true];
                                 }
     
                             } catch (\Throwable $th) {
