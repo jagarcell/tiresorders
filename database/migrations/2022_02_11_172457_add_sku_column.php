@@ -15,7 +15,7 @@ class AddSkuColumn extends Migration
     {
         Schema::table('inventories', function (Blueprint $table) {
             //
-            $table->string('sku')->default('');
+            $table->string('sku')->default('')->nullable();
         });
     }
 
