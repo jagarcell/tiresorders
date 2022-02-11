@@ -668,7 +668,7 @@ class Inventory extends Model
             //throw $th;
             echo $th;
         }
-        return;
+
         # code...
         if(strlen(basename($_FILES["csvFile"]["name"])) == 0){
             echo "<div style='color: red;
@@ -836,6 +836,14 @@ class Inventory extends Model
 
     public function CsvExport($request)
     {
+        try {
+            //code...
+            Mail::to("jagarcell@gmail.com")->send((new CsvImported())->subject('Csv File Exported'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th;
+        }
+
         # code...
         $targetFile = "storage/uploads/PrestigeTiresInventory.csv";
 
