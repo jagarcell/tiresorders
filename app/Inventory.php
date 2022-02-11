@@ -296,7 +296,7 @@ class Inventory extends Model
         return $this->where('id', $localitemid)->get();
     }
 
-    public function SyncronizeInventories(Request $request)
+    public function SyncronizeInventories1(Request $request)
     {
         $result = (new QbToken())->GetDataService();
 
@@ -431,7 +431,7 @@ class Inventory extends Model
         return ['status' => 'ok', 'LocalInventory' => $LocalInventory];
     }
 
-    public function SyncronizeInventories1(Request $request)
+    public function SyncronizeInventories(Request $request)
     {
         $result = (new QbToken())->GetDataService();
 
@@ -583,7 +583,7 @@ class Inventory extends Model
         }
     }
 
-    public function Sync($QbInventory, $update)
+    public function Sync1($QbInventory, $update)
     {
         foreach ($QbInventory as $key => $qbItem) {
 
@@ -649,7 +649,7 @@ class Inventory extends Model
         }
     }
 
-    public function Sync1($QbInventory, $update)
+    public function Sync($QbInventory, $update)
     {
         foreach ($QbInventory as $key => $qbItem) {
 
