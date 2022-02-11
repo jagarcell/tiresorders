@@ -674,6 +674,7 @@ class Inventory extends Model
                     else{
                        $Inventory->name = $qbItem->Name;
                     }
+                    dd($qbItem);
                     $Inventory->instock = $qbItem->QtyOnHand;
                     $Inventory->sku = $qbItem->Sku;
                     $Inventory->inorders = 0;
