@@ -474,8 +474,6 @@ class Inventory extends Model
         for($i = 0; $i < $Fcount; $i++){
             try {
                 $QbInventory = $dataService->query("SELECT * FROM Item STARTPOSITION " . $i*100 . "  MAXRESULTS 100");
-                dd($QbInventory);
-
             } catch (\SdkException $e) {
                 DB::rollback();
                 return ['status' => 'fail', 'message' => $e];                
@@ -658,7 +656,10 @@ class Inventory extends Model
             // SEARCH THE QB INVENTORY
             if($qbItem->Type == 'Inventory'){
 
-                $localItems = $this->where('qbitemid', $qbItem->Id)->get();
+//                $localItems = $this->where('qbitemid', $qbItem->Id)->get();
+
+                $localItems = $this->where('name', $qbItem->Name)->where('description', $qbItem->Description)->get();
+  
                 // IF THE QBITEM IS NOT IN THE LOCAL
                 // INVENTORY THEN  WHE WILL CREATE IT
                 if(count($localItems) == 0){
