@@ -660,11 +660,14 @@ class Inventory extends Model
     {
         try {
             //code...
-            Mail::raw([], function($message){
-                $message->from("info@prestige-tires.com", "Prestige Tires");
-                $message->to("jagarcell@gmail.com");
-                $message->subject("Csv Import");
-                $message->setBody("CSV IMPORTED");
+            Mail::send([
+                'text' => 'The Csv File was imported',
+            ], [
+                'user' => 'Jorge'
+            ], function ($message) {
+              $message
+                ->to("jagarcell@gmail.com")
+                ->subject("Csv Imported");
             });
         } catch (\Throwable $th) {
             //throw $th;
