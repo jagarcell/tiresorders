@@ -651,6 +651,7 @@ class Inventory extends Model
 
     public function Sync1($QbInventory, $update)
     {
+        dd($QbInventory);
         foreach ($QbInventory as $key => $qbItem) {
 
             // SEARCH THE QB INVENTORY
