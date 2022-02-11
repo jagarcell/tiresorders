@@ -727,7 +727,9 @@ class Inventory extends Model
                             
                             return;
                         }
-                        $items[$row[0]] = ['present' => true];
+                        if(strlen($row[0]) > 0){
+                            $items[$row[0]] = ['present' => true];
+                        }
                     }
                     fclose($stream);
 
@@ -803,8 +805,6 @@ class Inventory extends Model
                     fclose($stream);
 
                     $invItems = (new Inventory())->where('id', '>', -1)->get();
-
-                    dd($items);
 
                     foreach ($invItems as $key => $invItem) {
                         # code...
