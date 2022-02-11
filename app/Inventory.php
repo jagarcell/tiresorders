@@ -793,12 +793,12 @@ class Inventory extends Model
                                     $newItem->save();
         
                                     $qbItemId++;
+                                    dd($newItem);
+
                                 }
     
                             } catch (\Throwable $th) {
                                 //throw $th;
-                                dd($newItem);
-
                             }
                         }
                     };
