@@ -692,7 +692,7 @@ class Inventory extends Model
                 else{
                     $localItem = $localItems[0];
                     $localItem->sku = $qbItem->Sku;
-                    $localItem->qbitemid = $qbItem->id;
+                    $localItem->qbitemid = $qbItem->Id;
                     if($qbItem->Description === null){
                         $localItem->description = "";
                     }
