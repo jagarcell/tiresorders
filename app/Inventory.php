@@ -934,7 +934,7 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        if(count($row) != 6){
+                        if(count($row) != 7){
                             echo "<div style='color: red;
                             font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
                             text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
@@ -983,11 +983,12 @@ class Inventory extends Model
                                     $invItem = $invItems[0];
                                     (new Inventory())->where('id', $id)->update(
                                         [
-                                            'description' => $row[1],
-                                            'instock' => $row[2],
-                                            'price' => $this->setDecimalPoint($row[3]),
-                                            'name' => $row[4],
-                                            'oferta' => $this->setDecimalPoint($row[5])
+                                            'sku' => $row[1],
+                                            'description' => $row[2],
+                                            'instock' => $row[3],
+                                            'price' => $this->setDecimalPoint($row[4]),
+                                            'name' => $row[5],
+                                            'oferta' => $this->setDecimalPoint($row[6])
                                         ]
                                     );
                                 }
@@ -995,17 +996,18 @@ class Inventory extends Model
                                     // NEW ITEM FROM THE IMPORT, ADD IT
                                     $newItem = (new Inventory());
                                     $newItem->qbitemid = $qbItemId;
-                                    $newItem->description = $row[1];
-                                    $newItem->instock = $row[2];
+                                    $newItem->sku = $row[1];
+                                    $newItem->description = $row[2];
+                                    $newItem->instock = $row[3];
                                     $newItem->inorders = 0;
-                                    $newItem->price = $this->setDecimalPoint($row[3]);
+                                    $newItem->price = $this->setDecimalPoint($row[4]);
                                     $newItem->pricemodified = 0;
                                     $newItem->imgpath = "";
-                                    $newItem->name = $row[4];
+                                    $newItem->name = $row[5];
                                     $newItem->inpurchaseorders = 0;
                                     $newItem->update = 0;
                                     $newItem->archive = 0;
-                                    $newItem->oferta = $this->setDecimalPoint($row[5]);
+                                    $newItem->oferta = $this->setDecimalPoint($row[6]);
                                     $newItem->save();
         
                                     $qbItemId++;
@@ -1054,12 +1056,13 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"id";"";"description";"instock";"price";"name";"oferta"');
+        fwrite($stream, '"id";"sku";"description";"instock";"price";"name";"oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
             $line = 
                 $item->id . ";" .
+                $item->sku . ";" .
                 trim($item->description) . ";" .
                 $item->instock  . ";" .
                 $this->setDecimalPoint($item->price) . ";" .
