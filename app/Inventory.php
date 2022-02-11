@@ -737,6 +737,11 @@ class Inventory extends Model
 
                     $qbItemId = 1;
 
+                    $qbIds = (new Inventory())->where('id', '>', -1)->orderBy('qbitemid', 'desc')->get();
+                    if(count($qbIds) > 0){
+                        $qbItemId = $qbIds[0]->qbitemid;
+                    }
+
                     while(
                         $row = fgetcsv(
                             $stream,
