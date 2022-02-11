@@ -474,6 +474,8 @@ class Inventory extends Model
         for($i = 0; $i < $Fcount; $i++){
             try {
                 $QbInventory = $dataService->query("SELECT * FROM Item STARTPOSITION " . $i*100 . "  MAXRESULTS 100");
+                dd($QbInventory);
+
             } catch (\SdkException $e) {
                 DB::rollback();
                 return ['status' => 'fail', 'message' => $e];                
@@ -674,7 +676,6 @@ class Inventory extends Model
                     else{
                        $Inventory->name = $qbItem->Name;
                     }
-                    dd($qbItem);
                     $Inventory->instock = $qbItem->QtyOnHand;
                     $Inventory->sku = $qbItem->Sku;
                     $Inventory->inorders = 0;
