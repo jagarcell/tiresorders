@@ -793,7 +793,7 @@ class Inventory extends Model
                                     $newItem->save();
         
                                     $qbItemId++;
-                                    dd($newItem);
+                                    $items[$newItem->id] = ['present' => true]; 
 
                                 }
     
