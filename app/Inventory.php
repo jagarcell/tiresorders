@@ -676,6 +676,8 @@ class Inventory extends Model
 
         $newItem = [];
 
+        $items = [];
+
         $uploadOk = 1;
 
         // Check file size
@@ -698,8 +700,6 @@ class Inventory extends Model
                         "r",
                         false
                     );
-
-                    $items = [];
 
                     $row = fgetcsv(
                         $stream,
@@ -803,6 +803,8 @@ class Inventory extends Model
                     fclose($stream);
 
                     $invItems = (new Inventory())->where('id', '>', -1)->get();
+
+                    dd($items);
 
                     foreach ($invItems as $key => $invItem) {
                         # code...
