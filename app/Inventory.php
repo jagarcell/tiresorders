@@ -480,7 +480,7 @@ class Inventory extends Model
                 return ['status' => 'fail', 'message' => $e];                
             }
             try {
-                $this->Sync($QbInventory, $update);
+                $this->Sync1($QbInventory, $update);
             } catch (\QueryException $e) {
                 return ['status' => 'fail', 'message' => $e];                
             }
@@ -610,6 +610,73 @@ class Inventory extends Model
                        $Inventory->name = $qbItem->Name;
                     }
                     $Inventory->instock = $qbItem->QtyOnHand;
+                    $Inventory->inorders = 0;
+                    $Inventory->price = $qbItem->UnitPrice;
+                    $Inventory->pricemodified = false;
+                    $Inventory->inpurchaseorders = 0;
+                    $Inventory->update = $update + 1;
+                    $Inventory->archive = false;
+                    $Inventory->save();
+                }
+                // IF IT IS ALREADY IN THE LOCAL INVENTORY
+                // THEN LET'S UPDATE SOME NEEDED FIELDS
+                else{
+                    $localItem = $localItems[0];
+                    if($qbItem->Description === null){
+                        $localItem->description = "";
+                    }
+                    else{
+                        $localItem->description = $qbItem->Description;
+                    }
+                    if($qbItem->Name === null){
+                        $localItem->name = "";
+                    }
+                    else{
+                        $localItem->name = $qbItem->Name;
+                    }
+                    $localItem->instock = $qbItem->QtyOnHand;
+
+                    if($localItem->price != $qbItem->UnitPrice){
+                        $localItem->price = $qbItem->UnitPrice;
+                        $localItem->pricemodified = false;
+                    }                    
+
+                    $localItem->inpurchaseorders = 0;
+                    $localItem->update = $update + 1;
+                    $localItem->archive = false;
+                    $localItem->update();
+                }
+            }
+        }
+    }
+
+    public function Sync1($QbInventory, $update)
+    {
+        foreach ($QbInventory as $key => $qbItem) {
+
+            // SEARCH THE QB INVENTORY
+            if($qbItem->Type == 'Inventory'){
+
+                $localItems = $this->where('qbitemid', $qbItem->Id)->get();
+                // IF THE QBITEM IS NOT IN THE LOCAL
+                // INVENTORY THEN  WHE WILL CREATE IT
+                if(count($localItems) == 0){
+                    $Inventory = new Inventory();
+                    $Inventory->qbitemid = $qbItem->Id;
+                    if($qbItem->Description === null){
+                        $Inventory->description = "";
+                    }
+                    else{
+                        $Inventory->description = $qbItem->Description;
+                    }
+                    if($qbItem->Name === null){
+                       $Inventory->name = "";
+                    }
+                    else{
+                       $Inventory->name = $qbItem->Name;
+                    }
+                    $Inventory->instock = $qbItem->QtyOnHand;
+                    $Inventory->sku = $qbItem->Sku;
                     $Inventory->inorders = 0;
                     $Inventory->price = $qbItem->UnitPrice;
                     $Inventory->pricemodified = false;
