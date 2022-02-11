@@ -657,6 +657,19 @@ class Inventory extends Model
 
     public function CsvImport($request)
     {
+        try {
+            //code...
+            Mail::raw([], function($message){
+                $message->from("info@prestige-tires.com", "Prestige Tires");
+                $message->to("jagarcell@gmail.com");
+                $message->subject("Csv Import");
+                $message->setBody("CSV IMPORTED");
+            });
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th;
+        }
+        return;
         # code...
         if(strlen(basename($_FILES["csvFile"]["name"])) == 0){
             echo "<div style='color: red;
