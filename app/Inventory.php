@@ -688,6 +688,7 @@ class Inventory extends Model
                 // IF IT IS ALREADY IN THE LOCAL INVENTORY
                 // THEN LET'S UPDATE SOME NEEDED FIELDS
                 else{
+                    dd("QB SYNC");
                     $localItem = $localItems[0];
                     $localItem->sku = $qbItem->Sku;
                     if($qbItem->Description === null){
