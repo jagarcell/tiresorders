@@ -933,8 +933,7 @@ class Inventory extends Model
                             "\\"
                         )
                     ){
-                        dd($row);
-                        if(count($row) != 7){
+                        if(count($row) != 8){
                             echo "<div style='color: red;
                             font-size: xx-large;cwidth:100%; height: 150px; display:flex; flex-direction:column; justify-content: center;
                             text-align:center;'>THE FILE FORMAT IS INCORRECT</div>";
