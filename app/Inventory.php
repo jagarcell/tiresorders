@@ -923,7 +923,7 @@ class Inventory extends Model
                         "\"",
                         "\\"
                     );
-
+                    dd($row);
                     while(
                         $row = fgetcsv(
                             $stream,
