@@ -1054,7 +1054,7 @@ class Inventory extends Model
         $items = (new Inventory())->where('id', '>', -1)->get();
 
         $stream = fopen($targetFile, 'w');
-        fwrite($stream, '"id";"sku";"description";"instock";"price";"name";"oferta"');
+        fwrite($stream, '"id","sku","description","instock","price","name","oferta"');
         foreach ($items as $key => $item) {
             fwrite($stream, "\r\n");
             # code...
