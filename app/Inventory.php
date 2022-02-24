@@ -703,6 +703,7 @@ class Inventory extends Model
                         $localItem->name = $qbItem->Name;
                     }
                     $localItem->instock = $qbItem->QtyOnHand;
+                    $localItem->sku = $qbItem->Sku;
 
                     if($localItem->price != $qbItem->UnitPrice){
                         $localItem->price = $qbItem->UnitPrice;
