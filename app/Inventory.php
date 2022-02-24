@@ -479,7 +479,7 @@ class Inventory extends Model
                 return ['status' => 'fail', 'message' => $e];                
             }
             try {
-                $this->Sync1($QbInventory, $update);
+                $this->Sync($QbInventory, $update);
             } catch (\QueryException $e) {
                 return ['status' => 'fail', 'message' => $e];                
             }
@@ -643,7 +643,7 @@ class Inventory extends Model
                     $localItem->inpurchaseorders = 0;
                     $localItem->update = $update + 1;
                     $localItem->archive = false;
-                    $localItem->update();
+                    $localItem->save();
                 }
             }
         }
@@ -688,7 +688,6 @@ class Inventory extends Model
                 // IF IT IS ALREADY IN THE LOCAL INVENTORY
                 // THEN LET'S UPDATE SOME NEEDED FIELDS
                 else{
-                    dd("QB SYNC");
                     $localItem = $localItems[0];
                     $localItem->sku = $qbItem->Sku;
                     if($qbItem->Description === null){
