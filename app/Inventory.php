@@ -703,7 +703,6 @@ class Inventory extends Model
                         $localItem->name = $qbItem->Name;
                     }
                     $localItem->instock = $qbItem->QtyOnHand;
-                    $localItem->sku = $qbItem->Sku;
 
                     if($localItem->price != $qbItem->UnitPrice){
                         $localItem->price = $qbItem->UnitPrice;
@@ -713,7 +712,7 @@ class Inventory extends Model
                     $localItem->inpurchaseorders = 0;
                     $localItem->update = $update + 1;
                     $localItem->archive = false;
-                    $localItem->update();
+                    $localItem->save();
                 }
             }
         }
