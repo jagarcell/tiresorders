@@ -919,7 +919,7 @@ class Inventory extends Model
                     $row = fgetcsv(
                         $stream,
                         5000,
-                        ";",
+                        ",",
                         "\"",
                         "\\"
                     );
@@ -928,7 +928,7 @@ class Inventory extends Model
                         $row = fgetcsv(
                             $stream,
                             5000,
-                            ";",
+                            ",",
                             "\"",
                             "\\"
                         )
@@ -1059,12 +1059,12 @@ class Inventory extends Model
             fwrite($stream, "\r\n");
             # code...
             $line = 
-                $item->id . ";" .
-                $item->sku . ";" .
-                trim($item->description) . ";" .
-                $item->instock  . ";" .
-                $this->setDecimalPoint($item->price) . ";" .
-                trim($item->name) . ";" .
+                $item->id . "," .
+                $item->sku . "," .
+                trim($item->description) . "," .
+                $item->instock  . "," .
+                $this->setDecimalPoint($item->price) . "," .
+                trim($item->name) . "," .
                 $this->setDecimalPoint($item->oferta);
 
             fwrite($stream, $line);
