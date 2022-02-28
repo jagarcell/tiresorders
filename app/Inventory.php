@@ -965,7 +965,7 @@ class Inventory extends Model
                         $row = fgetcsv(
                             $stream,
                             5000,
-                            ";",
+                            ",",
                             "\"",
                             "\\"
                         )
@@ -980,9 +980,6 @@ class Inventory extends Model
                                 if(count($invItems) > 0){
                                     // ITEM IMPORTED IS ALREADY IN THE DB, UPDATE IT
                                     $invItem = $invItems[0];
-//                                    if($row[3] === '4823100301602'){
-                                        dd($row);
-//                                    }
                                     (new Inventory())->where('id', $id)->update(
                                         [
                                             'sku' => $row[1],
